@@ -3,55 +3,43 @@ package co.edu.co.extraclase.business.domain;
 
 import java.util.UUID;
 
-import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
 public final class ColorDomain extends Domain {
 
-	private String nombre;
-	private String codigoHEX;
-	private UnidadMedidaDomain unidadMedida;
+	private String name;
+	private String hexCode;
 	
 	public ColorDomain() {
 		super(UUIDHelper.getUUIDHelper().getDefault());
-		setNombre(TextHelper.getDefault());
-		setCodigoHEX(TextHelper.getDefault());
-		setUnidadMedida(UnidadMedidaDomain.getDefaultValue());
+		setName(TextHelper.getDefault());
+		setHexCode(TextHelper.getDefault());
 	}
 	
-	public ColorDomain(final UUID id, final String nombre, final String codigoHEX, final UnidadMedidaDomain unidadMedida) {
+	public ColorDomain(final UUID id, final String name, final String hexCode) {
 		super(id);
-		setNombre(nombre);
-		setCodigoHEX(codigoHEX);
-		setUnidadMedida(unidadMedida);
+		setName(name);
+		setHexCode(hexCode);
 	}
 	
 	public static ColorDomain getDefaultValue() {
 		return new ColorDomain();
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getName() {
+		return name;
 	}
 
-	public void setNombre(final String nombre) {
-		this.nombre = TextHelper.getDefaultWithTrim(nombre);
+	public void setName(final String name) {
+		this.name = TextHelper.getDefaultWithTrim(name);
 	}
 
-	public String getCodigoHEX() {
-		return codigoHEX;
+	public String getHexCode() {
+		return hexCode;
 	}
 
-	public void setCodigoHEX(final String codigoHEX) {
-		this.codigoHEX = TextHelper.getDefaultWithTrim(codigoHEX);
-	}
-
-	public UnidadMedidaDomain getUnidadMedida() {
-		return unidadMedida;
-	}
-
-	public void setUnidadMedida(final UnidadMedidaDomain unidadMedida) {
-		this.unidadMedida = ObjectHelper.getDefault(unidadMedida, UnidadMedidaDomain.getDefaultValue());
+	public void setHexCode(final String hexCode) {
+		this.hexCode = TextHelper.getDefaultWithTrim(hexCode);
 	}
 }
