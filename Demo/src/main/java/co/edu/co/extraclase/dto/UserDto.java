@@ -1,0 +1,154 @@
+
+package co.edu.co.extraclase.dto;
+
+import co.edu.co.extraclase.crosscuting.helper.BooleanHelper;
+import co.edu.co.extraclase.crosscuting.helper.DateTimeHelper;
+import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
+import co.edu.co.extraclase.crosscuting.helper.TextHelper;
+import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+public class UserDto {
+    private UUID id;
+    private String firstName;
+    private String lastName;
+    private String username;
+    private String email;
+    private boolean emailConfirmation;
+    private LocalDateTime registrationDate;
+    private String passwordHash;
+    private boolean accountStatus;
+    private boolean isSuperUser;
+    private boolean superUserConfirmation;
+
+    
+    public UserDto() {
+        setId(UUIDHelper.getUUIDHelper().getDefault());
+        setFirstName(TextHelper.getDefault());
+        setLastName(TextHelper.getDefault());
+        setUsername(TextHelper.getDefault());
+        setEmail(TextHelper.getDefault());
+        setEmailConfirmation(BooleanHelper.getDefault());
+        setRegistrationDate(DateTimeHelper.getDefault());
+        setPasswordHash(TextHelper.getDefault());
+        setAccountStatus(BooleanHelper.getDefault());
+        setSuperUser(BooleanHelper.getDefault());
+        setSuperUserConfirmation(BooleanHelper.getDefault());
+    }
+
+ 
+    public UserDto(final UUID id, final String firstName, final String lastName, final String username,
+                   final String email, final boolean emailConfirmation, final String passwordHash,
+                   final boolean accountStatus, final boolean isSuperUser, 
+                   final boolean superUserConfirmation, final LocalDateTime registrationDate) {
+        setId(id);
+        setFirstName(firstName);
+        setLastName(lastName);
+        setUsername(username);
+        setEmail(email);
+        setEmailConfirmation(emailConfirmation);
+        setRegistrationDate(registrationDate);
+        setPasswordHash(passwordHash);
+        setAccountStatus(accountStatus);
+        setSuperUser(isSuperUser);
+        setSuperUserConfirmation(superUserConfirmation);
+    }
+
+  
+    public static UserDto getDefaultValue() {
+        return new UserDto();
+    }
+
+    
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = UUIDHelper.getUUIDHelper().getDefault(id);
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = TextHelper.getDefaultWithTrim(firstName);
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = TextHelper.getDefaultWithTrim(lastName);
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = TextHelper.getDefaultWithTrim(username);
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = TextHelper.getDefaultWithTrim(email);
+    }
+
+    public boolean isEmailConfirmation() {
+        return emailConfirmation;
+    }
+
+    public void setEmailConfirmation(boolean emailConfirmation) {
+        this.emailConfirmation = BooleanHelper.getDefault(emailConfirmation);
+    }
+
+    public LocalDateTime getRegistrationDate() {
+        return registrationDate;
+    }
+
+    public void setRegistrationDate(LocalDateTime registrationDate) {
+        this.registrationDate = DateTimeHelper.getDefault(registrationDate);
+    }
+
+    public String getPasswordHash() {
+        return passwordHash;
+    }
+
+    
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = ObjectHelper.getDefault(passwordHash, TextHelper.getDefault());
+    }
+
+    public boolean isAccountStatus() {
+        return accountStatus;
+    }
+
+    public void setAccountStatus(boolean accountStatus) {
+        this.accountStatus = BooleanHelper.getDefault(accountStatus);
+    }
+
+    public boolean isSuperUser() {
+        return isSuperUser;
+    }
+
+    public void setSuperUser(boolean superUser) {
+        this.isSuperUser = BooleanHelper.getDefault(superUser);
+    }
+
+    public boolean isSuperUserConfirmation() {
+        return superUserConfirmation;
+    }
+
+    public void setSuperUserConfirmation(boolean superUserConfirmation) {
+        this.superUserConfirmation = BooleanHelper.getDefault(superUserConfirmation);
+    }
+}

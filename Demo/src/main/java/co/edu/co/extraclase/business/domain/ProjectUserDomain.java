@@ -1,9 +1,5 @@
 package co.edu.co.extraclase.business.domain;
-
 import co.edu.co.extraclase.crosscuting.helper.*;
-import org.apache.catalina.User;
-
-
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
@@ -47,7 +43,7 @@ public class ProjectUserDomain extends Domain{
     }
 
     public void setUser(UserDomain user) {
-        this.user = user;
+        this.user = ObjectHelper.getDefault(user,UserDomain.getDefaultValue());
     }
 
     public ProjectDomain getProject() {
@@ -55,7 +51,7 @@ public class ProjectUserDomain extends Domain{
     }
 
     public void setProject(ProjectDomain project) {
-        this.project = project;
+        this.project = ObjectHelper.getDefault(project,ProjectDomain.getDefaultValue());
     }
 
     public boolean isAdmin() {
@@ -63,7 +59,7 @@ public class ProjectUserDomain extends Domain{
     }
 
     public void setAdmin(boolean admin) {
-        isAdmin = admin;
+        isAdmin = BooleanHelper.getDefault(admin);
     }
 
     public LocalDateTime getEntryDate() {
@@ -71,7 +67,7 @@ public class ProjectUserDomain extends Domain{
     }
 
     public void setEntryDate(LocalDateTime entryDate) {
-        this.entryDate = entryDate;
+        this.entryDate = DateTimeHelper.getDefault(entryDate);
     }
 
     public LocalDateTime getExpiryDate() {
@@ -79,6 +75,6 @@ public class ProjectUserDomain extends Domain{
     }
 
     public void setExpiryDate(LocalDateTime expiryDate) {
-        this.expiryDate = expiryDate;
+        this.expiryDate = DateTimeHelper.getDefault(expiryDate);
     }
 }

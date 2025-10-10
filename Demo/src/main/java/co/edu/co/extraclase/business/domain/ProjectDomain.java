@@ -33,13 +33,11 @@ public class ProjectDomain extends Domain {
         setProjectStatus(projectstatus);
     }
 
-    static ProjectDomain getDefaultValue() {
+    public static ProjectDomain getDefaultValue() {
         return new ProjectDomain();
     }
 
-    static ProjectDomain getDefaultValue(final ProjectDomain project) {
-        return ObjectHelper.getDefault(project, getDefaultValue());
-    }
+    
 
 
     public String getName() {
@@ -47,7 +45,7 @@ public class ProjectDomain extends Domain {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = TextHelper.getDefaultWithTrim(name);
     }
 
     public String getDescription() {
@@ -55,7 +53,7 @@ public class ProjectDomain extends Domain {
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.description = TextHelper.getDefaultWithTrim(description);
     }
 
     public LocalDateTime getCreationDate() {

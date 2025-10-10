@@ -3,6 +3,7 @@ package co.edu.co.extraclase.business.domain;
 import co.edu.co.extraclase.crosscuting.helper.BooleanHelper;
 import co.edu.co.extraclase.crosscuting.helper.DateTimeHelper;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
+import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
 import java.time.LocalDateTime;
@@ -20,10 +21,24 @@ public class TaskUserDomain extends Domain{
         super(UUIDHelper.getUUIDHelper().getDefault());
         setProjectUser(ProjectUserDomain.getDefaultValue());
         setTask(TaskDomain.getDefaultValue());
+        setAssignmentDate(DateTimeHelper.getDefault());
+        setCompletionDate(DateTimeHelper.getDefault());
+        setCreator(BooleanHelper.getDefault());
+        setComment(TextHelper.getDefault());
+        
 
     }
+    public TaskUserDomain(final UUID id, final ProjectUserDomain projectUser, final TaskDomain task, final LocalDateTime assignmentDate, final LocalDateTime completionDate, final boolean isCreator, final String comment) {
+		super(id);
+		setProjectUser(projectUser);
+		setTask(task);
+		setAssignmentDate(assignmentDate);
+		setCompletionDate(completionDate);
+		setCreator(isCreator);
+		setComment(comment);
+	}
 
-    static TaskUserDomain getDefaultValue() {
+    public static TaskUserDomain getDefaultValue() {
         return new TaskUserDomain();
     }
 
@@ -36,7 +51,7 @@ public class TaskUserDomain extends Domain{
     }
 
     public void setProjectUser(ProjectUserDomain projectUser) {
-        this.projectUser = projectUser;
+        this.projectUser = ObjectHelper.getDefault(projectUser, ProjectUserDomain.getDefaultValue());
     }
 
     public TaskDomain getTask() {
@@ -44,7 +59,7 @@ public class TaskUserDomain extends Domain{
     }
 
     public void setTask(TaskDomain task) {
-        this.task = task;
+        this.task = ObjectHelper.getDefault(task, TaskDomain.getDefaultValue());
     }
 
     public LocalDateTime getAssignmentDate() {
@@ -52,7 +67,7 @@ public class TaskUserDomain extends Domain{
     }
 
     public void setAssignmentDate(LocalDateTime assignmentDate) {
-        this.assignmentDate = assignmentDate;
+        this.assignmentDate = DateTimeHelper.getDefault(assignmentDate);
     }
 
     public LocalDateTime getCompletionDate() {
@@ -60,7 +75,7 @@ public class TaskUserDomain extends Domain{
     }
 
     public void setCompletionDate(LocalDateTime completionDate) {
-        this.completionDate = completionDate;
+        this.completionDate = DateTimeHelper.getDefault(completionDate);
     }
 
     public boolean isCreator() {
@@ -68,7 +83,7 @@ public class TaskUserDomain extends Domain{
     }
 
     public void setCreator(boolean creator) {
-        isCreator = creator;
+        isCreator = BooleanHelper.getDefault(creator);
     }
 
     public String getComment() {
@@ -76,7 +91,7 @@ public class TaskUserDomain extends Domain{
     }
 
     public void setComment(String comment) {
-        this.comment = comment;
+        this.comment = TextHelper.getDefaultWithTrim(comment);
     }
 }
 
