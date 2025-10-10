@@ -1,5 +1,5 @@
 package co.edu.co.extraclase.entity;
-
+//p
 import java.util.UUID;
 
 import co.edu.co.extraclase.crosscuting.helper.NumberHelper;
@@ -35,7 +35,7 @@ public final class PriorityEntity {
 		setColor(ColorEntity.getDefault());
 	}
 	
-	private PriorityEntity(UUID priorityId, String name, String description, Integer responseTime, UnitOfMeasureEntity unitOfMeasure, ColorEntity color) {
+	private  PriorityEntity(UUID priorityId, String name, String description, Integer responseTime, UnitOfMeasureEntity unitOfMeasure, ColorEntity color) {
 		setPriorityId(priorityId);
 		setName(name);
 		setDescription(description);

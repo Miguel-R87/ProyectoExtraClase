@@ -1,5 +1,5 @@
 package co.edu.co.extraclase.entity;
-
+//p
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -32,7 +32,7 @@ public final class ProjectEntity {
     	setProjectStatus(ProjectStatusEntity.getDefault());
     }
     
-    private ProjectEntity(final UUID projectId, final String name, final String description, final LocalDateTime creationDate, final ProjectStatusEntity projectStatus) {
+    private  ProjectEntity(final UUID projectId, final String name, final String description, final LocalDateTime creationDate, final ProjectStatusEntity projectStatus) {
 		setProjectId(projectId);
 		setName(name);
 		setDescription(description);

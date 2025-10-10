@@ -1,5 +1,5 @@
 package co.edu.co.extraclase.entity;
-
+//p
 import java.util.UUID;
 
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
@@ -25,7 +25,7 @@ public final class ColorEntity {
 		setHexCode(TextHelper.getDefault());
 	}
 	
-	private ColorEntity(UUID colorId, String name, String hexCode) {
+	private  ColorEntity(UUID colorId, String name, String hexCode) {
 		setColorId(colorId);
 		setName(name);
 		setHexCode(hexCode);

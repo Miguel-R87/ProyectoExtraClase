@@ -1,5 +1,5 @@
 package co.edu.co.extraclase.entity;
-
+//p
 import java.util.UUID;
 
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
@@ -25,7 +25,7 @@ public final class UnitOfMeasureEntity {
 		setDescription(TextHelper.getDefault());
 	}
 	
-	private UnitOfMeasureEntity(UUID unitOfMeasureId, String name, String description) {
+	private  UnitOfMeasureEntity(UUID unitOfMeasureId, String name, String description) {
 		setUnitOfMeasureId(unitOfMeasureId);
 		setName(name);
 		setDescription(description);

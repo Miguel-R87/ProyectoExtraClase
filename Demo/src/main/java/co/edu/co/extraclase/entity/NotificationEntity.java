@@ -1,5 +1,5 @@
 package co.edu.co.extraclase.entity;
-
+//p
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -34,7 +34,7 @@ public final class NotificationEntity {
 		setNotificationType(NotificationTypeEntity.getDefault());
 	}
     
-    private NotificationEntity(final UUID notificationId, final TaskUserEntity taskUser, final String message, final LocalDateTime triggerDate, final NotificationTypeEntity notificationType) {
+    private  NotificationEntity(final UUID notificationId, final TaskUserEntity taskUser, final String message, final LocalDateTime triggerDate, final NotificationTypeEntity notificationType) {
     	setNotificationId(notificationId);
     	setTaskUser(taskUser);
     	setMessage(message);

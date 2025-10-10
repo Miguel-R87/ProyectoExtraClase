@@ -2,7 +2,7 @@ package co.edu.co.extraclase.entity;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
-
+//p
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
@@ -31,7 +31,7 @@ public final class ListEntity {
 		setCreationDate(DateTimeHelper.getDefault());
 	}
 	
-	private ListEntity(final UUID listId, final String name, final ProjectEntity project, final LocalDateTime creationDate) {
+	private  ListEntity(final UUID listId, final String name, final ProjectEntity project, final LocalDateTime creationDate) {
 		setListId(listId);
 		setName(name);
 		setProject(project);

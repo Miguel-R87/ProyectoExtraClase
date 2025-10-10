@@ -1,5 +1,5 @@
 package co.edu.co.extraclase.entity;
-
+//p
 import java.util.UUID;
 
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
@@ -28,7 +28,7 @@ public final class StatusEntity {
 		setColor(ColorEntity.getDefault());
 	}
 	
-	private StatusEntity(UUID statusId, String name, String description, ColorEntity color) {
+	private  StatusEntity(UUID statusId, String name, String description, ColorEntity color) {
 		setStatusId(statusId);
 		setName(name);
 		setDescription(description);

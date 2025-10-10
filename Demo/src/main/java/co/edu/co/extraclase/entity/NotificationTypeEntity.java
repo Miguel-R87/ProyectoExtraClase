@@ -1,5 +1,5 @@
 package co.edu.co.extraclase.entity;
-
+//p
 import java.util.UUID;
 
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
@@ -24,7 +24,7 @@ public final class NotificationTypeEntity {
 		setDescription(TextHelper.getDefault());
 	}
 	
-	private NotificationTypeEntity(UUID notificationTypeId, String name, String description) {
+	private  NotificationTypeEntity(UUID notificationTypeId, String name, String description) {
 		setNotificationTypeId(notificationTypeId);
 		setName(name);
 		setDescription(description);

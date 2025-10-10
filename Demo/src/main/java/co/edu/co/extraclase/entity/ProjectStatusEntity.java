@@ -1,5 +1,5 @@
 package co.edu.co.extraclase.entity;
-
+//p
 import java.util.UUID;
 
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
@@ -24,7 +24,7 @@ public final class ProjectStatusEntity {
 		setDescription(TextHelper.getDefault());
 	}
 	
-	private ProjectStatusEntity(UUID projectStatusId, String name, String description) {
+	private  ProjectStatusEntity(UUID projectStatusId, String name, String description) {
 		setProjectStatusId(projectStatusId);
 		setName(name);
 		setDescription(description);

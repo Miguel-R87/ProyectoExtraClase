@@ -1,5 +1,5 @@
 package co.edu.co.extraclase.entity;
-
+//p
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -36,7 +36,7 @@ public final class ProjectUserEntity {
 		setExpiryDate(DateTimeHelper.getDefault());
     }
     
-    private ProjectUserEntity(final UUID projectUserId, final UserEntity user, final ProjectEntity project, final boolean isAdmin, final LocalDateTime entryDate, final LocalDateTime expiryDate) {
+    private  ProjectUserEntity(final UUID projectUserId, final UserEntity user, final ProjectEntity project, final boolean isAdmin, final LocalDateTime entryDate, final LocalDateTime expiryDate) {
 		setProjectUserId(projectUserId);
 		setUser(user);
 		setProject(project);

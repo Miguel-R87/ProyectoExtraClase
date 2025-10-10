@@ -1,5 +1,5 @@
 package co.edu.co.extraclase.entity;
-
+//p
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -53,9 +53,9 @@ public final class UserEntity {
     	setSuperUserConfirmation(BooleanHelper.getDefault());
     }
     
-    private UserEntity(UUID userId, String firstName, String lastName, String username, String email,
-boolean emailConfirmation, LocalDateTime registrationDate, String passwordHash, boolean accountStatus,
-boolean isSuperUser, boolean superUserConfirmation) {
+    private  UserEntity(UUID userId, String firstName, String lastName, String username, String email,
+ boolean emailConfirmation, LocalDateTime registrationDate, String passwordHash, boolean accountStatus,
+ boolean isSuperUser, boolean superUserConfirmation) {
 		setUserId(userId);
 		setFirstName(firstName);
 		setLastName(lastName);
