@@ -33,13 +33,11 @@ public class ProjectDomain extends Domain {
         setProjectStatus(projectstatus);
     }
 
-    static ProjectDomain getDefaultValue() {
+    public static ProjectDomain getDefaultValue() {
         return new ProjectDomain();
     }
 
-    static ProjectDomain getDefaultValue(final ProjectDomain project) {
-        return ObjectHelper.getDefault(project, getDefaultValue());
-    }
+    
 
 
     public String getName() {

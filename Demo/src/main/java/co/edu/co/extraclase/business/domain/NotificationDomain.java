@@ -63,4 +63,8 @@ public class NotificationDomain extends Domain {
     public void setNotificationType(NotificationTypeDomain notificationType) {
         this.notificationType = ObjectHelper.getDefault(notificationType, NotificationTypeDomain.getDefaultValue());
     }
+    
+    public static NotificationDomain getDefaultValue() {
+		return new NotificationDomain();
+	}
 }

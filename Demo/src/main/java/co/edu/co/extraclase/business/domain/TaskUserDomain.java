@@ -38,7 +38,7 @@ public class TaskUserDomain extends Domain{
 		setComment(comment);
 	}
 
-    static TaskUserDomain getDefaultValue() {
+    public static TaskUserDomain getDefaultValue() {
         return new TaskUserDomain();
     }
 

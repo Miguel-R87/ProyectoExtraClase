@@ -68,7 +68,7 @@ public class UserDomain extends Domain {
         this.registrationDate = registrationDate;
     }
 
-    static UserDomain getDefaultValue() {
+    public static UserDomain getDefaultValue() {
         return new UserDomain();
     }
 

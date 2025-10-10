@@ -32,7 +32,7 @@ public final class UnitOfMeasureEntity {
 	}
 	
 	
-	static UnitOfMeasureEntity getDefault() {
+	public static UnitOfMeasureEntity getDefault() {
 		return new UnitOfMeasureEntity();
 	}
 	

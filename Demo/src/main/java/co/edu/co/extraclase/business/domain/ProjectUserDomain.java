@@ -1,9 +1,5 @@
 package co.edu.co.extraclase.business.domain;
-
 import co.edu.co.extraclase.crosscuting.helper.*;
-import org.apache.catalina.User;
-
-
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
