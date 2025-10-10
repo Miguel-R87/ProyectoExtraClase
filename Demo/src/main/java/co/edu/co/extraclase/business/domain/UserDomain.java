@@ -81,7 +81,7 @@ public class UserDomain extends Domain {
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.firstName = TextHelper.getDefaultWithTrim(firstName);
     }
 
     public String getLastName() {
@@ -89,7 +89,7 @@ public class UserDomain extends Domain {
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.lastName = TextHelper.getDefaultWithTrim(lastName);
     }
 
     public String getUsername() {
@@ -97,7 +97,7 @@ public class UserDomain extends Domain {
     }
 
     public void setUsername(String username) {
-        this.username = username;
+        this.username = TextHelper.getDefaultWithTrim(username);
     }
 
     public String getEmail() {
@@ -105,7 +105,7 @@ public class UserDomain extends Domain {
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.email = TextHelper.getDefaultWithTrim(email);
     }
 
     public boolean isEmailConfirmation() {
@@ -113,7 +113,7 @@ public class UserDomain extends Domain {
     }
 
     public void setEmailConfirmation(boolean emailConfirmation) {
-        this.emailConfirmation = emailConfirmation;
+        this.emailConfirmation = BooleanHelper.getDefault(emailConfirmation);
     }
 
     public LocalDateTime getRegistrationDate() {
@@ -137,7 +137,7 @@ public class UserDomain extends Domain {
     }
 
     public void setAccountStatus(boolean accountStatus) {
-        this.accountStatus = accountStatus;
+        this.accountStatus = BooleanHelper.getDefault(accountStatus);
     }
 
     public boolean isSuperUser() {
@@ -145,7 +145,7 @@ public class UserDomain extends Domain {
     }
 
     public void setSuperUser(boolean superUser) {
-        isSuperUser = superUser;
+        isSuperUser = BooleanHelper.getDefault(superUser);
     }
 
     public boolean isSuperUserConfirmation() {
@@ -153,7 +153,7 @@ public class UserDomain extends Domain {
     }
 
     public void setSuperUserConfirmation(boolean superUserConfirmation) {
-        this.superUserConfirmation = superUserConfirmation;
+        this.superUserConfirmation = BooleanHelper.getDefault(superUserConfirmation);
     }
 }
 

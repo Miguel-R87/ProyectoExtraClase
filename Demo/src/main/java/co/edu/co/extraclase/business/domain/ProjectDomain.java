@@ -47,7 +47,7 @@ public class ProjectDomain extends Domain {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = TextHelper.getDefaultWithTrim(name);
     }
 
     public String getDescription() {
@@ -55,7 +55,7 @@ public class ProjectDomain extends Domain {
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.description = TextHelper.getDefaultWithTrim(description);
     }
 
     public LocalDateTime getCreationDate() {

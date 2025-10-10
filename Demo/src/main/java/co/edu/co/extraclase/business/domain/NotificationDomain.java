@@ -1,6 +1,7 @@
 package co.edu.co.extraclase.business.domain;
 
 import co.edu.co.extraclase.crosscuting.helper.DateTimeHelper;
+import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
@@ -16,7 +17,7 @@ public class NotificationDomain extends Domain {
     public NotificationDomain(){
         super(UUIDHelper.getUUIDHelper().getDefault());
         setTaskUser(TaskUserDomain.getDefaultValue());
-        setMessage(TextHelper.getDefaultWithTrim(message));
+        setMessage(TextHelper.getDefault());
         setTriggerDate(DateTimeHelper.getDefault());
         setNotificationType(NotificationTypeDomain.getDefaultValue());
     }
@@ -36,7 +37,7 @@ public class NotificationDomain extends Domain {
     }
 
     public void setTaskUser(TaskUserDomain taskUser) {
-        this.taskUser = taskUser;
+        this.taskUser = ObjectHelper.getDefault(taskUser, TaskUserDomain.getDefaultValue());
     }
 
     public String getMessage() {
@@ -44,7 +45,7 @@ public class NotificationDomain extends Domain {
     }
 
     public void setMessage(String message) {
-        this.message = message;
+        this.message = TextHelper.getDefaultWithTrim(message);
     }
 
     public LocalDateTime getTriggerDate() {
@@ -52,7 +53,7 @@ public class NotificationDomain extends Domain {
     }
 
     public void setTriggerDate(LocalDateTime triggerDate) {
-        this.triggerDate = triggerDate;
+        this.triggerDate = DateTimeHelper.getDefault(triggerDate);
     }
 
     public NotificationTypeDomain getNotificationType() {
@@ -60,6 +61,6 @@ public class NotificationDomain extends Domain {
     }
 
     public void setNotificationType(NotificationTypeDomain notificationType) {
-        this.notificationType = notificationType;
+        this.notificationType = ObjectHelper.getDefault(notificationType, NotificationTypeDomain.getDefaultValue());
     }
 }

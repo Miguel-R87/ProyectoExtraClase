@@ -2,6 +2,7 @@ package co.edu.co.extraclase.business.domain;
 
 import java.util.UUID;
 
+import co.edu.co.extraclase.crosscuting.helper.NumberHelper;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
@@ -10,7 +11,7 @@ public final class PriorityDomain extends Domain {
 
 	private String name;
 	private String description;
-	private float responseTime;
+	private Integer responseTime;
 	private UnitOfMeasureDomain unitOfMeasure;
 	private ColorDomain color;
 
@@ -18,12 +19,12 @@ public final class PriorityDomain extends Domain {
 		super(UUIDHelper.getUUIDHelper().getDefault());
 		setName(TextHelper.getDefault());
 		setDescription(TextHelper.getDefault());
-		setResponseTime(0);
+		setResponseTime(NumberHelper.getDefault());
 		setUnitOfMeasure(UnitOfMeasureDomain.getDefaultValue());
 		setColor(ColorDomain.getDefaultValue());
 	}
 
-	public PriorityDomain(final UUID id, final String name, final String description, final float responseTime,
+	public PriorityDomain(final UUID id, final String name, final String description, final Integer responseTime,
 						  final ColorDomain color, UnitOfMeasureDomain unitOfMeasure) {
 		super(id);
 		setName(name);
@@ -57,8 +58,8 @@ public final class PriorityDomain extends Domain {
 		return responseTime;
 	}
 
-	public void setResponseTime(final float responseTime) {
-		this.responseTime = responseTime;
+	public void setResponseTime(final Integer responseTime) {
+		this.responseTime = NumberHelper.getDefault();
 	}
 
 	public UnitOfMeasureDomain getUnitOfMeasure() {
