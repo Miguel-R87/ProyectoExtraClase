@@ -8,7 +8,7 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public class TaskUserDomain {
+public class TaskUserDomain extends Domain{
     private ProjectUserDomain projectUser;
     private TaskDomain task;
     private LocalDateTime assignmentDate;
@@ -19,7 +19,7 @@ public class TaskUserDomain {
     public TaskUserDomain() {
         super(UUIDHelper.getUUIDHelper().getDefault());
         setProjectUser(ProjectUserDomain.getDefaultValue());
-        setTask(TaskDomain.
+        setTask(TaskDomain.getDefaultValue());
 
     }
 

@@ -85,11 +85,14 @@ public final  class TaskDomain extends Domain{
 	 void setExpiryDate(final LocalDateTime	 ExpiryDate) {
 		 this.expiryDate = DateTimeHelper.getDefault(expiryDate);
 	 }
-	 
-	 TaskDomain getDefaultValue() {
-		 return new TaskDomain();
-	 }	
-	 
+
+	static TaskDomain getDefaultValue() {
+		return new TaskDomain();
+	}
+
+	static TaskDomain getDefaultValue(final TaskDomain task) {
+		return ObjectHelper.getDefault(task, getDefaultValue());
+	}
 	 
 	 
 	 
