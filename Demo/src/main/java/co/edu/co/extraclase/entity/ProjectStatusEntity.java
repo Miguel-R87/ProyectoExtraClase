@@ -1,5 +1,5 @@
 package co.edu.co.extraclase.entity;
-//p
+
 import java.util.UUID;
 
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;

@@ -25,9 +25,19 @@ public class TaskUserDomain extends Domain{
         setCompletionDate(DateTimeHelper.getDefault());
         setCreator(BooleanHelper.getDefault());
         setComment(TextHelper.getDefault());
-        
-
+}
+    
+    public TaskUserDomain(final UUID id) {
+		super(id);
+		setProjectUser(ProjectUserDomain.getDefaultValue());
+		setTask(TaskDomain.getDefaultValue());
+		setAssignmentDate(DateTimeHelper.getDefault());
+		setCompletionDate(DateTimeHelper.getDefault());
+		setCreator(BooleanHelper.getDefault());
+		setComment(TextHelper.getDefault());
     }
+    
+    
     public TaskUserDomain(final UUID id, final ProjectUserDomain projectUser, final TaskDomain task, final LocalDateTime assignmentDate, final LocalDateTime completionDate, final boolean isCreator, final String comment) {
 		super(id);
 		setProjectUser(projectUser);

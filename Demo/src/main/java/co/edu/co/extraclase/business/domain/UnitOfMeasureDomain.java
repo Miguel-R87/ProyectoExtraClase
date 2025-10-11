@@ -15,6 +15,12 @@ public final class UnitOfMeasureDomain extends Domain {
 		setDescription(TextHelper.getDefault());
 	}
 	
+	public UnitOfMeasureDomain(final UUID id) {
+		super(id);
+		setName(TextHelper.getDefault());
+		setDescription(TextHelper.getDefault());
+	}
+	
 	public UnitOfMeasureDomain(final UUID id, final String name, final String description) {
 		super(id);
 		setName(name);

@@ -23,6 +23,15 @@ public final class PriorityDomain extends Domain {
 		setUnitOfMeasure(UnitOfMeasureDomain.getDefaultValue());
 		setColor(ColorDomain.getDefaultValue());
 	}
+	
+	public PriorityDomain(final UUID id) {
+		super(id);
+		setName(TextHelper.getDefault());
+		setDescription(TextHelper.getDefault());
+		setResponseTime(NumberHelper.getDefault());
+		setUnitOfMeasure(UnitOfMeasureDomain.getDefaultValue());
+		setColor(ColorDomain.getDefaultValue());
+	}
 
 	public PriorityDomain(final UUID id, final String name, final String description, final Integer responseTime,
 						  final ColorDomain color, UnitOfMeasureDomain unitOfMeasure) {

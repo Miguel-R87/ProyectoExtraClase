@@ -21,6 +21,14 @@ public class NotificationDomain extends Domain {
         setTriggerDate(DateTimeHelper.getDefault());
         setNotificationType(NotificationTypeDomain.getDefaultValue());
     }
+    
+    public NotificationDomain(final UUID id) {
+		super(id);
+		setTaskUser(TaskUserDomain.getDefaultValue());
+		setMessage(TextHelper.getDefault());
+		setTriggerDate(DateTimeHelper.getDefault());
+		setNotificationType(NotificationTypeDomain.getDefaultValue());
+	}
 
     public NotificationDomain(final UUID id, final TaskUserDomain taskUser,
                               final String message, final LocalDateTime triggerDate,

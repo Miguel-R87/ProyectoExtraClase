@@ -24,6 +24,14 @@ public class ProjectDomain extends Domain {
         setCreationDate(DateTimeHelper.getDefault());
         setProjectStatus(ProjectStatusDomain.getDefaultValue());
     }
+    
+    public ProjectDomain(final UUID id) {
+		super(id);
+		setName(TextHelper.getDefault());
+		setDescription(TextHelper.getDefault());
+		setCreationDate(DateTimeHelper.getDefault());
+		setProjectStatus(ProjectStatusDomain.getDefaultValue());
+	}
 
     public ProjectDomain(final UUID id, final String name, final String description, final LocalDateTime creationDate, final ProjectStatusDomain projectstatus) {
         super(id);

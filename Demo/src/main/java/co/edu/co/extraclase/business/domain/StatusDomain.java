@@ -18,6 +18,13 @@ public final class StatusDomain extends Domain {
 		setColor(ColorDomain.getDefaultValue());
 	}
 	
+	public StatusDomain(final UUID id) {
+		super(id);
+		setName(TextHelper.getDefault());
+		setDescription(TextHelper.getDefault());
+		setColor(ColorDomain.getDefaultValue());
+	}
+	
 	public StatusDomain(final UUID id, final String name, final String description, final ColorDomain color) {
 		super(id);
 		setName(name);

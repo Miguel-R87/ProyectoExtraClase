@@ -23,6 +23,15 @@ public class ProjectUserDomain extends Domain{
         setEntryDate(DateTimeHelper.getDefault());
         setExpiryDate(DateTimeHelper.getDefault());
     }
+    
+    public ProjectUserDomain(final UUID id) {
+		super(id);
+		setUser(UserDomain.getDefaultValue());
+		setProject(ProjectDomain.getDefaultValue());
+		setAdmin(BooleanHelper.getDefault());
+		setEntryDate(DateTimeHelper.getDefault());
+		setExpiryDate(DateTimeHelper.getDefault());
+    }
 
     public ProjectUserDomain(final UUID id, final UserDomain user , final ProjectDomain project , final boolean isAdmin,
                              final LocalDateTime entryDate, final LocalDateTime expiryDate) {

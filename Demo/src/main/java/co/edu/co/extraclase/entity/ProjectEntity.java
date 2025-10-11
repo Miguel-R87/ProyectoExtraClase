@@ -1,5 +1,5 @@
 package co.edu.co.extraclase.entity;
-//p
+
 import java.time.LocalDateTime;
 import java.util.UUID;
 
