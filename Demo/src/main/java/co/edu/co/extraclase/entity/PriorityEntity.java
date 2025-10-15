@@ -8,7 +8,7 @@ import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
 
-public final class PriorityEntity {
+public final class PriorityEntity extends Entity {
 	
 	private UUID priorityId;
 	private String name;

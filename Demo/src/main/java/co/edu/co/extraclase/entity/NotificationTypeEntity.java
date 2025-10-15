@@ -6,7 +6,7 @@ import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
-public final class NotificationTypeEntity {
+public final class NotificationTypeEntity extends Entity{
 	
 	private UUID notificationTypeId;
 	private String name;

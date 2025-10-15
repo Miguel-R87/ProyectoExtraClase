@@ -7,7 +7,7 @@ import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
 
-public final class StatusEntity {
+public final class StatusEntity extends Entity {
 	
 	private UUID statusId;
 	private String name;

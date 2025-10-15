@@ -9,7 +9,7 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.crosscuting.helper.DateTimeHelper;
 
 
-public final class ListEntity {
+public final class ListEntity extends Entity {
 	
 	private UUID listId;
 	private String name;

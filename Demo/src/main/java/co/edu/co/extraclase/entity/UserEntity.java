@@ -9,7 +9,7 @@ import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
-public final class UserEntity {
+public final class UserEntity extends Entity {
 	
 	private UUID userId;
 	private String firstName;

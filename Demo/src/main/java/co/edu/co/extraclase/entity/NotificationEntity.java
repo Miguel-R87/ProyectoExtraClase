@@ -9,7 +9,7 @@ import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
 
-public final class NotificationEntity {
+public final class NotificationEntity extends Entity {
 	
 	private UUID notificationId;
 	private TaskUserEntity taskUser;
