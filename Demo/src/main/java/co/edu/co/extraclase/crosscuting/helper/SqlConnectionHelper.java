@@ -12,7 +12,7 @@ public final class SqlConnectionHelper {
     public static void ensureConnectionIsNotNull(final Connection connection) {
         if (ObjectHelper.isNull(connection)) {
             var userMessage = MessagesEnum.USER_ERROR_SQL_CONNECTION_IS_EMPTY.getContent();
-            var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SQL_CONNECTION_IS_EMPTY.getContent();
+            var technicalMessage = MessagesEnum.TECHNINAL_ERROR_SQL_CONNECTION_IS_EMPTY.getContent();
             throw ExtraClaseException.create(userMessage, technicalMessage);
         }
     }
@@ -24,7 +24,7 @@ public final class SqlConnectionHelper {
         try {
             if (connection.isClosed()) {
                 var userMessage = MessagesEnum.USER_ERROR_SQL_CONNECTION_IS_CLOSED.getContent();
-                var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SQL_CONNECTION_IS_CLOSED.getContent();
+                var technicalMessage = MessagesEnum.TECHNINAL_ERROR_SQL_CONNECTION_IS_CLOSED.getContent();
                 throw ExtraClaseException.create(userMessage, technicalMessage);
             }
         } catch (final SQLException exception) {
