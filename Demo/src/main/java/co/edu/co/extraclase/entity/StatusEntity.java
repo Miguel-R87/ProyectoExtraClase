@@ -7,7 +7,7 @@ import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
 
-public final class StatusEntity {
+public final class StatusEntity  {
 	
 	private UUID statusId;
 	private String name;
@@ -28,7 +28,7 @@ public final class StatusEntity {
 		setColor(ColorEntity.getDefault());
 	}
 	
-	private StatusEntity(UUID statusId, String name, String description, ColorEntity color) {
+	private  StatusEntity(UUID statusId, String name, String description, ColorEntity color) {
 		setStatusId(statusId);
 		setName(name);
 		setDescription(description);

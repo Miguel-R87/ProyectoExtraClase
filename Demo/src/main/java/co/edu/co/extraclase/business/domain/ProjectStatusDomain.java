@@ -14,6 +14,12 @@ public final class ProjectStatusDomain extends Domain {
 		setName(TextHelper.getDefault());
 		setDescription(TextHelper.getDefault());
 	}
+	
+	public ProjectStatusDomain(final UUID id) {
+		super(id);
+		setName(TextHelper.getDefault());
+		setDescription(TextHelper.getDefault());
+	}
 
 	public ProjectStatusDomain(final UUID id, final String name, final String description) {
 		super(id);

@@ -9,7 +9,7 @@ import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
 
-public final class ProjectUserEntity {
+public final class ProjectUserEntity  {
 	
 	private UUID projectUserId;
 	private UserEntity user;
@@ -36,7 +36,7 @@ public final class ProjectUserEntity {
 		setExpiryDate(DateTimeHelper.getDefault());
     }
     
-    private ProjectUserEntity(final UUID projectUserId, final UserEntity user, final ProjectEntity project, final boolean isAdmin, final LocalDateTime entryDate, final LocalDateTime expiryDate) {
+    private  ProjectUserEntity(final UUID projectUserId, final UserEntity user, final ProjectEntity project, final boolean isAdmin, final LocalDateTime entryDate, final LocalDateTime expiryDate) {
 		setProjectUserId(projectUserId);
 		setUser(user);
 		setProject(project);

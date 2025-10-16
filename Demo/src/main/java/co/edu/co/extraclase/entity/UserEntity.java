@@ -9,7 +9,7 @@ import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
-public final class UserEntity {
+public final class UserEntity  {
 	
 	private UUID userId;
 	private String firstName;
@@ -53,9 +53,9 @@ public final class UserEntity {
     	setSuperUserConfirmation(BooleanHelper.getDefault());
     }
     
-    private UserEntity(UUID userId, String firstName, String lastName, String username, String email,
-boolean emailConfirmation, LocalDateTime registrationDate, String passwordHash, boolean accountStatus,
-boolean isSuperUser, boolean superUserConfirmation) {
+    private  UserEntity(UUID userId, String firstName, String lastName, String username, String email,
+ boolean emailConfirmation, LocalDateTime registrationDate, String passwordHash, boolean accountStatus,
+ boolean isSuperUser, boolean superUserConfirmation) {
 		setUserId(userId);
 		setFirstName(firstName);
 		setLastName(lastName);
