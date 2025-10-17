@@ -8,7 +8,7 @@ import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
-public final class ProjectEntity {
+public final class ProjectEntity  {
 	
 	private UUID projectId;
 	private String name;
@@ -32,7 +32,7 @@ public final class ProjectEntity {
     	setProjectStatus(ProjectStatusEntity.getDefault());
     }
     
-    private ProjectEntity(final UUID projectId, final String name, final String description, final LocalDateTime creationDate, final ProjectStatusEntity projectStatus) {
+    private  ProjectEntity(final UUID projectId, final String name, final String description, final LocalDateTime creationDate, final ProjectStatusEntity projectStatus) {
 		setProjectId(projectId);
 		setName(name);
 		setDescription(description);

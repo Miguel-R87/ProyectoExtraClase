@@ -6,7 +6,7 @@ import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
-public final class UnitOfMeasureEntity {
+public final class UnitOfMeasureEntity  {
 	
 	private UUID unitOfMeasureId;
 	private String name;
@@ -25,7 +25,7 @@ public final class UnitOfMeasureEntity {
 		setDescription(TextHelper.getDefault());
 	}
 	
-	private UnitOfMeasureEntity(UUID unitOfMeasureId, String name, String description) {
+	private  UnitOfMeasureEntity(UUID unitOfMeasureId, String name, String description) {
 		setUnitOfMeasureId(unitOfMeasureId);
 		setName(name);
 		setDescription(description);

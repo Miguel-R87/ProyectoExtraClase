@@ -6,7 +6,7 @@ import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
-public final class ColorEntity {
+public final class ColorEntity  {
 	
 	private UUID colorId;
 	private String name;
@@ -25,7 +25,7 @@ public final class ColorEntity {
 		setHexCode(TextHelper.getDefault());
 	}
 	
-	private ColorEntity(UUID colorId, String name, String hexCode) {
+	private  ColorEntity(UUID colorId, String name, String hexCode) {
 		setColorId(colorId);
 		setName(name);
 		setHexCode(hexCode);

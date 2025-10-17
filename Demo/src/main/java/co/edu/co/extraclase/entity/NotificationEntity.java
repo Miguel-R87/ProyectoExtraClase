@@ -9,7 +9,7 @@ import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
 
-public final class NotificationEntity {
+public final class NotificationEntity  {
 	
 	private UUID notificationId;
 	private TaskUserEntity taskUser;
@@ -34,7 +34,7 @@ public final class NotificationEntity {
 		setNotificationType(NotificationTypeEntity.getDefault());
 	}
     
-    private NotificationEntity(final UUID notificationId, final TaskUserEntity taskUser, final String message, final LocalDateTime triggerDate, final NotificationTypeEntity notificationType) {
+    private  NotificationEntity(final UUID notificationId, final TaskUserEntity taskUser, final String message, final LocalDateTime triggerDate, final NotificationTypeEntity notificationType) {
     	setNotificationId(notificationId);
     	setTaskUser(taskUser);
     	setMessage(message);

@@ -9,7 +9,7 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.crosscuting.helper.DateTimeHelper;
 
 
-public final class ListEntity {
+public final class ListEntity  {
 	
 	private UUID listId;
 	private String name;
@@ -31,7 +31,7 @@ public final class ListEntity {
 		setCreationDate(DateTimeHelper.getDefault());
 	}
 	
-	private ListEntity(final UUID listId, final String name, final ProjectEntity project, final LocalDateTime creationDate) {
+	private  ListEntity(final UUID listId, final String name, final ProjectEntity project, final LocalDateTime creationDate) {
 		setListId(listId);
 		setName(name);
 		setProject(project);

@@ -24,7 +24,7 @@ public final class NotificationTypeEntity {
 		setDescription(TextHelper.getDefault());
 	}
 	
-	private NotificationTypeEntity(UUID notificationTypeId, String name, String description) {
+	private  NotificationTypeEntity(UUID notificationTypeId, String name, String description) {
 		setNotificationTypeId(notificationTypeId);
 		setName(name);
 		setDescription(description);

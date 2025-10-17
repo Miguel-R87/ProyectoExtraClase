@@ -10,7 +10,7 @@ import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
 
-public final class TaskUserEntity {
+public final class TaskUserEntity  {
 	
 	private UUID taskUserId;
 	private ProjectUserEntity projectUser;
@@ -41,7 +41,7 @@ public final class TaskUserEntity {
 		setComment(TextHelper.getDefault());
     }
     
-    private TaskUserEntity(final UUID taskUserId, final ProjectUserEntity projectUser, final TaskEntity task, final LocalDateTime assignmentDate, final LocalDateTime completionDate, final boolean isCreator, final String comment) {
+    private  TaskUserEntity(final UUID taskUserId, final ProjectUserEntity projectUser, final TaskEntity task, final LocalDateTime assignmentDate, final LocalDateTime completionDate, final boolean isCreator, final String comment) {
 		setTaskUserId(taskUserId);
 		setProjectUser(projectUser);
 		setTask(task);

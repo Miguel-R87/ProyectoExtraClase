@@ -20,6 +20,13 @@ public final class ListDomain extends Domain {
 		setCreationDate(DateTimeHelper.getDefault());
 		
 	}
+	
+	public ListDomain(final UUID id) {
+		super(id);
+		setName(TextHelper.getDefault());
+		setCreationDate(DateTimeHelper.getDefault());
+	}
+	
 	public ListDomain(final UUID id, final String name, final LocalDateTime creationDate) {
 		super(id);
 		setName(name);
