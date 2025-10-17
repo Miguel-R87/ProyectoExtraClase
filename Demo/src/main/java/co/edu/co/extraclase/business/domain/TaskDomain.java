@@ -28,6 +28,17 @@ public final  class TaskDomain extends Domain{
         setExpiryDate(DateTimeHelper.getDefault());
         	
 	} 
+	
+	public TaskDomain(final UUID id) {
+		super(id);
+		setTitle(TextHelper.getDefault());
+		setDescription(TextHelper.getDefault());
+		setList(ListDomain.getDefaultValue());
+		setStatus(StatusDomain.getDefaultValue());
+		setPriority(PriorityDomain.getDefaultValue());
+		setCreationDate(DateTimeHelper.getDefault());
+		setExpiryDate(DateTimeHelper.getDefault());
+	}
 	public TaskDomain(final UUID id, final String title, final String description, final LocalDateTime creationDate, final LocalDateTime expiryDate,
 					  final ListDomain list, final StatusDomain status, final PriorityDomain priority) {
 		super(id);

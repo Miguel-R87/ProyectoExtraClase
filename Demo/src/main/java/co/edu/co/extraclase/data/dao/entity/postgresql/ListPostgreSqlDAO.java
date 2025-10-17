@@ -45,10 +45,5 @@ public class ListPostgreSqlDAO extends SqlConnection implements ListDAO{
 		
 	}
 
-	@Override
-	public void delete(UUID id) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

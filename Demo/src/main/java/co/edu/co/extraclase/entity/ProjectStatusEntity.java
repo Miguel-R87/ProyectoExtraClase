@@ -6,7 +6,7 @@ import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
-public final class ProjectStatusEntity {
+public final class ProjectStatusEntity  {
 	
 	private UUID projectStatusId;
 	private String name;
@@ -24,7 +24,7 @@ public final class ProjectStatusEntity {
 		setDescription(TextHelper.getDefault());
 	}
 	
-	private ProjectStatusEntity(UUID projectStatusId, String name, String description) {
+	private  ProjectStatusEntity(UUID projectStatusId, String name, String description) {
 		setProjectStatusId(projectStatusId);
 		setName(name);
 		setDescription(description);

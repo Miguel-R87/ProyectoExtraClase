@@ -9,7 +9,7 @@ import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
 
-public final class TaskEntity {
+public final class TaskEntity  {
 	
 	private UUID taskId;
 	private String title;
@@ -42,7 +42,7 @@ public final class TaskEntity {
 		setPriority(PriorityEntity.getDefault());
 	}
 	
-	private TaskEntity(final UUID taskId, final String title, final String description, final LocalDateTime creationDate, final LocalDateTime expiryDate, final ListEntity list, final StatusEntity status, final PriorityEntity priority) {
+	private  TaskEntity(final UUID taskId, final String title, final String description, final LocalDateTime creationDate, final LocalDateTime expiryDate, final ListEntity list, final StatusEntity status, final PriorityEntity priority) {
 		setTaskId(taskId);
 		setTitle(title);
 		setDescription(description);

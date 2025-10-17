@@ -23,6 +23,12 @@ public final class ColorDomain extends Domain {
 		setHexCode(hexCode);
 	}
 	
+	public ColorDomain(final UUID id) {
+		super(id);
+		setName(TextHelper.getDefault());
+		setHexCode(TextHelper.getDefault());
+	}
+	
 	public static ColorDomain getDefaultValue() {
 		return new ColorDomain();
 	}
