@@ -117,7 +117,7 @@ public class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
 
 	@Override
 	public UserEntity findById( final UUID id) {
-final var sql = new StringBuilder();
+		final var sql = new StringBuilder();
 		
 		var user = new UserEntity(); 
 		
