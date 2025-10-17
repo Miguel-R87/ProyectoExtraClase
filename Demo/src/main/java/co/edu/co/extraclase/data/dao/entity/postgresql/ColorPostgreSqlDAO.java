@@ -8,9 +8,9 @@ import co.edu.co.extraclase.data.dao.entity.ColorDAO;
 import co.edu.co.extraclase.data.dao.entity.SqlConnection;
 import co.edu.co.extraclase.entity.ColorEntity;
 
-public final class ColorPostgreSqlDAO extends SqlConnection implements ColorDAO {
+public class ColorPostgreSqlDAO extends SqlConnection implements ColorDAO {
 
-	protected ColorPostgreSqlDAO(Connection connection) {
+	public ColorPostgreSqlDAO(Connection connection) {
 		super(connection);
 		// TODO Auto-generated constructor stub
 	}

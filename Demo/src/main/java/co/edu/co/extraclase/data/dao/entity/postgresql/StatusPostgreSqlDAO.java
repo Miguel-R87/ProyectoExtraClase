@@ -8,9 +8,9 @@ import co.edu.co.extraclase.data.dao.entity.SqlConnection;
 import co.edu.co.extraclase.data.dao.entity.StatusDAO;
 import co.edu.co.extraclase.entity.StatusEntity;
 
-public final class StatusPostgreSqlDAO extends SqlConnection implements StatusDAO{
+public class StatusPostgreSqlDAO extends SqlConnection implements StatusDAO{
 
-	protected StatusPostgreSqlDAO(Connection connection) {
+	public StatusPostgreSqlDAO(Connection connection) {
 		super(connection);
 		// TODO Auto-generated constructor stub
 	}

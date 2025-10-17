@@ -8,9 +8,9 @@ import co.edu.co.extraclase.data.dao.entity.PriorityDAO;
 import co.edu.co.extraclase.data.dao.entity.SqlConnection;
 import co.edu.co.extraclase.entity.PriorityEntity;
 
-public final class PriorityPostgreSqlDAO extends SqlConnection implements PriorityDAO {
+public class PriorityPostgreSqlDAO extends SqlConnection implements PriorityDAO {
 
-	protected PriorityPostgreSqlDAO(Connection connection) {
+	public PriorityPostgreSqlDAO(Connection connection) {
 		super(connection);
 		// TODO Auto-generated constructor stub
 	}

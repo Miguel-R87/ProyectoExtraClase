@@ -8,9 +8,9 @@ import co.edu.co.extraclase.data.dao.entity.ProjectUserDAO;
 import co.edu.co.extraclase.data.dao.entity.SqlConnection;
 import co.edu.co.extraclase.entity.ProjectEntity;
 
-public final class ProjectUserPostgreSqlDAO extends SqlConnection implements ProjectUserDAO {
+public class ProjectUserPostgreSqlDAO extends SqlConnection implements ProjectUserDAO {
 
-	protected ProjectUserPostgreSqlDAO(Connection connection) {
+	public ProjectUserPostgreSqlDAO(Connection connection) {
 		super(connection);
 		// TODO Auto-generated constructor stub
 	}

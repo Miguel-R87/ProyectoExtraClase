@@ -8,9 +8,9 @@ import co.edu.co.extraclase.data.dao.entity.ListDAO;
 import co.edu.co.extraclase.data.dao.entity.SqlConnection;
 import co.edu.co.extraclase.entity.ListEntity;
 
-public final class ListPostgreSqlDAO extends SqlConnection implements ListDAO{
+public class ListPostgreSqlDAO extends SqlConnection implements ListDAO{
 
-	protected ListPostgreSqlDAO(Connection connection) {
+	public ListPostgreSqlDAO(Connection connection) {
 		super(connection);
 		// TODO Auto-generated constructor stub
 	}

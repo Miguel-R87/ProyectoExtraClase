@@ -18,6 +18,19 @@ import co.edu.co.extraclase.data.dao.entity.TaskDAO;
 import co.edu.co.extraclase.data.dao.entity.TaskUserDAO;
 import co.edu.co.extraclase.data.dao.entity.UnitOfMeasureDAO;
 import co.edu.co.extraclase.data.dao.entity.UserDAO;
+import co.edu.co.extraclase.data.dao.entity.postgresql.ColorPostgreSqlDAO;
+import co.edu.co.extraclase.data.dao.entity.postgresql.ListPostgreSqlDAO;
+import co.edu.co.extraclase.data.dao.entity.postgresql.NotificationPostgreSqlDAO;
+import co.edu.co.extraclase.data.dao.entity.postgresql.NotificationTypePostgreSqlDAO;
+import co.edu.co.extraclase.data.dao.entity.postgresql.PriorityPostgreSqlDAO;
+import co.edu.co.extraclase.data.dao.entity.postgresql.ProjectPostgreSqlDAO;
+import co.edu.co.extraclase.data.dao.entity.postgresql.ProjectStatusPostgreSqlDAO;
+import co.edu.co.extraclase.data.dao.entity.postgresql.ProjectUserPostgreSqlDAO;
+import co.edu.co.extraclase.data.dao.entity.postgresql.StatusPostgreSqlDAO;
+import co.edu.co.extraclase.data.dao.entity.postgresql.TaskPostgreSqlDAO;
+import co.edu.co.extraclase.data.dao.entity.postgresql.TaskUserPostgreSqlDAO;
+import co.edu.co.extraclase.data.dao.entity.postgresql.UnitOfMeasurePostgreSqlDAO;
+import co.edu.co.extraclase.data.dao.entity.postgresql.UserPostgreSqlDAO;
 import co.edu.co.extraclase.data.dao.factory.DAOFactory;
 
 
@@ -45,80 +58,67 @@ public class PostgreSqlDAOFactory extends DAOFactory {
 	
 	@Override
 	public ColorDAO getColorDAO() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ColorPostgreSqlDAO(connection); 
 	}
 
 	@Override
 	public ListDAO getListDAO() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ListPostgreSqlDAO(connection);
 	}
 
 	@Override
 	public NotificationDAO getNotificationDAO() {
-		// TODO Auto-generated method stub
-		return null;
+		return new NotificationPostgreSqlDAO(connection);
 	}
 
 	@Override
 	public NotificationTypeDAO getNotificationTypeDAO() {
-		// TODO Auto-generated method stub
-		return null;
+		return new NotificationTypePostgreSqlDAO(connection);
 	}
 
 	@Override
 	public PriorityDAO getPriorityDAO() {
-		// TODO Auto-generated method stub
-		return null;
+		return new PriorityPostgreSqlDAO(connection);
 	}
 
 	@Override
 	public ProjectDAO getProjectDAO() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ProjectPostgreSqlDAO(connection);
 	}
 
 	@Override
 	public ProjectStatusDAO getProjectStatusDAO() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ProjectStatusPostgreSqlDAO(connection);
 	}
 
 	@Override
 	public ProjectUserDAO getProjectUserDAO() {
-		// TODO Auto-generated method stub
-		return null;
+		return new ProjectUserPostgreSqlDAO(connection);
 	}
 
 	@Override
 	public StatusDAO getStatusDAO() {
-		// TODO Auto-generated method stub
-		return null;
+		return new StatusPostgreSqlDAO(connection);
 	}
 
 	@Override
 	public TaskDAO getTaskDAO() {
-		// TODO Auto-generated method stub
-		return null;
+		return new TaskPostgreSqlDAO(connection);
 	}
 
 	@Override
 	public TaskUserDAO getTaskUserDAO() {
-		// TODO Auto-generated method stub
-		return null;
+		return new TaskUserPostgreSqlDAO(connection);	
 	}
 
 	@Override
 	public UnitOfMeasureDAO getUnitOfMeasureDAO() {
-		// TODO Auto-generated method stub
-		return null;
+		return new UnitOfMeasurePostgreSqlDAO(connection);
 	}
 
 	@Override
 	public UserDAO getUserDAO() {
-		// TODO Auto-generated method stub
-		return null;
+		return new UserPostgreSqlDAO(connection); 
 	}
 
 	

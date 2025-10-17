@@ -8,9 +8,9 @@ import co.edu.co.extraclase.data.dao.entity.SqlConnection;
 import co.edu.co.extraclase.data.dao.entity.UnitOfMeasureDAO;
 import co.edu.co.extraclase.entity.UnitOfMeasureEntity;
 
-public final class UnitOfMeasurePostgreSqlDAO extends SqlConnection implements UnitOfMeasureDAO {
+public class UnitOfMeasurePostgreSqlDAO extends SqlConnection implements UnitOfMeasureDAO {
 
-	protected UnitOfMeasurePostgreSqlDAO(Connection connection) {
+	public UnitOfMeasurePostgreSqlDAO(Connection connection) {
 		super(connection);
 		// TODO Auto-generated constructor stub
 	}

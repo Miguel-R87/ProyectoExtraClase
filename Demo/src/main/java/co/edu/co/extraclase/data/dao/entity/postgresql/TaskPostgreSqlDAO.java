@@ -8,9 +8,9 @@ import co.edu.co.extraclase.data.dao.entity.SqlConnection;
 import co.edu.co.extraclase.data.dao.entity.TaskDAO;
 import co.edu.co.extraclase.entity.TaskEntity;
 
-public final class TaskPostgreSqlDAO extends SqlConnection implements TaskDAO{
+public class TaskPostgreSqlDAO extends SqlConnection implements TaskDAO{
 
-	protected TaskPostgreSqlDAO(Connection connection) {
+	public TaskPostgreSqlDAO(Connection connection) {
 		super(connection);
 		// TODO Auto-generated constructor stub
 	}

@@ -8,9 +8,9 @@ import co.edu.co.extraclase.data.dao.entity.NotificationDAO;
 import co.edu.co.extraclase.data.dao.entity.SqlConnection;
 import co.edu.co.extraclase.entity.NotificationEntity;
 
-public final class NotificationPostgreSqlDAO extends SqlConnection implements NotificationDAO {
+public class NotificationPostgreSqlDAO extends SqlConnection implements NotificationDAO {
 
-	protected NotificationPostgreSqlDAO(Connection connection) {
+	public NotificationPostgreSqlDAO(Connection connection) {
 		super(connection);
 		// TODO Auto-generated constructor stub
 	}

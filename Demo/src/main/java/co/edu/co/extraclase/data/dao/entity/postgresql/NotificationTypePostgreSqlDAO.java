@@ -8,9 +8,9 @@ import co.edu.co.extraclase.data.dao.entity.SqlConnection;
 import co.edu.co.extraclase.entity.NotificationTypeEntity;
 import java.util.UUID;
 
-public final class NotificationTypePostgreSqlDAO extends SqlConnection implements NotificationTypeDAO {
+public class NotificationTypePostgreSqlDAO extends SqlConnection implements NotificationTypeDAO {
 
-	protected NotificationTypePostgreSqlDAO(Connection connection) {
+	public NotificationTypePostgreSqlDAO(Connection connection) {
 		super(connection);
 		// TODO Auto-generated constructor stub
 	}
