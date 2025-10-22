@@ -147,15 +147,15 @@ public class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
 			
 		sql.append("SELECT ");
 		sql.append("u.usuarioId, ");
-		sql.append("u.primerNombre ");
-		sql.append("u.apellido ");
-		sql.append("u.nombreUsuario ");
-		sql.append("u.email ");
-		sql.append("u.confirmacionEmail ");
-		sql.append("u.fechaRegistro ");
-		sql.append("u.passwordHash ");
-		sql.append("u.estado ");
-		sql.append("u.esSuperUsuario ");
+		sql.append("u.primerNombre, ");
+		sql.append("u.apellido, ");
+		sql.append("u.nombreUsuario, ");
+		sql.append("u.email, ");
+		sql.append("u.confirmacionEmail, ");
+		sql.append("u.fechaRegistro, ");
+		sql.append("u.passwordHash, ");
+		sql.append("u.estado, ");
+		sql.append("u.esSuperUsuario, ");
 		sql.append("u.confirmacionSuperUsuario ");
 		
 		sql.append("FROM Usuario ");
