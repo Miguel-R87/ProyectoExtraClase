@@ -63,7 +63,7 @@ public final class PriorityDomain extends Domain {
 		this.description = TextHelper.getDefaultWithTrim(description);
 	}
 
-	public float getResponseTime() {
+	public Integer getResponseTime() {
 		return responseTime;
 	}
 
