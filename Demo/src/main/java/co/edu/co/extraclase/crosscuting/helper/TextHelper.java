@@ -19,5 +19,10 @@ public static boolean isEmpty(final String value) {
 	return EMPTY.equals(getDefault(value));
 }
 
+public static boolean isEmptyWithTrim(final String value) {
+	return EMPTY.equals(getDefaultWithTrim(value));
+}
+
+
 }
 

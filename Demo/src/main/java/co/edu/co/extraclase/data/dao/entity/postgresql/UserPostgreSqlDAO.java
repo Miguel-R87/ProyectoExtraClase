@@ -4,11 +4,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 import co.edu.co.extraclase.crosscuting.exception.ExtraClaseException;
+import co.edu.co.extraclase.crosscuting.helper.BooleanHelper;
+import co.edu.co.extraclase.crosscuting.helper.DateTimeHelper;
+import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.SqlConnectionHelper;
+import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.data.dao.entity.SqlConnection;
 import co.edu.co.extraclase.data.dao.entity.UserDAO;
@@ -106,41 +111,132 @@ public class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
 
 	@Override
 	public List<UserEntity> findAll() {
-		return null;
+		return findByFilter(new UserEntity());
 	}
 
 	@Override
 	public List<UserEntity> findByFilter(UserEntity filterEntity) {
-		// TODO Auto-generated method stub
-		return null;
+		var parametersList = new ArrayList<Object>();
+		var sql = createSentenceFindByFilter(filterEntity, parametersList);
+		
+			try (var preparedStatement = this.getConnection().prepareStatement(sql)) {
+				
+				for (int index = 0; index < parametersList.size(); index++) {
+					preparedStatement.setObject(index + 1, parametersList.get(index));
+				}
+				
+				return executeSentenceFindByFilter(preparedStatement);
+				
+			}catch (final ExtraClaseException exception) {
+				throw exception;
+			}catch (final SQLException exception) {
+				var userMessage = "";
+				var technicalMessage = "" + exception.getMessage();
+				throw ExtraClaseException.create(exception, userMessage, technicalMessage);
+
+			}catch (Exception exception) {
+				var userMessage = "";
+				var technicalMessage = "";
+				throw ExtraClaseException.create(exception, userMessage, technicalMessage);
+
+			}
 	}
-
-	@Override
-	public UserEntity findById( final UUID id) {
+	
+	private String createSentenceFindByFilter(final UserEntity filterEntity, final List<Object> parameterList) {
 		final var sql = new StringBuilder();
+			
+		sql.append("SELECT ");
+		sql.append("u.usuarioId, ");
+		sql.append("u.primerNombre ");
+		sql.append("u.apellido ");
+		sql.append("u.nombreUsuario ");
+		sql.append("u.email ");
+		sql.append("u.confirmacionEmail ");
+		sql.append("u.fechaRegistro ");
+		sql.append("u.passwordHash ");
+		sql.append("u.estado ");
+		sql.append("u.esSuperUsuario ");
+		sql.append("u.confirmacionSuperUsuario ");
 		
-		var user = new UserEntity(); 
+		sql.append("FROM Usuario ");
 		
-		sql.append("SELECT" );
-		sql.append(" usuarioId, " );
-		sql.append(" primerNombre, " );
-		sql.append(" apellido, " );
-		sql.append(" nombreUsuario, " );
-		sql.append(" email, " );
-		sql.append(" confirmacionEmail, " );
-		sql.append(" fechaRegistro, " );
-		sql.append(" passwordHash, " );
-		sql.append(" estado, " );
-		sql.append(" esSuperUsuario, " );
-		sql.append(" confirmacionSuperUsuario " );
-		sql.append("FROM Usario; " );
-		
+        createWhereClauseFindByFilter(sql, parameterList, filterEntity);
+        
+        return sql.toString();
+	}
+	
+	private void createWhereClauseFindByFilter(final StringBuilder sql, final List<Object> parameterList, final UserEntity filterEntity) {
+		var filterEntityValidated = ObjectHelper.getDefault(filterEntity, new UserEntity());
+		final var conditions = new ArrayList<String>();
 
-        try (final PreparedStatement preparedStatement = this.getConnection().prepareStatement(sql.toString())) {
-            preparedStatement.setObject(1, id); 
-            
-            try (var resultSet = preparedStatement.executeQuery()) {
-            	user.setUserId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("usuarioId")));
+		addCondition(conditions, parameterList,
+		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getUserId()), "u.usuarioId = ? ",
+		filterEntityValidated.getUserId());
+		
+		addCondition(conditions, parameterList,
+		!TextHelper.isEmptyWithTrim(filterEntityValidated.getFirstName()), "u.primerNombre = ? ",
+		filterEntityValidated.getFirstName());
+		
+		addCondition(conditions, parameterList,
+		!TextHelper.isEmptyWithTrim(filterEntityValidated.getLastName()), "u.apellido = ? ",
+		filterEntityValidated.getLastName());
+		
+		addCondition(conditions, parameterList,
+		!TextHelper.isEmptyWithTrim(filterEntityValidated.getUsername()), "u.nombreUsuario = ? ",
+		filterEntityValidated.getUsername());
+		
+		addCondition(conditions, parameterList,
+		!TextHelper.isEmptyWithTrim(filterEntityValidated.getEmail()), "u.email = ? ",
+		filterEntityValidated.getEmail());
+		
+		addCondition(conditions, parameterList,
+		!BooleanHelper.isDefaultBoolean(filterEntityValidated.EmailConfirmation()), "u.confirmacionEmail = ? ",
+		filterEntityValidated.EmailConfirmation());
+		
+		addCondition(conditions, parameterList,
+		!DateTimeHelper.isDefaultDate(filterEntityValidated.getRegistrationDate()), "u.fechaRegistro = ? ",
+		filterEntityValidated.getRegistrationDate());
+		
+		addCondition(conditions, parameterList,
+		!TextHelper.isEmptyWithTrim(filterEntityValidated.getPasswordHash()), "u.passwordHash = ? ",
+		filterEntityValidated.getPasswordHash());
+		
+		addCondition(conditions, parameterList,
+		!BooleanHelper.isDefaultBoolean(filterEntityValidated.AccountStatus()), "u.estado = ? ",
+		filterEntityValidated.AccountStatus());
+		
+		addCondition(conditions, parameterList,
+		!BooleanHelper.isDefaultBoolean(filterEntityValidated.SuperUser()), "u.esSuperUsuario = ? ",
+		filterEntityValidated.SuperUser());
+		
+		addCondition(conditions, parameterList,
+		!BooleanHelper.isDefaultBoolean(filterEntityValidated.SuperUserConfirmation()), "u.confirmacionSuperUsuario = ? ",
+		filterEntityValidated.SuperUserConfirmation());
+		
+		if (!conditions.isEmpty()) {
+			sql.append(" WHERE ");
+			sql.append(String.join(" AND ", conditions));
+		
+		}
+	}
+	
+	private void addCondition(final List<String> conditions, final List<Object> parameterList, final boolean condition,
+			final String clause, final Object value) {
+		if (condition) {
+			conditions.add(clause);
+			parameterList.add(value);
+		}
+	}
+	
+private List<UserEntity> executeSentenceFindByFilter(final PreparedStatement preparedStatement) {
+		
+		var listState = new ArrayList<UserEntity>();
+		
+		try (var resultSet = preparedStatement.executeQuery()) {
+			
+			while (resultSet.next()) {
+				var user = new UserEntity();
+				user.setUserId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("usuarioId")));
             	user.setFirstName(resultSet.getString("primerNombre"));
             	user.setLastName(resultSet.getString("apellido"));
             	user.setUsername(resultSet.getString("nombreUsuario"));
@@ -152,22 +248,29 @@ public class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
             	user.setSuperUser(resultSet.getBoolean("esSuperUsuario"));
             	user.setSuperUserConfirmation(resultSet.getBoolean("confirmacionSuoerUsuario"));
             	
-            	
-            }
-        
-        }
-            catch (final SQLException exception) {
-                var userMessage = "Se ha presentado un problema tratando de encontrar la información de un usuario. Intente de nuevo.";
-                var technicalMessage = "SQLException al buscar Usuario: " + exception.getMessage();
-                throw ExtraClaseException.create(exception, userMessage, technicalMessage);
-            } catch (final Exception exception) {
-                var userMessage = "Se ha presentado un problema inesperado tratando de encontrar la información de un usuario.";
-                var technicalMessage = "Excepción inesperada al buscar Usuario: " + exception.getMessage();
-                throw ExtraClaseException.create(exception, userMessage, technicalMessage);
-            }
-            
-		
-		return user;
-	}
+				listState.add(user);
 
+			}
+		}catch (final SQLException exception) {
+			var userMessage = "";
+			var technicalMessage = "" + exception.getMessage();
+			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
+		}catch (final Exception exception) {
+			var userMessage = "";
+			var technicalMessage = "" + exception.getMessage();
+			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
+
+		}
+		return listState;
+		
+	}
+			
+		
+	
+
+	@Override
+	public UserEntity findById( final UUID id) {
+		return findByFilter(new UserEntity(id)).stream().findFirst().orElse(new UserEntity()); 
+	}
+	
 }

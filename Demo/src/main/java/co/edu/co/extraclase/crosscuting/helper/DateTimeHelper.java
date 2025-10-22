@@ -20,4 +20,9 @@ public final class DateTimeHelper {
     public static boolean isEmpty(final LocalDateTime value) {
         return EMPTY.equals(getDefault(value));
     }
+    
+    public static boolean isDefaultDate(final LocalDateTime value) {
+        return EMPTY.equals(getDefault(value));
+    }
+
 }	
