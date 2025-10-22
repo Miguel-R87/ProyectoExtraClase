@@ -17,6 +17,12 @@ public UnitOfMeasureDto() {
 	setDescription(TextHelper.getDefault());
 }
 
+public UnitOfMeasureDto(final UUID id){
+	setId(id);
+	setName(TextHelper.getDefault());
+	setDescription(TextHelper.getDefault());
+}
+
 public UnitOfMeasureDto(final UUID id, final String name, final String description) {
 	setId(id);
 	setName(name);

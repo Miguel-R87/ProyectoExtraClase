@@ -31,7 +31,15 @@ public final class ProjectDto {
 		setCreationDate(creationDate);
 		setProjectStatus(projectStatus);
 	}
-	
+
+	public ProjectDto(UUID id) {
+		setId(id);
+		setName(TextHelper.getDefault());
+		setDescription(TextHelper.getDefault());
+		setCreationDate(DateTimeHelper.getDefault());
+		setProjectStatus(ProjectStatusDto.getDefaultValue());
+	}
+
 	public static ProjectDto getDefaultValue() {
 		return new ProjectDto();
 	}

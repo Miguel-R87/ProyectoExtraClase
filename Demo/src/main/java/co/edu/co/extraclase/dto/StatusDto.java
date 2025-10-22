@@ -27,6 +27,13 @@ public final class StatusDto {
         setColor(color);
     }
 
+    public StatusDto(UUID id) {
+        setId(id);
+        setName(TextHelper.getDefault());
+        setDescription(TextHelper.getDefault());
+        setColor(ColorDto.getDefaultValue());
+    }
+
     public static StatusDto getDefaultValue() {
         return new StatusDto();
     }

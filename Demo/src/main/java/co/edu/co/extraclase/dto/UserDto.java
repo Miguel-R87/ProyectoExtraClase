@@ -38,6 +38,19 @@ public class UserDto {
         setSuperUserConfirmation(BooleanHelper.getDefault());
     }
 
+    public UserDto( UUID id ) {
+        setId(id);
+        setFirstName(TextHelper.getDefault());
+        setLastName(TextHelper.getDefault());
+        setUsername(TextHelper.getDefault());
+        setEmail(TextHelper.getDefault());
+        setEmailConfirmation(BooleanHelper.getDefault());
+        setRegistrationDate(DateTimeHelper.getDefault());
+        setPasswordHash(TextHelper.getDefault());
+        setAccountStatus(BooleanHelper.getDefault());
+        setSuperUser(BooleanHelper.getDefault());
+        setSuperUserConfirmation(BooleanHelper.getDefault());
+    }
  
     public UserDto(final UUID id, final String firstName, final String lastName, final String username,
                    final String email, final boolean emailConfirmation, final String passwordHash,
@@ -56,7 +69,9 @@ public class UserDto {
         setSuperUserConfirmation(superUserConfirmation);
     }
 
-  
+
+
+
     public static UserDto getDefaultValue() {
         return new UserDto();
     }

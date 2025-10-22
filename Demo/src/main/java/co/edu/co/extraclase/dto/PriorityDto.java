@@ -35,6 +35,15 @@ public final class PriorityDto {
         setColor(color);
     }
 
+    public PriorityDto(UUID id) {
+        setId(id);
+        setName(TextHelper.getDefault());
+        setDescription(TextHelper.getDefault());
+        setResponseTime(NumberHelper.getDefault());
+        setUnitOfMeasure(UnitOfMeasureDto.getDefaultValue());
+        setColor(ColorDto.getDefaultValue());
+    }
+
     public static PriorityDto getDefaultValue() {
         return new PriorityDto();
     }
