@@ -34,7 +34,7 @@ public final class NotificationEntity  {
 		setNotificationType(NotificationTypeEntity.getDefault());
 	}
     
-    private  NotificationEntity(final UUID notificationId, final TaskUserEntity taskUser, final String message, final LocalDateTime triggerDate, final NotificationTypeEntity notificationType) {
+    public  NotificationEntity(final UUID notificationId, final TaskUserEntity taskUser, final String message, final LocalDateTime triggerDate, final NotificationTypeEntity notificationType) {
     	setNotificationId(notificationId);
     	setTaskUser(taskUser);
     	setMessage(message);

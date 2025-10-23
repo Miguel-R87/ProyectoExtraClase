@@ -25,7 +25,7 @@ public final class ColorEntity  {
 		setHexCode(TextHelper.getDefault());
 	}
 	
-	private  ColorEntity(UUID colorId, String name, String hexCode) {
+	public  ColorEntity(UUID colorId, String name, String hexCode) {
 		setColorId(colorId);
 		setName(name);
 		setHexCode(hexCode);

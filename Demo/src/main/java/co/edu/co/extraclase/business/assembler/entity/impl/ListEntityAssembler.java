@@ -1,4 +1,36 @@
 package co.edu.co.extraclase.business.assembler.entity.impl;
 
-public class ListEntityAssembler {
+import static co.edu.co.extraclase.business.assembler.entity.impl.ProjectEntityAssembler.getProjectEntityAssembler;
+
+
+import co.edu.co.extraclase.business.assembler.entity.EntityAssembler;
+import co.edu.co.extraclase.business.domain.ListDomain;
+import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
+import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
+import co.edu.co.extraclase.entity.ListEntity;
+
+
+public final class ListEntityAssembler implements EntityAssembler<ListEntity, ListDomain> {
+	private static final EntityAssembler<ListEntity, ListDomain> instance = new ListEntityAssembler();
+	
+	private ListEntityAssembler() {
+	}
+	
+	public static EntityAssembler<ListEntity, ListDomain> getListEntityAssembler() {
+		return instance;
+	}
+
+	@Override
+	public ListEntity toEntity(ListDomain domain) {
+		var domainTmp = ObjectHelper.getDefault(domain, new ListDomain(UUIDHelper.getUUIDHelper().getDefault()));
+		var projectTmp = getProjectEntityAssembler().toEntity(domainTmp.getProject());
+		return new ListEntity(domainTmp.getId(), domainTmp.getName(), projectTmp, domainTmp.getCreationDate());
+	}
+
+	@Override
+	public ListDomain toDomain(ListEntity entity) {
+		var entityTmp = ObjectHelper.getDefault(entity, new ListEntity());
+		var projectDomainTmp = getProjectEntityAssembler().toDomain(entityTmp.getProject());
+		return new ListDomain(entityTmp.getListId(), entityTmp.getName(), projectDomainTmp, entityTmp.getCreationDate());
+	}
 }

@@ -36,7 +36,7 @@ public final class ProjectUserEntity  {
 		setExpiryDate(DateTimeHelper.getDefault());
     }
     
-    private  ProjectUserEntity(final UUID projectUserId, final UserEntity user, final ProjectEntity project, final boolean isAdmin, final LocalDateTime entryDate, final LocalDateTime expiryDate) {
+    public  ProjectUserEntity(final UUID projectUserId, final UserEntity user, final ProjectEntity project, final boolean isAdmin, final LocalDateTime entryDate, final LocalDateTime expiryDate) {
 		setProjectUserId(projectUserId);
 		setUser(user);
 		setProject(project);

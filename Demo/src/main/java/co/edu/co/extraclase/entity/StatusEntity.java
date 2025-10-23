@@ -28,7 +28,7 @@ public final class StatusEntity  {
 		setColor(ColorEntity.getDefault());
 	}
 	
-	private  StatusEntity(UUID statusId, String name, String description, ColorEntity color) {
+	public  StatusEntity(UUID statusId, String name, String description, ColorEntity color) {
 		setStatusId(statusId);
 		setName(name);
 		setDescription(description);

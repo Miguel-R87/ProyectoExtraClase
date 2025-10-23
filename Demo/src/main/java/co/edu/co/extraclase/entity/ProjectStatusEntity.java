@@ -24,7 +24,7 @@ public final class ProjectStatusEntity  {
 		setDescription(TextHelper.getDefault());
 	}
 	
-	private  ProjectStatusEntity(UUID projectStatusId, String name, String description) {
+	public  ProjectStatusEntity(UUID projectStatusId, String name, String description) {
 		setProjectStatusId(projectStatusId);
 		setName(name);
 		setDescription(description);

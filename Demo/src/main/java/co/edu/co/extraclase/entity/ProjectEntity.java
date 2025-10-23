@@ -32,7 +32,7 @@ public final class ProjectEntity  {
     	setProjectStatus(ProjectStatusEntity.getDefault());
     }
     
-    private  ProjectEntity(final UUID projectId, final String name, final String description, final LocalDateTime creationDate, final ProjectStatusEntity projectStatus) {
+    public  ProjectEntity(final UUID projectId, final String name, final String description, final LocalDateTime creationDate, final ProjectStatusEntity projectStatus) {
 		setProjectId(projectId);
 		setName(name);
 		setDescription(description);

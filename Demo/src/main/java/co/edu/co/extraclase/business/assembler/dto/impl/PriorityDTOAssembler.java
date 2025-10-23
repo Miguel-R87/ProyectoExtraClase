@@ -35,7 +35,8 @@ public final class PriorityDTOAssembler implements DTOAssembler<PriorityDto, Pri
         var dtoTmp = ObjectHelper.getDefault(dto, new PriorityDto(UUIDHelper.getUUIDHelper().getDefault()));
         var colorDomainTmp = getColorDtoAssembler().toDomain(dtoTmp.getColor());
         var unitOfMeasureDomainTmp = getUnitOfMeasureDtoAssembler().toDomain(dtoTmp.getUnitOfMeasure());
-        return new PriorityDomain(dtoTmp.getId(), dtoTmp.getName(), dtoTmp.getDescription(), dtoTmp.getResponseTime(),colorDomainTmp,unitOfMeasureDomainTmp);
+        return new PriorityDomain(dtoTmp.getId(), dtoTmp.getName(), dtoTmp.getDescription(), dtoTmp.getResponseTime(), 
+        unitOfMeasureDomainTmp, colorDomainTmp);
     }
 
     @Override

@@ -17,6 +17,7 @@ public final class ListDomain extends Domain {
 	public ListDomain() {
 		super(UUIDHelper.getUUIDHelper().getDefault());
 		setName(TextHelper.getDefault());
+		setProject(ProjectDomain.getDefaultValue());
 		setCreationDate(DateTimeHelper.getDefault());
 		
 	}
@@ -24,12 +25,14 @@ public final class ListDomain extends Domain {
 	public ListDomain(final UUID id) {
 		super(id);
 		setName(TextHelper.getDefault());
+		setProject(ProjectDomain.getDefaultValue());
 		setCreationDate(DateTimeHelper.getDefault());
 	}
 	
-	public ListDomain(final UUID id, final String name, final LocalDateTime creationDate) {
+	public ListDomain(final UUID id, final String name, final ProjectDomain project, final LocalDateTime creationDate) {
 		super(id);
 		setName(name);
+		setProject(project);
 		setCreationDate(creationDate);
 	}
 
@@ -41,21 +44,35 @@ public final class ListDomain extends Domain {
 		return ObjectHelper.getDefault(list, getDefaultValue());
 	}
 
-	void setName(final String name) {
-		this.name= TextHelper.getDefaultWithTrim(name);
-	}
-	void setCreationDate(final LocalDateTime creationDate) {
-		this.creationDate = DateTimeHelper.getDefault(creationDate);
-	}
 	public String getName() {
 		return name;
 	}
+
+	public void setName(String name) {
+		this.name = TextHelper.getDefaultWithTrim(name);
+	}
+
+	public ProjectDomain getProject() {
+		return project;
+	}
+
+	public void setProject(ProjectDomain project) {
+		this.project = ProjectDomain.getDefaultValue(project);
+	}
+
 	public LocalDateTime getCreationDate() {
 		return creationDate;
+	}
+
+	public void setCreationDate(LocalDateTime creationDate) {
+		this.creationDate = DateTimeHelper.getDefault(creationDate);
+	}
+
+	
 	}	
 
 	
 
 
 
-}
+

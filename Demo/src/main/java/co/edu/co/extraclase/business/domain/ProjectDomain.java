@@ -4,11 +4,8 @@ import co.edu.co.extraclase.crosscuting.helper.DateTimeHelper;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
-import org.springframework.cglib.core.Local;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.UUID;
 
 public class ProjectDomain extends Domain {
@@ -33,7 +30,8 @@ public class ProjectDomain extends Domain {
 		setProjectStatus(ProjectStatusDomain.getDefaultValue());
 	}
 
-    public ProjectDomain(final UUID id, final String name, final String description, final LocalDateTime creationDate, final ProjectStatusDomain projectstatus) {
+    public ProjectDomain(final UUID id, final String name, final String description, final LocalDateTime creationDate, 
+    	final ProjectStatusDomain projectstatus) {
         super(id);
         setName(name);
         setDescription(description);
@@ -42,9 +40,13 @@ public class ProjectDomain extends Domain {
     }
 
     public static ProjectDomain getDefaultValue() {
-        return new ProjectDomain();
+        return new ProjectDomain(); 
     }
-
+    
+    static ProjectDomain getDefaultValue(final ProjectDomain project) {
+        return ObjectHelper.getDefault(project, getDefaultValue());
+    
+    }
     
 
 

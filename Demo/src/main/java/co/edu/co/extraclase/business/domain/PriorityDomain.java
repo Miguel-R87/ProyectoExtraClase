@@ -33,8 +33,8 @@ public final class PriorityDomain extends Domain {
 		setColor(ColorDomain.getDefaultValue());
 	}
 
-	public PriorityDomain(final UUID id, final String name, final String description, final Integer responseTime,
-						  final ColorDomain color, UnitOfMeasureDomain unitOfMeasure) {
+	public PriorityDomain(final UUID id, final String name, final String description, final Integer responseTime,  
+			UnitOfMeasureDomain unitOfMeasure, final ColorDomain color) {
 		super(id);
 		setName(name);
 		setDescription(description);

@@ -52,51 +52,8 @@ public final  class TaskDomain extends Domain{
 		
 	}
 	
-	String getTitle() {
-		return title;
-	}
-	 String getDescription() {
-		 return description;
-	 }
-	 ListDomain getList() {
-		 return list;
-	 }
-	 StatusDomain getStatus() {
-		 return status;
-	 }
-	 PriorityDomain getPriority() {
-		 return priority;
-	 }
-	 LocalDateTime getCreationDate() {
-		 return creationDate;
-	 }
-	 LocalDateTime getExpiryDate() {
-		 return expiryDate;
-	 }	
 	
-    void setTitle(final String title){
-		this.title=TextHelper.getDefaultWithTrim(title);
-	}
-	void setDescription(final String description) {
-		 this.description=TextHelper.getDefaultWithTrim(description);
-	 }
-	 void setList(final ListDomain list) {
-		this.list = ObjectHelper.getDefault(list, ListDomain.getDefaultValue());
-	 }
-	 void setStatus (final StatusDomain status) {
-		 this.status=ObjectHelper.getDefault(status, StatusDomain.getDefaultValue());
-	 }
-	 void setPriority(final PriorityDomain priority) {
-		 this.priority=ObjectHelper.getDefault(priority, PriorityDomain.getDefaultValue());
-		 
-	 }
-	 void setCreationDate(final LocalDateTime creationDate) {
-		 this.creationDate= DateTimeHelper.getDefault(creationDate);
-	 }
-	 void setExpiryDate(final LocalDateTime	 ExpiryDate) {
-		 this.expiryDate = DateTimeHelper.getDefault(expiryDate);
-	 }
-
+	
 	static TaskDomain getDefaultValue() {
 		return new TaskDomain();
 	}
@@ -105,6 +62,54 @@ public final  class TaskDomain extends Domain{
 		return ObjectHelper.getDefault(task, getDefaultValue());
 	}
 	 
+	
+	
+	public String getTitle() {
+		return title;
+	}
+	 public String getDescription() {
+		 return description;
+	 }
+	 public ListDomain getList() {
+		 return list;
+	 }
+	 public StatusDomain getStatus() {
+		 return status;
+	 }
+	 public PriorityDomain getPriority() {
+		 return priority;
+	 }
+	 public LocalDateTime getCreationDate() {
+		 return creationDate;
+	 }
+	 public LocalDateTime getExpiryDate() {
+		 return expiryDate;
+	 }	
+	
+	 public void setTitle(final String title){
+		this.title=TextHelper.getDefaultWithTrim(title);
+	}
+	 public void setDescription(final String description) {
+		 this.description=TextHelper.getDefaultWithTrim(description);
+	 }
+	 public void setList(final ListDomain list) {
+		this.list = ObjectHelper.getDefault(list, ListDomain.getDefaultValue());
+	 }
+	 public void setStatus (final StatusDomain status) {
+		 this.status=ObjectHelper.getDefault(status, StatusDomain.getDefaultValue());
+	 }
+	 public void setPriority(final PriorityDomain priority) {
+		 this.priority=ObjectHelper.getDefault(priority, PriorityDomain.getDefaultValue());
+		 
+	 }
+	 public void setCreationDate(final LocalDateTime creationDate) {
+		 this.creationDate= DateTimeHelper.getDefault(creationDate);
+	 }
+	 public void setExpiryDate(final LocalDateTime	 ExpiryDate) {
+		 this.expiryDate = DateTimeHelper.getDefault(expiryDate);
+	 }
+
+	
 	 
 	 
 	

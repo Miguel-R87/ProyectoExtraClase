@@ -54,7 +54,7 @@ public final class UserEntity  {
     }
     
 
-    private  UserEntity(UUID userId, String firstName, String lastName, String username, String email,
+    public  UserEntity(UUID userId, String firstName, String lastName, String username, String email,
  boolean emailConfirmation, LocalDateTime registrationDate, String passwordHash, boolean accountStatus,
  boolean isSuperUser, boolean superUserConfirmation) {
 		setUserId(userId);

@@ -35,7 +35,8 @@ public final class PriorityEntity {
 		setColor(ColorEntity.getDefault());
 	}
 	
-	private  PriorityEntity(UUID priorityId, String name, String description, Integer responseTime, UnitOfMeasureEntity unitOfMeasure, ColorEntity color) {
+	public  PriorityEntity(UUID priorityId, String name, String description, Integer responseTime, 
+			UnitOfMeasureEntity unitOfMeasure, ColorEntity color) {
 		setPriorityId(priorityId);
 		setName(name);
 		setDescription(description);

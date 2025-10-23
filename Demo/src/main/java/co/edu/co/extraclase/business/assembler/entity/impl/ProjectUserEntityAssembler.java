@@ -1,4 +1,40 @@
 package co.edu.co.extraclase.business.assembler.entity.impl;
 
-public class ProjectUserEntityAssembler {
+import static co.edu.co.extraclase.business.assembler.entity.impl.UserEntityAssembler.getUserEntityAssembler;
+import static co.edu.co.extraclase.business.assembler.entity.impl.ProjectEntityAssembler.getProjectEntityAssembler;
+
+import co.edu.co.extraclase.business.assembler.entity.EntityAssembler;
+import co.edu.co.extraclase.business.domain.ProjectUserDomain;
+import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
+import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
+import co.edu.co.extraclase.entity.ProjectUserEntity;
+
+public final class ProjectUserEntityAssembler implements EntityAssembler<ProjectUserEntity, ProjectUserDomain> {
+	private static final EntityAssembler<ProjectUserEntity, ProjectUserDomain> instance = new ProjectUserEntityAssembler();
+	
+	private ProjectUserEntityAssembler() {
+		
+	}
+	
+	public static  EntityAssembler<ProjectUserEntity, ProjectUserDomain> getProjectUserEntityAssembler() {
+		return instance;
+	}
+
+	@Override
+	public ProjectUserEntity toEntity(ProjectUserDomain domain) {
+		var domainTmp = ObjectHelper.getDefault(domain, new ProjectUserDomain(UUIDHelper.getUUIDHelper().getDefault()));
+		var userTmp = getUserEntityAssembler().toEntity(domainTmp.getUser());
+		var projectTmp = getProjectEntityAssembler().toEntity(domainTmp.getProject());
+		return new ProjectUserEntity(domainTmp.getId(), userTmp, projectTmp, domainTmp.isAdmin(), 
+		domainTmp.getEntryDate(), domainTmp.getExpiryDate());
+	}
+
+	@Override
+	public ProjectUserDomain toDomain(ProjectUserEntity entity) {
+		var entityTmp = ObjectHelper.getDefault(entity, new ProjectUserEntity());
+		var userDomainTmp = getUserEntityAssembler().toDomain(entityTmp.getUser());
+		var projectDomainTmp = getProjectEntityAssembler().toDomain(entityTmp.getProject());
+		return new ProjectUserDomain(entityTmp.getProjectUserId(), userDomainTmp, projectDomainTmp, entityTmp.isAdmin(), 
+		entityTmp.getEntryDate(), entityTmp.getExpiryDate());
+	}
 }

@@ -2,7 +2,6 @@ package co.edu.co.extraclase.business.domain;
 
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.UUID;
 
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
@@ -51,10 +50,10 @@ public class UserDomain extends Domain {
         setSuperUserConfirmation(BooleanHelper.getDefault());
     }
 
-    public UserDomain(final UUID id, final String firstName, final String lastName, final String username,
-                      final String email, final boolean emailConfirmation, final String passwordHash,
-                      final boolean accountStatus, final boolean isSuperUser, final boolean superUserConfirmation ,
-                      final LocalDateTime registrationDate) {
+    public UserDomain(final UUID id, final String firstName, final String lastName, final String username, 
+                      final String email, final boolean emailConfirmation, final LocalDateTime registrationDate, final String passwordHash,
+                      final boolean accountStatus, final boolean isSuperUser, final boolean superUserConfirmation 
+                      ) {
         super(id);
         this.firstName = firstName;
         this.lastName = lastName;

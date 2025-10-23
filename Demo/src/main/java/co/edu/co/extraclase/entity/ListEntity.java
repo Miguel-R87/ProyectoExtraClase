@@ -31,7 +31,7 @@ public final class ListEntity  {
 		setCreationDate(DateTimeHelper.getDefault());
 	}
 	
-	private  ListEntity(final UUID listId, final String name, final ProjectEntity project, final LocalDateTime creationDate) {
+	public  ListEntity(final UUID listId, final String name, final ProjectEntity project, final LocalDateTime creationDate) {
 		setListId(listId);
 		setName(name);
 		setProject(project);

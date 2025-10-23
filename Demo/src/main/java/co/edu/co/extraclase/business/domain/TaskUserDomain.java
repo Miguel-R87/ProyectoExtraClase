@@ -38,7 +38,9 @@ public class TaskUserDomain extends Domain{
     }
     
     
-    public TaskUserDomain(final UUID id, final ProjectUserDomain projectUser, final TaskDomain task, final LocalDateTime assignmentDate, final LocalDateTime completionDate, final boolean isCreator, final String comment) {
+    public TaskUserDomain(final UUID id, final ProjectUserDomain projectUser, final TaskDomain task, 
+    		final LocalDateTime assignmentDate, final LocalDateTime completionDate, final boolean isCreator, 
+    		final String comment) {
 		super(id);
 		setProjectUser(projectUser);
 		setTask(task);

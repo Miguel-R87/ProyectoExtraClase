@@ -25,7 +25,7 @@ public final class UnitOfMeasureEntity  {
 		setDescription(TextHelper.getDefault());
 	}
 	
-	private  UnitOfMeasureEntity(UUID unitOfMeasureId, String name, String description) {
+	public  UnitOfMeasureEntity(UUID unitOfMeasureId, String name, String description) {
 		setUnitOfMeasureId(unitOfMeasureId);
 		setName(name);
 		setDescription(description);
