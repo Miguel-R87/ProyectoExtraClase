@@ -22,6 +22,13 @@ public final class ListDto {
 		setProject(ProjectDto.getDefaultValue());
 		setCreationDate(DateTimeHelper.getDefault());
 	}
+
+	public ListDto( UUID id) {
+		setId(id);
+		setName(TextHelper.getDefault());
+		setProject(ProjectDto.getDefaultValue());
+		setCreationDate(DateTimeHelper.getDefault());
+	}
 	
 	public ListDto(final UUID id, final String name, final ProjectDto project, final LocalDateTime creationDate) {
 		setId(id);
@@ -29,8 +36,10 @@ public final class ListDto {
 		setProject(project);
 		setCreationDate(creationDate);
 	}
-	
-	public static ListDto getDefaultValue() {
+
+
+
+    public static ListDto getDefaultValue() {
 		return new ListDto();
 	}
 	
