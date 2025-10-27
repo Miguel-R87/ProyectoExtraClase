@@ -26,15 +26,6 @@ public final class ProjectUserDto {
         setExpiryDate(DateTimeHelper.getDefault());
     }
 
-    public ProjectUserDto(UUID id) {
-        setId(id);
-        setUser(UserDto.getDefaultValue());
-        setProject(ProjectDto.getDefaultValue());
-        setAdmin(BooleanHelper.getDefault());
-        setEntryDate(DateTimeHelper.getDefault());
-        setExpiryDate(DateTimeHelper.getDefault());
-    }
-
     public ProjectUserDto(final UUID id, final UserDto user, final ProjectDto project, 
                           final boolean isAdmin, final LocalDateTime entryDate, final LocalDateTime expiryDate) {
         setId(id);
@@ -44,7 +35,6 @@ public final class ProjectUserDto {
         setEntryDate(entryDate);
         setExpiryDate(expiryDate);
     }
-
 
     public static ProjectUserDto getDefaultValue() {
         return new ProjectUserDto();
