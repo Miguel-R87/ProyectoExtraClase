@@ -1,6 +1,5 @@
 package co.edu.co.extraclase.business.domain;
 
-
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -11,6 +10,7 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.crosscuting.helper.BooleanHelper;
 
 public class UserDomain extends Domain {
+
     private String firstName;
     private String lastName;
     private String username;
@@ -22,7 +22,7 @@ public class UserDomain extends Domain {
     private boolean isSuperUser;
     private boolean superUserConfirmation;
 
-    public UserDomain(){
+    public UserDomain() {
         super(UUIDHelper.getUUIDHelper().getDefault());
         setFirstName(TextHelper.getDefault());
         setLastName(TextHelper.getDefault());
@@ -51,11 +51,9 @@ public class UserDomain extends Domain {
     }
 
     public UserDomain(final UUID id, final String firstName, final String lastName, final String username,
-                      final String email, final boolean emailConfirmation, final String passwordHash,
-                      final boolean accountStatus, final boolean isSuperUser, final boolean superUserConfirmation ,
-                      final LocalDateTime registrationDate) {
+                      final String email, final boolean emailConfirmation, final LocalDateTime registrationDate, final String passwordHash,
+                      final boolean accountStatus, final boolean isSuperUser, final boolean superUserConfirmation) {
         super(id);
-        // Use setters so helper methods (trimming/defaults) and default flags are applied
         setFirstName(firstName);
         setLastName(lastName);
         setUsername(username);
@@ -72,7 +70,7 @@ public class UserDomain extends Domain {
         return new UserDomain();
     }
 
-    static UserDomain getDefaultValue(final UserDomain user) {
+    public static UserDomain getDefaultValue(final UserDomain user) {
         return ObjectHelper.getDefault(user, getDefaultValue());
     }
 
@@ -129,7 +127,6 @@ public class UserDomain extends Domain {
     }
 
     public void setPasswordHash(String passwordHash) {
-        // Preserve exact password/hash value (do not trim)
         this.passwordHash = passwordHash;
     }
 
@@ -146,7 +143,7 @@ public class UserDomain extends Domain {
     }
 
     public void setSuperUser(boolean superUser) {
-        isSuperUser = BooleanHelper.getDefault(superUser);
+        this.isSuperUser = BooleanHelper.getDefault(superUser);
     }
 
     public boolean isSuperUserConfirmation() {
@@ -155,6 +152,5 @@ public class UserDomain extends Domain {
 
     public void setSuperUserConfirmation(boolean superUserConfirmation) {
         this.superUserConfirmation = BooleanHelper.getDefault(superUserConfirmation);
-    }
+    }
 }
-
