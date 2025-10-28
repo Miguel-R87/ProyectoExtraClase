@@ -1,6 +1,5 @@
 package co.edu.co.extraclase.dto;
 
-import co.edu.co.extraclase.business.domain.TaskUserDomain;
 import co.edu.co.extraclase.crosscuting.helper.BooleanHelper;
 import co.edu.co.extraclase.crosscuting.helper.DateTimeHelper;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
@@ -43,26 +42,14 @@ public class TaskUserDto {
         setComment(comment);
     }
 
-    public TaskUserDto(UUID id) {
-        setId(id);
-        setProjectUser(ProjectUserDto.getDefaultValue());
-        setTask(TaskDto.getDefaultValue());
-        setAssignmentDate(DateTimeHelper.getDefault());
-        setCompletionDate(DateTimeHelper.getDefault());
-        setCreator(BooleanHelper.getDefault());
-        setComment(TextHelper.getDefault());
-    }
-
 
     public static TaskUserDto getDefaultValue() {
         return new TaskUserDto();
     }
 
-    public static TaskUserDto getDefaultValue(final TaskUserDto dto) {
-        return ObjectHelper.getDefault(dto, getDefaultValue());
-    }
+   
 
-
+   
     public UUID getId() {
         return id;
     }

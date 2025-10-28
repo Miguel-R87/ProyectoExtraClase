@@ -46,18 +46,7 @@ public final class TaskDto {
         setPriority(priority);
     }
 
-    public TaskDto(UUID id) {
-        setId(id);
-        setTitle(TextHelper.getDefault());
-        setDescription(TextHelper.getDefault());
-        setCreationDate(DateTimeHelper.getDefault());
-        setExpiryDate(DateTimeHelper.getDefault());
-        setList(ListDto.getDefaultValue());
-        setStatus(StatusDto.getDefaultValue());
-        setPriority(PriorityDto.getDefaultValue());
-    }
-
-
+    
     public static TaskDto getDefaultValue() {
         return new TaskDto();
     }
