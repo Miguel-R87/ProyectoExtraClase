@@ -43,28 +43,29 @@ public class UserDomain extends Domain {
         setUsername(TextHelper.getDefault());
         setEmail(TextHelper.getDefault());
         setEmailConfirmation(BooleanHelper.getDefault());
-        setRegistrationDate(LocalDateTime.now());
+        setRegistrationDate(DateTimeHelper.getDefault());
         setPasswordHash(TextHelper.getDefault());
         setAccountStatus(BooleanHelper.getDefault());
         setSuperUser(BooleanHelper.getDefault());
         setSuperUserConfirmation(BooleanHelper.getDefault());
     }
 
-    public UserDomain(final UUID id, final String firstName, final String lastName, final String username, 
-                      final String email, final boolean emailConfirmation, final LocalDateTime registrationDate, final String passwordHash,
-                      final boolean accountStatus, final boolean isSuperUser, final boolean superUserConfirmation 
-                      ) {
+    public UserDomain(final UUID id, final String firstName, final String lastName, final String username,
+                      final String email, final boolean emailConfirmation, final String passwordHash,
+                      final boolean accountStatus, final boolean isSuperUser, final boolean superUserConfirmation ,
+                      final LocalDateTime registrationDate) {
         super(id);
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.username = username;
-        this.email = email;
-        this.emailConfirmation = emailConfirmation;
-        this.passwordHash = passwordHash;
-        this.accountStatus = accountStatus;
-        this.isSuperUser = isSuperUser;
-        this.superUserConfirmation = superUserConfirmation;
-        this.registrationDate = registrationDate;
+        // Use setters so helper methods (trimming/defaults) and default flags are applied
+        setFirstName(firstName);
+        setLastName(lastName);
+        setUsername(username);
+        setEmail(email);
+        setEmailConfirmation(emailConfirmation);
+        setPasswordHash(passwordHash);
+        setAccountStatus(accountStatus);
+        setSuperUser(isSuperUser);
+        setSuperUserConfirmation(superUserConfirmation);
+        setRegistrationDate(registrationDate);
     }
 
     public static UserDomain getDefaultValue() {
@@ -128,6 +129,7 @@ public class UserDomain extends Domain {
     }
 
     public void setPasswordHash(String passwordHash) {
+        // Preserve exact password/hash value (do not trim)
         this.passwordHash = passwordHash;
     }
 
@@ -153,7 +155,6 @@ public class UserDomain extends Domain {
 
     public void setSuperUserConfirmation(boolean superUserConfirmation) {
         this.superUserConfirmation = BooleanHelper.getDefault(superUserConfirmation);
-    }
+    }
 }
-
 
