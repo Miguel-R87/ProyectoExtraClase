@@ -97,12 +97,12 @@ public class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUserDAO{
 		
 		sql.append("SELECT ");
         sql.append("ut.usuarioTareaId, ");
-        sql.append("up.usuarioProyectoId, ");
-        sql.append("p.proyectoId, ");
+        sql.append("up.usuarioProyectoId AS usuarioProyectoId, ");
+        sql.append("p.proyectoId AS proyectoId, ");
         sql.append("p.nombre AS nombreProyecto, ");
-        sql.append("u.usuarioId, ");
+        sql.append("u.usuarioId AS usuarioId, ");
         sql.append("u.primerNombre AS nombreUsuario, ");
-        sql.append("t.tareaId, ");
+        sql.append("t.tareaId AS tareaId, ");
         sql.append("t.titulo AS nombreTarea, ");
         sql.append("ut.fechaAsignacion, ");
         sql.append("ut.fechaFinalizacion, ");
