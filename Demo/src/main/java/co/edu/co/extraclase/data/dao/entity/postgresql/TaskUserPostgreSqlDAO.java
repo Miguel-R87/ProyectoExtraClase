@@ -216,7 +216,7 @@ public class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUserDAO{
 	
 
 	@Override
-    public TaskUserEntity findById(UUID id) {
+    public TaskUserEntity findById(UUID id) {  
 		return findByFilter(new TaskUserEntity()).stream().findFirst().orElse(new TaskUserEntity());
 	}
 
