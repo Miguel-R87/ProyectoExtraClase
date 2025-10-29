@@ -146,8 +146,7 @@ boolean isSuperUser, boolean superUserConfirmation) {
 
 	
  
-	//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	 // ---------------- SUPER USER ----------------
+	
     public boolean isSuperUser() {
         return isSuperUser;
     }
@@ -161,7 +160,7 @@ boolean isSuperUser, boolean superUserConfirmation) {
         setSuperUserDefaultValue(false);
     }
 
-    // compatibility setter used by constructors and external callers
+    
     public void setSuperUser(final boolean isSuperUser) {
         setSuperUserConfirm(isSuperUser);
     }
@@ -170,7 +169,7 @@ boolean isSuperUser, boolean superUserConfirmation) {
         this.isSuperUserDefaultValue = isSuperUserDefaultValue;
     }
 
-    // ---------------- SUPER USER CONFIRMATION ----------------
+    
     public boolean isSuperUserConfirmation() {
         return superUserConfirmation;
     }
@@ -188,7 +187,7 @@ boolean isSuperUser, boolean superUserConfirmation) {
         this.superUserConfirmationDefaultValue = superUserConfirmationDefaultValue;
     }
 
-    // ---------------- ACCOUNT STATUS ----------------
+    
     public boolean isAccountStatus() {
         return accountStatus;
     }
@@ -228,4 +227,5 @@ boolean isSuperUser, boolean superUserConfirmation) {
         this.emailConfirmationDefaultValue = emailConfirmationDefaultValue;
     }
 
+	
 }

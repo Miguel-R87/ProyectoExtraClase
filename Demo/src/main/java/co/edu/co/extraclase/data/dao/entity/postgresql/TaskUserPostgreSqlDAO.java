@@ -3,6 +3,7 @@ package co.edu.co.extraclase.data.dao.entity.postgresql;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -17,10 +18,16 @@ import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.data.dao.entity.SqlConnection;
 import co.edu.co.extraclase.data.dao.entity.TaskUserDAO;
+import co.edu.co.extraclase.entity.ColorEntity;
+import co.edu.co.extraclase.entity.ListEntity;
+import co.edu.co.extraclase.entity.PriorityEntity;
 import co.edu.co.extraclase.entity.ProjectEntity;
+import co.edu.co.extraclase.entity.ProjectStatusEntity;
 import co.edu.co.extraclase.entity.ProjectUserEntity;
+import co.edu.co.extraclase.entity.StatusEntity;
 import co.edu.co.extraclase.entity.TaskEntity;
 import co.edu.co.extraclase.entity.TaskUserEntity;
+import co.edu.co.extraclase.entity.UnitOfMeasureEntity;
 import co.edu.co.extraclase.entity.UserEntity;
 
 public class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUserDAO{
@@ -34,7 +41,7 @@ public class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUserDAO{
 		SqlConnectionHelper.ensureTransactionIsStarted(getConnection());
 		
 		final var sql = new StringBuilder();
-		sql.append("INSERT INTO UsuarioTarea (usuarioTareaId, usuarioProyecto, tarea, fechaAsignacion, fechaFinalizacion, esCreador, comentario ");
+		sql.append("INSERT INTO \"UsuarioTarea\" (\"usuarioTareaId\", \"usuarioProyecto\", \"tarea\", \"fechaAsignacion\", \"fechaFinalizacion\", \"esCreador\", \"comentario\" ");
 		sql.append("SELECT ?, ?, ?, ?, ?, ?, ? ");
 		
         try (var preparedStatement = this.getConnection().prepareStatement(sql.toString())) {
@@ -96,24 +103,88 @@ public class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUserDAO{
 		final var sql = new StringBuilder();
 		
 		sql.append("SELECT ");
-        sql.append("ut.usuarioTareaId, ");
-        sql.append("up.usuarioProyectoId AS usuarioProyectoId, ");
-        sql.append("p.proyectoId AS proyectoId, ");
-        sql.append("p.nombre AS nombreProyecto, ");
-        sql.append("u.usuarioId AS usuarioId, ");
-        sql.append("u.primerNombre AS nombreUsuario, ");
-        sql.append("t.tareaId AS tareaId, ");
-        sql.append("t.titulo AS nombreTarea, ");
-        sql.append("ut.fechaAsignacion, ");
-        sql.append("ut.fechaFinalizacion, ");
-        sql.append("ut.esCreador, ");
-        sql.append("ut.comentario ");
+		sql.append("\"ut.usuarioTareaId\" AS usuarioTareaId, ");
         
-        sql.append("FROM UsuarioTarea tu ");
-        sql.append("INNER JOIN UsuarioProyecto pu ON tu.usuarioProyecto = pu.usuarioProyectoId ");
-        sql.append("INNER JOIN Tarea t ON tu.tarea = t.tareaId ");
-        sql.append("INNER JOIN Proyecto p ON pu.proyecto = p.proyectoId ");
-        sql.append("INNER JOIN Usuario u ON pu.usuario = u.usuarioId ");
+		sql.append("\"up.usuarioProyectoId\" AS usuarioProyectoId, ");
+		sql.append("\"up.usuario\" AS usuario, ");
+		sql.append("\"up.proyecto\" AS proyecto, ");
+		sql.append("\"up.esAdmind\" AS esAdmin, ");
+		sql.append("\"up.fechaEntrada\" AS fechaEntrada, ");
+		sql.append("\"up.fechaSalida\" AS fechaSalida, ");
+		        
+		sql.append("\"u.usuarioId\" AS usuarioId, ");
+		sql.append("\"u.primerNombre\" AS primerNombre, ");
+		sql.append("\"u.apellido\" AS apellido, ");
+		sql.append("\"u.nombreUsuario\" AS nombreUsuario, ");
+		sql.append("\"u.email\" AS email, ");
+		sql.append("\"u.confirmacionEmail\" AS confirmacionEmail, ");
+		sql.append("\"u.fechaRegistro\" AS fechaRegistro, ");
+		sql.append("\"u.passwordHash\" AS passworddHash, ");
+		sql.append("\"u.estado\" AS estadoUsuario, ");
+		sql.append("\"u.esSuperUsuario\" AS esSuperUsuario, ");
+		sql.append("\"u.confirmacionSuperUsuario\" AS confirmacionSuperUsuario, ");
+				
+		sql.append("\"p.proyectoId\" AS proyectoId, ");
+		sql.append("\"p.nombre\" AS nombreProyecto, ");
+		sql.append("\"p.descripcion\" AS descripcionProyecto, ");
+		sql.append("\"p.fechaCreacion\" AS fechaCreacionProyecto, ");
+		sql.append("\"p.estadoProyecto\" AS estadoProyecto, ");
+				
+		sql.append("\"ep.estadoProyectoId\" AS estadoProyectoId, ");
+		sql.append("\"ep.nombre\" AS nombreEstadoProyecto, ");
+		sql.append("\"ep.descripcion\" AS descripcionEstadoProyecto, ");
+
+		sql.append("\"t.tareaId\" AS tareaId, ");
+		sql.append("\"t.titulo\" AS nombreTarea, ");
+		sql.append("\"t.descripcion\" AS descripcionTarea, ");
+		sql.append("\"t.fechaCreacion\" AS fechaCreacion, ");
+		sql.append("\"t.fechaLimite\" AS fechaLimite, ");
+		sql.append("\"t.lista\" AS listaTarea, ");
+		sql.append("\"t.estado\" AS estadoTarea, ");
+		sql.append("\"t.prioridad\" AS prioridadTarea, ");
+		        
+		sql.append("\"l.listaId\" AS listaId, ");
+		sql.append("\"l.nombre\" AS nombreLista, ");
+		sql.append("\"l.proyecto\", ");
+		sql.append("\"l.fechaCreacion\" AS fechaCreacionLista, ");
+		        
+		sql.append("\"e.estadoId\" AS estadoId, ");
+		sql.append("\"e.nombre\" AS nombreEstado, ");
+		sql.append("\"e.descripcion\" AS descripcionEstado, ");
+		sql.append("\"e.color\", ");
+		        
+		sql.append("\"c.colorId\" AS colorId, ");
+		sql.append("\"c.nombre\" AS nombreColor, ");
+		sql.append("\"c.codigoHex\" AS codigoHex, ");
+		        
+		sql.append("\"pr.prioridadId\" AS prioridadId, ");
+		sql.append("\"pr.nombre\" AS nombrePrioridad, ");
+		sql.append("\"pr.descripcion\" AS descripcionPrioridad, ");
+		sql.append("\"pr.tiempoRespuesta\" AS tiempoRespuesta, ");
+		sql.append("\"pr.unidadMedida\", ");
+		sql.append("\"pr.color\", ");
+		        
+		sql.append("\"udm.unidadMedidaId\" AS unidadMedidaId, ");
+		sql.append("\"udm.nombre\" AS nombreUnidadMedida, ");
+		sql.append("\"udm.descripcion\" AS descripcionUnidadMedida, ");
+		        
+		sql.append("\"ut.fechaAsignacion\", ");
+		sql.append("\"ut.fechaFinalizacion\", ");
+		sql.append("\"ut.esCreador\", ");
+		sql.append("\"ut.comentario\" ");
+
+		sql.append("FROM \"UsuarioTarea\" tu ");
+		sql.append("INNER JOIN \"UsuarioProyecto\" pu ON \"tu.usuarioProyecto\" = \"pu.usuarioProyectoId\" ");
+		sql.append("INNER JOIN \"Tarea\" t ON \"tu.tarea\" = \"t.tareaId\" ");
+		sql.append("INNER JOIN \"Lista\" l ON \"l.listaId\" = \"t.listaId\" ");
+		sql.append("INNER JOIN \"Estado\" e ON \"e.estadoId\" = \"t.estadoId\" ");
+		sql.append("INNER JOIN \"Color\" c ON \"c.colorId\" = \"e.colorId\" ");
+		sql.append("INNER JOIN \"Prioridad\" pr ON \"pr.prioridadId\" = \"t.prioridadId\" ");
+		sql.append("INNER JOIN \"UnidadMedida\" udm ON \"um.unidadMedidaId\" = \"pr.unidadMedidaId\" ");
+		sql.append("INNER JOIN \"Proyecto\" p ON \"pu.proyecto\" = \"p.proyectoId\" ");
+		sql.append("INNER JOIN \"EstadoProyecto\" ep ON \"ep.estadoProyectoId\" = \"p.estadoProyectoId\" ");
+		sql.append("INNER JOIN \"Usuario\" u ON \"pu.usuario\" = \"u.usuarioId\" ");
+
         
         createWhereClauseFindByFilter(sql, parameterList, filterEntity);
         
@@ -125,31 +196,31 @@ public class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUserDAO{
 		final var conditions = new ArrayList<String>();
 		
 		addCondition(conditions, parameList,
-		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getId()), "ut.usuarioTareaId = ? ",
+		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getId()), "\"ut.usuarioTareaId\" = ? ",
 		filterEntityValidated.getId());
 		
 		addCondition(conditions, parameList,
-		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getProjectUser().getId()), "up.usuarioProyectoId = ? ",
+		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getProjectUser().getId()), "\"up.usuarioProyectoId\" = ? ",
 		filterEntityValidated.getProjectUser().getId());
 		
 		addCondition(conditions, parameList,
-		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getTask().getId()), "t.tareaId = ? ",
+		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getTask().getId()), "\"t.tareaId\" = ? ",
 		filterEntityValidated.getTask().getId());
 		
 		addCondition(conditions, parameList,
-		!DateTimeHelper.isDefaultDate(filterEntityValidated.getAssignmentDate()), "ut.fechaAsigancion = ? ",
+		!DateTimeHelper.isDefaultDate(filterEntityValidated.getAssignmentDate()), "\"ut.fechaAsigancion\" = ? ",
 		filterEntityValidated.getAssignmentDate());
 		
 		addCondition(conditions, parameList,
-		!DateTimeHelper.isDefaultDate(filterEntityValidated.getCompletionDate()), "ut.fechaFinalizacion = ? ",
+		!DateTimeHelper.isDefaultDate(filterEntityValidated.getCompletionDate()), "\"ut.fechaFinalizacion\" = ? ",
 		filterEntityValidated.getCompletionDate());
 		
 		addCondition(conditions, parameList,
-		!BooleanHelper.isDefaultBoolean(filterEntityValidated.isCreator()), " ut.esCreador = ? ",
+		!BooleanHelper.isDefaultBoolean(filterEntityValidated.isCreator()), " \"ut.esCreador\" = ? ",
 		filterEntityValidated.isCreator());
 		
 		addCondition(conditions, parameList,
-		!TextHelper.isEmptyWithTrim(filterEntityValidated.getComment()), "ut.comentario = ? ",
+		!TextHelper.isEmptyWithTrim(filterEntityValidated.getComment()), "\"ut.comentario\" = ? ",
 		filterEntityValidated.getComment());
 		
 		if (!conditions.isEmpty()) {
@@ -173,20 +244,75 @@ public class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUserDAO{
 		try (var resultSet = preparedStatement.executeQuery()) {
 			
 			while (resultSet.next()) {
+				var user = new UserEntity();
+				user.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("usuarioId")));
+            	user.setFirstName(resultSet.getString("primerNombre"));
+            	user.setLastName(resultSet.getString("apellido"));
+            	user.setUsername(resultSet.getString("nombreUsuario"));
+            	user.setEmail(resultSet.getString("email"));
+            	user.setEmailConfirmation(resultSet.getBoolean("confirmacionEmail"));
+            	user.setRegistrationDate((LocalDateTime) resultSet.getObject("fechaRegistro"));
+            	user.setPasswordHash(resultSet.getString("passwordHash"));
+            	user.setAccountStatus(resultSet.getBoolean("estado"));
+            	user.setSuperUser(resultSet.getBoolean("esSuperUsuario"));
+            	user.setSuperUserConfirmation(resultSet.getBoolean("confirmacionSuoerUsuario"));
+            	
+            	var projectStatus = new ProjectStatusEntity();
+				projectStatus.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("proyectoEstadoId")));
+				projectStatus.setName(resultSet.getString("nombreEstadoProyecto"));
+				projectStatus.setDescription(resultSet.getString("descripcionEstadoProyecto"));
+				
+				var project = new ProjectEntity();
+				project.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("projectoId")));
+				project.setName(resultSet.getString("nombreProyecto"));
+				project.setDescription(resultSet.getString("descripcionProyecto"));
+				project.setCreationDate((LocalDateTime) resultSet.getObject("fechaCreacionProyecto"));
+				project.setProjectStatus(projectStatus);
+				
 				var projectUser = new ProjectUserEntity();
                 projectUser.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("usuarioProyectoId")));
+                projectUser.setUser(user);
+                projectUser.setProject(project);
 
-                var project = new ProjectEntity();
-                project.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("proyectoId")));
-                project.setName(resultSet.getString("nombreProyecto"));
-
-                var user = new UserEntity();
-                user.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("usuarioId")));
-                user.setFirstName(resultSet.getString("nombreUsuario"));
-
+                var list = new ListEntity();
+                list.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("listaId")));
+                list.setName(resultSet.getString("nombreLista"));
+                list.setProject(project);
+                list.setCreationDate((LocalDateTime) resultSet.getObject("fechaCreacionLista"));
+                
+                var color = new ColorEntity();
+                color.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("colorId")));
+                color.setName(resultSet.getString("nombreColor"));
+                color.setHexCode(resultSet.getString("codigoHex"));
+                
+                var status = new StatusEntity();
+                status.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("estadoId")));
+                status.setName(resultSet.getString("nombreEstado"));
+                status.setDescription(resultSet.getString("descripcionEstado"));
+                status.setColor(color);
+                
+                var unitOfMeasure = new UnitOfMeasureEntity();
+                unitOfMeasure.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("unidadMedidaId")));
+                unitOfMeasure.setName(resultSet.getString("nombreUnidadMedida"));
+                unitOfMeasure.setDescription(resultSet.getString("descripcionUnidadMedida"));
+                
+                var priority = new PriorityEntity();
+                priority.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("prioridadId")));
+                priority.setName(resultSet.getString("nombrePrioridad"));
+                priority.setDescription(resultSet.getString("descripcionPrioridad"));
+                priority.setResponseTime(resultSet.getInt("tiempoRespuesta"));
+                priority.setUnitOfMeasure(unitOfMeasure);
+                priority.setColor(color);
+                
                 var task = new TaskEntity();
                 task.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("tareaId")));
-                task.setTitle(resultSet.getString("nombreTarea"));
+                task.setTitle(resultSet.getString("titulo"));
+                task.setDescription(resultSet.getString("descripcion"));
+                task.setCreationDate(resultSet.getTimestamp("fechaCreacion").toLocalDateTime());
+                task.setExpiryDate(resultSet.getTimestamp("fechaLimite").toLocalDateTime());
+                task.setList(list);
+                task.setStatus(status);
+                task.setPriority(priority);
 
                 var taskUser = new TaskUserEntity();
                 taskUser.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("usuarioTareaId")));
@@ -225,15 +351,15 @@ public class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUserDAO{
 		SqlConnectionHelper.ensureTransactionIsStarted(getConnection());
 		
 		final var sql = new StringBuilder();
-		sql.append("UPDATE TaskUser " );
-		sql.append("SET usarioTareaId = ?, " );
-		sql.append("usuarioProjecto = ?, " );
-		sql.append("tarea = ?, " );
-		sql.append("fechaAsignacion = ?, " );
-		sql.append("fechaFinalizacion = ?, " );
-		sql.append("esCreador = ?, " );
+		sql.append("UPDATE \"UsuarioTarea\" " );
+		sql.append("SET \"usarioTareaId\" = ?, " );
+		sql.append("\"usuarioProjecto\" = ?, " );
+		sql.append("\"tarea\" = ?, " );
+		sql.append("\"fechaAsignacion\" = ?, " );
+		sql.append("\"fechaFinalizacion\" = ?, " );
+		sql.append("\"esCreador\" = ?, " );
 		
-		sql.append("WHERE usuarioTareaId = ?; " );
+		sql.append("WHERE \"usuarioTareaId\" = ?; " );
 			
 		
 		 try (var preparedStatement = this.getConnection().prepareStatement(sql.toString())) {

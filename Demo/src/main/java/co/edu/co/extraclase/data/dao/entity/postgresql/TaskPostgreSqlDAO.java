@@ -31,7 +31,7 @@ public class TaskPostgreSqlDAO extends SqlConnection implements TaskDAO{
 		SqlConnectionHelper.ensureTransactionIsStarted(getConnection());
 		
 		final var sql = new StringBuilder();
-		sql.append("INSERT INTO Tarea (tareaId, titulo, descripcion, fechaCreacion, fechaLimite, lista, estado, prioridad)");
+		sql.append("INSERT INTO \"Tarea\" (\"tareaId\", \"titulo\", \"descripcion\", \"fechaCreacion\", \"fechaLimite\", \"lista\", \"estado\", \"prioridad\")");
 		sql.append("SELECT ?, ?, ?, ?, ?, ?, ?, ? ");
 		
 		try (var preparedStatement = this.getConnection().prepareStatement(sql.toString())) {
@@ -96,22 +96,41 @@ public class TaskPostgreSqlDAO extends SqlConnection implements TaskDAO{
 		final var sql = new StringBuilder();
 		
 		sql.append("SELECT ");
-        sql.append("t.tareaId, ");
-        sql.append("t.titulo, ");
-        sql.append("t.descripcion, ");
-        sql.append("t.fechaCreacion, ");
-        sql.append("t.fechaLimite, ");
-        sql.append("l.listaId, ");
-        sql.append("l.nombre AS nombreLista ");
-        sql.append("e.estadoId, ");
-        sql.append("e.nombre AS nombreEstado, ");
-        sql.append("p.prioridadId, ");
-        sql.append("p.nombre AS nombrePrioridad, ");
+        sql.append("\"t.tareaId\" AS tareaId, ");
+        sql.append("\"t.titulo\", ");
+        sql.append("\"t.descripcion\", ");
+        sql.append("\"t.fechaCreacion\", ");
+        sql.append("\"t.fechaLimite\", ");
         
-        sql.append("FROM Tarea t ");
-        sql.append("INNER JOIN Estado e ON e.estadoId = t.estadoId ");
-        sql.append("INNER JOIN Prioridad p ON p.prioridadId = t.prioridadId");
-        sql.append("INNER JOIN Lista l ON l.listaId = t.listaId");
+        sql.append("\"l.listaId\" AS listaId, ");
+		sql.append("\"l.nombre\" AS nombreLista, ");
+		sql.append("\"l.proyecto\", ");
+		sql.append("\"l.fechaCreacion\" AS fechaCreacionLista, ");
+        
+		sql.append("\"e.estadoId\" AS estadoId, ");
+		sql.append("\"e.nombre\" AS nombreEstado, ");
+		sql.append("\"e.descripcion\" AS descripcionEstado, ");
+		sql.append("\"e.color\", ");
+		
+		sql.append("\"c.colorId\" AS colorId, ");
+		sql.append("\"c.nombre\" AS nombreColor, ");
+		sql.append("\"c.codigoHex\" AS codigoHex, ");
+		
+		sql.append("\"pr.prioridadId\" AS prioridadId, ");
+		sql.append("\"pr.nombre\" AS nombrePrioridad, ");
+		sql.append("\"pr.descripcion\" AS descripcionPrioridad, ");
+		sql.append("\"pr.tiempoRespuesta\" AS tiempoRespuesta, ");
+		sql.append("\"pr.unidadMedida\", ");
+		sql.append("\"pr.color\", ");
+		        
+		sql.append("\"udm.unidadMedidaId\" AS unidadMedidaId, ");
+		sql.append("\"udm.nombre\" AS nombreUnidadMedida, ");
+		sql.append("\"udm.descripcion\" AS descripcionUnidadMedida, ");
+                
+        sql.append("FROM \"Tarea\" t ");
+        sql.append("INNER JOIN \"Estado\" e ON \"e.estadoId\" = \"t.estadoId\" ");
+        sql.append("INNER JOIN \"Prioridad\" p ON \"p.prioridadId\" = \"t.prioridadId\"");
+        sql.append("INNER JOIN \"Lista\" l ON \"l.listaId\" = \"t.listaId\"");
         sql.append("INNER JOIN ");
         
         createWhereClauseFindByFilter(sql, parameterList, filterEntity);
@@ -124,35 +143,35 @@ public class TaskPostgreSqlDAO extends SqlConnection implements TaskDAO{
 		final var conditions = new ArrayList<String>();
 		
 		addCondition(conditions, parameList,
-		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getId()), "t.tareaId = ? ",
+		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getId()), "\"t.tareaId\" = ? ",
 		filterEntityValidated.getId());
 		
 		addCondition(conditions, parameList,
-		!TextHelper.isEmptyWithTrim(filterEntityValidated.getTitle()), "t.titulo = ? ",
+		!TextHelper.isEmptyWithTrim(filterEntityValidated.getTitle()), "\"t.titulo\" = ? ",
 		filterEntityValidated.getTitle());
 		
 		addCondition(conditions, parameList,
-		!TextHelper.isEmptyWithTrim(filterEntityValidated.getDescription()), "t.descripcion = ? ",
+		!TextHelper.isEmptyWithTrim(filterEntityValidated.getDescription()), "\"t.descripcion\" = ? ",
 		filterEntityValidated.getDescription());
 		
 		addCondition(conditions, parameList,
-		!DateTimeHelper.isDefaultDate(filterEntityValidated.getCreationDate()), "t.fechaCreacion = ? ",
+		!DateTimeHelper.isDefaultDate(filterEntityValidated.getCreationDate()), "\"t.fechaCreacion\" = ? ",
 		filterEntityValidated.getCreationDate());
 		
 		addCondition(conditions, parameList,
-		!DateTimeHelper.isDefaultDate(filterEntityValidated.getExpiryDate()), "t.fechaLimite = ? ",
+		!DateTimeHelper.isDefaultDate(filterEntityValidated.getExpiryDate()), "\"t.fechaLimite\" = ? ",
 		filterEntityValidated.getExpiryDate());
 		
 		addCondition(conditions, parameList,
-		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getList().getId()), "l.listaId = ? ",
+		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getList().getId()), "\"l.listaId\" = ? ",
 		filterEntityValidated.getList().getId());
 		
 		addCondition(conditions, parameList,
-		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getStatus().getId()), "e.estadoId = ? ",
+		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getStatus().getId()), "\"e.estadoId\" = ? ",
 		filterEntityValidated.getStatus().getId());
 		
 		addCondition(conditions, parameList,
-		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getPriority().getId()), "p.prioridad = ? ",
+		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getPriority().getId()), "\"p.prioridad\" = ? ",
 		filterEntityValidated.getPriority().getId());
 		
 		
@@ -228,17 +247,17 @@ public class TaskPostgreSqlDAO extends SqlConnection implements TaskDAO{
 SqlConnectionHelper.ensureTransactionIsStarted(getConnection());
 		
 		final var sql = new StringBuilder();
-		sql.append("UPDATE Task " );
-		sql.append("SET tareaId = ?, " );
-		sql.append("titulo = ?, " );
-		sql.append("descripcion = ?, " );
-		sql.append("fechaCreacion = ?, " );
-		sql.append("fechaLimite = ?, " );
-		sql.append("lista = ?, " );
-		sql.append("estado = ?, " );
-		sql.append("prioridad = ?, " );
+		sql.append("UPDATE \"Tarea\" " );
+		sql.append("SET \"tareaId\" = ?, " );
+		sql.append("\"titulo\" = ?, " );
+		sql.append("\"descripcion\" = ?, " );
+		sql.append("\"fechaCreacion\" = ?, " );
+		sql.append("\"fechaLimite\" = ?, " );
+		sql.append("\"lista\" = ?, " );
+		sql.append("\"estado\" = ?, " );
+		sql.append("\"prioridad\" = ?, " );
 		
-		sql.append("WHERE tareaId = ?; " );
+		sql.append("WHERE \"tareaId\" = ?; " );
 			
 		
 		 try (var preparedStatement = this.getConnection().prepareStatement(sql.toString())) {

@@ -58,11 +58,11 @@ public class UnitOfMeasurePostgreSqlDAO extends SqlConnection implements UnitOfM
 		final var sql = new StringBuilder();
 
 		sql.append("SELECT ");
-		sql.append("udm.unidadMedidaId, ");
-		sql.append("udm.nombre, ");
-		sql.append("udm.descripcion ");
+		sql.append("\"udm.unidadMedidaId\" AS unidadMedidaId, ");
+		sql.append("\"udm.nombre\", ");
+		sql.append("\"udm.descripcion\" ");
 		
-		sql.append("FROM UnidadDeMedida ");
+		sql.append("FROM \"UnidadDeMedida\" ");
 		
 		createWhereClauseFindByFilter(sql, parameterList, filterEntity);
         
@@ -75,15 +75,15 @@ public class UnitOfMeasurePostgreSqlDAO extends SqlConnection implements UnitOfM
 		final var conditions = new ArrayList<String>();
 		
 		addCondition(conditions, parameterList,
-		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getId()), "udm.unidadMedidaId = ?",
+		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getId()), "\"udm.unidadMedidaId\" = ?",
 		filterEntityValidated.getId());
 		
 		addCondition(conditions, parameterList,
-		!TextHelper.isEmptyWithTrim(filterEntityValidated.getName()), "udm.nombre = ?",
+		!TextHelper.isEmptyWithTrim(filterEntityValidated.getName()), "\"udm.nombre\" = ?",
 		filterEntityValidated.getName());
 		
 		addCondition(conditions, parameterList,
-		!TextHelper.isEmptyWithTrim(filterEntityValidated.getDescription()), "udm.descripcion = ?",
+		!TextHelper.isEmptyWithTrim(filterEntityValidated.getDescription()), "\"udm.descripcion\" = ?",
 		filterEntityValidated.getDescription());
 		
 		if(!conditions.isEmpty()) {

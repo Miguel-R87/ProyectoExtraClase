@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.UUID;
 
 import co.edu.co.extraclase.crosscuting.exception.ExtraClaseException;
-import co.edu.co.extraclase.crosscuting.helper.BooleanHelper;
 import co.edu.co.extraclase.crosscuting.helper.DateTimeHelper;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.SqlConnectionHelper;
@@ -31,8 +30,20 @@ public class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
         SqlConnectionHelper.ensureTransactionIsStarted(getConnection());
         
         final var sql = new StringBuilder();
-        sql.append("INSERT INTO Usario (usuarioId, primerNombre, apellido, nombreUsuario, email, confirmacionEmail, fechaRegistro, passwordHash, estado, esSuperUsuario, confirmacionSuperUsuario) ");
+        sql.append("INSERT INTO \"Usario\" (");
+        sql.append("\"usuarioId\", ");
+        sql.append("\"primerNombre\", ");
+        sql.append("\"apellido\", ");
+        sql.append("\"nombreUsuario\", ");
+        sql.append("\"email\", ");
+        sql.append("\"confirmacionEmail\", ");
+        sql.append("\"fechaRegistro\", ");
+        sql.append("\"passwordHash\", ");
+        sql.append("\"estado\", ");
+        sql.append("\"esSuperUsuario\", ");
+        sql.append("\"confirmacionSuperUsuario\") ");
         sql.append("SELECT ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?");
+
         
         try (var preparedStatement = this.getConnection().prepareStatement(sql.toString())) {
             preparedStatement.setObject(1, entity.getId());
@@ -40,12 +51,12 @@ public class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
             preparedStatement.setString(3, entity.getLastName());
             preparedStatement.setString(4, entity.getUsername());
             preparedStatement.setString(5, entity.getEmail());
-			preparedStatement.setBoolean(6, entity.EmailConfirmation());
+			preparedStatement.setBoolean(6, entity.isEmailConfirmation());
 			preparedStatement.setObject(7, entity.getRegistrationDate());
 			preparedStatement.setString(8, entity.getPasswordHash());
-			preparedStatement.setBoolean(9, entity.AccountStatus());
-			preparedStatement.setBoolean(10, entity.SuperUser());
-			preparedStatement.setBoolean(11, entity.SuperUserConfirmation());
+			preparedStatement.setBoolean(9, entity.isAccountStatus());
+			preparedStatement.setBoolean(10, entity.isSuperUser());
+			preparedStatement.setBoolean(11, entity.isSuperUserConfirmation());
 			
 			preparedStatement.executeUpdate();
 		
@@ -67,19 +78,20 @@ public class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
 		SqlConnectionHelper.ensureTransactionIsStarted(getConnection());
 		
 		final var sql = new StringBuilder();
-		sql.append("UPDATE Usario " );
-		sql.append("SET usarioId = ?, " );
-		sql.append("primerNombre = ?, " );
-		sql.append("apellido = ?, " );
-		sql.append("nombreUsuario = ?, " );
-		sql.append("email = ?, " );
-		sql.append("confirmacionEmail = ?, " );
-		sql.append("fechaRegistro = ?, " );
-		sql.append("passwordHash = ?, " );
-		sql.append("estado = ?, " );
-		sql.append("esSuperUsuario = ?, " );
-		sql.append("confirmacionSuperUsuario = ? " );
-		sql.append("WHERE usuarioId = ?; " );
+		sql.append("UPDATE \"Usario\" ");
+		sql.append("SET \"usarioId\" = ?, ");
+		sql.append("    \"primerNombre\" = ?, ");
+		sql.append("    \"apellido\" = ?, ");
+		sql.append("    \"nombreUsuario\" = ?, ");
+		sql.append("    \"email\" = ?, ");
+		sql.append("    \"confirmacionEmail\" = ?, ");
+		sql.append("    \"fechaRegistro\" = ?, ");
+		sql.append("    \"passwordHash\" = ?, ");
+		sql.append("    \"estado\" = ?, ");
+		sql.append("    \"esSuperUsuario\" = ?, ");
+		sql.append("    \"confirmacionSuperUsuario\" = ? ");
+
+		sql.append("WHERE \"usuarioId\" = ?; " );
 			
 		
 		try (var preparedStatement = this.getConnection().prepareStatement(sql.toString())) {
@@ -88,12 +100,12 @@ public class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
             preparedStatement.setString(3, entity.getLastName());
             preparedStatement.setString(4, entity.getUsername());
             preparedStatement.setString(5, entity.getEmail());
-			preparedStatement.setBoolean(6, entity.EmailConfirmation());
+			preparedStatement.setBoolean(6, entity.isEmailConfirmation());
 			preparedStatement.setObject(7, entity.getRegistrationDate());
 			preparedStatement.setString(8, entity.getPasswordHash());
-			preparedStatement.setBoolean(9, entity.AccountStatus());
-			preparedStatement.setBoolean(10, entity.SuperUser());
-			preparedStatement.setBoolean(11, entity.SuperUserConfirmation());
+			preparedStatement.setBoolean(9, entity.isAccountStatus());
+			preparedStatement.setBoolean(10, entity.isSuperUser());
+			preparedStatement.setBoolean(11, entity.isSuperUserConfirmation());
 			
 			preparedStatement.executeUpdate();
 		
@@ -146,19 +158,18 @@ public class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
 		final var sql = new StringBuilder();
 			
 		sql.append("SELECT ");
-		sql.append("u.usuarioId, ");
-		sql.append("u.primerNombre, ");
-		sql.append("u.apellido, ");
-		sql.append("u.nombreUsuario, ");
-		sql.append("u.email, ");
-		sql.append("u.confirmacionEmail, ");
-		sql.append("u.fechaRegistro, ");
-		sql.append("u.passwordHash, ");
-		sql.append("u.estado, ");
-		sql.append("u.esSuperUsuario, ");
-		sql.append("u.confirmacionSuperUsuario ");
-		
-		sql.append("FROM Usuario ");
+		sql.append("\"u.usuarioId\" AS usuarioId , ");
+		sql.append("\"u.primerNombre\" , ");
+		sql.append("\"u.apellido\" , ");
+		sql.append("\"u.nombreUsuario\" , ");
+		sql.append("\"u.email\" , ");
+		sql.append("\"u.confirmacionEmail\" , ");
+		sql.append("\"u.fechaRegistro\" , ");
+		sql.append("\"u.passwordHash\" , ");
+		sql.append("\"u.estado\" , ");
+		sql.append("\"u.esSuperUsuario\" , ");
+		sql.append("\"u.confirmacionSuperUsuario\" ");
+		sql.append("FROM \"Usuario\" ");
 		
         createWhereClauseFindByFilter(sql, parameterList, filterEntity);
         
@@ -170,48 +181,48 @@ public class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
 		final var conditions = new ArrayList<String>();
 
 		addCondition(conditions, parameterList,
-		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getId()), "u.usuarioId = ? ",
+		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getId()), "\"u.usuarioId\" = ? ",
 		filterEntityValidated.getId());
 		
 		addCondition(conditions, parameterList,
-		!TextHelper.isEmptyWithTrim(filterEntityValidated.getFirstName()), "u.primerNombre = ? ",
+		!TextHelper.isEmptyWithTrim(filterEntityValidated.getFirstName()), "\"u.primerNombre\" = ? ",
 		filterEntityValidated.getFirstName());
 		
 		addCondition(conditions, parameterList,
-		!TextHelper.isEmptyWithTrim(filterEntityValidated.getLastName()), "u.apellido = ? ",
+		!TextHelper.isEmptyWithTrim(filterEntityValidated.getLastName()), "\"u.apellido\" = ? ",
 		filterEntityValidated.getLastName());
 		
 		addCondition(conditions, parameterList,
-		!TextHelper.isEmptyWithTrim(filterEntityValidated.getUsername()), "u.nombreUsuario = ? ",
+		!TextHelper.isEmptyWithTrim(filterEntityValidated.getUsername()), "\"u.nombreUsuario\" = ? ",
 		filterEntityValidated.getUsername());
 		
 		addCondition(conditions, parameterList,
-		!TextHelper.isEmptyWithTrim(filterEntityValidated.getEmail()), "u.email = ? ",
+		!TextHelper.isEmptyWithTrim(filterEntityValidated.getEmail()), "\"u.email\" = ? ",
 		filterEntityValidated.getEmail());
 		
 		addCondition(conditions, parameterList,
-		!BooleanHelper.isDefaultBoolean(filterEntityValidated.EmailConfirmation()), "u.confirmacionEmail = ? ",
-		filterEntityValidated.EmailConfirmation());
+		filterEntityValidated.isEmailConfirmation(), "\"u.confirmacionEmail\" = ? ",
+		filterEntityValidated.isEmailConfirmation());
 		
 		addCondition(conditions, parameterList,
-		!DateTimeHelper.isDefaultDate(filterEntityValidated.getRegistrationDate()), "u.fechaRegistro = ? ",
+		!DateTimeHelper.isDefaultDate(filterEntityValidated.getRegistrationDate()), "\"u.fechaRegistro\" = ? ",
 		filterEntityValidated.getRegistrationDate());
 		
 		addCondition(conditions, parameterList,
-		!TextHelper.isEmptyWithTrim(filterEntityValidated.getPasswordHash()), "u.passwordHash = ? ",
+		!TextHelper.isEmptyWithTrim(filterEntityValidated.getPasswordHash()), "\"u.passwordHash\" = ? ",
 		filterEntityValidated.getPasswordHash());
 		
 		addCondition(conditions, parameterList,
-		!BooleanHelper.isDefaultBoolean(filterEntityValidated.AccountStatus()), "u.estado = ? ",
-		filterEntityValidated.AccountStatus());
+		!filterEntityValidated.isAccountStatus(), "\"u.estado\" = ? ",
+		filterEntityValidated.isAccountStatus());
 		
 		addCondition(conditions, parameterList,
-		!BooleanHelper.isDefaultBoolean(filterEntityValidated.SuperUser()), "u.esSuperUsuario = ? ",
-		filterEntityValidated.SuperUser());
+		!filterEntityValidated.isSuperUser(), "\"u.esSuperUsuario\" = ? ",
+		filterEntityValidated.isSuperUser());
 		
 		addCondition(conditions, parameterList,
-		!BooleanHelper.isDefaultBoolean(filterEntityValidated.SuperUserConfirmation()), "u.confirmacionSuperUsuario = ? ",
-		filterEntityValidated.SuperUserConfirmation());
+		!filterEntityValidated.isSuperUserConfirmation(), "\"u.confirmacionSuperUsuario\" = ? ",
+		filterEntityValidated.isSuperUserConfirmation());
 		
 		if (!conditions.isEmpty()) {
 			sql.append(" WHERE ");
