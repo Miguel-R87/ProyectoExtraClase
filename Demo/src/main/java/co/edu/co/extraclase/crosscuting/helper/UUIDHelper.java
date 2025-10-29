@@ -27,7 +27,11 @@ public final class UUIDHelper {
 	}
 	
 	public boolean isDefaultUUID(final UUID value) {
-		return value == null || value.equals(getDefault()); 
+		return getDefault().equals(getDefault(value));
+	}
+	
+	public UUID generateNewUUID() {
+		return UUID.randomUUID();
 	}
 }
 	

@@ -25,4 +25,9 @@ public final class DateTimeHelper {
         return EMPTY.equals(getDefault(value));
     }
 
+	public static LocalDateTime now() {
+    return LocalDateTime.now();
+}
+
+
 }	

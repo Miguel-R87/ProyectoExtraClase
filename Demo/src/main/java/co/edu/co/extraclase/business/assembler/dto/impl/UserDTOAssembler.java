@@ -8,7 +8,6 @@ import co.edu.co.extraclase.dto.UserDto;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public final class UserDTOAssembler implements DTOAssembler<UserDto,UserDomain> {
     private static final DTOAssembler<UserDto,UserDomain> instance = new UserDTOAssembler();
