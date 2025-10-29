@@ -11,7 +11,7 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
 public final class ProjectUserEntity  {
 	
-	private UUID projectUserId;
+	private UUID id;
 	private UserEntity user;
     private ProjectEntity project;
     private boolean isAdmin;
@@ -19,7 +19,7 @@ public final class ProjectUserEntity  {
     private LocalDateTime expiryDate;
     
     public ProjectUserEntity() {
-		setProjectUserId(UUIDHelper.getUUIDHelper().getDefault());
+		setId(UUIDHelper.getUUIDHelper().getDefault());
 		setUser(UserEntity.getDefault());
 		setProject(ProjectEntity.getDefault());
 		setAdmin(BooleanHelper.getDefault());
@@ -27,8 +27,8 @@ public final class ProjectUserEntity  {
 		setExpiryDate(DateTimeHelper.getDefault());
     }
     
-    public ProjectUserEntity(final UUID projectUserId) {
-		setProjectUserId(projectUserId);
+    public ProjectUserEntity(final UUID id) {
+		setId(id);
 		setUser(UserEntity.getDefault());
 		setProject(ProjectEntity.getDefault());
 		setAdmin(BooleanHelper.getDefault());
@@ -36,8 +36,8 @@ public final class ProjectUserEntity  {
 		setExpiryDate(DateTimeHelper.getDefault());
     }
     
-    public  ProjectUserEntity(final UUID projectUserId, final UserEntity user, final ProjectEntity project, final boolean isAdmin, final LocalDateTime entryDate, final LocalDateTime expiryDate) {
-		setProjectUserId(projectUserId);
+    public  ProjectUserEntity(final UUID id, final UserEntity user, final ProjectEntity project, final boolean isAdmin, final LocalDateTime entryDate, final LocalDateTime expiryDate) {
+		setId(id);
 		setUser(user);
 		setProject(project);
 		setAdmin(isAdmin);
@@ -59,12 +59,12 @@ public final class ProjectUserEntity  {
     
     
     
-	public UUID getProjectUserId() {
-		return projectUserId;
+	public UUID getId() {
+		return id;
 	}
 
-	public void setProjectUserId(UUID projectUserId) {
-		this.projectUserId = UUIDHelper.getUUIDHelper().getDefault(projectUserId);
+	public void setId(UUID id) {
+		this.id = UUIDHelper.getUUIDHelper().getDefault(id);
 	}
 
 	public UserEntity getUser() {

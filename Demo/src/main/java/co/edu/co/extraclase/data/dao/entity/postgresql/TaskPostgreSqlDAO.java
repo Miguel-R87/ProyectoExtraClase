@@ -35,7 +35,7 @@ public class TaskPostgreSqlDAO extends SqlConnection implements TaskDAO{
 		sql.append("SELECT ?, ?, ?, ?, ?, ?, ?, ? ");
 		
 		try (var preparedStatement = this.getConnection().prepareStatement(sql.toString())) {
-        	preparedStatement.setObject(1, entity.getTaskId());
+        	preparedStatement.setObject(1, entity.getId());
         	preparedStatement.setString(2, entity.getTitle());
         	preparedStatement.setString(3, entity.getDescription());
         	preparedStatement.setObject(4, entity.getCreationDate());
@@ -124,8 +124,8 @@ public class TaskPostgreSqlDAO extends SqlConnection implements TaskDAO{
 		final var conditions = new ArrayList<String>();
 		
 		addCondition(conditions, parameList,
-		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getTaskId()), "t.tareaId = ? ",
-		filterEntityValidated.getTaskId());
+		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getId()), "t.tareaId = ? ",
+		filterEntityValidated.getId());
 		
 		addCondition(conditions, parameList,
 		!TextHelper.isEmptyWithTrim(filterEntityValidated.getTitle()), "t.titulo = ? ",
@@ -144,16 +144,16 @@ public class TaskPostgreSqlDAO extends SqlConnection implements TaskDAO{
 		filterEntityValidated.getExpiryDate());
 		
 		addCondition(conditions, parameList,
-		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getList().getListId()), "l.listaId = ? ",
-		filterEntityValidated.getList().getListId());
+		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getList().getId()), "l.listaId = ? ",
+		filterEntityValidated.getList().getId());
 		
 		addCondition(conditions, parameList,
-		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getStatus().getStatusId()), "e.estadoId = ? ",
-		filterEntityValidated.getStatus().getStatusId());
+		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getStatus().getId()), "e.estadoId = ? ",
+		filterEntityValidated.getStatus().getId());
 		
 		addCondition(conditions, parameList,
-		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getPriority().getPriorityId()), "p.prioridad = ? ",
-		filterEntityValidated.getPriority().getPriorityId());
+		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getPriority().getId()), "p.prioridad = ? ",
+		filterEntityValidated.getPriority().getId());
 		
 		
 		if (!conditions.isEmpty()) {
@@ -178,19 +178,19 @@ public class TaskPostgreSqlDAO extends SqlConnection implements TaskDAO{
 			
 			while (resultSet.next()) {
 				var list = new ListEntity();
-                list.setListId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("listaId")));
+                list.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("listaId")));
                 list.setName(resultSet.getString("nombreLista"));
 
                 var status = new StatusEntity();
-                status.setStatusId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("estadoId")));
+                status.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("estadoId")));
                 status.setName(resultSet.getString("nombreEstado"));
                 
                 var priority = new PriorityEntity();
-                priority.setPriorityId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("prioridadId")));
+                priority.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("prioridadId")));
                 priority.setName(resultSet.getString("nombrePrioridad"));
 
                 var task = new TaskEntity();
-                task.setTaskId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("tareaId")));
+                task.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("tareaId")));
                 task.setTitle(resultSet.getString("titulo"));
                 task.setDescription(resultSet.getString("descripcion"));
                 task.setCreationDate(resultSet.getTimestamp("fechaCreacion").toLocalDateTime());
@@ -242,7 +242,7 @@ SqlConnectionHelper.ensureTransactionIsStarted(getConnection());
 			
 		
 		 try (var preparedStatement = this.getConnection().prepareStatement(sql.toString())) {
-	        	preparedStatement.setObject(1, entity.getTaskId());
+	        	preparedStatement.setObject(1, entity.getId());
 	        	preparedStatement.setString(2, entity.getTitle());
 	        	preparedStatement.setString(3, entity.getDescription());
 	        	preparedStatement.setObject(4, entity.getCreationDate());

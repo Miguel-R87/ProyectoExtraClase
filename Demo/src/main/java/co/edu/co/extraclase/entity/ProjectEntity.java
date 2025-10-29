@@ -10,14 +10,14 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
 public final class ProjectEntity  {
 	
-	private UUID projectId;
+	private UUID id;
 	private String name;
     private String description;
     private LocalDateTime creationDate;
     private ProjectStatusEntity projectStatus;
     
     public ProjectEntity() {
-		setProjectId(UUIDHelper.getUUIDHelper().getDefault());
+		setId(UUIDHelper.getUUIDHelper().getDefault());
 		setName(TextHelper.getDefault());
 		setDescription(TextHelper.getDefault());
 		setCreationDate(DateTimeHelper.getDefault());
@@ -25,15 +25,15 @@ public final class ProjectEntity  {
 	}
     
     public ProjectEntity(final UUID id) {
-    	setProjectId(id);
+    	setId(id);
     	setName(TextHelper.getDefault());
     	setDescription(TextHelper.getDefault());
     	setCreationDate(DateTimeHelper.getDefault());
     	setProjectStatus(ProjectStatusEntity.getDefault());
     }
     
-    public  ProjectEntity(final UUID projectId, final String name, final String description, final LocalDateTime creationDate, final ProjectStatusEntity projectStatus) {
-		setProjectId(projectId);
+    public  ProjectEntity(final UUID id, final String name, final String description, final LocalDateTime creationDate, final ProjectStatusEntity projectStatus) {
+		setId(id);
 		setName(name);
 		setDescription(description);
 		setCreationDate(creationDate);
@@ -54,12 +54,12 @@ public final class ProjectEntity  {
     
     
 
-	public UUID getProjectId() {
-		return projectId;
+	public UUID getId() {
+		return id;
 	}
 
-	public void setProjectId(final UUID projectId) {
-		this.projectId = UUIDHelper.getUUIDHelper().getDefault(projectId);
+	public void setId(final UUID id) {
+		this.id = UUIDHelper.getUUIDHelper().getDefault(id);
 	}
 
 	public String getName() {

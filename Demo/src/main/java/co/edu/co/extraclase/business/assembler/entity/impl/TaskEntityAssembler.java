@@ -40,7 +40,7 @@ public final class TaskEntityAssembler implements EntityAssembler<TaskEntity, Ta
 		var listDomainTmp = getListEntityAssembler().toDomain(entityTmp.getList());
 		var statusDomainTmp = getStatusEntityAssembler().toDomain(entityTmp.getStatus());
 		var priorityDomainTmp = getPriorityEntityAssembler().toDomain(entityTmp.getPriority());
-		return new TaskDomain(entityTmp.getTaskId(), entityTmp.getTitle(), entityTmp.getDescription(),
+		return new TaskDomain(entityTmp.getId(), entityTmp.getTitle(), entityTmp.getDescription(),
 		entityTmp.getCreationDate(), entityTmp.getExpiryDate(), listDomainTmp, statusDomainTmp, priorityDomainTmp );
 	}
 }

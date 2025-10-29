@@ -35,7 +35,7 @@ public final class PriorityEntityAssembler implements EntityAssembler<PriorityEn
 		var entityTmp = ObjectHelper.getDefault(entity, new PriorityEntity());
 		var unitOfMeasureDomainTmp = getUnitOfMeasureEntityAssembler().toDomain(entityTmp.getUnitOfMeasure());
 		var colorDomainTmp = getColorEntityAssembler().toDomain(entityTmp.getColor());
-		return new PriorityDomain(entityTmp.getPriorityId(), entityTmp.getName(), entityTmp.getDescription(), 
+		return new PriorityDomain(entityTmp.getId(), entityTmp.getName(), entityTmp.getDescription(),
 				entityTmp.getResponseTime(), unitOfMeasureDomainTmp, colorDomainTmp);
 	}
 }

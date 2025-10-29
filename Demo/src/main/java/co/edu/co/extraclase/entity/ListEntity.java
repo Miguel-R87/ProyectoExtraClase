@@ -11,28 +11,28 @@ import co.edu.co.extraclase.crosscuting.helper.DateTimeHelper;
 
 public final class ListEntity  {
 	
-	private UUID listId;
+	private UUID id;
 	private String name;
 	private ProjectEntity project;
 	private LocalDateTime creationDate;
 	
 	
 	public ListEntity() {
-		setListId(UUIDHelper.getUUIDHelper().getDefault());
+		setId(UUIDHelper.getUUIDHelper().getDefault());
 		setName(TextHelper.getDefault());
 		setProject(ProjectEntity.getDefault());
 		setCreationDate(DateTimeHelper.getDefault());
 	}
 	
-	public ListEntity(final UUID listId) {
-		setListId(listId);
+	public ListEntity(final UUID id) {
+		setId(id);
 		setName(TextHelper.getDefault());
 		setProject(ProjectEntity.getDefault());
 		setCreationDate(DateTimeHelper.getDefault());
 	}
 	
-	public  ListEntity(final UUID listId, final String name, final ProjectEntity project, final LocalDateTime creationDate) {
-		setListId(listId);
+	public  ListEntity(final UUID id, final String name, final ProjectEntity project, final LocalDateTime creationDate) {
+		setId(id);
 		setName(name);
 		setProject(project);
 		setCreationDate(creationDate);
@@ -50,12 +50,12 @@ public final class ListEntity  {
 
 	
 	
-	public UUID getListId() {
-		return listId;
+	public UUID getId() {
+		return id;
 	}
 
-	public void setListId(UUID listId) {
-		this.listId = UUIDHelper.getUUIDHelper().getDefault(listId);
+	public void setId(UUID id) {
+		this.id = UUIDHelper.getUUIDHelper().getDefault(id);
 	}
 
 	public String getName() {

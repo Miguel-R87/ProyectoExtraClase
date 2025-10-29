@@ -26,6 +26,6 @@ public final class UnitOfMeasureEntityAssembler implements EntityAssembler<UnitO
 	@Override
 	public UnitOfMeasureDomain toDomain(UnitOfMeasureEntity entity) {
 		var entityTmp = ObjectHelper.getDefault(entity, new UnitOfMeasureEntity());
-		return new UnitOfMeasureDomain(entityTmp.getUnitOfMeasureId(), entityTmp.getName(), entityTmp.getDescription());
+		return new UnitOfMeasureDomain(entityTmp.getId(), entityTmp.getName(), entityTmp.getDescription());
 	}
 }

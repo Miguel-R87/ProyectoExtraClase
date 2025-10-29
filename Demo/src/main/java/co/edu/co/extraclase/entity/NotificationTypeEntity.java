@@ -8,24 +8,24 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
 public final class NotificationTypeEntity {
 	
-	private UUID notificationTypeId;
+	private UUID id;
 	private String name;
 	private String description;
 	
 	public NotificationTypeEntity() {
-		setNotificationTypeId(UUIDHelper.getUUIDHelper().getDefault());
+		setId(UUIDHelper.getUUIDHelper().getDefault());
 		setName(TextHelper.getDefault());
 		setDescription(TextHelper.getDefault());
 	}
 	
-	public NotificationTypeEntity(final UUID notificationTypeId) {
-		setNotificationTypeId(notificationTypeId);
+	public NotificationTypeEntity(final UUID id) {
+		setId(id);
 		setName(TextHelper.getDefault());
 		setDescription(TextHelper.getDefault());
 	}
 	
-	public  NotificationTypeEntity(UUID notificationTypeId, String name, String description) {
-		setNotificationTypeId(notificationTypeId);
+	public  NotificationTypeEntity(UUID id, String name, String description) {
+		setId(id);
 		setName(name);
 		setDescription(description);
 	}
@@ -39,12 +39,12 @@ public final class NotificationTypeEntity {
 		return ObjectHelper.getDefault(notificationType, getDefault());
 	}
 
-	public UUID getNotificationTypeId() {
-		return notificationTypeId;
+	public UUID getId() {
+		return id;
 	}
 
-	public void setNotificationTypeId(UUID notificationTypeId) {
-		this.notificationTypeId = UUIDHelper.getUUIDHelper().getDefault(notificationTypeId);
+	public void setId(UUID id) {
+		this.id = UUIDHelper.getUUIDHelper().getDefault(id);
 	}
 
 	public String getName() {

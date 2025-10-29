@@ -10,7 +10,7 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
 public final class PriorityEntity {
 	
-	private UUID priorityId;
+	private UUID id;
 	private String name;
 	private String description;
 	private Integer responseTime;
@@ -18,7 +18,7 @@ public final class PriorityEntity {
 	private ColorEntity color;
 	
 	public PriorityEntity() {
-		setPriorityId(UUIDHelper.getUUIDHelper().getDefault());
+		setId(UUIDHelper.getUUIDHelper().getDefault());
 		setName(TextHelper.getDefault());
 		setDescription(TextHelper.getDefault());
 		setResponseTime(NumberHelper.getDefault());
@@ -26,8 +26,8 @@ public final class PriorityEntity {
 		setColor(ColorEntity.getDefault());
 	}
 	
-	public PriorityEntity(final UUID priorityId) {
-		setPriorityId(priorityId);
+	public PriorityEntity(final UUID id) {
+		setId(id);
 		setName(TextHelper.getDefault());
 		setDescription(TextHelper.getDefault());
 		setResponseTime(NumberHelper.getDefault());
@@ -35,9 +35,9 @@ public final class PriorityEntity {
 		setColor(ColorEntity.getDefault());
 	}
 	
-	public  PriorityEntity(UUID priorityId, String name, String description, Integer responseTime, 
-			UnitOfMeasureEntity unitOfMeasure, ColorEntity color) {
-		setPriorityId(priorityId);
+	public  PriorityEntity(UUID id, String name, String description, Integer responseTime,
+						   UnitOfMeasureEntity unitOfMeasure, ColorEntity color) {
+		setId(id);
 		setName(name);
 		setDescription(description);
 		setResponseTime(responseTime);
@@ -56,12 +56,12 @@ public final class PriorityEntity {
 		return ObjectHelper.getDefault(priority, getDefault());
 	}
 
-	public UUID getPriorityId() {
-		return priorityId;
+	public UUID getId() {
+		return id;
 	}
 
-	public void setPriorityId(UUID priorityId) {
-		this.priorityId = UUIDHelper.getUUIDHelper().getDefault(priorityId);
+	public void setId(UUID id) {
+		this.id = UUIDHelper.getUUIDHelper().getDefault(id);
 	}
 
 	public String getName() {

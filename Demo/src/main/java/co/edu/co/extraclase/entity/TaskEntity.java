@@ -11,7 +11,7 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
 public final class TaskEntity  {
 	
-	private UUID taskId;
+	private UUID id;
 	private String title;
 	private String description;
 	private LocalDateTime creationDate;
@@ -21,7 +21,7 @@ public final class TaskEntity  {
 	private PriorityEntity priority;
 	
 	public TaskEntity() {
-		setTaskId(UUIDHelper.getUUIDHelper().getDefault());
+		setId(UUIDHelper.getUUIDHelper().getDefault());
 		setTitle(TextHelper.getDefault());
 		setDescription(TextHelper.getDefault());
 		setCreationDate(DateTimeHelper.getDefault());
@@ -31,8 +31,8 @@ public final class TaskEntity  {
 		setPriority(PriorityEntity.getDefault());
 	}
 	
-	public TaskEntity(final UUID taskId) {
-		setTaskId(taskId);
+	public TaskEntity(final UUID id) {
+		setId(id);
 		setTitle(TextHelper.getDefault());
 		setDescription(TextHelper.getDefault());
 		setCreationDate(DateTimeHelper.getDefault());
@@ -42,8 +42,8 @@ public final class TaskEntity  {
 		setPriority(PriorityEntity.getDefault());
 	}
 	
-	public  TaskEntity(final UUID taskId, final String title, final String description, final LocalDateTime creationDate, final LocalDateTime expiryDate, final ListEntity list, final StatusEntity status, final PriorityEntity priority) {
-		setTaskId(taskId);
+	public  TaskEntity(final UUID id, final String title, final String description, final LocalDateTime creationDate, final LocalDateTime expiryDate, final ListEntity list, final StatusEntity status, final PriorityEntity priority) {
+		setId(id);
 		setTitle(title);
 		setDescription(description);
 		setCreationDate(creationDate);
@@ -67,12 +67,12 @@ public final class TaskEntity  {
 	
 	
 	
-	public UUID getTaskId() {
-		return taskId;
+	public UUID getId() {
+		return id;
 	}
 
-	public void setTaskId(UUID taskId) {
-		this.taskId = UUIDHelper.getUUIDHelper().getDefault(taskId);
+	public void setId(UUID id) {
+		this.id = UUIDHelper.getUUIDHelper().getDefault(id);
 	}
 
 	public String getTitle() {

@@ -37,7 +37,7 @@ public final class TaskUserEntityAssembler implements EntityAssembler<TaskUserEn
 		var entityTmp = ObjectHelper.getDefault(entity, new TaskUserEntity());
 		var projectUserDomainTmp = getProjectUserEntityAssembler().toDomain(entityTmp.getProjectUser());
 		var taskDomainTmp = getTaskEntityAssembler().toDomain(entityTmp.getTask());
-		return new TaskUserDomain(entityTmp.getTaskUserId(), projectUserDomainTmp,
+		return new TaskUserDomain(entityTmp.getId(), projectUserDomainTmp,
 		taskDomainTmp, entityTmp.getAssignmentDate(), entityTmp.getCompletionDate(), entityTmp.isCreator(), 
 		entityTmp.getComment());
 	}

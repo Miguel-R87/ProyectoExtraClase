@@ -12,7 +12,7 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
 public final class TaskUserEntity  {
 	
-	private UUID taskUserId;
+	private UUID id;
 	private ProjectUserEntity projectUser;
     private TaskEntity task;
     private LocalDateTime assignmentDate;
@@ -22,7 +22,7 @@ public final class TaskUserEntity  {
     
     
     public TaskUserEntity() {
-		setTaskUserId(UUIDHelper.getUUIDHelper().getDefault());
+		setId(UUIDHelper.getUUIDHelper().getDefault());
 		setProjectUser(ProjectUserEntity.getDefault());
 		setTask(TaskEntity.getDefault());
 		setAssignmentDate(DateTimeHelper.getDefault());
@@ -31,8 +31,8 @@ public final class TaskUserEntity  {
 		setComment(TextHelper.getDefault());
     }
     
-    public TaskUserEntity(final UUID taskUserId) {
-    	setTaskUserId(taskUserId);
+    public TaskUserEntity(final UUID id) {
+    	setId(id);
     	setProjectUser(ProjectUserEntity.getDefault());
 		setTask(TaskEntity.getDefault());
 		setAssignmentDate(DateTimeHelper.getDefault());
@@ -41,10 +41,10 @@ public final class TaskUserEntity  {
 		setComment(TextHelper.getDefault());
     }
     
-    public  TaskUserEntity(final UUID taskUserId, final ProjectUserEntity projectUser, final TaskEntity task, 
-    		final LocalDateTime assignmentDate, final LocalDateTime completionDate, final boolean isCreator, 
-    		final String comment) {
-		setTaskUserId(taskUserId);
+    public  TaskUserEntity(final UUID id, final ProjectUserEntity projectUser, final TaskEntity task,
+						   final LocalDateTime assignmentDate, final LocalDateTime completionDate, final boolean isCreator,
+						   final String comment) {
+		setId(id);
 		setProjectUser(projectUser);
 		setTask(task);
 		setAssignmentDate(assignmentDate);
@@ -68,12 +68,12 @@ public final class TaskUserEntity  {
     
     
     
-	public UUID getTaskUserId() {
-		return taskUserId;
+	public UUID getId() {
+		return id;
 	}
 
-	public void setTaskUserId(UUID taskUserId) {
-		this.taskUserId = UUIDHelper.getUUIDHelper().getDefault(taskUserId);
+	public void setId(UUID id) {
+		this.id = UUIDHelper.getUUIDHelper().getDefault(id);
 	}
 
 	public ProjectUserEntity getProjectUser() {

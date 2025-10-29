@@ -32,7 +32,7 @@ public final class ProjectEntityAssembler implements EntityAssembler<ProjectEnti
 	public ProjectDomain toDomain(ProjectEntity entity) {
 		var entityTmp = ObjectHelper.getDefault(entity, new ProjectEntity());
 		var projectStatusDomainTmp = getProjectStatusEntityAssembler().toDomain(entity.getProjectStatus());
-		return new ProjectDomain(entityTmp.getProjectId(), entityTmp.getName(), entityTmp.getDescription(),
+		return new ProjectDomain(entityTmp.getId(), entityTmp.getName(), entityTmp.getDescription(),
 		entityTmp.getCreationDate(), projectStatusDomainTmp);
 	}
 }

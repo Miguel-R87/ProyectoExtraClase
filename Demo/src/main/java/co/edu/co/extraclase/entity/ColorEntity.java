@@ -8,25 +8,25 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
 public final class ColorEntity  {
 	
-	private UUID colorId;
+	private UUID id;
 	private String name;
 	private String hexCode;
 	
 	
 	public ColorEntity() {
-		setColorId(UUIDHelper.getUUIDHelper().getDefault());
+		setId(UUIDHelper.getUUIDHelper().getDefault());
 		setName(TextHelper.getDefault());
 		setHexCode(TextHelper.getDefault());
 	}
 	
-	public ColorEntity(final UUID colorId) {
-		setColorId(colorId);
+	public ColorEntity(final UUID id) {
+		setId(id);
 		setName(TextHelper.getDefault());
 		setHexCode(TextHelper.getDefault());
 	}
 	
-	public  ColorEntity(UUID colorId, String name, String hexCode) {
-		setColorId(colorId);
+	public  ColorEntity(UUID id, String name, String hexCode) {
+		setId(id);
 		setName(name);
 		setHexCode(hexCode);
 	}
@@ -43,12 +43,12 @@ public final class ColorEntity  {
 	
 	
 
-	public UUID getColorId() {
-		return colorId;
+	public UUID getId() {
+		return id;
 	}
 
-	public void setColorId(UUID colorId) {
-		this.colorId = UUIDHelper.getUUIDHelper().getDefault(colorId);
+	public void setId(UUID id) {
+		this.id = UUIDHelper.getUUIDHelper().getDefault(id);
 	}
 
 	public String getName() {

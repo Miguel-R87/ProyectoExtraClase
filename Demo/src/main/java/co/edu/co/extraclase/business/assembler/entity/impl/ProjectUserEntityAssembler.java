@@ -34,7 +34,7 @@ public final class ProjectUserEntityAssembler implements EntityAssembler<Project
 		var entityTmp = ObjectHelper.getDefault(entity, new ProjectUserEntity());
 		var userDomainTmp = getUserEntityAssembler().toDomain(entityTmp.getUser());
 		var projectDomainTmp = getProjectEntityAssembler().toDomain(entityTmp.getProject());
-		return new ProjectUserDomain(entityTmp.getProjectUserId(), userDomainTmp, projectDomainTmp, entityTmp.isAdmin(), 
+		return new ProjectUserDomain(entityTmp.getId(), userDomainTmp, projectDomainTmp, entityTmp.isAdmin(),
 		entityTmp.getEntryDate(), entityTmp.getExpiryDate());
 	}
 }

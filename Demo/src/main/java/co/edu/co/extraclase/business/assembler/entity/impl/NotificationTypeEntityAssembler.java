@@ -26,6 +26,6 @@ public final class NotificationTypeEntityAssembler implements EntityAssembler<No
 	@Override
 	public NotificationTypeDomain toDomain(NotificationTypeEntity entity) {
 		var entityTmp = ObjectHelper.getDefault(entity, new NotificationTypeEntity());
-		return new NotificationTypeDomain(entityTmp.getNotificationTypeId(), entityTmp.getName(), entityTmp.getDescription());
+		return new NotificationTypeDomain(entityTmp.getId(), entityTmp.getName(), entityTmp.getDescription());
 	}
 }

@@ -31,6 +31,6 @@ public final class ListEntityAssembler implements EntityAssembler<ListEntity, Li
 	public ListDomain toDomain(ListEntity entity) {
 		var entityTmp = ObjectHelper.getDefault(entity, new ListEntity());
 		var projectDomainTmp = getProjectEntityAssembler().toDomain(entityTmp.getProject());
-		return new ListDomain(entityTmp.getListId(), entityTmp.getName(), projectDomainTmp, entityTmp.getCreationDate());
+		return new ListDomain(entityTmp.getId(), entityTmp.getName(), projectDomainTmp, entityTmp.getCreationDate());
 	}
 }

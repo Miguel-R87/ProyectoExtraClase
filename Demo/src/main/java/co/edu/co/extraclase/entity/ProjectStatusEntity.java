@@ -8,24 +8,24 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
 public final class ProjectStatusEntity  {
 	
-	private UUID projectStatusId;
+	private UUID id;
 	private String name;
 	private String description;
 	
 	public ProjectStatusEntity() {
-		setProjectStatusId(UUIDHelper.getUUIDHelper().getDefault());
+		setId(UUIDHelper.getUUIDHelper().getDefault());
 		setName(TextHelper.getDefault());
 		setDescription(TextHelper.getDefault());
 	}
 	
-	public ProjectStatusEntity(final UUID projectStatusId) {
-		setProjectStatusId(projectStatusId);
+	public ProjectStatusEntity(final UUID id) {
+		setId(id);
 		setName(TextHelper.getDefault());
 		setDescription(TextHelper.getDefault());
 	}
 	
-	public  ProjectStatusEntity(UUID projectStatusId, String name, String description) {
-		setProjectStatusId(projectStatusId);
+	public  ProjectStatusEntity(UUID id, String name, String description) {
+		setId(id);
 		setName(name);
 		setDescription(description);
 	}
@@ -38,12 +38,12 @@ public final class ProjectStatusEntity  {
 		return ObjectHelper.getDefault(projectStatus, getDefault());
 	}
 
-	public UUID getProjectStatusId() {
-		return projectStatusId;
+	public UUID getId() {
+		return id;
 	}
 
-	public void setProjectStatusId(UUID projectStatusId) {
-		this.projectStatusId = UUIDHelper.getUUIDHelper().getDefault(projectStatusId);
+	public void setId(UUID id) {
+		this.id = UUIDHelper.getUUIDHelper().getDefault(id);
 	}
 
 	public String getName() {

@@ -25,6 +25,6 @@ public final class ColorEntityAssembler implements EntityAssembler<ColorEntity, 
 	@Override
 	public ColorDomain toDomain(ColorEntity entity) {
 		var entityTmp = ObjectHelper.getDefault(entity, new ColorEntity());
-		return new ColorDomain(entityTmp.getColorId(), entityTmp.getName(), entityTmp.getHexCode());
+		return new ColorDomain(entityTmp.getId(), entityTmp.getName(), entityTmp.getHexCode());
 	}
 }

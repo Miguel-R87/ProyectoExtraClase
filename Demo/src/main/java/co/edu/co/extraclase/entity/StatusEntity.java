@@ -9,27 +9,27 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
 public final class StatusEntity  {
 	
-	private UUID statusId;
+	private UUID id;
 	private String name;
 	private String description;
 	private ColorEntity color;
 	
 	public StatusEntity() {
-		setStatusId(UUIDHelper.getUUIDHelper().getDefault());
+		setId(UUIDHelper.getUUIDHelper().getDefault());
 		setName(TextHelper.getDefault());
 		setDescription(TextHelper.getDefault());
 		setColor(ColorEntity.getDefault());
 	}
 	
-	public StatusEntity(final UUID statusId) {
-		setStatusId(statusId);
+	public StatusEntity(final UUID id) {
+		setId(id);
 		setName(TextHelper.getDefault());
 		setDescription(TextHelper.getDefault());
 		setColor(ColorEntity.getDefault());
 	}
 	
-	public  StatusEntity(UUID statusId, String name, String description, ColorEntity color) {
-		setStatusId(statusId);
+	public  StatusEntity(UUID id, String name, String description, ColorEntity color) {
+		setId(id);
 		setName(name);
 		setDescription(description);
 		setColor(color);
@@ -48,12 +48,12 @@ public final class StatusEntity  {
 
 	
 	
-	public UUID getStatusId() {
-		return statusId;
+	public UUID getId() {
+		return id;
 	}
 
-	public void setStatusId(UUID statusId) {
-		this.statusId = UUIDHelper.getUUIDHelper().getDefault(statusId);
+	public void setId(UUID id) {
+		this.id = UUIDHelper.getUUIDHelper().getDefault(id);
 	}
 
 	public String getName() {

@@ -11,7 +11,7 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
 public final class UserEntity  {
 	
-	private UUID userId;
+	private UUID id;
 	private String firstName;
     private String lastName;
     private String username;
@@ -26,7 +26,7 @@ public final class UserEntity  {
 	
 	
     public UserEntity() {
-    	setUserId(UUIDHelper.getUUIDHelper().getDefault());
+    	setId(UUIDHelper.getUUIDHelper().getDefault());
     	setFirstName(TextHelper.getDefault());
     	setLastName(TextHelper.getDefault());
     	setUsername(TextHelper.getDefault());
@@ -40,7 +40,7 @@ public final class UserEntity  {
     }
     
     public UserEntity(final UUID id) {
-    	setUserId(id);
+    	setId(id);
     	setFirstName(TextHelper.getDefault());
     	setLastName(TextHelper.getDefault());
     	setUsername(TextHelper.getDefault());
@@ -54,10 +54,10 @@ public final class UserEntity  {
     }
     
 
-    public  UserEntity(UUID userId, String firstName, String lastName, String username, String email,
- boolean emailConfirmation, LocalDateTime registrationDate, String passwordHash, boolean accountStatus,
- boolean isSuperUser, boolean superUserConfirmation) {
-		setUserId(userId);
+    public  UserEntity(UUID id, String firstName, String lastName, String username, String email,
+					   boolean emailConfirmation, LocalDateTime registrationDate, String passwordHash, boolean accountStatus,
+					   boolean isSuperUser, boolean superUserConfirmation) {
+		setId(id);
 		setFirstName(firstName);
 		setLastName(lastName);
 		setUsername(username);
@@ -82,12 +82,12 @@ public final class UserEntity  {
 
 	
 	
-	public UUID getUserId() {
-		return userId;
+	public UUID getId() {
+		return id;
 	}
 
-	public void setUserId(UUID userId) {
-		this.userId = UUIDHelper.getUUIDHelper().getDefault(userId);
+	public void setId(UUID id) {
+		this.id = UUIDHelper.getUUIDHelper().getDefault(id);
 	}
 
 	public String getFirstName() {

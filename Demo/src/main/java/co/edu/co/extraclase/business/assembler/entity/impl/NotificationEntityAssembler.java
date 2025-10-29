@@ -34,7 +34,7 @@ public class NotificationEntityAssembler implements EntityAssembler<Notification
 		var entityTmp = ObjectHelper.getDefault(entity, new NotificationEntity());
 		var taskUserDomainTmp = getTaskUserEntityAssembler().toDomain(entityTmp.getTaskUser());
 		var notificationTypeDomainTmp = getNotificationTypeEntityAssembler().toDomain(entityTmp.getNotificationType());
-		return new NotificationDomain(entityTmp.getNotificationId(), taskUserDomainTmp, entityTmp.getMessage(), entityTmp.getTriggerDate(), 
+		return new NotificationDomain(entityTmp.getId(), taskUserDomainTmp, entityTmp.getMessage(), entityTmp.getTriggerDate(),
 		notificationTypeDomainTmp);
 	}
 }

@@ -11,7 +11,7 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
 public final class NotificationEntity  {
 	
-	private UUID notificationId;
+	private UUID id;
 	private TaskUserEntity taskUser;
     private String message;
     private LocalDateTime triggerDate;
@@ -19,23 +19,23 @@ public final class NotificationEntity  {
     
     
     public NotificationEntity() {
-    	setNotificationId(UUIDHelper.getUUIDHelper().getDefault());
+    	setId(UUIDHelper.getUUIDHelper().getDefault());
     	setTaskUser(TaskUserEntity.getDefault());
     	setMessage(TextHelper.getDefault());
     	setTriggerDate(DateTimeHelper.getDefault());
     	setNotificationType(NotificationTypeEntity.getDefault());
     }
     
-    public NotificationEntity(final UUID notificationId) {
-		setNotificationId(notificationId);
+    public NotificationEntity(final UUID id) {
+		setId(id);
 		setTaskUser(TaskUserEntity.getDefault());
 		setMessage(TextHelper.getDefault());
 		setTriggerDate(DateTimeHelper.getDefault());
 		setNotificationType(NotificationTypeEntity.getDefault());
 	}
     
-    public  NotificationEntity(final UUID notificationId, final TaskUserEntity taskUser, final String message, final LocalDateTime triggerDate, final NotificationTypeEntity notificationType) {
-    	setNotificationId(notificationId);
+    public  NotificationEntity(final UUID id, final TaskUserEntity taskUser, final String message, final LocalDateTime triggerDate, final NotificationTypeEntity notificationType) {
+    	setId(id);
     	setTaskUser(taskUser);
     	setMessage(message);
     	setTriggerDate(triggerDate);
@@ -56,12 +56,12 @@ public final class NotificationEntity  {
     
     
     
-	public UUID getNotificationId() {
-		return notificationId;
+	public UUID getId() {
+		return id;
 	}
 
-	public void setNotificationId(UUID notificationId) {
-		this.notificationId = UUIDHelper.getUUIDHelper().getDefault(notificationId);
+	public void setId(UUID id) {
+		this.id = UUIDHelper.getUUIDHelper().getDefault(id);
 	}
 
 	public TaskUserEntity getTaskUser() {

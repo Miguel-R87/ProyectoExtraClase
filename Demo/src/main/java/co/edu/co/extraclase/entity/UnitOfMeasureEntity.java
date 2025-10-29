@@ -8,25 +8,25 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
 public final class UnitOfMeasureEntity  {
 	
-	private UUID unitOfMeasureId;
+	private UUID id;
 	private String name;
 	private String description;
 	
 	
 	public UnitOfMeasureEntity() {
-		setUnitOfMeasureId(UUIDHelper.getUUIDHelper().getDefault());
+		setId(UUIDHelper.getUUIDHelper().getDefault());
 		setName(TextHelper.getDefault());
 		setDescription(TextHelper.getDefault());
 	}
 	
-	public UnitOfMeasureEntity(final UUID unitOfMeasureId) {
-		setUnitOfMeasureId(unitOfMeasureId);
+	public UnitOfMeasureEntity(final UUID id) {
+		setId(id);
 		setName(TextHelper.getDefault());
 		setDescription(TextHelper.getDefault());
 	}
 	
-	public  UnitOfMeasureEntity(UUID unitOfMeasureId, String name, String description) {
-		setUnitOfMeasureId(unitOfMeasureId);
+	public  UnitOfMeasureEntity(UUID id, String name, String description) {
+		setId(id);
 		setName(name);
 		setDescription(description);
 	}
@@ -40,12 +40,12 @@ public final class UnitOfMeasureEntity  {
 		return ObjectHelper.getDefault(unitOfMeasure, getDefault());
 	}
 
-	public UUID getUnitOfMeasureId() {
-		return unitOfMeasureId;
+	public UUID getId() {
+		return id;
 	}
 
-	public void setUnitOfMeasureId(UUID unitOfMeasureId) {
-		this.unitOfMeasureId = UUIDHelper.getUUIDHelper().getDefault(unitOfMeasureId);
+	public void setId(UUID id) {
+		this.id = UUIDHelper.getUUIDHelper().getDefault(id);
 	}
 
 	public String getName() {

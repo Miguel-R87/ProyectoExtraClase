@@ -38,9 +38,9 @@ public class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUserDAO{
 		sql.append("SELECT ?, ?, ?, ?, ?, ?, ? ");
 		
         try (var preparedStatement = this.getConnection().prepareStatement(sql.toString())) {
-        	preparedStatement.setObject(1, entity.getTaskUserId());
-        	preparedStatement.setObject(2, entity.getProjectUser().getProjectUserId());
-        	preparedStatement.setObject(3, entity.getTask().getTaskId());
+        	preparedStatement.setObject(1, entity.getId());
+        	preparedStatement.setObject(2, entity.getProjectUser().getId());
+        	preparedStatement.setObject(3, entity.getTask().getId());
         	preparedStatement.setObject(4, entity.getAssignmentDate());
         	preparedStatement.setObject(5, entity.getCompletionDate());
         	preparedStatement.setBoolean(6, entity.isCreator());
@@ -125,16 +125,16 @@ public class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUserDAO{
 		final var conditions = new ArrayList<String>();
 		
 		addCondition(conditions, parameList,
-		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getTaskUserId()), "ut.usuarioTareaId = ? ",
-		filterEntityValidated.getTaskUserId());
+		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getId()), "ut.usuarioTareaId = ? ",
+		filterEntityValidated.getId());
 		
 		addCondition(conditions, parameList,
-		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getProjectUser().getProjectUserId()), "up.usuarioProyectoId = ? ",
-		filterEntityValidated.getProjectUser().getProjectUserId());
+		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getProjectUser().getId()), "up.usuarioProyectoId = ? ",
+		filterEntityValidated.getProjectUser().getId());
 		
 		addCondition(conditions, parameList,
-		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getTask().getTaskId()), "t.tareaId = ? ",
-		filterEntityValidated.getTask().getTaskId());
+		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getTask().getId()), "t.tareaId = ? ",
+		filterEntityValidated.getTask().getId());
 		
 		addCondition(conditions, parameList,
 		!DateTimeHelper.isDefaultDate(filterEntityValidated.getAssignmentDate()), "ut.fechaAsigancion = ? ",
@@ -174,22 +174,22 @@ public class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUserDAO{
 			
 			while (resultSet.next()) {
 				var projectUser = new ProjectUserEntity();
-                projectUser.setProjectUserId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("usuarioProyectoId")));
+                projectUser.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("usuarioProyectoId")));
 
                 var project = new ProjectEntity();
-                project.setProjectId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("proyectoId")));
+                project.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("proyectoId")));
                 project.setName(resultSet.getString("nombreProyecto"));
 
                 var user = new UserEntity();
-                user.setUserId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("usuarioId")));
+                user.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("usuarioId")));
                 user.setFirstName(resultSet.getString("nombreUsuario"));
 
                 var task = new TaskEntity();
-                task.setTaskId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("tareaId")));
+                task.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("tareaId")));
                 task.setTitle(resultSet.getString("nombreTarea"));
 
                 var taskUser = new TaskUserEntity();
-                taskUser.setTaskUserId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("usuarioTareaId")));
+                taskUser.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("usuarioTareaId")));
                 taskUser.setProjectUser(projectUser);
                 taskUser.setTask(task);
                 taskUser.setAssignmentDate(resultSet.getTimestamp("fechaAsignacion").toLocalDateTime());
@@ -237,7 +237,7 @@ public class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUserDAO{
 			
 		
 		 try (var preparedStatement = this.getConnection().prepareStatement(sql.toString())) {
-	        	preparedStatement.setObject(1, entity.getTaskUserId());
+	        	preparedStatement.setObject(1, entity.getId());
 	        	preparedStatement.setObject(2, entity.getProjectUser());
 	        	preparedStatement.setObject(3, entity.getTask());
 	        	preparedStatement.setObject(4, entity.getAssignmentDate());

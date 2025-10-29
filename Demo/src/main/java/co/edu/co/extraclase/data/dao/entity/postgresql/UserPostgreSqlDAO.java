@@ -35,7 +35,7 @@ public class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
         sql.append("SELECT ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?");
         
         try (var preparedStatement = this.getConnection().prepareStatement(sql.toString())) {
-            preparedStatement.setObject(1, entity.getUserId());
+            preparedStatement.setObject(1, entity.getId());
             preparedStatement.setString(2, entity.getFirstName());
             preparedStatement.setString(3, entity.getLastName());
             preparedStatement.setString(4, entity.getUsername());
@@ -83,7 +83,7 @@ public class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
 			
 		
 		try (var preparedStatement = this.getConnection().prepareStatement(sql.toString())) {
-            preparedStatement.setObject(1, entity.getUserId());
+            preparedStatement.setObject(1, entity.getId());
             preparedStatement.setString(2, entity.getFirstName());
             preparedStatement.setString(3, entity.getLastName());
             preparedStatement.setString(4, entity.getUsername());
@@ -170,8 +170,8 @@ public class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
 		final var conditions = new ArrayList<String>();
 
 		addCondition(conditions, parameterList,
-		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getUserId()), "u.usuarioId = ? ",
-		filterEntityValidated.getUserId());
+		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getId()), "u.usuarioId = ? ",
+		filterEntityValidated.getId());
 		
 		addCondition(conditions, parameterList,
 		!TextHelper.isEmptyWithTrim(filterEntityValidated.getFirstName()), "u.primerNombre = ? ",
@@ -236,7 +236,7 @@ private List<UserEntity> executeSentenceFindByFilter(final PreparedStatement pre
 			
 			while (resultSet.next()) {
 				var user = new UserEntity();
-				user.setUserId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("usuarioId")));
+				user.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("usuarioId")));
             	user.setFirstName(resultSet.getString("primerNombre"));
             	user.setLastName(resultSet.getString("apellido"));
             	user.setUsername(resultSet.getString("nombreUsuario"));

@@ -28,7 +28,7 @@ public final class UserEntityAssembler implements EntityAssembler<UserEntity, Us
 	@Override
 	public UserDomain toDomain(UserEntity entity) {
 		var entityTmp =  ObjectHelper.getDefault(entity, new UserEntity());
-		return new UserDomain(entityTmp.getUserId(), entityTmp.getFirstName(), entityTmp.getLastName(), entityTmp.getUsername(),
+		return new UserDomain(entityTmp.getId(), entityTmp.getFirstName(), entityTmp.getLastName(), entityTmp.getUsername(),
 		entityTmp.getEmail(), entityTmp.EmailConfirmation(), entityTmp.getRegistrationDate(), entityTmp.getPasswordHash(), 
 		entityTmp.AccountStatus(), entityTmp.SuperUser(), entityTmp.SuperUserConfirmation());
 	}

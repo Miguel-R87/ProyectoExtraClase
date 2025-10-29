@@ -30,6 +30,6 @@ public final class StatusEntityAssembler implements EntityAssembler<StatusEntity
 	public StatusDomain toDomain(StatusEntity entity) {
 		var entityTmp = ObjectHelper.getDefault(entity, new StatusEntity());
 		var colorDomainTmp = getColorEntityAssembler().toDomain(entityTmp.getColor());
-		return new StatusDomain(entityTmp.getStatusId(), entityTmp.getName(), entityTmp.getDescription(), colorDomainTmp);
+		return new StatusDomain(entityTmp.getId(), entityTmp.getName(), entityTmp.getDescription(), colorDomainTmp);
 	}
 }

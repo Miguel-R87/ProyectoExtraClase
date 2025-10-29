@@ -75,8 +75,8 @@ public class UnitOfMeasurePostgreSqlDAO extends SqlConnection implements UnitOfM
 		final var conditions = new ArrayList<String>();
 		
 		addCondition(conditions, parameterList,
-		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getUnitOfMeasureId()), "udm.unidadMedidaId = ?",
-		filterEntityValidated.getUnitOfMeasureId());
+		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getId()), "udm.unidadMedidaId = ?",
+		filterEntityValidated.getId());
 		
 		addCondition(conditions, parameterList,
 		!TextHelper.isEmptyWithTrim(filterEntityValidated.getName()), "udm.nombre = ?",
@@ -107,7 +107,7 @@ public class UnitOfMeasurePostgreSqlDAO extends SqlConnection implements UnitOfM
 			
 			while (resultSet.next()) {
 				var unitOfMeasure = new UnitOfMeasureEntity();
-				unitOfMeasure.setUnitOfMeasureId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("unidadMedidaId")));
+				unitOfMeasure.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("unidadMedidaId")));
 				unitOfMeasure.setName(resultSet.getString("nombre"));
 				unitOfMeasure.setDescription(resultSet.getString("descripcion"));
 				
