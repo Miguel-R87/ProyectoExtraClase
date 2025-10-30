@@ -12,25 +12,21 @@ public class StatusPostgreSqlDAO extends SqlConnection implements StatusDAO{
 
 	public StatusPostgreSqlDAO(Connection connection) {
 		super(connection);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public List<StatusEntity> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return findByFilter(new StatusEntity());
 	}
 
 	@Override
 	public List<StatusEntity> findByFilter(StatusEntity filterEntity) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public StatusEntity findById(UUID id) {
-		// TODO Auto-generated method stub
-		return null;
+		return findByFilter(new StatusEntity()).stream().findFirst().orElse(new StatusEntity());
 	}
 
 }

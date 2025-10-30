@@ -30,7 +30,7 @@ public class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
         SqlConnectionHelper.ensureTransactionIsStarted(getConnection());
         
         final var sql = new StringBuilder();
-        sql.append("INSERT INTO \"Usario\" (");
+        sql.append("INSERT INTO \"Usuario\" (");
         sql.append("\"usuarioId\", ");
         sql.append("\"primerNombre\", ");
         sql.append("\"apellido\", ");
@@ -78,7 +78,7 @@ public class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
 		SqlConnectionHelper.ensureTransactionIsStarted(getConnection());
 		
 		final var sql = new StringBuilder();
-		sql.append("UPDATE \"Usario\" ");
+		sql.append("UPDATE \"Usuario\" ");
 		sql.append("SET \"usarioId\" = ?, ");
 		sql.append("    \"primerNombre\" = ?, ");
 		sql.append("    \"apellido\" = ?, ");
@@ -158,18 +158,18 @@ public class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
 		final var sql = new StringBuilder();
 			
 		sql.append("SELECT ");
-		sql.append("\"u.usuarioId\" AS usuarioId , ");
-		sql.append("\"u.primerNombre\" , ");
-		sql.append("\"u.apellido\" , ");
-		sql.append("\"u.nombreUsuario\" , ");
-		sql.append("\"u.email\" , ");
-		sql.append("\"u.confirmacionEmail\" , ");
-		sql.append("\"u.fechaRegistro\" , ");
-		sql.append("\"u.passwordHash\" , ");
-		sql.append("\"u.estado\" , ");
-		sql.append("\"u.esSuperUsuario\" , ");
-		sql.append("\"u.confirmacionSuperUsuario\" ");
-		sql.append("FROM \"Usuario\" ");
+		sql.append("\"usuarioId\" , ");
+		sql.append("\"primerNombre\" , ");
+		sql.append("\"apellido\" , ");
+		sql.append("\"nombreUsuario\" , ");
+		sql.append("\"email\" , ");
+		sql.append("\"confirmacionEmail\" , ");
+		sql.append("\"fechaRegistro\" , ");
+		sql.append("\"passwordHash\" , ");
+		sql.append("\"estado\" , ");
+		sql.append("\"esSuperUsuario\" , ");
+		sql.append("\"confirmacionSuperUsuario\" ");
+		sql.append("FROM \"Usuario\"  ");
 		
         createWhereClauseFindByFilter(sql, parameterList, filterEntity);
         
@@ -181,47 +181,47 @@ public class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
 		final var conditions = new ArrayList<String>();
 
 		addCondition(conditions, parameterList,
-		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getId()), "\"u.usuarioId\" = ? ",
+		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getId()), "\"usuarioId\" = ? ",
 		filterEntityValidated.getId());
 		
 		addCondition(conditions, parameterList,
-		!TextHelper.isEmptyWithTrim(filterEntityValidated.getFirstName()), "\"u.primerNombre\" = ? ",
+		!TextHelper.isEmptyWithTrim(filterEntityValidated.getFirstName()), "\"primerNombre\" = ? ",
 		filterEntityValidated.getFirstName());
 		
 		addCondition(conditions, parameterList,
-		!TextHelper.isEmptyWithTrim(filterEntityValidated.getLastName()), "\"u.apellido\" = ? ",
+		!TextHelper.isEmptyWithTrim(filterEntityValidated.getLastName()), "\"apellido\" = ? ",
 		filterEntityValidated.getLastName());
 		
 		addCondition(conditions, parameterList,
-		!TextHelper.isEmptyWithTrim(filterEntityValidated.getUsername()), "\"u.nombreUsuario\" = ? ",
+		!TextHelper.isEmptyWithTrim(filterEntityValidated.getUsername()), "\"nombreUsuario\" = ? ",
 		filterEntityValidated.getUsername());
 		
 		addCondition(conditions, parameterList,
-		!TextHelper.isEmptyWithTrim(filterEntityValidated.getEmail()), "\"u.email\" = ? ",
+		!TextHelper.isEmptyWithTrim(filterEntityValidated.getEmail()), "\"email\" = ? ",
 		filterEntityValidated.getEmail());
 		
 		addCondition(conditions, parameterList,
-		filterEntityValidated.isEmailConfirmation(), "\"u.confirmacionEmail\" = ? ",
+		filterEntityValidated.isEmailConfirmation(), "\"confirmacionEmail\" = ? ",
 		filterEntityValidated.isEmailConfirmation());
 		
 		addCondition(conditions, parameterList,
-		!DateTimeHelper.isDefaultDate(filterEntityValidated.getRegistrationDate()), "\"u.fechaRegistro\" = ? ",
+		!DateTimeHelper.isDefaultDate(filterEntityValidated.getRegistrationDate()), "\"fechaRegistro\" = ? ",
 		filterEntityValidated.getRegistrationDate());
 		
 		addCondition(conditions, parameterList,
-		!TextHelper.isEmptyWithTrim(filterEntityValidated.getPasswordHash()), "\"u.passwordHash\" = ? ",
+		!TextHelper.isEmptyWithTrim(filterEntityValidated.getPasswordHash()), "\"passwordHash\" = ? ",
 		filterEntityValidated.getPasswordHash());
 		
 		addCondition(conditions, parameterList,
-		!filterEntityValidated.isAccountStatus(), "\"u.estado\" = ? ",
+		!filterEntityValidated.isAccountStatus(), "\"estado\" = ? ",
 		filterEntityValidated.isAccountStatus());
 		
 		addCondition(conditions, parameterList,
-		!filterEntityValidated.isSuperUser(), "\"u.esSuperUsuario\" = ? ",
+		!filterEntityValidated.isSuperUser(), "\"esSuperUsuario\" = ? ",
 		filterEntityValidated.isSuperUser());
 		
 		addCondition(conditions, parameterList,
-		!filterEntityValidated.isSuperUserConfirmation(), "\"u.confirmacionSuperUsuario\" = ? ",
+		!filterEntityValidated.isSuperUserConfirmation(), "\"confirmacionSuperUsuario\" = ? ",
 		filterEntityValidated.isSuperUserConfirmation());
 		
 		if (!conditions.isEmpty()) {
@@ -253,11 +253,15 @@ private List<UserEntity> executeSentenceFindByFilter(final PreparedStatement pre
             	user.setUsername(resultSet.getString("nombreUsuario"));
             	user.setEmail(resultSet.getString("email"));
             	user.setEmailConfirmation(resultSet.getBoolean("confirmacionEmail"));
-            	user.setRegistrationDate((LocalDateTime) resultSet.getObject("fechaRegistro"));
+            	java.sql.Date sqlDate = resultSet.getDate("fechaRegistro");
+            	if (sqlDate != null) {
+            	    user.setRegistrationDate(sqlDate.toLocalDate().atStartOfDay());
+            	}
+
             	user.setPasswordHash(resultSet.getString("passwordHash"));
             	user.setAccountStatus(resultSet.getBoolean("estado"));
             	user.setSuperUser(resultSet.getBoolean("esSuperUsuario"));
-            	user.setSuperUserConfirmation(resultSet.getBoolean("confirmacionSuoerUsuario"));
+            	user.setSuperUserConfirmation(resultSet.getBoolean("confirmacionSuperUsuario"));
             	
 				listState.add(user);
 

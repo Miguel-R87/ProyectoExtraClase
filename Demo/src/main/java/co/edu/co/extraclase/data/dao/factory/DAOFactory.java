@@ -26,16 +26,19 @@ public abstract class DAOFactory {
     protected Connection connection;
     protected static FactoryEnum factory = FactoryEnum.POSTGRESQL;
 
-    public static PostgreSqlDAOFactory getFactory() {
+    public static DAOFactory getFactory() {
     	
-    	if (FactoryEnum.POSTGRESQL.equals(factory)) {
-    		return new PostgreSqlDAOFactory(); 
-		}else {
-			var userMessage = MessagesEnum.USER_ERROR_SQL_CONNECTION_SQL_EXCEPTION_VALIDATING_TRANSACTION_IS_NOT_STARTED.getContent();
-			var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SQL_CONNECTION_SQL_EXCEPTION_VALIDATING_TRANSACTION_IS_NOT_STARTED.getContent();
+    	switch(factory) {
+		case POSTGRESQL:{
+			return new PostgreSqlDAOFactory();
+		}
+		default:
+			var userMessage = "";
+			var technicalMessage = "";
 			throw ExtraClaseException.create(userMessage, technicalMessage);
 		}
-    }
+    	
+	}
     
     
     
@@ -89,7 +92,7 @@ public abstract class DAOFactory {
     	SqlConnectionHelper.ensureTransactionIsStarted(connection);
 
         try{
-            connection.setAutoCommit(false);
+            connection.commit();
         } catch (final SQLException exception){
             var userMessage = MessagesEnum.USER_ERROR_SQL_CONNECTION_SQL_EXCEPTION_VALIDATING_TRANSACTION_IS_STARTED.getContent();
             var techincalMessage = MessagesEnum.TECHNICAL_ERROR_SQL_CONNECTION_SQL_EXCEPTION_VALIDATING_TRANSACTION_IS_STARTED.getContent();

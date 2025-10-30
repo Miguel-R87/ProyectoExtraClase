@@ -108,7 +108,7 @@ public class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUserDAO{
 		sql.append("\"up.usuarioProyectoId\" AS usuarioProyectoId, ");
 		sql.append("\"up.usuario\" AS usuario, ");
 		sql.append("\"up.proyecto\" AS proyecto, ");
-		sql.append("\"up.esAdmind\" AS esAdmin, ");
+		sql.append("\"up.esAdmin\" AS esAdmin, ");
 		sql.append("\"up.fechaEntrada\" AS fechaEntrada, ");
 		sql.append("\"up.fechaSalida\" AS fechaSalida, ");
 		        
@@ -119,7 +119,7 @@ public class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUserDAO{
 		sql.append("\"u.email\" AS email, ");
 		sql.append("\"u.confirmacionEmail\" AS confirmacionEmail, ");
 		sql.append("\"u.fechaRegistro\" AS fechaRegistro, ");
-		sql.append("\"u.passwordHash\" AS passworddHash, ");
+		sql.append("\"u.passwordHash\" AS passwordHash, ");
 		sql.append("\"u.estado\" AS estadoUsuario, ");
 		sql.append("\"u.esSuperUsuario\" AS esSuperUsuario, ");
 		sql.append("\"u.confirmacionSuperUsuario\" AS confirmacionSuperUsuario, ");
@@ -168,22 +168,24 @@ public class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUserDAO{
 		sql.append("\"udm.nombre\" AS nombreUnidadMedida, ");
 		sql.append("\"udm.descripcion\" AS descripcionUnidadMedida, ");
 		        
+		sql.append("\"ut.usuarioProyecto\", ");
+		sql.append("\"ut.tarea\", ");
 		sql.append("\"ut.fechaAsignacion\", ");
 		sql.append("\"ut.fechaFinalizacion\", ");
 		sql.append("\"ut.esCreador\", ");
 		sql.append("\"ut.comentario\" ");
 
 		sql.append("FROM \"UsuarioTarea\" tu ");
-		sql.append("INNER JOIN \"UsuarioProyecto\" pu ON \"tu.usuarioProyecto\" = \"pu.usuarioProyectoId\" ");
-		sql.append("INNER JOIN \"Tarea\" t ON \"tu.tarea\" = \"t.tareaId\" ");
+		sql.append("INNER JOIN \"UsuarioProyecto\" up ON \"tu.usuarioProyectoId\" = \"up.usuarioProyectoId\" ");
+		sql.append("INNER JOIN \"Tarea\" t ON \"tu.tareaId\" = \"t.tareaId\" ");
 		sql.append("INNER JOIN \"Lista\" l ON \"l.listaId\" = \"t.listaId\" ");
 		sql.append("INNER JOIN \"Estado\" e ON \"e.estadoId\" = \"t.estadoId\" ");
 		sql.append("INNER JOIN \"Color\" c ON \"c.colorId\" = \"e.colorId\" ");
 		sql.append("INNER JOIN \"Prioridad\" pr ON \"pr.prioridadId\" = \"t.prioridadId\" ");
-		sql.append("INNER JOIN \"UnidadMedida\" udm ON \"um.unidadMedidaId\" = \"pr.unidadMedidaId\" ");
-		sql.append("INNER JOIN \"Proyecto\" p ON \"pu.proyecto\" = \"p.proyectoId\" ");
+		sql.append("INNER JOIN \"UnidadMedida\" udm ON \"udm.unidadMedidaId\" = \"pr.unidadMedidaId\" ");
+		sql.append("INNER JOIN \"Proyecto\" p ON \"up.proyectoId\" = \"p.proyectoId\" ");
 		sql.append("INNER JOIN \"EstadoProyecto\" ep ON \"ep.estadoProyectoId\" = \"p.estadoProyectoId\" ");
-		sql.append("INNER JOIN \"Usuario\" u ON \"pu.usuario\" = \"u.usuarioId\" ");
+		sql.append("INNER JOIN \"Usuario\" u ON \"up.usuarioId\" = \"u.usuarioId\" ");
 
         
         createWhereClauseFindByFilter(sql, parameterList, filterEntity);
