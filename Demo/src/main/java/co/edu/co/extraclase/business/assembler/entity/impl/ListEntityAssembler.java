@@ -2,6 +2,7 @@ package co.edu.co.extraclase.business.assembler.entity.impl;
 
 import static co.edu.co.extraclase.business.assembler.entity.impl.ProjectEntityAssembler.getProjectEntityAssembler;
 
+import java.util.List;
 
 import co.edu.co.extraclase.business.assembler.entity.EntityAssembler;
 import co.edu.co.extraclase.business.domain.ListDomain;
@@ -32,5 +33,11 @@ public final class ListEntityAssembler implements EntityAssembler<ListEntity, Li
 		var entityTmp = ObjectHelper.getDefault(entity, new ListEntity());
 		var projectDomainTmp = getProjectEntityAssembler().toDomain(entityTmp.getProject());
 		return new ListDomain(entityTmp.getId(), entityTmp.getName(), projectDomainTmp, entityTmp.getCreationDate());
+	}
+
+	@Override
+	public List<ListDomain> toDomain(List<ListEntity> entityList) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

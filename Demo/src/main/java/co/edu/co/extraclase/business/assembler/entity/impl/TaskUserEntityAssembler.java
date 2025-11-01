@@ -3,6 +3,7 @@ package co.edu.co.extraclase.business.assembler.entity.impl;
 import static co.edu.co.extraclase.business.assembler.entity.impl.ProjectUserEntityAssembler.getProjectUserEntityAssembler;
 import static co.edu.co.extraclase.business.assembler.entity.impl.TaskEntityAssembler.getTaskEntityAssembler;
 
+import java.util.List;
 
 import co.edu.co.extraclase.business.assembler.entity.EntityAssembler;
 import co.edu.co.extraclase.business.domain.TaskUserDomain;
@@ -40,5 +41,11 @@ public final class TaskUserEntityAssembler implements EntityAssembler<TaskUserEn
 		return new TaskUserDomain(entityTmp.getId(), projectUserDomainTmp,
 		taskDomainTmp, entityTmp.getAssignmentDate(), entityTmp.getCompletionDate(), entityTmp.isCreator(), 
 		entityTmp.getComment());
+	}
+
+	@Override
+	public List<TaskUserDomain> toDomain(List<TaskUserEntity> entityList) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

@@ -1,5 +1,8 @@
 package co.edu.co.extraclase.business.assembler.entity.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import co.edu.co.extraclase.business.assembler.entity.EntityAssembler;
 import co.edu.co.extraclase.business.domain.UserDomain;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
@@ -31,5 +34,16 @@ public final class UserEntityAssembler implements EntityAssembler<UserEntity, Us
 		return new UserDomain(entityTmp.getId(), entityTmp.getFirstName(), entityTmp.getLastName(), entityTmp.getUsername(),
 		entityTmp.getEmail(), entityTmp.isEmailConfirmation(), entityTmp.getRegistrationDate(), entityTmp.getPasswordHash(), 
 		entityTmp.isAccountStatus(), entityTmp.isSuperUser(), entityTmp.isSuperUserConfirmation());
+	}
+
+	@Override
+	public List<UserDomain> toDomain(List<UserEntity> entityList) {
+		var userDomainList = new ArrayList<UserDomain>();
+		
+		for (var userEntity : entityList) {
+			userDomainList.add(toDomain(userEntity));
+		}
+		return userDomainList;
+	
 	}
 }

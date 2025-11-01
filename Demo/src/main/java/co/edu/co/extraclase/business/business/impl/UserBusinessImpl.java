@@ -134,9 +134,13 @@ public class UserBusinessImpl implements UserBusiness {
 	}
 
 	@Override
-	public List<UserDto> findUsersByFilter(UserDomain userFilters) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<UserDomain> findUsersByFilter(UserDomain userFilters) {
+
+		var userFiltersEntity = UserEntityAssembler.getUserEntityAssembler().toEntity(userFilters);
+		
+		var userEntities = daoFactory.getUserDAO().findByFilter(userFiltersEntity);
+		
+		return UserEntityAssembler.getUserEntityAssembler().toDomain(userEntities); 
 	}
 
 }

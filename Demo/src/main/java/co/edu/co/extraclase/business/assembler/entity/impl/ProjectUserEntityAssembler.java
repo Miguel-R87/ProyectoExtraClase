@@ -1,6 +1,9 @@
 package co.edu.co.extraclase.business.assembler.entity.impl;
 
 import static co.edu.co.extraclase.business.assembler.entity.impl.UserEntityAssembler.getUserEntityAssembler;
+
+import java.util.List;
+
 import static co.edu.co.extraclase.business.assembler.entity.impl.ProjectEntityAssembler.getProjectEntityAssembler;
 
 import co.edu.co.extraclase.business.assembler.entity.EntityAssembler;
@@ -36,5 +39,11 @@ public final class ProjectUserEntityAssembler implements EntityAssembler<Project
 		var projectDomainTmp = getProjectEntityAssembler().toDomain(entityTmp.getProject());
 		return new ProjectUserDomain(entityTmp.getId(), userDomainTmp, projectDomainTmp, entityTmp.isAdmin(),
 		entityTmp.getEntryDate(), entityTmp.getExpiryDate());
+	}
+
+	@Override
+	public List<ProjectUserDomain> toDomain(List<ProjectUserEntity> entityList) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

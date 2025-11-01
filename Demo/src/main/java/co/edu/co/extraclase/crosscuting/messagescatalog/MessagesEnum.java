@@ -87,8 +87,17 @@ public enum MessagesEnum {
 	    TECHNICAL_ERROR_WHILE_REGISTERING_USER_DUPLICATED_USERNAME("Error técnico: nombre de usuario duplicado.", "Se intentó registrar un usuario con un username ya existente en la base de datos."),
 
 	    USER_ERROR_WHILE_REGISTERING_USER_DUPLICATED_EMAIL("Correo electrónico duplicado.", "Ya existe un usuario con el mismo correo electrónico."),
-	    TECHNICAL_ERROR_WHILE_REGISTERING_USER_DUPLICATED_EMAIL("Error técnico: correo duplicado.", "Se intentó registrar un usuario con un email ya existente en la base de datos.");
+	    TECHNICAL_ERROR_WHILE_REGISTERING_USER_DUPLICATED_EMAIL("Error técnico: correo duplicado.", "Se intentó registrar un usuario con un email ya existente en la base de datos."),
 
+		USER_ERROR_UNEXPECTED_EXCEPTION_UPDATING_USER("Error inesperado durante la actualización de la información de un usuario", "Se ha presentado un problema inesperado durante la operación de actualización de la información de un usuario. Por favor intente de nuevo y si el problema persiste contacte al administrador del sistema."),
+		TECHNICAL_ERROR_UNEXPECTED_EXCEPTION_UPDATING_USER("Error inesperado durante la operación de actualización de la información de un usuario", "Se ha presentado un problema inesperado durante la operación de actualización de la información de un usuario. No fue una SQLException, sino un error no controlado en el proceso de registro."),
+		
+		USER_ERROR_UNEXPECTED_EXCEPTION_FINDING_USER("Error inesperado durante la consulta de la información de un usuario", "Se ha presentado un problema inesperado durante la operación de consulta de la información de un usuario. Por favor intente de nuevo y si el problema persiste contacte al administrador del sistema."),
+		TECHNICAL_ERROR_UNEXPECTED_EXCEPTION_FINDING_USER("Error inesperado durante la operación de consulta de la información de un usuario", "Se ha presentado un problema inesperado durante la de la operación de consulta de la información de un usuario. No fue una SQLException, sino un error no controlado en el proceso de consulta.");
+		
+
+
+	
 private String title;
 private String content;
 private MessagesEnum(final String title, final String content) {

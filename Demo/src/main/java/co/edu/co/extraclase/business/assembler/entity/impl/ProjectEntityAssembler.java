@@ -2,6 +2,7 @@ package co.edu.co.extraclase.business.assembler.entity.impl;
 
 import static co.edu.co.extraclase.business.assembler.entity.impl.ProjectStatusEntityAssembler.getProjectStatusEntityAssembler;
 
+import java.util.List;
 
 import co.edu.co.extraclase.business.assembler.entity.EntityAssembler;
 import co.edu.co.extraclase.business.domain.ProjectDomain;
@@ -34,5 +35,11 @@ public final class ProjectEntityAssembler implements EntityAssembler<ProjectEnti
 		var projectStatusDomainTmp = getProjectStatusEntityAssembler().toDomain(entity.getProjectStatus());
 		return new ProjectDomain(entityTmp.getId(), entityTmp.getName(), entityTmp.getDescription(),
 		entityTmp.getCreationDate(), projectStatusDomainTmp);
+	}
+
+	@Override
+	public List<ProjectDomain> toDomain(List<ProjectEntity> entityList) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

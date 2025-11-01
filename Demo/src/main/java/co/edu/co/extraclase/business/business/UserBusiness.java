@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.UUID;
 
 import co.edu.co.extraclase.business.domain.UserDomain;
-import co.edu.co.extraclase.dto.UserDto;
 
 public interface UserBusiness {
 	
@@ -21,7 +20,7 @@ public interface UserBusiness {
 
 		boolean confirmCode(final UUID id, final String code, final String confirmationType);
 
-	    List<UserDto> findUsersByFilter(UserDomain userFilters);
+	    List<UserDomain> findUsersByFilter(UserDomain userFilters);
 	
 
 }

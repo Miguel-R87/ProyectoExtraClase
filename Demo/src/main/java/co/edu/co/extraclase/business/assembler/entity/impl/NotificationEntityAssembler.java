@@ -1,6 +1,9 @@
 package co.edu.co.extraclase.business.assembler.entity.impl;
 
 import static co.edu.co.extraclase.business.assembler.entity.impl.TaskUserEntityAssembler.getTaskUserEntityAssembler;
+
+import java.util.List;
+
 import static co.edu.co.extraclase.business.assembler.entity.impl.NotificationTypeEntityAssembler.getNotificationTypeEntityAssembler;
 
 import co.edu.co.extraclase.business.assembler.entity.EntityAssembler;
@@ -36,5 +39,11 @@ public class NotificationEntityAssembler implements EntityAssembler<Notification
 		var notificationTypeDomainTmp = getNotificationTypeEntityAssembler().toDomain(entityTmp.getNotificationType());
 		return new NotificationDomain(entityTmp.getId(), taskUserDomainTmp, entityTmp.getMessage(), entityTmp.getTriggerDate(),
 		notificationTypeDomainTmp);
+	}
+
+	@Override
+	public List<NotificationDomain> toDomain(List<NotificationEntity> entityList) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

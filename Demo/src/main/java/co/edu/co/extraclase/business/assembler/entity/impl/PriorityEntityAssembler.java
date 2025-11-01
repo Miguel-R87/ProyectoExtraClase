@@ -1,6 +1,9 @@
 package co.edu.co.extraclase.business.assembler.entity.impl;
 
 import static co.edu.co.extraclase.business.assembler.entity.impl.UnitOfMeasureEntityAssembler.getUnitOfMeasureEntityAssembler;
+
+import java.util.List;
+
 import static co.edu.co.extraclase.business.assembler.entity.impl.ColorEntityAssembler.getColorEntityAssembler;
 
 import co.edu.co.extraclase.business.assembler.entity.EntityAssembler;
@@ -37,5 +40,11 @@ public final class PriorityEntityAssembler implements EntityAssembler<PriorityEn
 		var colorDomainTmp = getColorEntityAssembler().toDomain(entityTmp.getColor());
 		return new PriorityDomain(entityTmp.getId(), entityTmp.getName(), entityTmp.getDescription(),
 				entityTmp.getResponseTime(), unitOfMeasureDomainTmp, colorDomainTmp);
+	}
+
+	@Override
+	public List<PriorityDomain> toDomain(List<PriorityEntity> entityList) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

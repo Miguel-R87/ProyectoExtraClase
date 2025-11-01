@@ -1,5 +1,7 @@
 package co.edu.co.extraclase.business.assembler.entity.impl;
 
+import java.util.List;
+
 import co.edu.co.extraclase.business.assembler.entity.EntityAssembler;
 import co.edu.co.extraclase.business.domain.NotificationTypeDomain;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
@@ -27,5 +29,11 @@ public final class NotificationTypeEntityAssembler implements EntityAssembler<No
 	public NotificationTypeDomain toDomain(NotificationTypeEntity entity) {
 		var entityTmp = ObjectHelper.getDefault(entity, new NotificationTypeEntity());
 		return new NotificationTypeDomain(entityTmp.getId(), entityTmp.getName(), entityTmp.getDescription());
+	}
+
+	@Override
+	public List<NotificationTypeDomain> toDomain(List<NotificationTypeEntity> entityList) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

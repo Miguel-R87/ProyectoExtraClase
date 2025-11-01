@@ -1,10 +1,15 @@
 package co.edu.co.extraclase.business.assembler.entity.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import co.edu.co.extraclase.business.assembler.entity.EntityAssembler;
 import co.edu.co.extraclase.business.domain.UnitOfMeasureDomain;
+import co.edu.co.extraclase.business.domain.UserDomain;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.entity.UnitOfMeasureEntity;
+import co.edu.co.extraclase.entity.UserEntity;
 
 public final class UnitOfMeasureEntityAssembler implements EntityAssembler<UnitOfMeasureEntity, UnitOfMeasureDomain>{
 	
@@ -27,5 +32,10 @@ public final class UnitOfMeasureEntityAssembler implements EntityAssembler<UnitO
 	public UnitOfMeasureDomain toDomain(UnitOfMeasureEntity entity) {
 		var entityTmp = ObjectHelper.getDefault(entity, new UnitOfMeasureEntity());
 		return new UnitOfMeasureDomain(entityTmp.getId(), entityTmp.getName(), entityTmp.getDescription());
+	}
+	
+	@Override
+	public List<UnitOfMeasureDomain> toDomain(List<UnitOfMeasureEntity> entityList) {
+		return null; 
 	}
 }

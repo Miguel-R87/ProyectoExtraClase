@@ -2,6 +2,8 @@ package co.edu.co.extraclase.business.assembler.entity.impl;
 
 import static co.edu.co.extraclase.business.assembler.entity.impl.ColorEntityAssembler.getColorEntityAssembler;
 
+import java.util.List;
+
 import co.edu.co.extraclase.business.assembler.entity.EntityAssembler;
 import co.edu.co.extraclase.business.domain.StatusDomain;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
@@ -31,5 +33,11 @@ public final class StatusEntityAssembler implements EntityAssembler<StatusEntity
 		var entityTmp = ObjectHelper.getDefault(entity, new StatusEntity());
 		var colorDomainTmp = getColorEntityAssembler().toDomain(entityTmp.getColor());
 		return new StatusDomain(entityTmp.getId(), entityTmp.getName(), entityTmp.getDescription(), colorDomainTmp);
+	}
+
+	@Override
+	public List<StatusDomain> toDomain(List<StatusEntity> entityList) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

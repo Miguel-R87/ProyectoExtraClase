@@ -56,7 +56,32 @@ public final class UserFacadeImpl implements UserFacade {
 
 	@Override
 	public void updateUserInformation(UUID id, UserDto userDto) {
-		// TODO Auto-generated method stub
+		var daoFactory = DAOFactory.getFactory();
+		var business = new UserBusinessImpl(daoFactory);
+		
+		try {
+			
+			daoFactory.initTransaction();
+			
+			var userDomain = UserDTOAssembler.getUserDTOAssembler().toDomain(userDto);
+			
+			business.updateUserInformation(id, userDomain);
+			
+			daoFactory.commitTransaction();
+			
+		} catch (final ExtraClaseException exception) {
+			daoFactory.rollbackTransaction();
+			throw exception;
+		} catch (final Exception exception) {
+			daoFactory.rollbackTransaction();
+			
+			var userMessage = MessagesEnum.USER_ERROR_UNEXPECTED_EXCEPTION_UPDATING_USER.getContent();
+			var technicalMessage = MessagesEnum.TECHNICAL_ERROR_UNEXPECTED_EXCEPTION_UPDATING_USER.getContent();
+			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
+			
+		} finally {
+			daoFactory.closeConnection();
+		}
 		
 	}
 
@@ -79,9 +104,32 @@ public final class UserFacadeImpl implements UserFacade {
 	}
 
 	@Override
-	public List<UserDto> findUsersByFilter(UserDomain userFilters) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<UserDto> findUsersByFilter(UserDto userFilters) {
+		var daoFactory = DAOFactory.getFactory();
+		var business = new UserBusinessImpl(daoFactory);
+		
+		try {
+			
+			daoFactory.initTransaction();
+			
+			var userDomain = UserDTOAssembler.getUserDTOAssembler().toDomain(userFilters);
+			
+			return UserDTOAssembler.getUserDTOAssembler().toDTO(business.findUsersByFilter(userDomain));
+			
+			
+			
+			
+		} catch (final ExtraClaseException exception) {
+			throw exception;
+		} catch (final Exception exception) {
+			
+			var userMessage = MessagesEnum.USER_ERROR_UNEXPECTED_EXCEPTION_FINDING_USER.getContent();
+			var technicalMessage = MessagesEnum.TECHNICAL_ERROR_UNEXPECTED_EXCEPTION_FINDING_USER.getContent();
+			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
+			
+		} finally {
+			daoFactory.closeConnection();
+		}
 	}
 
 }

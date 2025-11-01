@@ -2,6 +2,9 @@ package co.edu.co.extraclase.business.assembler.entity.impl;
 
 import static co.edu.co.extraclase.business.assembler.entity.impl.ListEntityAssembler.getListEntityAssembler;
 import static co.edu.co.extraclase.business.assembler.entity.impl.StatusEntityAssembler.getStatusEntityAssembler;
+
+import java.util.List;
+
 import static co.edu.co.extraclase.business.assembler.entity.impl.PriorityEntityAssembler.getPriorityEntityAssembler;
 
 
@@ -42,5 +45,11 @@ public final class TaskEntityAssembler implements EntityAssembler<TaskEntity, Ta
 		var priorityDomainTmp = getPriorityEntityAssembler().toDomain(entityTmp.getPriority());
 		return new TaskDomain(entityTmp.getId(), entityTmp.getTitle(), entityTmp.getDescription(),
 		entityTmp.getCreationDate(), entityTmp.getExpiryDate(), listDomainTmp, statusDomainTmp, priorityDomainTmp );
+	}
+
+	@Override
+	public List<TaskDomain> toDomain(List<TaskEntity> entityList) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

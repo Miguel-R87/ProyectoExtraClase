@@ -1,5 +1,7 @@
 package co.edu.co.extraclase.business.assembler.entity.impl;
 
+import java.util.List;
+
 import co.edu.co.extraclase.business.assembler.entity.EntityAssembler;
 import co.edu.co.extraclase.business.domain.ColorDomain;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
@@ -26,5 +28,11 @@ public final class ColorEntityAssembler implements EntityAssembler<ColorEntity, 
 	public ColorDomain toDomain(ColorEntity entity) {
 		var entityTmp = ObjectHelper.getDefault(entity, new ColorEntity());
 		return new ColorDomain(entityTmp.getId(), entityTmp.getName(), entityTmp.getHexCode());
+	}
+
+	@Override
+	public List<ColorDomain> toDomain(List<ColorEntity> entityList) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

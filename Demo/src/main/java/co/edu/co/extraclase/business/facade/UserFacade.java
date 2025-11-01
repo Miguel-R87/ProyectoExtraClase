@@ -20,6 +20,6 @@ public interface UserFacade {
 
 	boolean confirmCode(final UUID id, final String code, final String confirmationType);
 
-    List<UserDto> findUsersByFilter(UserDomain userFilters);
+    List<UserDto> findUsersByFilter(UserDto userFilters);
 }
 
