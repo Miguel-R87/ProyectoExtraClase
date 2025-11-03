@@ -13,7 +13,6 @@ import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.crosscuting.messagescatalog.MessagesEnum;
 import co.edu.co.extraclase.data.dao.factory.DAOFactory;
-import co.edu.co.extraclase.dto.UserDto;
 import co.edu.co.extraclase.entity.UserEntity;
 
 public class UserBusinessImpl implements UserBusiness {
