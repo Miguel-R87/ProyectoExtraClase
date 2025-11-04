@@ -26,19 +26,31 @@ public final class TextHelper {
 		return EMPTY.equals(getDefaultWithTrim(value));
 	}
 	
-
-	
-	 public static boolean isValidEmail(final String value) {
+	public static boolean isValidEmail(final String value) {
 	    final var email = getDefaultWithTrim(value);
 	    return !isEmpty(email) && email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$");
-	}
+	}	
 	 
 	 public static boolean isValidPasswordHash(final String value) {
 		    final var password = value;
 		    return !isEmpty(password) 
 		        && password.matches("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*?&.#_\\-]).{8,}$");
-		}
+	}
+	 
+	 public static boolean lengthIsValid(final String value, final int min, final int max, final boolean mustApplyTrim) {
+		 var valueToValidate = mustApplyTrim ? getDefaultWithTrim(value) : getDefault(value);
+		 var length = valueToValidate.length();
+		 return length >= min && length <= max; 
+	}
 
+	 public static boolean lengthIsValidWithTrim(final String value, final int min, final int max) {
+		 return lengthIsValid(getDefaultWithTrim(value), min, max, true); 
+	}
+
+	 public static boolean formatIsValid(final String value, final String pattern, final boolean mustApplyTrim) {
+		 var text = (mustApplyTrim ? getDefaultWithTrim(value) : getDefault());
+		 return text.matches(pattern);
+	}
 
 }
  
