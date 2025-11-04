@@ -4,6 +4,7 @@ import co.edu.co.extraclase.business.business.rule.Rule;
 import co.edu.co.extraclase.crosscuting.exception.ExtraClaseException;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
+import co.edu.co.extraclase.crosscuting.messagescatalog.MessagesEnum;
 
 public final class StringLengthValueIsValidRule implements Rule{
 	
@@ -20,14 +21,14 @@ public final class StringLengthValueIsValidRule implements Rule{
 	@Override
 	public void execute(Object... data) {
 		if (ObjectHelper.isNull(data)) {
-			var userMessage = "Se ha presentado un problema tratando de llevar a cabo la operacion deseada ";
-			var technicalMessage = "No se recibieron los parametros requeridos para ejecutar la regla StringLengthValueIsValidRule";
+			var userMessage = MessagesEnum.USER_ERROR_TRYING_TO_MAKE_AN_OPERATION.getContent();
+			var technicalMessage = MessagesEnum.TECHNICAL_ERROR_STRING_LENGTH_VALUE.getContent();
 			throw ExtraClaseException.create(userMessage, technicalMessage);
 		}
 		
 		if (data.length < 5) {
-			var userMessage = "Se ha presentado un problema tratando de llevar a cabo la operacion deseada ";
-			var technicalMessage = "Se requerian 5 parametros pero no se han recibido los suficientes para continuar con la operacion";
+			var userMessage = MessagesEnum.USER_ERROR_TRYING_TO_MAKE_AN_OPERATION.getContent();
+			var technicalMessage = MessagesEnum.TECHNICAL_ERROR_WRONG_STRING_LENGTH_VALUE.getContent();
 			throw ExtraClaseException.create(userMessage, technicalMessage);
 		}
 		
@@ -40,8 +41,8 @@ public final class StringLengthValueIsValidRule implements Rule{
 
 		
 		if (TextHelper.lengthIsValid(stringData, minLength, maxLength, mustApplyTrim)) {
-			var userMessage = "El dato [".concat(dataName).concat("] no tiene una longitud entre ").concat(String.valueOf(minLength)).concat(" y ").concat(String.valueOf(maxLength)).concat("...");
-			var technicalMessage = "La reglaa StringValueIsPresentRule ha fallado para el dato [".concat(dataName).concat("] porque no tiene una longitud entre").concat(String.valueOf(minLength)).concat(" y ").concat(String.valueOf(maxLength)).concat("...");
+			var userMessage = MessagesEnum.USER_ERROR_WRONG_LENGTH.getContent().concat(dataName).concat(" ").concat(String.valueOf(minLength)).concat(" y ").concat(String.valueOf(maxLength));
+			var technicalMessage = MessagesEnum.TECHNICAL_ERROR_WRONG_LENGTH.getContent().concat(dataName).concat(" ").concat(String.valueOf(minLength)).concat(" y ").concat(String.valueOf(maxLength));;
 			throw ExtraClaseException.create(userMessage, technicalMessage);
 		}
 

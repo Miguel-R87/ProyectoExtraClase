@@ -4,6 +4,7 @@ import co.edu.co.extraclase.business.business.rule.Rule;
 import co.edu.co.extraclase.crosscuting.exception.ExtraClaseException;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
+import co.edu.co.extraclase.crosscuting.messagescatalog.MessagesEnum;
 
 public final class StringFormatValueIsValidRule implements Rule{
 	
@@ -20,14 +21,14 @@ public final class StringFormatValueIsValidRule implements Rule{
 	@Override
 	public void execute(Object... data) {
 		if(ObjectHelper.isNull(data)) {
-			var userMessage = ("Se ha presentado un error tratando de llevar a cabo la operación esperada");
-			var technicalMessage = "No se recibieron los parametros requeridos para ejecutar la regla StringFormatValueIsValidRule";
+			var userMessage = MessagesEnum.USER_ERROR_TRYING_TO_MAKE_AN_OPERATION.getContent();
+			var technicalMessage = MessagesEnum.TECHNICAL_ERROR_STRING_FORMAT_VALUE.getContent();
 			throw ExtraClaseException.create(userMessage, technicalMessage);
 		}
 		
 		if(data.length < 4) {
-			var userMessage = "Se ha presentado un error tratando de llevar a cabo la operación esperada";
-			var technicalMessage = "Se requerían 4 parametros y llegó una cantidad menor a esta requeridos para ejecutar la regla StringFormatValueIsValidRule";
+			var userMessage = MessagesEnum.USER_ERROR_TRYING_TO_MAKE_AN_OPERATION.getContent();
+			var technicalMessage = MessagesEnum.TECHNICAL_ERROR_WRONG_STRING_FORMAT_VALUE.getContent();
 			throw ExtraClaseException.create(userMessage, technicalMessage);
 		}
 		
@@ -38,8 +39,8 @@ public final class StringFormatValueIsValidRule implements Rule{
 		boolean mustApplyTrim = (Boolean) data[3];
 		
 		if(!TextHelper.formatIsValid(stringData, pattern, mustApplyTrim)) {
-			var userMessage= "El siguiente dato NO cumple con los caracteres estipulados para este campo: ".concat(dataName);
-			var technicalMessage= "La regla StringFormatValueIsValidRule fallo ya que el siguiente dato debe contener solo los siguientes caracteres:".concat(pattern);
+			var userMessage= MessagesEnum.USER_ERROR_WRONG_FORMAT.getContent().concat(dataName);
+			var technicalMessage= MessagesEnum.TECHNICAL_ERROR_WRONG_FORMAT.getContent().concat(dataName).concat(" ").concat(pattern);
 			throw ExtraClaseException.create(userMessage, technicalMessage);
 		}
 		
