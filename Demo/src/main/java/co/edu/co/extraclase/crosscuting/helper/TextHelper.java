@@ -52,5 +52,19 @@ public final class TextHelper {
 		 return text.matches(pattern);
 	}
 
+	 public static boolean isValidFirstName(final String value) {
+		 final var name = getDefaultWithTrim(value);
+		 return !isEmpty(name) && name.matches("^[A-Za-zÁÉÍÓÚáéíóúÑñ\\s]+$");
+	}
+
+	public static boolean isValidLastName(final String value) {
+		 final var name = getDefaultWithTrim(value);
+		 return !isEmpty(name) && name.matches("^[A-Za-zÁÉÍÓÚáéíóúÑñ\\s]+$");
+	}
+	
+	public static boolean isValidUsername(final String value) {
+	    final var username = getDefaultWithTrim(value);
+	    return !isEmptyWithTrim(value) && username.matches("^[A-Za-z].*");
+	}
 }
  
