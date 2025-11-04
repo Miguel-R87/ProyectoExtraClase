@@ -49,7 +49,7 @@ public final class TextHelper {
 	}
 
 	 public static boolean formatIsValid(final String value, final String pattern, final boolean mustApplyTrim) {
-		 var text = (mustApplyTrim ? getDefaultWithTrim(value) : getDefault());
+		 var text = (mustApplyTrim ? getDefaultWithTrim(value) : getDefault(value));
 		 return text.matches(pattern);
 	}
 

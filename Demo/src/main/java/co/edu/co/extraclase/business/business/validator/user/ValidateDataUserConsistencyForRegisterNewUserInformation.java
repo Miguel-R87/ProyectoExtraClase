@@ -59,11 +59,11 @@ public final class ValidateDataUserConsistencyForRegisterNewUserInformation impl
 	}
 	
 	protected void validateDataFormat(final UserDomain data) {
-		StringFormatValueIsValidRule.executRule(data.getFirstName(), "primer nombre", "^[A-Za-zÁÉÍÓÚáéíóúÑñ\\\\s]+$", true);
-		StringFormatValueIsValidRule.executRule(data.getLastName(), "apellido","^[A-Za-zÁÉÍÓÚáéíóúÑñ\\\\s]+$", true);
+		StringFormatValueIsValidRule.executRule(data.getFirstName(), "primer nombre", "^[A-Za-zÁÉÍÓÚáéíóúÑñ\\s]+$", true);
+		StringFormatValueIsValidRule.executRule(data.getLastName(), "apellido","^[A-Za-zÁÉÍÓÚáéíóúÑñ\\s]+$", true);
 		StringFormatValueIsValidRule.executRule(data.getUsername(), "nombre de usuario","^[A-Za-z].*",  true);
-		StringFormatValueIsValidRule.executRule(data.getEmail(), "email","^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\\\.[A-Za-z]{2,}$",  true);
-		StringFormatValueIsValidRule.executRule(data.getPasswordHash(), "contraseña","^(?=.*[A-Za-z])(?=.*\\\\d)(?=.*[@$!%*?&.#_\\\\-]).{8,}$",  false);
+		StringFormatValueIsValidRule.executRule(data.getEmail(), "email","^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$",  true);
+		StringFormatValueIsValidRule.executRule(data.getPasswordHash(), "contraseña","^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*?&.#_\\-]).{8,}$", false);
 	}
 	
 	
