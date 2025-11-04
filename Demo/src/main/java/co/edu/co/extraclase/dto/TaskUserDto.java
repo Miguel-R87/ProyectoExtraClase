@@ -1,6 +1,5 @@
 package co.edu.co.extraclase.dto;
 
-import co.edu.co.extraclase.business.domain.TaskUserDomain;
 import co.edu.co.extraclase.crosscuting.helper.BooleanHelper;
 import co.edu.co.extraclase.crosscuting.helper.DateTimeHelper;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;

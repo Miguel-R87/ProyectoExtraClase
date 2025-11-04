@@ -5,7 +5,6 @@ import co.edu.co.extraclase.business.domain.ProjectUserDomain;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.dto.ProjectUserDto;
-import co.edu.co.extraclase.entity.ProjectUserEntity;
 
 import static co.edu.co.extraclase.business.assembler.dto.impl.ProjectDTOAssembler.getProjectDTOAssembler;
 import static co.edu.co.extraclase.business.assembler.dto.impl.UserDTOAssembler.getUserDTOAssembler;

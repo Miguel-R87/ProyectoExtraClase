@@ -2,7 +2,6 @@ package co.edu.co.extraclase.dto;
 
 import java.util.UUID;
 
-import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
