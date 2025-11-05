@@ -26,6 +26,7 @@ public class UserBusinessImpl implements UserBusiness {
 		ValidateDataUserConsistencyForRegisterNewUserInformation.executeValidation(userDomain);
 		validateUserUsernameDoesNotExist(userDomain.getUsername());
 		validateUserEmailDoesNotExist(userDomain.getEmail());
+	
 		
 		var id = UUIDHelper.getUUIDHelper().generateNewUUID();
 		while (!UUIDHelper.getUUIDHelper().isDefaultUUID(daoFactory.getUserDAO().findById(id).getId())) {
