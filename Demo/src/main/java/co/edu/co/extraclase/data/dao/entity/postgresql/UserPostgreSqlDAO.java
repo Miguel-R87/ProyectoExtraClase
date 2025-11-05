@@ -121,11 +121,6 @@ public class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
 	}
 
 	@Override
-	public List<UserEntity> findAll() {
-		return findByFilter(new UserEntity());
-	}
-
-	@Override
 	public List<UserEntity> findByFilter(UserEntity filterEntity) {
 		var parametersList = new ArrayList<Object>();
 		var sql = createSentenceFindByFilter(filterEntity, parametersList);
@@ -278,13 +273,4 @@ private List<UserEntity> executeSentenceFindByFilter(final PreparedStatement pre
 		return listState;
 		
 	}
-			
-		
-	
-
-	@Override
-	public UserEntity findById( final UUID id) {
-		return findByFilter(new UserEntity(id)).stream().findFirst().orElse(new UserEntity()); 
-	}
-	
 }

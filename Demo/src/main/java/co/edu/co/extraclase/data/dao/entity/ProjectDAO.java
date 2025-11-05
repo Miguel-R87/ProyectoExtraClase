@@ -7,8 +7,7 @@ import co.edu.co.extraclase.data.dao.RetrieveDAO;
 import co.edu.co.extraclase.data.dao.UpdateDAO;
 import co.edu.co.extraclase.entity.ProjectEntity;
 
-public interface ProjectDAO extends RetrieveDAO<ProjectEntity,UUID>,
-CreateDAO<ProjectEntity>,
+public interface ProjectDAO extends RetrieveDAO<ProjectEntity>, CreateDAO<ProjectEntity>,
 UpdateDAO<ProjectEntity> {
 
 }

@@ -56,13 +56,6 @@ public class TaskPostgreSqlDAO extends SqlConnection implements TaskDAO{
         	throw ExtraClaseException.create(exception, userMessage, technicalMessage);
       }
     }
-		
-	
-
-	@Override
-	public List<TaskEntity> findAll() {
-		return findByFilter(new TaskEntity());
-	}
 
 	@Override
 	public List<TaskEntity> findByFilter(TaskEntity filterEntity) {
@@ -234,13 +227,7 @@ public class TaskPostgreSqlDAO extends SqlConnection implements TaskDAO{
 		return listTask;
 		
 	}
-	
-	
 
-	@Override
-	public TaskEntity findById(UUID id) {
-		return findByFilter(new TaskEntity()).stream().findFirst().orElse(new TaskEntity());
-	}
 
 	@Override
 	public void update(TaskEntity entity) {

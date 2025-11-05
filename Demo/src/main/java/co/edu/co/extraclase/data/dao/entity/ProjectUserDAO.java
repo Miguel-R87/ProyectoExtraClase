@@ -6,10 +6,11 @@ import co.edu.co.extraclase.data.dao.CreateDAO;
 import co.edu.co.extraclase.data.dao.RetrieveDAO;
 import co.edu.co.extraclase.data.dao.UpdateDAO;
 import co.edu.co.extraclase.entity.ProjectEntity;
+import co.edu.co.extraclase.entity.ProjectUserEntity;
 
-public interface ProjectUserDAO extends CreateDAO<ProjectEntity>,
-RetrieveDAO<ProjectEntity,UUID>, 
-UpdateDAO<ProjectEntity>
+public interface ProjectUserDAO extends CreateDAO<ProjectUserEntity>,
+RetrieveDAO<ProjectUserEntity>,
+UpdateDAO<ProjectUserEntity>
  {
 
 }

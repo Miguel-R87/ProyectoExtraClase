@@ -5,7 +5,7 @@ import java.util.UUID;
 import co.edu.co.extraclase.data.dao.RetrieveDAO;
 import co.edu.co.extraclase.entity.ColorEntity;
 
-public interface ColorDAO extends RetrieveDAO<ColorEntity, UUID> {
+public interface ColorDAO extends RetrieveDAO<ColorEntity> {
 
 }
 

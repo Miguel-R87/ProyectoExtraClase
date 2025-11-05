@@ -67,11 +67,6 @@ public class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUserDAO{
     }
 
 	@Override
-	public List<TaskUserEntity> findAll() {
-		return findByFilter(new TaskUserEntity());
-	}
-
-	@Override
 	public List<TaskUserEntity> findByFilter(TaskUserEntity filterEntity) {
 		var parameterList = new ArrayList<Object>();
 		var sql = createSentenceFindByFilter(filterEntity, parameterList);
@@ -330,23 +325,18 @@ public class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUserDAO{
 			}
 		}catch (final SQLException exception) {
 			var userMessage = "";
-			var technicalMessage = "" + exception.getMessage();
+			var technicalMessage = "";
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 		}catch (final Exception exception) {
 			var userMessage = "";
-			var technicalMessage = "" + exception.getMessage();
+			var technicalMessage = "b";
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 
 		}
 		return listTaskUser;
 		
 	}
-	
 
-	@Override
-    public TaskUserEntity findById(UUID id) {  
-		return findByFilter(new TaskUserEntity()).stream().findFirst().orElse(new TaskUserEntity());
-	}
 
 	@Override
 	public void update(TaskUserEntity entity) {

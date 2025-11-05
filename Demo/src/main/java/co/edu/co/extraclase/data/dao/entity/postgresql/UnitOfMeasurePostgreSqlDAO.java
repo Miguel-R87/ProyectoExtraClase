@@ -22,11 +22,6 @@ public class UnitOfMeasurePostgreSqlDAO extends SqlConnection implements UnitOfM
 	}
 
 	@Override
-	public List<UnitOfMeasureEntity> findAll() {
-		return findByFilter(new UnitOfMeasureEntity());
-	}
-
-	@Override
 	public List<UnitOfMeasureEntity> findByFilter(UnitOfMeasureEntity filterEntity) {
 		var parametersList = new ArrayList<Object>();
 		var sql = createSentenceFindByFilter(filterEntity, parametersList);
@@ -125,12 +120,4 @@ public class UnitOfMeasurePostgreSqlDAO extends SqlConnection implements UnitOfM
 		}
 		return listUnitOfMeasure;
 	}
-	
-	
-
-	@Override
-	public UnitOfMeasureEntity findById(UUID id) {
-		return findByFilter(new UnitOfMeasureEntity(id)).stream().findFirst().orElse(new UnitOfMeasureEntity());
-	}
-
 }

@@ -1,50 +1,167 @@
 package co.edu.co.extraclase.data.dao.entity.postgresql;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
+import co.edu.co.extraclase.crosscuting.exception.ExtraClaseException;
+import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
+import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.data.dao.entity.ProjectUserDAO;
 import co.edu.co.extraclase.data.dao.entity.SqlConnection;
 import co.edu.co.extraclase.entity.ProjectEntity;
+import co.edu.co.extraclase.entity.ProjectUserEntity;
+import co.edu.co.extraclase.entity.UserEntity;
 
 public class ProjectUserPostgreSqlDAO extends SqlConnection implements ProjectUserDAO {
 
 	public ProjectUserPostgreSqlDAO(Connection connection) {
 		super(connection);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public void create(ProjectEntity entity) {
-		// TODO Auto-generated method stub
-		
+	public void create(ProjectUserEntity entity) {
+		final var sql = new StringBuilder();
+		sql.append("INSERT INTO \"ProyectoUsuario\" (\"id\", \"idProyecto\", \"idUsuario\") ");
+		sql.append("VALUES (?, ?, ?) ");
+
+		try (var preparedStatement = this.getConnection().prepareStatement(sql.toString())) {
+			preparedStatement.setObject(1, entity.getId());
+			preparedStatement.setObject(2, entity.getProject().getId());
+			preparedStatement.setObject(3, entity.getUser().getId());
+			preparedStatement.executeUpdate();
+		} catch (final SQLException exception) {
+			var userMessage = "Error al registrar la relación proyecto-usuario.";
+			var technicalMessage = "Problema ejecutando INSERT en ProyectoUsuario.";
+			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
+		} catch (final Exception exception) {
+			var userMessage = "Error inesperado al registrar la relación proyecto-usuario.";
+			var technicalMessage = "Excepción general en create() de ProjectUserPostgreSqlDAO.";
+			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
+		}
 	}
 
 	@Override
-	public List<ProjectEntity> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ProjectUserEntity> findByFilter(ProjectUserEntity filterEntity) {
+		var parametersList = new ArrayList<Object>();
+		var sql = createSentenceFindByFilter(filterEntity, parametersList);
+
+		try (var preparedStatement = this.getConnection().prepareStatement(sql.toString())) {
+			for (int index = 0; index < parametersList.size(); index++) {
+				preparedStatement.setObject(index + 1, parametersList.get(index));
+			}
+			return executeSentenceFindByFilter(preparedStatement);
+		} catch (final SQLException exception) {
+			var userMessage = "Error al consultar los registros de ProyectoUsuario.";
+			var technicalMessage = "Problema ejecutando SELECT en ProyectoUsuario.";
+			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
+		} catch (final Exception exception) {
+			var userMessage = "Error inesperado al consultar ProyectoUsuario.";
+			var technicalMessage = "Excepción general en findByFilter() de ProjectUserPostgreSqlDAO.";
+			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
+		}
+	}
+
+	private String createSentenceFindByFilter(final ProjectUserEntity filterEntity, final List<Object> parametersList) {
+		final var sql = new StringBuilder();
+		sql.append("SELECT ");
+		sql.append("  PU.\"id\" AS \"idPU\", ");
+		sql.append("  P.\"id\" AS \"idProyecto\", P.\"nombre\" AS \"nombreProyecto\", P.\"descripcion\" AS \"descripcionProyecto\", ");
+		sql.append("  U.\"id\" AS \"idUsuario\", U.\"nombre\" AS \"nombreUsuario\", U.\"correo\" AS \"correoUsuario\" ");
+		sql.append("FROM \"ProyectoUsuario\" AS PU ");
+		sql.append("INNER JOIN \"Proyecto\" AS P ON PU.\"idProyecto\" = P.\"id\" ");
+		sql.append("INNER JOIN \"Usuario\" AS U ON PU.\"idUsuario\" = U.\"id\" ");
+
+		createWhereClauseFindByFilter(sql, parametersList, filterEntity);
+		return sql.toString();
+	}
+
+	private void createWhereClauseFindByFilter(final StringBuilder sql, final List<Object> parametersList,
+											   final ProjectUserEntity filterEntity) {
+		var filterEntityValidated = ObjectHelper.getDefault(filterEntity, new ProjectUserEntity());
+		final var conditions = new ArrayList<String>();
+
+		if (!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getId())) {
+			conditions.add("PU.\"id\" = ?");
+			parametersList.add(filterEntityValidated.getId());
+		}
+
+		if (filterEntityValidated.getProject() != null &&
+				!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getProject().getId())) {
+			conditions.add("PU.\"idProyecto\" = ?");
+			parametersList.add(filterEntityValidated.getProject().getId());
+		}
+
+		if (filterEntityValidated.getUser() != null &&
+				!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getUser().getId())) {
+			conditions.add("PU.\"idUsuario\" = ?");
+			parametersList.add(filterEntityValidated.getUser().getId());
+		}
+
+		if (!conditions.isEmpty()) {
+			sql.append(" WHERE ");
+			sql.append(String.join(" AND ", conditions));
+		}
+	}
+
+	private List<ProjectUserEntity> executeSentenceFindByFilter(final PreparedStatement preparedStatement) {
+		var listProjectUser = new ArrayList<ProjectUserEntity>();
+
+		try (var resultSet = preparedStatement.executeQuery()) {
+			while (resultSet.next()) {
+				var projectUser = new ProjectUserEntity();
+
+				projectUser.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("idPU")));
+
+				var project = new ProjectEntity();
+				project.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("idProyecto")));
+				project.setName(resultSet.getString("nombreProyecto"));
+				project.setDescription(resultSet.getString("descripcionProyecto"));
+				projectUser.setProject(project);
+
+				var user = new UserEntity();
+				user.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("idUsuario")));
+				user.setUsername(resultSet.getString("nombreUsuario"));
+				user.setEmail(resultSet.getString("correoUsuario"));
+				projectUser.setUser(user);
+
+				listProjectUser.add(projectUser);
+			}
+		} catch (final SQLException exception) {
+			var userMessage = "";
+			var technicalMessage = "";
+			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
+		} catch (final Exception exception) {
+			var userMessage = "a";
+			var technicalMessage = "";
+			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
+		}
+
+		return listProjectUser;
 	}
 
 	@Override
-	public List<ProjectEntity> findByFilter(ProjectEntity filterEntity) {
-		// TODO Auto-generated method stub
-		return null;
+	public void update(ProjectUserEntity entity) {
+		final var sql = new StringBuilder();
+		sql.append("UPDATE \"ProyectoUsuario\" ");
+		sql.append("SET \"idProyecto\" = ?, \"idUsuario\" = ? ");
+		sql.append("WHERE \"id\" = ? ");
+
+		try (var preparedStatement = this.getConnection().prepareStatement(sql.toString())) {
+			preparedStatement.setObject(1, entity.getProject().getId());
+			preparedStatement.setObject(2, entity.getUser().getId());
+			preparedStatement.setObject(3, entity.getId());
+			preparedStatement.executeUpdate();
+		} catch (final SQLException exception) {
+			var userMessage = "";
+			var technicalMessage = "b";
+			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
+		} catch (final Exception exception) {
+			var userMessage = "a";
+			var technicalMessage = "";
+			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
+		}
 	}
-
-	@Override
-	public ProjectEntity findById(UUID id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void update(ProjectEntity entity) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
 }
