@@ -10,7 +10,7 @@ import co.edu.co.extraclase.entity.ListEntity;
 
 
 public interface ListDAO extends CreateDAO<ListEntity>,
-RetrieveDAO<ListEntity,UUID>,
+RetrieveDAO<ListEntity, UUID>,
 UpdateDAO<ListEntity>
 {
 

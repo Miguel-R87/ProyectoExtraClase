@@ -273,4 +273,9 @@ private List<UserEntity> executeSentenceFindByFilter(final PreparedStatement pre
 		return listState;
 		
 	}
+
+@Override
+public UserEntity findById(UUID id) {
+	return findByFilter(new UserEntity(id)).stream().findFirst().orElse(new UserEntity());
+}
 }

@@ -269,6 +269,12 @@ SqlConnectionHelper.ensureTransactionIsStarted(getConnection());
 	        	throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 	      }
 	}
+
+	@Override
+	public TaskEntity findById(UUID id) {
+		return findByFilter(new TaskEntity(id)).stream().findFirst().orElse(new TaskEntity());
+
+	}
 		
 	}
 

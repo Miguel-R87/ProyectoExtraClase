@@ -22,10 +22,6 @@ public class StatusPostgreSqlDAO extends SqlConnection implements StatusDAO{
 		super(connection);
 	}
 
-	@Override
-	public List<StatusEntity> findAll() {
-		return findByFilter(new StatusEntity());
-	}
 
 	@Override
 	public List<StatusEntity> findByFilter(StatusEntity filterEntity) {
@@ -127,5 +123,12 @@ public class StatusPostgreSqlDAO extends SqlConnection implements StatusDAO{
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 		}
 		return listStatus;
+	}
+
+
+	@Override
+	public StatusEntity findById(UUID id) {
+		return findByFilter(new StatusEntity(id)).stream().findFirst().orElse(new StatusEntity());
+
 	}
 }

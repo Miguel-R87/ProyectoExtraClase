@@ -120,4 +120,9 @@ public class UnitOfMeasurePostgreSqlDAO extends SqlConnection implements UnitOfM
 		}
 		return listUnitOfMeasure;
 	}
+
+	@Override
+	public UnitOfMeasureEntity findById(UUID id) {
+		return findByFilter(new UnitOfMeasureEntity(id)).stream().findFirst().orElse(new UnitOfMeasureEntity());
+	}
 }

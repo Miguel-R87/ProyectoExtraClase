@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import co.edu.co.extraclase.crosscuting.exception.ExtraClaseException;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
@@ -13,16 +14,11 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.data.dao.entity.NotificationTypeDAO;
 import co.edu.co.extraclase.data.dao.entity.SqlConnection;
 import co.edu.co.extraclase.entity.NotificationTypeEntity;
-import java.util.UUID;
 
 public class NotificationTypePostgreSqlDAO extends SqlConnection implements NotificationTypeDAO {
 
 	public NotificationTypePostgreSqlDAO(Connection connection) {
 		super(connection);
-	}
-	@Override
-	public List<NotificationTypeEntity> findAll() {
-		return findByFilter(new NotificationTypeEntity());
 	}
 
 	@Override
@@ -104,4 +100,10 @@ public class NotificationTypePostgreSqlDAO extends SqlConnection implements Noti
 			}
 			return listNotificationType;
 		}
+
+	@Override
+	public NotificationTypeEntity findById(UUID id) {
+		return findByFilter(new NotificationTypeEntity(id)).stream().findFirst().orElse(new NotificationTypeEntity());
+
+	}
 	}

@@ -7,7 +7,7 @@ import co.edu.co.extraclase.data.dao.RetrieveDAO;
 import co.edu.co.extraclase.data.dao.UpdateDAO;
 import co.edu.co.extraclase.entity.TaskUserEntity;
 
-public interface TaskUserDAO extends CreateDAO<TaskUserEntity>, RetrieveDAO<TaskUserEntity,UUID>, UpdateDAO<TaskUserEntity> {
+public interface TaskUserDAO extends CreateDAO<TaskUserEntity>, RetrieveDAO<TaskUserEntity, UUID>, UpdateDAO<TaskUserEntity> {
 
 }
 

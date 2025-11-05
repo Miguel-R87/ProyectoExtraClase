@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import co.edu.co.extraclase.crosscuting.exception.ExtraClaseException;
 import co.edu.co.extraclase.crosscuting.helper.*;
@@ -44,11 +45,6 @@ public class ListPostgreSqlDAO extends SqlConnection implements ListDAO{
             var technicalMessage = "";
             throw ExtraClaseException.create(exception, userMessage, technicalMessage);
         }
-    }
-
-    @Override
-    public List<ListEntity> findAll() {
-        return findByFilter(new ListEntity());
     }
 
     @Override
@@ -164,6 +160,12 @@ public class ListPostgreSqlDAO extends SqlConnection implements ListDAO{
         }
 
 
-}}
+}
+
+	@Override
+	public ListEntity findById(UUID id) {
+		return findByFilter(new ListEntity(id)).stream().findFirst().orElse(new ListEntity());
+
+	}}
 
 

@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.UUID;
 
 import co.edu.co.extraclase.crosscuting.exception.ExtraClaseException;
@@ -24,10 +23,6 @@ public class PriorityPostgreSqlDAO extends SqlConnection implements PriorityDAO 
 		super(connection);
 	}
 
-	@Override
-	public List<PriorityEntity> findAll() {
-		return findByFilter(new PriorityEntity());
-	}
 
 	@Override
 	public List<PriorityEntity> findByFilter(PriorityEntity filterEntity) {
@@ -148,4 +143,11 @@ public class PriorityPostgreSqlDAO extends SqlConnection implements PriorityDAO 
 			}
 			return listPriorities;
 		}
+
+
+	@Override
+	public PriorityEntity findById(UUID id) {
+		return findByFilter(new PriorityEntity(id)).stream().findFirst().orElse(new PriorityEntity());
+
+	}
 }

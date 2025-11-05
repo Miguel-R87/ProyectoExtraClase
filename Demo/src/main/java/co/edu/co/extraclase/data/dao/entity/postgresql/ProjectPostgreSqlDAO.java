@@ -170,4 +170,10 @@ public class ProjectPostgreSqlDAO extends SqlConnection implements ProjectDAO {
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 		}
 	}
+
+	@Override
+	public ProjectEntity findById(UUID id) {
+		return findByFilter(new ProjectEntity(id)).stream().findFirst().orElse(new ProjectEntity());
+
+	}
 }

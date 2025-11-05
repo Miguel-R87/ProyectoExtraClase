@@ -15,10 +15,10 @@ public class TestUserRegistration {
 			
 			user.setFirstName("Luciana");
 			user.setLastName("Restrepo");
-			user.setUsername("LucianaR27");
-			user.setEmail("andrupro@gmail.com");
+			user.setUsername("LucianaR2");
+			user.setEmail("andrunoobsito@gmail.com");
 			user.setRegistrationDate(LocalDateTime.now());
-			user.setPasswordHash("ContraseñaSegura27*");
+			user.setPasswordHash("ContraseñaSegura27??");
 			user.setAccountStatus(false);
 			user.setSuperUser(false);
 			user.setSuperUserConfirmation(false);

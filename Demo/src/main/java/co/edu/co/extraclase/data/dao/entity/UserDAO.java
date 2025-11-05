@@ -9,6 +9,6 @@ import co.edu.co.extraclase.entity.UserEntity;
 
 public interface UserDAO extends CreateDAO<UserEntity>,
 UpdateDAO<UserEntity>,
-RetrieveDAO<UserEntity,UUID>{ 
+RetrieveDAO<UserEntity, UUID>{ 
 
 }

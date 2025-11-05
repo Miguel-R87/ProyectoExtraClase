@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-
 import co.edu.co.extraclase.crosscuting.exception.ExtraClaseException;
 import co.edu.co.extraclase.crosscuting.helper.BooleanHelper;
 import co.edu.co.extraclase.crosscuting.helper.DateTimeHelper;
@@ -374,5 +373,11 @@ public class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUserDAO{
 	        	var technicalMessage = "Excepción inesperada al actualizar UsuarioTarea: " + exception.getMessage();
 	        	throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 	      }
+	}
+
+	@Override
+	public TaskUserEntity findById(UUID id) {
+		return findByFilter(new TaskUserEntity(id)).stream().findFirst().orElse(new TaskUserEntity());
+
 	}
 }

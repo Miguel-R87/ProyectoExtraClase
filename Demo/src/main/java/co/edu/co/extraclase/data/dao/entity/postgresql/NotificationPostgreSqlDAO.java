@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+
 import co.edu.co.extraclase.crosscuting.exception.ExtraClaseException;
 import co.edu.co.extraclase.crosscuting.helper.*;
 import co.edu.co.extraclase.data.dao.entity.NotificationDAO;
@@ -42,11 +44,6 @@ public class NotificationPostgreSqlDAO extends SqlConnection implements Notifica
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 		}
     }
-
-	@Override
-	public List<NotificationEntity> findAll() {
-		return findByFilter(new NotificationEntity());
-	}
 
 	@Override
 	public List<NotificationEntity> findByFilter(NotificationEntity filterEntity) {
@@ -148,6 +145,12 @@ public class NotificationPostgreSqlDAO extends SqlConnection implements Notifica
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 		}
 		return listNotification;
+	}
+
+	@Override
+	public NotificationEntity findById(UUID id) {
+		return findByFilter(new NotificationEntity(id)).stream().findFirst().orElse(new NotificationEntity());
+
 	}
 
 

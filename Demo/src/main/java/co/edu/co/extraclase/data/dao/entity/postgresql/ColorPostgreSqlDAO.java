@@ -4,6 +4,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+
 import co.edu.co.extraclase.crosscuting.exception.ExtraClaseException;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
@@ -16,11 +18,6 @@ public class ColorPostgreSqlDAO extends SqlConnection implements ColorDAO {
 
 	public ColorPostgreSqlDAO(Connection connection) {
 		super(connection);
-	}
-
-	@Override
-	public List<ColorEntity> findAll() {
-		return findByFilter(new ColorEntity());
 	}
 
 	@Override
@@ -103,6 +100,12 @@ public class ColorPostgreSqlDAO extends SqlConnection implements ColorDAO {
 		}
 
 		return listColor;
+	}
+
+	@Override
+	public ColorEntity findById(UUID id) {
+		return findByFilter(new ColorEntity(id)).stream().findFirst().orElse(new ColorEntity());
+
 	}
 
 }

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import co.edu.co.extraclase.crosscuting.exception.ExtraClaseException;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
@@ -163,5 +164,11 @@ public class ProjectUserPostgreSqlDAO extends SqlConnection implements ProjectUs
 			var technicalMessage = "";
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 		}
+	}
+
+	@Override
+	public ProjectUserEntity findById(UUID id) {
+		return findByFilter(new ProjectUserEntity(id)).stream().findFirst().orElse(new ProjectUserEntity());
+
 	}
 }
