@@ -2,8 +2,6 @@ package co.edu.co.extraclase.business.facade.impl;
 
 import java.util.List;
 import java.util.UUID;
-
-
 import co.edu.co.extraclase.business.assembler.dto.impl.UserDTOAssembler;
 import co.edu.co.extraclase.business.business.impl.UserBusinessImpl;
 import co.edu.co.extraclase.business.domain.UserDomain;
@@ -15,8 +13,6 @@ import co.edu.co.extraclase.dto.UserDto;
 
 public final class UserFacadeImpl implements UserFacade {
 	
-
-
 	@Override
 	public void registerNewUserInformation(UserDto userDto) {
 		var daoFactory = DAOFactory.getFactory();
@@ -31,21 +27,18 @@ public final class UserFacadeImpl implements UserFacade {
     	   
     	   daoFactory.commitTransaction();
     	   
-       }catch(final ExtraClaseException exception) {
+       } catch(final ExtraClaseException exception) {
 		   daoFactory.rollbackTransaction();
 		   throw exception;
-	}catch(final Exception exception) {
+       } catch(final Exception exception) {
 		   daoFactory.rollbackTransaction();
-		   
-		   
 		   var  userMessage=MessagesEnum.USER_ERROR_UNEXPECTED_EXCEPTION_REGISTERING_USER.getContent();
 		   var technicalMessage=MessagesEnum.TECHNICAL_ERROR_UNEXPECTED_EXCEPTION_REGISTERING_USER.getContent();
-		   
 		   throw ExtraClaseException.create(exception, userMessage, technicalMessage);
-	}finally {
+	
+       } finally {
 		   daoFactory.closeConnection();
-		
-	}
+       }
 	}
 
 	@Override
@@ -56,6 +49,7 @@ public final class UserFacadeImpl implements UserFacade {
 
 	@Override
 	public void updateUserInformation(UUID id, UserDto userDto) {
+		
 		var daoFactory = DAOFactory.getFactory();
 		var business = new UserBusinessImpl(daoFactory);
 		
@@ -74,7 +68,6 @@ public final class UserFacadeImpl implements UserFacade {
 			throw exception;
 		} catch (final Exception exception) {
 			daoFactory.rollbackTransaction();
-			
 			var userMessage = MessagesEnum.USER_ERROR_UNEXPECTED_EXCEPTION_UPDATING_USER.getContent();
 			var technicalMessage = MessagesEnum.TECHNICAL_ERROR_UNEXPECTED_EXCEPTION_UPDATING_USER.getContent();
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
@@ -105,6 +98,7 @@ public final class UserFacadeImpl implements UserFacade {
 
 	@Override
 	public List<UserDto> findUsersByFilter(UserDto userFilters) {
+		
 		var daoFactory = DAOFactory.getFactory();
 		var business = new UserBusinessImpl(daoFactory);
 		
@@ -116,13 +110,9 @@ public final class UserFacadeImpl implements UserFacade {
 			
 			return UserDTOAssembler.getUserDTOAssembler().toDTO(business.findUsersByFilter(userDomain));
 			
-			
-			
-			
 		} catch (final ExtraClaseException exception) {
 			throw exception;
 		} catch (final Exception exception) {
-			
 			var userMessage = MessagesEnum.USER_ERROR_UNEXPECTED_EXCEPTION_FINDING_USER.getContent();
 			var technicalMessage = MessagesEnum.TECHNICAL_ERROR_UNEXPECTED_EXCEPTION_FINDING_USER.getContent();
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
@@ -131,5 +121,4 @@ public final class UserFacadeImpl implements UserFacade {
 			daoFactory.closeConnection();
 		}
 	}
-
 }
