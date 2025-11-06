@@ -34,12 +34,12 @@ public final class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
         sql.append("\"apellido\", ");
         sql.append("\"nombreUsuario\", ");
         sql.append("\"email\", ");
-        sql.append("\"confirmacionEmail\", ");
+        sql.append("\"emailConfirmado\", ");
         sql.append("\"fechaRegistro\", ");
         sql.append("\"passwordHash\", ");
         sql.append("\"estado\", ");
         sql.append("\"esSuperUsuario\", ");
-        sql.append("\"confirmacionSuperUsuario\") ");
+        sql.append("\"superUsuarioConfirmado\") ");
         sql.append("SELECT ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?");
 
         
@@ -49,12 +49,12 @@ public final class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
             preparedStatement.setString(3, entity.getLastName());
             preparedStatement.setString(4, entity.getUsername());
             preparedStatement.setString(5, entity.getEmail());
-			preparedStatement.setBoolean(6, entity.isEmailConfirmation());
+			preparedStatement.setBoolean(6, entity.isEmailConfirmed());
 			preparedStatement.setObject(7, entity.getRegistrationDate());
 			preparedStatement.setString(8, entity.getPasswordHash());
 			preparedStatement.setBoolean(9, entity.isAccountStatus());
 			preparedStatement.setBoolean(10, entity.isSuperUser());
-			preparedStatement.setBoolean(11, entity.isSuperUserConfirmation());
+			preparedStatement.setBoolean(11, entity.isSuperUserConfirmed());
 			
 			preparedStatement.executeUpdate();
 		
@@ -82,12 +82,12 @@ public final class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
 		sql.append("    \"apellido\" = ?, ");
 		sql.append("    \"nombreUsuario\" = ?, ");
 		sql.append("    \"email\" = ?, ");
-		sql.append("    \"confirmacionEmail\" = ?, ");
+		sql.append("    \"emailConfirmado\" = ?, ");
 		sql.append("    \"fechaRegistro\" = ?, ");
 		sql.append("    \"passwordHash\" = ?, ");
 		sql.append("    \"estado\" = ?, ");
 		sql.append("    \"esSuperUsuario\" = ?, ");
-		sql.append("    \"confirmacionSuperUsuario\" = ? ");
+		sql.append("    \"superUsuarioConfirmado\" = ? ");
 
 		sql.append("WHERE \"usuarioId\" = ?; " );
 			
@@ -98,12 +98,12 @@ public final class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
             preparedStatement.setString(3, entity.getLastName());
             preparedStatement.setString(4, entity.getUsername());
             preparedStatement.setString(5, entity.getEmail());
-			preparedStatement.setBoolean(6, entity.isEmailConfirmation());
+			preparedStatement.setBoolean(6, entity.isEmailConfirmed());
 			preparedStatement.setObject(7, entity.getRegistrationDate());
 			preparedStatement.setString(8, entity.getPasswordHash());
 			preparedStatement.setBoolean(9, entity.isAccountStatus());
 			preparedStatement.setBoolean(10, entity.isSuperUser());
-			preparedStatement.setBoolean(11, entity.isSuperUserConfirmation());
+			preparedStatement.setBoolean(11, entity.isSuperUserConfirmed());
 			
 			preparedStatement.executeUpdate();
 		
@@ -153,12 +153,12 @@ public final class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
 		sql.append("\"apellido\" , ");
 		sql.append("\"nombreUsuario\" , ");
 		sql.append("\"email\" , ");
-		sql.append("\"confirmacionEmail\" , ");
+		sql.append("\"emailConfirmado\" , ");
 		sql.append("\"fechaRegistro\" , ");
 		sql.append("\"passwordHash\" , ");
 		sql.append("\"estado\" , ");
 		sql.append("\"esSuperUsuario\" , ");
-		sql.append("\"confirmacionSuperUsuario\" ");
+		sql.append("\"superUsuarioConfirmado\" ");
 		sql.append("FROM \"Usuario\"  ");
 		
         createWhereClauseFindByFilter(sql, parameterList, filterEntity);
@@ -191,8 +191,8 @@ public final class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
 		filterEntityValidated.getEmail());
 		
 		addCondition(conditions, parameterList,
-		filterEntityValidated.isEmailConfirmation(), "\"confirmacionEmail\" = ? ",
-		filterEntityValidated.isEmailConfirmation());
+		filterEntityValidated.isEmailConfirmed(), "\"emailConfirmado\" = ? ",
+		filterEntityValidated.isEmailConfirmed());
 		
 		addCondition(conditions, parameterList,
 		!DateTimeHelper.isDefaultDate(filterEntityValidated.getRegistrationDate()), "\"fechaRegistro\" = ? ",
@@ -211,8 +211,8 @@ public final class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
 		filterEntityValidated.isSuperUser());
 		
 		addCondition(conditions, parameterList,
-		!filterEntityValidated.isSuperUserConfirmation(), "\"confirmacionSuperUsuario\" = ? ",
-		filterEntityValidated.isSuperUserConfirmation());
+		!filterEntityValidated.isSuperUserConfirmed(), "\"superUsuarioConfirmado\" = ? ",
+		filterEntityValidated.isSuperUserConfirmed());
 		
 		if (!conditions.isEmpty()) {
 			sql.append(" WHERE ");
@@ -242,12 +242,12 @@ private List<UserEntity> executeSentenceFindByFilter(final PreparedStatement pre
             	user.setLastName(resultSet.getString("apellido"));
             	user.setUsername(resultSet.getString("nombreUsuario"));
             	user.setEmail(resultSet.getString("email"));
-            	user.setEmailConfirmation(resultSet.getBoolean("confirmacionEmail"));
+            	user.setEmailConfirmed(resultSet.getBoolean("emailConfirmado"));
             	user.setRegistrationDate(resultSet.getTimestamp("fechaRegistro").toLocalDateTime());
             	user.setPasswordHash(resultSet.getString("passwordHash"));
             	user.setAccountStatus(resultSet.getBoolean("estado"));
             	user.setSuperUser(resultSet.getBoolean("esSuperUsuario"));
-            	user.setSuperUserConfirmation(resultSet.getBoolean("confirmacionSuperUsuario"));
+            	user.setSuperUserConfirmed(resultSet.getBoolean("superUsuarioConfirmado"));
             	
 				users.add(user);
 

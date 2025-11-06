@@ -245,12 +245,12 @@ public final class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUs
             	user.setLastName(resultSet.getString("apellido"));
             	user.setUsername(resultSet.getString("nombreUsuario"));
             	user.setEmail(resultSet.getString("email"));
-            	user.setEmailConfirmation(resultSet.getBoolean("confirmacionEmail"));
+            	user.setEmailConfirmed(resultSet.getBoolean("confirmacionEmail"));
             	user.setRegistrationDate((LocalDateTime) resultSet.getObject("fechaRegistro"));
             	user.setPasswordHash(resultSet.getString("passwordHash"));
             	user.setAccountStatus(resultSet.getBoolean("estado"));
             	user.setSuperUser(resultSet.getBoolean("esSuperUsuario"));
-            	user.setSuperUserConfirmation(resultSet.getBoolean("confirmacionSuoerUsuario"));
+            	user.setSuperUserConfirmed(resultSet.getBoolean("confirmacionSuoerUsuario"));
             	
             	var projectStatus = new ProjectStatusEntity();
 				projectStatus.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("proyectoEstadoId")));

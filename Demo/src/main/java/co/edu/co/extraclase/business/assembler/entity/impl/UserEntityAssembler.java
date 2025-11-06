@@ -24,16 +24,16 @@ public final class UserEntityAssembler implements EntityAssembler<UserEntity, Us
 	public UserEntity toEntity(final UserDomain domain) {
 		var domainTmp = ObjectHelper.getDefault(domain, new UserDomain(UUIDHelper.getUUIDHelper().getDefault()));
 		return new UserEntity(domainTmp.getId(), domainTmp.getFirstName(), domainTmp.getLastName(), domainTmp.getUsername(),
-		domainTmp.getEmail(), domainTmp.isEmailConfirmation(), domainTmp.getRegistrationDate(), domainTmp.getPasswordHash(),
-		domainTmp.isAccountStatus(), domainTmp.isSuperUser(), domainTmp.isSuperUserConfirmation());
+		domainTmp.getEmail(), domainTmp.isEmailConfirmed(), domainTmp.getRegistrationDate(), domainTmp.getPasswordHash(),
+		domainTmp.isAccountStatus(), domainTmp.isSuperUser(), domainTmp.isSuperUserConfirmed());
 	}
 
 	@Override
 	public UserDomain toDomain(final UserEntity entity) {
 		var entityTmp = ObjectHelper.getDefault(entity, new UserEntity());
 		return new UserDomain(entityTmp.getId(), entityTmp.getFirstName(), entityTmp.getLastName(), entityTmp.getUsername(),
-		entityTmp.getEmail(), entityTmp.isEmailConfirmation(), entityTmp.getRegistrationDate(), entityTmp.getPasswordHash(), 
-		entityTmp.isAccountStatus(), entityTmp.isSuperUser(), entityTmp.isSuperUserConfirmation());
+		entityTmp.getEmail(), entityTmp.isEmailConfirmed(), entityTmp.getRegistrationDate(), entityTmp.getPasswordHash(), 
+		entityTmp.isAccountStatus(), entityTmp.isSuperUser(), entityTmp.isSuperUserConfirmed());
 	}
 
 	@Override

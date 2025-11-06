@@ -16,13 +16,12 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
     private String passwordHash;
     private boolean accountStatus;
     private boolean isSuperUser;
-    private boolean superUserConfirmation;
-    private boolean emailConfirmation;
-    private boolean accountStatusDefaultValue;
-    private boolean isSuperUserDefaultValue;
-    private boolean superUserConfirmationDefaultValue;
-    private boolean emailConfirmationDefaultValue;
-	
+    private boolean superUserConfirmed;
+    private boolean emailConfirmed;
+    private boolean accountStatusIsDefaultValue;
+    private boolean isSuperUserIsDefaultValue;
+    private boolean superUserConfirmedIsDefaultValue;
+    private boolean emailConfirmedIsDefaultValue;
 	
     public UserEntity() {
     	setId(UUIDHelper.getUUIDHelper().getDefault());
@@ -34,15 +33,15 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
         setPasswordHash(TextHelper.getDefault());
         setAccountStatus(false);
         setSuperUser(false);
-        setSuperUserConfirmation(false);
-        setEmailConfirmation(false);
-        setEmailConfirmationDefaultValue(true);
-        setAccountStatusDefaultValue(true);
-        setSuperUserDefaultValue(true);
-        setSuperUserConfirmationDefaultValue(true);
+        setSuperUserConfirmed(false);
+        setEmailConfirmed(false);
+        setEmailConfirmedIsDefaultValue(true);
+        setAccountStatusIsDefaultValue(true);
+        setSuperUserIsDefaultValue(true);
+        setSuperUserConfirmedIsDefaultValue(true);
     }
     
-    public UserEntity(final UUID id) {
+	public UserEntity(final UUID id) {
     	setId(id);
     	setFirstName(TextHelper.getDefault());
         setLastName(TextHelper.getDefault());
@@ -52,28 +51,28 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
         setPasswordHash(TextHelper.getDefault());
         setAccountStatus(false);
         setSuperUser(false);
-        setSuperUserConfirmation(false);
-        setEmailConfirmation(false);
-        setEmailConfirmationDefaultValue(true);
-        setAccountStatusDefaultValue(true);
-        setSuperUserDefaultValue(true);
-        setSuperUserConfirmationDefaultValue(true);
+        setSuperUserConfirmed(false);
+        setEmailConfirmed(false);
+        setEmailConfirmedIsDefaultValue(true);
+        setAccountStatusIsDefaultValue(true);
+        setSuperUserIsDefaultValue(true);
+        setSuperUserConfirmedIsDefaultValue(true);
     }
     
     public UserEntity(final UUID id, final String firstName, final String lastName, final String username, final String email,
-final boolean emailConfirmation, final LocalDateTime registrationDate, final String passwordHash, final boolean accountStatus,
-final boolean isSuperUser, final boolean superUserConfirmation) {
+final boolean emailConfirmed, final LocalDateTime registrationDate, final String passwordHash, final boolean accountStatus,
+final boolean isSuperUser, final boolean superUserConfirmed) {
 		setId(id);
 		setFirstName(firstName);
         setLastName(lastName);
         setUsername(username);
         setEmail(email);
-        setEmailConfirmation(emailConfirmation);
+        setEmailConfirmed(emailConfirmed);
         setPasswordHash(passwordHash);
         setAccountStatus(accountStatus);
-      setSuperUser(isSuperUser);
-       setSuperUserConfirmation(superUserConfirmation);
-       setRegistrationDate(registrationDate);
+        setSuperUser(isSuperUser);
+        setSuperUserConfirmed(superUserConfirmed);
+        setRegistrationDate(registrationDate);
 	}
     
 	static UserEntity getDefault() {
@@ -107,7 +106,7 @@ final boolean isSuperUser, final boolean superUserConfirmation) {
 	public void setLastName(final String lastName) {
 		this.lastName = TextHelper.getDefaultWithTrim(lastName);
 	}
-
+	
 	public String getUsername() {
 		return username;
 	}
@@ -141,37 +140,37 @@ final boolean isSuperUser, final boolean superUserConfirmation) {
     }
 
     public boolean isSuperUserDefaultValue() {
-        return isSuperUserDefaultValue;
+        return isSuperUserIsDefaultValue;
     }
 
     public void setSuperUserConfirm(final boolean isSuperUser) {
         this.isSuperUser = isSuperUser;
-        setSuperUserDefaultValue(false);
+        setSuperUserIsDefaultValue(false);
     }
 
     public void setSuperUser(final boolean isSuperUser) {
         setSuperUserConfirm(isSuperUser);
     }
 
-    public void setSuperUserDefaultValue(final boolean isSuperUserDefaultValue) {
-        this.isSuperUserDefaultValue = isSuperUserDefaultValue;
+    public void setSuperUserIsDefaultValue(final boolean isSuperUserDefaultValue) {
+        this.isSuperUserIsDefaultValue = isSuperUserDefaultValue;
     }
 
-    public boolean isSuperUserConfirmation() {
-        return superUserConfirmation;
+    public boolean isSuperUserConfirmed() {
+        return superUserConfirmed;
     }
 
-    public boolean isSuperUserConfirmationDefaultValue() {
-        return superUserConfirmationDefaultValue;
+    public boolean isSuperUserConfirmedDefaultValue() {
+        return superUserConfirmedIsDefaultValue;
     }
 
-    public void setSuperUserConfirmation(final boolean superUserConfirmation) {
-        this.superUserConfirmation = superUserConfirmation;
-        setSuperUserConfirmationDefaultValue(false);
+    public void setSuperUserConfirmed(final boolean superUserConfirmed) {
+        this.superUserConfirmed = superUserConfirmed;
+        setSuperUserConfirmedIsDefaultValue(false);
     }
 
-    public void setSuperUserConfirmationDefaultValue(final boolean superUserConfirmationDefaultValue) {
-        this.superUserConfirmationDefaultValue = superUserConfirmationDefaultValue;
+    public void setSuperUserConfirmedIsDefaultValue(final boolean superUserConfirmedIsDefaultValue) {
+        this.superUserConfirmedIsDefaultValue = superUserConfirmedIsDefaultValue;
     }
 
     public boolean isAccountStatus() {
@@ -179,38 +178,38 @@ final boolean isSuperUser, final boolean superUserConfirmation) {
     }
 
     public boolean isAccountStatusDefaultValue() {
-        return accountStatusDefaultValue;
+        return accountStatusIsDefaultValue;
     }
 
     public void setAccountStatus(final boolean accountStatus) {
         this.accountStatus = accountStatus;
-        setAccountStatusDefaultValue(false);
-        setEmailConfirmationDefaultValue(false);
+        setAccountStatusIsDefaultValue(false);
+        setEmailConfirmedIsDefaultValue(false);
     }
 
-    public void setAccountStatusDefaultValue(final boolean accountStatusDefaultValue) {
-        this.accountStatusDefaultValue = accountStatusDefaultValue;
+    public void setAccountStatusIsDefaultValue(final boolean accountStatusDefaultValue) {
+        this.accountStatusIsDefaultValue = accountStatusDefaultValue;
     }
     
     public void setEmail(final String email) {
         this.email = TextHelper.getDefaultWithTrim(email);
     }
 
-    public boolean isEmailConfirmation() {
-        return emailConfirmation;
+    public boolean isEmailConfirmed() {
+        return emailConfirmed;
     }
 
-    public boolean isEmailConfirmationDefaultValue() {
-        return emailConfirmationDefaultValue;
+    public boolean isEmailConfirmedIsDefaultValue() {
+        return emailConfirmedIsDefaultValue;
     }
 
-    public void setEmailConfirmation(final boolean emailConfirmation) {
-        this.emailConfirmation = emailConfirmation;
-        setEmailConfirmationDefaultValue(false);
+    public void setEmailConfirmed(final boolean emailConfirmed) {
+        this.emailConfirmed = emailConfirmed;
+        setEmailConfirmedIsDefaultValue(false);
         
     }
     
-    public void setEmailConfirmationDefaultValue(final boolean emailConfirmationDefaultValue) {
-        this.emailConfirmationDefaultValue = emailConfirmationDefaultValue;
+    public void setEmailConfirmedIsDefaultValue(final boolean emailConfirmedIsDefaultValue) {
+        this.emailConfirmedIsDefaultValue = emailConfirmedIsDefaultValue;
     }
 }

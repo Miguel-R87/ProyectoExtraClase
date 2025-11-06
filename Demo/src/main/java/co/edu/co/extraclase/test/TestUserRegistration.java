@@ -20,8 +20,8 @@ public class TestUserRegistration {
 			user.setPasswordHash("MajoF27**");
 			user.setAccountStatus(false);
 			user.setSuperUser(false);
-			user.setSuperUserConfirmation(false);
-			user.setEmailConfirmation(false);
+			user.setSuperUserConfirmed(false);
+			user.setEmailConfirmed(false);
 			
 			var facade = new UserFacadeImpl();
 			facade.registerNewUserInformation(user);

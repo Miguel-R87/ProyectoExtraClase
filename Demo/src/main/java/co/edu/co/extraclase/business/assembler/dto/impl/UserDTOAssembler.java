@@ -24,8 +24,8 @@ public final class UserDTOAssembler implements DTOAssembler<UserDto,UserDomain> 
     public UserDto toDTO(final UserDomain domain) {
         var domainTmp = ObjectHelper.getDefault(domain, new UserDomain(UUIDHelper.getUUIDHelper().getDefault()));
         return new UserDto(domainTmp.getId(), domainTmp.getFirstName(), domainTmp.getLastName(), domainTmp.getUsername(),
-                domainTmp.getEmail(), domainTmp.isEmailConfirmation(), domainTmp.getPasswordHash(),
-                domainTmp.isAccountStatus(), domainTmp.isSuperUser(), domainTmp.isSuperUserConfirmation(),
+                domainTmp.getEmail(), domainTmp.isEmailConfirmed(), domainTmp.getPasswordHash(),
+                domainTmp.isAccountStatus(), domainTmp.isSuperUser(), domainTmp.isSuperUserConfirmed(),
                 domainTmp.getRegistrationDate());
     }
 
@@ -33,8 +33,8 @@ public final class UserDTOAssembler implements DTOAssembler<UserDto,UserDomain> 
     public UserDomain toDomain(final UserDto dto) {
         var dtoTmp = ObjectHelper.getDefault(dto, new UserDto(UUIDHelper.getUUIDHelper().getDefault()));
         return new UserDomain(dtoTmp.getId(), dtoTmp.getFirstName(), dtoTmp.getLastName(), dtoTmp.getUsername(),
-                dtoTmp.getEmail(), dtoTmp.isEmailConfirmation(), dtoTmp.getRegistrationDate(), dtoTmp.getPasswordHash(), dtoTmp.isAccountStatus(),
-                dtoTmp.isSuperUser(), dtoTmp.isSuperUserConfirmation());
+                dtoTmp.getEmail(), dtoTmp.isEmailConfirmed(), dtoTmp.getRegistrationDate(), dtoTmp.getPasswordHash(), dtoTmp.isAccountStatus(),
+                dtoTmp.isSuperUser(), dtoTmp.isSuperUserConfirmed());
     }
 
     @Override
