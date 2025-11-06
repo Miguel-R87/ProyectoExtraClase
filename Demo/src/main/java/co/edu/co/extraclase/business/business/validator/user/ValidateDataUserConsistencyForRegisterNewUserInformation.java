@@ -44,26 +44,26 @@ public final class ValidateDataUserConsistencyForRegisterNewUserInformation impl
 	}
 	
 	protected void validateEmptyData(final UserDomain data) {
-		StringValueIsPresentRule.executeRule(data.getFirstName(), MessagesEnum.USER_FIRST_NAME, true);
-		StringValueIsPresentRule.executeRule(data.getLastName(), MessagesEnum.USER_LAST_NAME, true);
-		StringValueIsPresentRule.executeRule(data.getUsername(), MessagesEnum.USER_USERNAME, true);
-		StringValueIsPresentRule.executeRule(data.getEmail(), MessagesEnum.USER_EMAIL, true);
-		StringValueIsPresentRule.executeRule(data.getPasswordHash(), MessagesEnum.USER_PASSWORDHASH, false);
+		StringValueIsPresentRule.executeRule(data.getFirstName(), MessagesEnum.USER_FIRST_NAME.getTitle(), true);
+		StringValueIsPresentRule.executeRule(data.getLastName(), MessagesEnum.USER_LAST_NAME.getTitle(), true);
+		StringValueIsPresentRule.executeRule(data.getUsername(), MessagesEnum.USER_USERNAME.getTitle(), true);
+		StringValueIsPresentRule.executeRule(data.getEmail(), MessagesEnum.USER_EMAIL.getTitle(), true);
+		StringValueIsPresentRule.executeRule(data.getPasswordHash(), MessagesEnum.USER_PASSWORDHASH.getTitle(), false);
 	}
 	
 	protected void validateDataLength(final UserDomain data) {
-		StringLengthValueIsValidRule.executeRule(data.getFirstName(), MessagesEnum.USER_FIRST_NAME, 3, 60, true);
-		StringLengthValueIsValidRule.executeRule(data.getLastName(), MessagesEnum.USER_LAST_NAME, 3, 60, true);
-		StringLengthValueIsValidRule.executeRule(data.getUsername(), MessagesEnum.USER_USERNAME, 3, 50, true);
-		StringLengthValueIsValidRule.executeRule(data.getEmail(), MessagesEnum.USER_EMAIL, 10, 60, true);
-		StringLengthValueIsValidRule.executeRule(data.getPasswordHash(), MessagesEnum.USER_PASSWORDHASH, 8, 64, false);
+		StringLengthValueIsValidRule.executeRule(data.getFirstName(), MessagesEnum.USER_FIRST_NAME.getTitle(), 3, 60, true);
+		StringLengthValueIsValidRule.executeRule(data.getLastName(), MessagesEnum.USER_LAST_NAME.getTitle(), 3, 60, true);
+		StringLengthValueIsValidRule.executeRule(data.getUsername(), MessagesEnum.USER_USERNAME.getTitle(), 3, 50, true);
+		StringLengthValueIsValidRule.executeRule(data.getEmail(), MessagesEnum.USER_EMAIL.getTitle(), 10, 60, true);
+		StringLengthValueIsValidRule.executeRule(data.getPasswordHash(), MessagesEnum.USER_PASSWORDHASH.getTitle(), 8, 64, false);
 	}
 	
 	protected void validateDataFormat(final UserDomain data) {
-		StringFormatValueIsValidRule.executRule(data.getFirstName(), MessagesEnum.USER_FIRST_NAME, "^[A-Za-zÁÉÍÓÚáéíóúÑñ\\s]+$", true);
-		StringFormatValueIsValidRule.executRule(data.getLastName(), MessagesEnum.USER_LAST_NAME, "^[A-Za-zÁÉÍÓÚáéíóúÑñ\\s]+$", true);
-		StringFormatValueIsValidRule.executRule(data.getUsername(), MessagesEnum.USER_USERNAME, "^[A-Za-z].*",  true);
-		StringFormatValueIsValidRule.executRule(data.getEmail(), MessagesEnum.USER_EMAIL, "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$",  true);
-		StringFormatValueIsValidRule.executRule(data.getPasswordHash(), MessagesEnum.USER_PASSWORDHASH, "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*?&.#_\\-]).{8,}$", false);
+		StringFormatValueIsValidRule.executRule(data.getFirstName(), MessagesEnum.USER_FIRST_NAME, MessagesEnum.USER_DATA_FORMAT_FIRST_NAME_AND_LAST_NAME.getTitle(), true);
+		StringFormatValueIsValidRule.executRule(data.getLastName(), MessagesEnum.USER_LAST_NAME, MessagesEnum.USER_DATA_FORMAT_FIRST_NAME_AND_LAST_NAME.getTitle(), true);
+		StringFormatValueIsValidRule.executRule(data.getUsername(), MessagesEnum.USER_USERNAME, MessagesEnum.USER_DATA_FORMAT_USERNAME.getTitle(),  true);
+		StringFormatValueIsValidRule.executRule(data.getEmail(), MessagesEnum.USER_EMAIL, MessagesEnum.USER_DATA_FORMAT_EMAIL.getTitle(),  true);
+		StringFormatValueIsValidRule.executRule(data.getPasswordHash(), MessagesEnum.USER_PASSWORDHASH, MessagesEnum.USER_DATA_FORMAT_PASSWORDHASH.getTitle(), false);
 	}	
 }

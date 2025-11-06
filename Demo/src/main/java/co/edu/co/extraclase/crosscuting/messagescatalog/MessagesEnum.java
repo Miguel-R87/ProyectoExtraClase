@@ -359,7 +359,12 @@ public enum MessagesEnum {
 		USER_LAST_NAME("Apellido", ""),
 		USER_USERNAME("Nombre de usuario", ""),
 		USER_EMAIL("Email", ""), 
-		USER_PASSWORDHASH("Contraseña", "")
+		USER_PASSWORDHASH("Contraseña", ""),
+		
+		USER_DATA_FORMAT_FIRST_NAME_AND_LAST_NAME("^[A-Za-zÁÉÍÓÚáéíóúÑñ\\s]+$", ""),
+		USER_DATA_FORMAT_USERNAME("^[A-Za-z].*", ""),
+		USER_DATA_FORMAT_EMAIL("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$", ""),
+		USER_DATA_FORMAT_PASSWORDHASH("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*?&.#_\\-]).{8,}$", "")
 	;
 	
 private String title;
