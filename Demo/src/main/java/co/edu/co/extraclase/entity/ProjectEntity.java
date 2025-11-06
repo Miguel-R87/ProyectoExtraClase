@@ -2,7 +2,6 @@ package co.edu.co.extraclase.entity;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
-
 import co.edu.co.extraclase.crosscuting.helper.DateTimeHelper;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
@@ -40,9 +39,6 @@ public final class ProjectEntity  {
 		setProjectStatus(projectStatus);
 	}
     
-    
-    
-    
     static ProjectEntity getDefault() {
     	return new ProjectEntity();
     }
@@ -51,9 +47,6 @@ public final class ProjectEntity  {
 		return ObjectHelper.getDefault(project, getDefault());
 	}
     
-    
-    
-
 	public UUID getId() {
 		return id;
 	}
@@ -93,6 +86,4 @@ public final class ProjectEntity  {
 	public void setProjectStatus(final ProjectStatusEntity projectStatus) {
 		this.projectStatus = ProjectStatusEntity.getDefault(projectStatus);
 	}
-    
-
 }

@@ -2,12 +2,10 @@ package co.edu.co.extraclase.entity;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
-
 import co.edu.co.extraclase.crosscuting.helper.DateTimeHelper;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
-
 
 public final class NotificationEntity  {
 	
@@ -16,7 +14,6 @@ public final class NotificationEntity  {
     private String message;
     private LocalDateTime triggerDate;
     private NotificationTypeEntity notificationType;
-    
     
     public NotificationEntity() {
     	setId(UUIDHelper.getUUIDHelper().getDefault());
@@ -42,9 +39,6 @@ public final class NotificationEntity  {
     	setNotificationType(notificationType);
     }
     
-    
-    
-    
     static NotificationEntity getDefault() {
 		return new NotificationEntity();
 	}
@@ -53,9 +47,6 @@ public final class NotificationEntity  {
     	return ObjectHelper.getDefault(notification, getDefault());
     }
 
-    
-    
-    
 	public UUID getId() {
 		return id;
 	}
@@ -95,6 +86,4 @@ public final class NotificationEntity  {
 	public void setNotificationType(NotificationTypeEntity notificationType) {
 		this.notificationType = NotificationTypeEntity.getDefault(notificationType);
 	}
-    
-
 }

@@ -2,12 +2,10 @@ package co.edu.co.extraclase.entity;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
-
 import co.edu.co.extraclase.crosscuting.helper.BooleanHelper;
 import co.edu.co.extraclase.crosscuting.helper.DateTimeHelper;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
-
 
 public final class ProjectUserEntity  {
 	
@@ -45,9 +43,6 @@ public final class ProjectUserEntity  {
 		setExpiryDate(expiryDate);
     }
     
-    
-    
-    
     static ProjectUserEntity getDefault() {
 		return new ProjectUserEntity();
 	}
@@ -56,9 +51,6 @@ public final class ProjectUserEntity  {
     	return ObjectHelper.getDefault(projectUser, getDefault());
     }
 
-    
-    
-    
 	public UUID getId() {
 		return id;
 	}
@@ -106,5 +98,4 @@ public final class ProjectUserEntity  {
 	public void setExpiryDate(LocalDateTime expiryDate) {
 		this.expiryDate = DateTimeHelper.getDefault(expiryDate);
 	}
-
 }

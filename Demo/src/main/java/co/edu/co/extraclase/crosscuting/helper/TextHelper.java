@@ -4,6 +4,7 @@ public final class TextHelper {
 	private static final String EMPTY = "";
 
 	private TextHelper() {
+	
 	}
 
 	public static String getDefault() {
@@ -37,7 +38,6 @@ public final class TextHelper {
 		        && password.matches("^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*?&.#_\\-]).{8,}$");
 	}
 	 
-	 
 	 public static boolean lengthIsValid(final String value, final int min, final int max, final boolean mustApplyTrim) {
 		 var valueToValidate = mustApplyTrim ? getDefaultWithTrim(value) : getDefault(value);
 		 var length = valueToValidate.length();
@@ -52,6 +52,5 @@ public final class TextHelper {
 		 var text = (mustApplyTrim ? getDefaultWithTrim(value) : getDefault(value));
 		 return text.matches(pattern);
 	}
-
 }
  

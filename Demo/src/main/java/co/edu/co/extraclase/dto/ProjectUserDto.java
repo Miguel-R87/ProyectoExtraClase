@@ -2,7 +2,6 @@ package co.edu.co.extraclase.dto;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
-
 import co.edu.co.extraclase.crosscuting.helper.BooleanHelper;
 import co.edu.co.extraclase.crosscuting.helper.DateTimeHelper;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
@@ -45,7 +44,6 @@ public final class ProjectUserDto {
         setExpiryDate(expiryDate);
     }
 
-
     public static ProjectUserDto getDefaultValue() {
         return new ProjectUserDto();
     }
@@ -54,8 +52,6 @@ public final class ProjectUserDto {
         return ObjectHelper.getDefault(projectUser, getDefaultValue());
     }
 
- 
-    
     public UUID getId() {
         return id;
     }

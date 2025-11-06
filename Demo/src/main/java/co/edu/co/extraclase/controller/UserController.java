@@ -1,7 +1,6 @@
 package co.edu.co.extraclase.controller;
 
 import java.util.UUID;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +17,6 @@ import co.edu.co.extraclase.crosscuting.exception.ExtraClaseException;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
-
 @RestController
 @RequestMapping("/api/v1/users")
 public class UserController {
@@ -31,8 +29,7 @@ public class UserController {
 		var facade = new UserFacadeImpl();
 		facade.registerNewUserInformation(user);
 		responseObjectData.addMessage(" User registered sucesfully");
-		
-		
+	
 	} catch (final ExtraClaseException exception) {
 		responseObjectData = Response.createFailedResponse();
 		responseObjectData.addMessage(exception.getUserMessage());
@@ -45,9 +42,10 @@ public class UserController {
 		responseStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
 		exception.printStackTrace();
 	}
+	
 	return new ResponseEntity<>(responseObjectData, responseStatusCode);
+	
 	}
-
 	
 	@GetMapping
 	public ResponseEntity<Response<UserDto>> findUsersByFilter(
@@ -89,5 +87,4 @@ public class UserController {
 
 		return new ResponseEntity<>(responseObjectData, responseStatusCode);
 	}
-
 }

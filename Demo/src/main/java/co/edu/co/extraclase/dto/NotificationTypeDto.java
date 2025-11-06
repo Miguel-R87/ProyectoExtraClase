@@ -3,11 +3,11 @@ package co.edu.co.extraclase.dto;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
-
 import java.util.UUID;
 
 public class NotificationTypeDto {
-    private UUID id;
+   
+	private UUID id;
     private String name;
     private String description;
 
@@ -28,7 +28,6 @@ public class NotificationTypeDto {
         setName(name);
         setDescription(description);
     }
-
 
     static NotificationTypeDto getDefault(){
         return new NotificationTypeDto();

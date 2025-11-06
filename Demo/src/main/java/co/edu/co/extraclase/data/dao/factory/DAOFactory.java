@@ -1,7 +1,7 @@
 package co.edu.co.extraclase.data.dao.factory;
+
 import java.sql.Connection;
 import java.sql.SQLException;
-
 import co.edu.co.extraclase.crosscuting.exception.ExtraClaseException;
 import co.edu.co.extraclase.crosscuting.helper.SqlConnectionHelper;
 import co.edu.co.extraclase.crosscuting.messagescatalog.MessagesEnum;
@@ -20,10 +20,9 @@ import co.edu.co.extraclase.data.dao.entity.UnitOfMeasureDAO;
 import co.edu.co.extraclase.data.dao.entity.UserDAO;
 import co.edu.co.extraclase.data.dao.factory.postgresql.PostgreSqlDAOFactory;
 
-
-
 public abstract class DAOFactory {
-    protected Connection connection;
+    
+	protected Connection connection;
     protected static FactoryEnum factory = FactoryEnum.POSTGRESQL;
 
     public static DAOFactory getFactory() {
@@ -39,8 +38,6 @@ public abstract class DAOFactory {
 		}
     	
 	}
-    
-    
     
     public abstract ColorDAO getColorDAO();
     
@@ -71,7 +68,8 @@ public abstract class DAOFactory {
     protected abstract void openConnection();
     
     public final void initTransaction(){
-        SqlConnectionHelper.ensureTransactionIsNotStarted(connection);
+        
+    	SqlConnectionHelper.ensureTransactionIsNotStarted(connection);
 
         try{
             connection.setAutoCommit(false);
@@ -133,8 +131,5 @@ public abstract class DAOFactory {
             var techincalMessage = MessagesEnum.TECHNICAL_ERROR_SQL_CONNECTION_UNEXPECTED_ERROR_VALIDATING_TRANSACTION_IS_OPEN.getContent();
             throw ExtraClaseException.create(exception,userMessage, techincalMessage);
         }
-
-
-
     }
 }

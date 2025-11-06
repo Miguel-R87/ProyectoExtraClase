@@ -4,12 +4,12 @@ import co.edu.co.extraclase.crosscuting.helper.DateTimeHelper;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
-
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class NotificationDto {
-    private UUID id;
+    
+	private UUID id;
     private TaskUserDto taskUser;
     private String message;
     private LocalDateTime triggerDate;
@@ -39,7 +39,6 @@ public class NotificationDto {
         setTriggerDate(triggerDate);
         setNotificationType(notificationType);
     }
-
 
     static NotificationDto getDefault() {
         return new NotificationDto();

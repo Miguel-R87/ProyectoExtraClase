@@ -2,13 +2,11 @@ package co.edu.co.extraclase.entity;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
-
 import co.edu.co.extraclase.crosscuting.helper.BooleanHelper;
 import co.edu.co.extraclase.crosscuting.helper.DateTimeHelper;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
-
 
 public final class TaskUserEntity  {
 	
@@ -19,7 +17,6 @@ public final class TaskUserEntity  {
     private LocalDateTime completionDate;
     private boolean isCreator;
     private String comment;
-    
     
     public TaskUserEntity() {
 		setId(UUIDHelper.getUUIDHelper().getDefault());
@@ -53,10 +50,6 @@ public final class TaskUserEntity  {
 		setComment(comment);
     }
     
-    
-    
-    
-    
     static TaskUserEntity getDefault() {
 		return new TaskUserEntity();
     }
@@ -65,9 +58,6 @@ public final class TaskUserEntity  {
 		return ObjectHelper.getDefault(taskUser, getDefault());
 	}
 
-    
-    
-    
 	public UUID getId() {
 		return id;
 	}
@@ -123,5 +113,4 @@ public final class TaskUserEntity  {
 	public void setComment(String comment) {
 		this.comment = TextHelper.getDefaultWithTrim(comment);
 	}
-
 }

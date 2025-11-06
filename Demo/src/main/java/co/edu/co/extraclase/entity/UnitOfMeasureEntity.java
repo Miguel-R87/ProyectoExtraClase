@@ -1,7 +1,6 @@
 package co.edu.co.extraclase.entity;
 
 import java.util.UUID;
-
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
@@ -11,7 +10,6 @@ public final class UnitOfMeasureEntity  {
 	private UUID id;
 	private String name;
 	private String description;
-	
 	
 	public UnitOfMeasureEntity() {
 		setId(UUIDHelper.getUUIDHelper().getDefault());
@@ -30,7 +28,6 @@ public final class UnitOfMeasureEntity  {
 		setName(name);
 		setDescription(description);
 	}
-	
 	
 	public static UnitOfMeasureEntity getDefault() {
 		return new UnitOfMeasureEntity();

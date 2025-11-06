@@ -2,11 +2,11 @@ package co.edu.co.extraclase.controller.dto;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 
 public class Response <T> {
+	
 	private List<String> messages;
 	private List<T> data;
 	private boolean responseSucceded;
@@ -68,5 +68,4 @@ public class Response <T> {
 	public void setResponseSucceded(final boolean responseSucceded) {
 		this.responseSucceded = responseSucceded;
 	}
-
 }

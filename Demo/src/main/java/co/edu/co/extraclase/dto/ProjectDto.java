@@ -2,7 +2,6 @@ package co.edu.co.extraclase.dto;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
-
 import co.edu.co.extraclase.crosscuting.helper.DateTimeHelper;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
@@ -47,8 +46,6 @@ public final class ProjectDto {
 	public static ProjectDto getDefaultValue(final ProjectDto project) {
 		return ObjectHelper.getDefault(project, getDefaultValue());
 	}
-	
-
 	
 	public UUID getId() {
 		return id;

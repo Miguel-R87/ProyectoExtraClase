@@ -1,6 +1,5 @@
 package co.edu.co.extraclase.dto;
 
-
 import co.edu.co.extraclase.crosscuting.helper.DateTimeHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
@@ -77,12 +76,9 @@ public class UserDto {
        setRegistrationDate(registrationDate);
     }
 
-  
     public static UserDto getDefaultValue() {
         return new UserDto();
     }
-
-    
 
     public UUID getId() {
         return id;
@@ -133,15 +129,9 @@ public class UserDto {
     }
 
     public void setPasswordHash(String passwordHash) {
-        // Preserve exact password/hash value (do not trim); allow null
         this.passwordHash = passwordHash;
     }
 
-   
-    
-
-	//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	 // ---------------- SUPER USER ----------------
     public boolean isSuperUser() {
         return isSuperUser;
     }
@@ -155,7 +145,6 @@ public class UserDto {
         setSuperUserDefaultValue(false);
     }
 
-    // compatibility setter used by constructors and external callers
     public void setSuperUser(final boolean isSuperUser) {
         setSuperUserConfirm(isSuperUser);
     }
@@ -164,7 +153,6 @@ public class UserDto {
         this.isSuperUserDefaultValue = isSuperUserDefaultValue;
     }
 
-    // ---------------- SUPER USER CONFIRMATION ----------------
     public boolean isSuperUserConfirmation() {
         return superUserConfirmation;
     }
@@ -182,7 +170,6 @@ public class UserDto {
         this.superUserConfirmationDefaultValue = superUserConfirmationDefaultValue;
     }
 
-    // ---------------- ACCOUNT STATUS ----------------
     public boolean isAccountStatus() {
         return accountStatus;
     }
@@ -221,5 +208,4 @@ public class UserDto {
     public void setEmailConfirmationDefaultValue(final boolean emailConfirmationDefaultValue) {
         this.emailConfirmationDefaultValue = emailConfirmationDefaultValue;
     }
-
 }

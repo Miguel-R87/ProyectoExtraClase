@@ -1,9 +1,7 @@
 package co.edu.co.extraclase.dto;
 
-
 import java.time.LocalDateTime;
 import java.util.UUID;
-
 import co.edu.co.extraclase.crosscuting.helper.DateTimeHelper;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
@@ -37,8 +35,6 @@ public final class ListDto {
 		setCreationDate(creationDate);
 	}
 
-
-
     public static ListDto getDefaultValue() {
 		return new ListDto();
 	}
@@ -46,7 +42,6 @@ public final class ListDto {
 	public static ListDto getDefaultValue(final ListDto list) {
 		return ObjectHelper.getDefault(list, getDefaultValue());
 	}
-
 	
 	public UUID getId() {
 		return id;

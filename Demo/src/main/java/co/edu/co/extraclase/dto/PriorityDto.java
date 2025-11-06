@@ -1,15 +1,14 @@
 package co.edu.co.extraclase.dto;
 
-
 import java.util.UUID;
-
 import co.edu.co.extraclase.crosscuting.helper.NumberHelper;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
 public final class PriorityDto {
-    private UUID id;
+    
+	private UUID id;
     private String name;
     private String description;
     private Integer responseTime;
@@ -47,8 +46,6 @@ public final class PriorityDto {
     public static PriorityDto getDefaultValue() {
         return new PriorityDto();
     }
-
- 
 
     public UUID getId() {
         return id;

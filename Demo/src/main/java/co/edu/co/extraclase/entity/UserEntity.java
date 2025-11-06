@@ -2,8 +2,6 @@ package co.edu.co.extraclase.entity;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
-
-
 import co.edu.co.extraclase.crosscuting.helper.DateTimeHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
@@ -78,8 +76,6 @@ boolean isSuperUser, boolean superUserConfirmation) {
        setRegistrationDate(registrationDate);
 	}
     
-    
-
 	static UserEntity getDefault() {
 		return new UserEntity();
 	}
@@ -88,8 +84,6 @@ boolean isSuperUser, boolean superUserConfirmation) {
 		return user == null ? getDefault() : user;
 	}
 
-	
-	
 	public UUID getId() {
 		return id;
 	}
@@ -124,9 +118,7 @@ boolean isSuperUser, boolean superUserConfirmation) {
 
 	public String getEmail() {
         return email;
-     }
-
-
+    }
 
 	public LocalDateTime getRegistrationDate() {
 		return registrationDate;
@@ -143,9 +135,6 @@ boolean isSuperUser, boolean superUserConfirmation) {
 	public void setPasswordHash(String passwordHash) {
 		this.passwordHash = passwordHash;
 	}
-
-	
- 
 	
     public boolean isSuperUser() {
         return isSuperUser;
@@ -160,7 +149,6 @@ boolean isSuperUser, boolean superUserConfirmation) {
         setSuperUserDefaultValue(false);
     }
 
-    
     public void setSuperUser(final boolean isSuperUser) {
         setSuperUserConfirm(isSuperUser);
     }
@@ -169,7 +157,6 @@ boolean isSuperUser, boolean superUserConfirmation) {
         this.isSuperUserDefaultValue = isSuperUserDefaultValue;
     }
 
-    
     public boolean isSuperUserConfirmation() {
         return superUserConfirmation;
     }
@@ -187,7 +174,6 @@ boolean isSuperUser, boolean superUserConfirmation) {
         this.superUserConfirmationDefaultValue = superUserConfirmationDefaultValue;
     }
 
-    
     public boolean isAccountStatus() {
         return accountStatus;
     }
@@ -205,6 +191,7 @@ boolean isSuperUser, boolean superUserConfirmation) {
     public void setAccountStatusDefaultValue(final boolean accountStatusDefaultValue) {
         this.accountStatusDefaultValue = accountStatusDefaultValue;
     }
+    
     public void setEmail(String email) {
         this.email = TextHelper.getDefaultWithTrim(email);
     }
@@ -226,6 +213,4 @@ boolean isSuperUser, boolean superUserConfirmation) {
     public void setEmailConfirmationDefaultValue(final boolean emailConfirmationDefaultValue) {
         this.emailConfirmationDefaultValue = emailConfirmationDefaultValue;
     }
-
-	
 }

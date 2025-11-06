@@ -2,7 +2,6 @@ package co.edu.co.extraclase.data.dao.factory.postgresql;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
 import co.edu.co.extraclase.crosscuting.exception.ExtraClaseException;
 import co.edu.co.extraclase.crosscuting.messagescatalog.MessagesEnum;
 import co.edu.co.extraclase.data.dao.entity.ColorDAO;
@@ -33,12 +32,10 @@ import co.edu.co.extraclase.data.dao.entity.postgresql.UnitOfMeasurePostgreSqlDA
 import co.edu.co.extraclase.data.dao.entity.postgresql.UserPostgreSqlDAO;
 import co.edu.co.extraclase.data.dao.factory.DAOFactory;
 
-
 public class PostgreSqlDAOFactory extends DAOFactory {
 
 	public PostgreSqlDAOFactory() {
 		 openConnection();
-		
 	} 
 	
 	@Override
@@ -128,10 +125,5 @@ public class PostgreSqlDAOFactory extends DAOFactory {
 	public UserDAO getUserDAO() {
 		return new UserPostgreSqlDAO(connection); 
 	}
-
-	
-	
-	
-
 }
 

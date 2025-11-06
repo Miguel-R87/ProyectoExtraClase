@@ -1,11 +1,9 @@
 package co.edu.co.extraclase.entity;
 
 import java.util.UUID;
-
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
-
 
 public final class StatusEntity  {
 	
@@ -35,9 +33,6 @@ public final class StatusEntity  {
 		setColor(color);
 	}
 	
-	
-	
-	
 	static StatusEntity getDefault() {
 		return new StatusEntity();
 	}
@@ -46,8 +41,6 @@ public final class StatusEntity  {
 		return ObjectHelper.getDefault(status, getDefault());
 	}
 
-	
-	
 	public UUID getId() {
 		return id;
 	}
@@ -79,6 +72,4 @@ public final class StatusEntity  {
 	public void setColor(ColorEntity color) {
 		this.color = ColorEntity.getDefault(color);
 	}
-	
-	
 }

@@ -1,7 +1,6 @@
 package co.edu.co.extraclase.test;
 
 import java.time.LocalDateTime;
-
 import co.edu.co.extraclase.business.facade.impl.UserFacadeImpl;
 import co.edu.co.extraclase.crosscuting.exception.ExtraClaseException;
 import co.edu.co.extraclase.dto.UserDto;
@@ -37,5 +36,4 @@ public class TestUserRegistration {
 			e.printStackTrace();
 		}
 	}
-
 }

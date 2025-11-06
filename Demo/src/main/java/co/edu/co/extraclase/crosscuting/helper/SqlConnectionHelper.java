@@ -4,9 +4,11 @@ import co.edu.co.extraclase.crosscuting.exception.ExtraClaseException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import co.edu.co.extraclase.crosscuting.messagescatalog.MessagesEnum;
+
 public final class SqlConnectionHelper {
 
     private SqlConnectionHelper() {
+    
     }
 
     public static void ensureConnectionIsNotNull(final Connection connection) {
@@ -76,9 +78,6 @@ public final class SqlConnectionHelper {
                     var userMessage = MessagesEnum.USER_ERROR_TRANSACTION_IS_STARTED.getContent();
                     var technicalMessage = MessagesEnum.TECHNICAL_ERROR_TRANSACTION_IS_STARTED.getContent();
                     throw ExtraClaseException.create(userMessage, technicalMessage);
-                
-
-
             }
         } catch (final SQLException exception) {
             var userMessage = MessagesEnum.USER_ERROR_SQL_CONNECTION_UNEXPECTED_ERROR_VALIDATING_TRANSACTION_IS_NOT_STARTED

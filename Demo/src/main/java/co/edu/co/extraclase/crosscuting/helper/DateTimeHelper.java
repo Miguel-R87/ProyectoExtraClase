@@ -1,9 +1,10 @@
 package co.edu.co.extraclase.crosscuting.helper;
+
 import java.time.LocalDateTime;
 
 public final class DateTimeHelper {
-	private static final LocalDateTime EMPTY = LocalDateTime.of(2500, 12, 31, 0, 0, 0);
 
+	private static final LocalDateTime EMPTY = LocalDateTime.of(2500, 12, 31, 0, 0, 0);
 
     private DateTimeHelper() {
         
@@ -26,8 +27,6 @@ public final class DateTimeHelper {
     }
 
 	public static LocalDateTime now() {
-    return LocalDateTime.now();
-}
-
-
+		return LocalDateTime.now();
+	}
 }	

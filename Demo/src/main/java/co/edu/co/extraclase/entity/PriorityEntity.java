@@ -1,12 +1,10 @@
 package co.edu.co.extraclase.entity;
 
 import java.util.UUID;
-
 import co.edu.co.extraclase.crosscuting.helper.NumberHelper;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
-
 
 public final class PriorityEntity {
 	
@@ -44,9 +42,6 @@ public final class PriorityEntity {
 		setUnitOfMeasure(unitOfMeasure);
 		setColor(color);
 	}
-	
-	
-	
 	
 	static PriorityEntity getDefault() {
 		return new PriorityEntity();
@@ -103,5 +98,4 @@ public final class PriorityEntity {
 	public void setColor(ColorEntity color) {
 		this.color = ColorEntity.getDefault(color);
 	}
-
 }

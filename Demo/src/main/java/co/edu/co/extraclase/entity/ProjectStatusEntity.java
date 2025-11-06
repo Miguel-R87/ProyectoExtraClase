@@ -1,7 +1,6 @@
 package co.edu.co.extraclase.entity;
 
 import java.util.UUID;
-
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
@@ -61,5 +60,4 @@ public final class ProjectStatusEntity  {
 	public void setDescription(String description) {
 		this.description = TextHelper.getDefaultWithTrim(description);
 	}
-	
 }

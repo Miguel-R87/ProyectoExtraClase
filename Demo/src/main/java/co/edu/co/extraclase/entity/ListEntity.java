@@ -2,12 +2,10 @@ package co.edu.co.extraclase.entity;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
-
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.crosscuting.helper.DateTimeHelper;
-
 
 public final class ListEntity  {
 	
@@ -38,8 +36,6 @@ public final class ListEntity  {
 		setCreationDate(creationDate);
 	}
 	
-	
-	
 	static ListEntity getDefault() {
 		return new ListEntity();
 	}
@@ -48,8 +44,6 @@ public final class ListEntity  {
 		return ObjectHelper.getDefault(list, getDefault());
 	}
 
-	
-	
 	public UUID getId() {
 		return id;
 	}
@@ -81,5 +75,4 @@ public final class ListEntity  {
 	public void setCreationDate(LocalDateTime creationDate) {
 		this.creationDate = DateTimeHelper.getDefault(creationDate);
 	}
-	
 }

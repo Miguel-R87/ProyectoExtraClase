@@ -1,7 +1,6 @@
 package co.edu.co.extraclase.entity;
 
 import java.util.UUID;
-
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
@@ -11,7 +10,6 @@ public final class ColorEntity  {
 	private UUID id;
 	private String name;
 	private String hexCode;
-	
 	
 	public ColorEntity() {
 		setId(UUIDHelper.getUUIDHelper().getDefault());
@@ -31,8 +29,6 @@ public final class ColorEntity  {
 		setHexCode(hexCode);
 	}
 	
-	
-	
 	static ColorEntity getDefault() {
 		return new ColorEntity();
 	}
@@ -41,8 +37,6 @@ public final class ColorEntity  {
 		return ObjectHelper.getDefault(color, getDefault()); 
 	}
 	
-	
-
 	public UUID getId() {
 		return id;
 	}
@@ -66,8 +60,4 @@ public final class ColorEntity  {
 	public void setHexCode(String hexCode) {
 		this.hexCode = TextHelper.getDefaultWithTrim(hexCode);
 	}
-	
-	
-	
-
 }

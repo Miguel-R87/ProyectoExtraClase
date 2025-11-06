@@ -2,12 +2,10 @@ package co.edu.co.extraclase.entity;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
-
 import co.edu.co.extraclase.crosscuting.helper.DateTimeHelper;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
-
 
 public final class TaskEntity  {
 	
@@ -53,9 +51,6 @@ public final class TaskEntity  {
 		setPriority(priority);
 	}
 	
-	
-	
-	
 	static TaskEntity getDefault() {
 		return new TaskEntity();
 	}
@@ -64,9 +59,6 @@ public final class TaskEntity  {
 		return ObjectHelper.getDefault(task, getDefault());
 	}
 
-	
-	
-	
 	public UUID getId() {
 		return id;
 	}
@@ -130,6 +122,4 @@ public final class TaskEntity  {
 	public void setPriority(PriorityEntity priority) {
 		this.priority = PriorityEntity.getDefault(priority);
 	}
-	
-	
 }

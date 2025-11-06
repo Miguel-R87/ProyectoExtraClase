@@ -37,8 +37,6 @@ public final class ProjectStatusDto {
         return ObjectHelper.getDefault(status, getDefaultValue());
     }
 
-   
-    
     public UUID getId() {
         return id;
     }

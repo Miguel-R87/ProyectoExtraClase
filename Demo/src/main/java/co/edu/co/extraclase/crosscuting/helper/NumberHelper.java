@@ -1,15 +1,13 @@
 package co.edu.co.extraclase.crosscuting.helper;
 
-
 public final class NumberHelper {
 
     private static final Integer ZERO = 0;
 
-    
-    
     private NumberHelper() {
        
     }
+    
     public static int getDefault() {
 		return ZERO;
 	}	
