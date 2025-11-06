@@ -5,16 +5,18 @@ import co.edu.co.extraclase.business.domain.PriorityDomain;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.dto.PriorityDto;
+
 import static co.edu.co.extraclase.business.assembler.dto.impl.ColorDTOAssembler.getColorDtoAssembler;
 import static co.edu.co.extraclase.business.assembler.dto.impl.UnitOfMeasureDTOAssembler.getUnitOfMeasureDtoAssembler;
-
 import java.util.ArrayList;
 import java.util.List;
 
 
 public final class PriorityDTOAssembler implements DTOAssembler<PriorityDto, PriorityDomain> {
-    private static final DTOAssembler <PriorityDto, PriorityDomain> instance = new PriorityDTOAssembler();
-    private PriorityDTOAssembler() {
+    
+	private static final DTOAssembler <PriorityDto, PriorityDomain> instance = new PriorityDTOAssembler();
+    
+	private PriorityDTOAssembler() {
 
     }
 
@@ -41,15 +43,11 @@ public final class PriorityDTOAssembler implements DTOAssembler<PriorityDto, Pri
 
     @Override
     public List<PriorityDto> toDTO(List<PriorityDomain> domainList) {
-        if(ObjectHelper.isNull(domainList)) {
-            return new ArrayList<>();
+        var PriorityDtoList = new ArrayList<PriorityDto>();
+        
+        for(PriorityDomain domain : domainList) {
+        	PriorityDtoList.add(toDTO(domain));
         }
-
-        var priorityDtoList = new ArrayList<PriorityDto>();
-        for(var PriorityDomain : domainList) {
-            priorityDtoList.add(toDTO(PriorityDomain));
-        }
-
-        return priorityDtoList;
+        return PriorityDtoList;
     }
 }

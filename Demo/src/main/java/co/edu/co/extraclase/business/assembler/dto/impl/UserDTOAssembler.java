@@ -5,14 +5,16 @@ import co.edu.co.extraclase.business.domain.UserDomain;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.dto.UserDto;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public final class UserDTOAssembler implements DTOAssembler<UserDto,UserDomain> {
-    private static final DTOAssembler<UserDto,UserDomain> instance = new UserDTOAssembler();
+    
+	private static final DTOAssembler<UserDto,UserDomain> instance = new UserDTOAssembler();
 
-    private UserDTOAssembler(){}
+    private UserDTOAssembler(){
+    	
+    }
 
     public static DTOAssembler<UserDto,UserDomain> getUserDTOAssembler(){
         return instance;
@@ -37,14 +39,11 @@ public final class UserDTOAssembler implements DTOAssembler<UserDto,UserDomain> 
 
     @Override
     public List<UserDto> toDTO(List<UserDomain> domainList) {
-        if(ObjectHelper.isNull(domainList)){
-            return new ArrayList<>();
+        var UserDtoList = new ArrayList<UserDto>();
+        
+        for(UserDomain domain : domainList) {
+        	UserDtoList.add(toDTO(domain));
         }
-
-        var userDtoList = new ArrayList<UserDto>();
-        for(var userDomain : domainList){
-            userDtoList.add(toDTO(userDomain));
-        }
-        return userDtoList;
+        return UserDtoList;
     }
 }

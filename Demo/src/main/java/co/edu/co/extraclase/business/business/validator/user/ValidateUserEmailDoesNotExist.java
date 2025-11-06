@@ -18,7 +18,5 @@ public class ValidateUserEmailDoesNotExist implements Validator {
 	@Override
 	public void validate(Object... data) {
 		UserEmailDoesNotExistRule.executeRule(data);
-		
 	}
-
 }

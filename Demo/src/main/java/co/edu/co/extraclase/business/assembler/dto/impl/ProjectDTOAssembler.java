@@ -5,14 +5,16 @@ import co.edu.co.extraclase.business.domain.ProjectDomain;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.dto.ProjectDto;
-import static co.edu.co.extraclase.business.assembler.dto.impl.ProjectStatusDTOAssembler.getProjectStatusDTOAssembler;
 
+import static co.edu.co.extraclase.business.assembler.dto.impl.ProjectStatusDTOAssembler.getProjectStatusDTOAssembler;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class ProjectDTOAssembler implements DTOAssembler <ProjectDto, ProjectDomain> {
-    private static final DTOAssembler <ProjectDto,ProjectDomain> instance = new ProjectDTOAssembler();
-    private ProjectDTOAssembler(){
+    
+	private static final DTOAssembler <ProjectDto,ProjectDomain> instance = new ProjectDTOAssembler();
+    
+	private ProjectDTOAssembler(){
 
     }
 
@@ -37,15 +39,11 @@ public final class ProjectDTOAssembler implements DTOAssembler <ProjectDto, Proj
 
     @Override
     public List<ProjectDto> toDTO(List<ProjectDomain> domainList) {
-        if(ObjectHelper.isNull(domainList)) {
-            return new ArrayList<>();
+        var ProjectDtoList = new ArrayList<ProjectDto>();
+        
+        for(ProjectDomain domain : domainList) {
+        	ProjectDtoList.add(toDTO(domain));
         }
-
-        var projectDtoList = new ArrayList<ProjectDto>();
-        for( var projectDomain : domainList) {
-            projectDtoList.add(toDTO(projectDomain));
-        }
-
-        return projectDtoList;
+        return ProjectDtoList;
     }
 }

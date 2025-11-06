@@ -2,7 +2,6 @@ package co.edu.co.extraclase.business.domain;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
-
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.DateTimeHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
@@ -113,8 +112,6 @@ public class UserDomain extends Domain {
         return email;
     }
 
-    
-
     public LocalDateTime getRegistrationDate() {
         return registrationDate;
     }
@@ -131,87 +128,80 @@ public class UserDomain extends Domain {
         this.passwordHash = passwordHash;
     }
 
-   
-  //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-  	 // ---------------- SUPER USER ----------------
-      public boolean isSuperUser() {
-          return isSuperUser;
-      }
+    public boolean isSuperUser() {
+        return isSuperUser;
+    }
 
-      public boolean isSuperUserDefaultValue() {
-          return isSuperUserDefaultValue;
-      }
+    public boolean isSuperUserDefaultValue() {
+    	return isSuperUserDefaultValue;
+    }
 
-      public void setSuperUserConfirm(final boolean isSuperUser) {
-          this.isSuperUser = isSuperUser;
-          setSuperUserDefaultValue(false);
-      }
+    public void setSuperUserConfirm(final boolean isSuperUser) {
+    	this.isSuperUser = isSuperUser;
+    	setSuperUserDefaultValue(false);
+    }
 
-      // compatibility setter used by constructors and external callers
-      public void setSuperUser(final boolean isSuperUser) {
-          setSuperUserConfirm(isSuperUser);
-      }
+    public void setSuperUser(final boolean isSuperUser) {
+        setSuperUserConfirm(isSuperUser);
+    }
 
-      public void setSuperUserDefaultValue(final boolean isSuperUserDefaultValue) {
-          this.isSuperUserDefaultValue = isSuperUserDefaultValue;
-      }
+    public void setSuperUserDefaultValue(final boolean isSuperUserDefaultValue) {
+    	this.isSuperUserDefaultValue = isSuperUserDefaultValue;
+	}
+					
+	public boolean isSuperUserConfirmation() {
+		return superUserConfirmation;
+	}
+					
+	public boolean isSuperUserConfirmationDefaultValue() {
+		return superUserConfirmationDefaultValue;
+	}
+					
+	public void setSuperUserConfirmation(final boolean superUserConfirmation) {
+		this.superUserConfirmation = superUserConfirmation;
+		setSuperUserConfirmationDefaultValue(false);
+	}
+					
+	public void setSuperUserConfirmationDefaultValue(final boolean superUserConfirmationDefaultValue) {
+		this.superUserConfirmationDefaultValue = superUserConfirmationDefaultValue;
+	}
+					
+	public boolean isAccountStatus() {
+		return accountStatus;
+	}
+					
+	public boolean isAccountStatusDefaultValue() {
+		return accountStatusDefaultValue;
+	}
+					
+	public void setAccountStatus(final boolean accountStatus) {
+		this.accountStatus = accountStatus;
+		setAccountStatusDefaultValue(false);
+		setEmailConfirmationDefaultValue(false);
+	}
+					
+	public void setAccountStatusDefaultValue(final boolean accountStatusDefaultValue) {
+		this.accountStatusDefaultValue = accountStatusDefaultValue;
+	}
 
-      // ---------------- SUPER USER CONFIRMATION ----------------
-      public boolean isSuperUserConfirmation() {
-          return superUserConfirmation;
-      }
+	public void setEmail(String email) {
+		this.email = TextHelper.getDefaultWithTrim(email);
+	}
+					
+	public boolean isEmailConfirmation() {
+		return emailConfirmation;
+	}
 
-      public boolean isSuperUserConfirmationDefaultValue() {
-          return superUserConfirmationDefaultValue;
-      }
+	public boolean isEmailConfirmationDefaultValue() {
+		return emailConfirmationDefaultValue;
+	}
+					
+	public void setEmailConfirmation(final boolean emailConfirmation) {
+		this.emailConfirmation = emailConfirmation;
+		setEmailConfirmationDefaultValue(false);
+	}
 
-      public void setSuperUserConfirmation(final boolean superUserConfirmation) {
-          this.superUserConfirmation = superUserConfirmation;
-          setSuperUserConfirmationDefaultValue(false);
-      }
-
-      public void setSuperUserConfirmationDefaultValue(final boolean superUserConfirmationDefaultValue) {
-          this.superUserConfirmationDefaultValue = superUserConfirmationDefaultValue;
-      }
-
-      // ---------------- ACCOUNT STATUS ----------------
-      public boolean isAccountStatus() {
-          return accountStatus;
-      }
-
-      public boolean isAccountStatusDefaultValue() {
-          return accountStatusDefaultValue;
-      }
-
-      public void setAccountStatus(final boolean accountStatus) {
-          this.accountStatus = accountStatus;
-          setAccountStatusDefaultValue(false);
-          setEmailConfirmationDefaultValue(false);
-      }
-
-      public void setAccountStatusDefaultValue(final boolean accountStatusDefaultValue) {
-           this.accountStatusDefaultValue = accountStatusDefaultValue;
-       
-  }
-       public void setEmail(String email) {
-   		this.email = TextHelper.getDefaultWithTrim(email);
-   	}
-
-      public boolean isEmailConfirmation() {
-          return emailConfirmation;
-      }
-
-      public boolean isEmailConfirmationDefaultValue() {
-          return emailConfirmationDefaultValue;
-      }
-
-      public void setEmailConfirmation(final boolean emailConfirmation) {
-          this.emailConfirmation = emailConfirmation;
-          setEmailConfirmationDefaultValue(false);
-          
-      }
-      public void setEmailConfirmationDefaultValue(final boolean emailConfirmationDefaultValue) {
-          this.emailConfirmationDefaultValue = emailConfirmationDefaultValue;
-      }
-
+	public void setEmailConfirmationDefaultValue(final boolean emailConfirmationDefaultValue) {
+		this.emailConfirmationDefaultValue = emailConfirmationDefaultValue;
+	}			
 }

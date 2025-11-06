@@ -1,4 +1,5 @@
 package co.edu.co.extraclase.business.domain;
+
 import co.edu.co.extraclase.crosscuting.helper.*;
 import java.time.LocalDateTime;
 import java.util.UUID;

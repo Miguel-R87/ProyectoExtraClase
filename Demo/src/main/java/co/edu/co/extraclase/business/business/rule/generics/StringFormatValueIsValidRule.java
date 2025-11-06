@@ -32,7 +32,6 @@ public final class StringFormatValueIsValidRule implements Rule{
 			throw ExtraClaseException.create(userMessage, technicalMessage);
 		}
 		
-		
 		var stringData = (String) data[0];
 		var dataName = (String) data[1];
 		var pattern = (String) data[2];
@@ -43,7 +42,5 @@ public final class StringFormatValueIsValidRule implements Rule{
 			var technicalMessage= MessagesEnum.TECHNICAL_ERROR_WRONG_FORMAT.getContent().concat(dataName).concat(" ").concat(pattern);
 			throw ExtraClaseException.create(userMessage, technicalMessage);
 		}
-		
 	}
-
 }

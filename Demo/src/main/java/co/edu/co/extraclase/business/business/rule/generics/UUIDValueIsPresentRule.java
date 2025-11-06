@@ -1,7 +1,6 @@
 package co.edu.co.extraclase.business.business.rule.generics;
 
 import java.util.UUID;
-
 import co.edu.co.extraclase.business.business.rule.Rule;
 import co.edu.co.extraclase.crosscuting.exception.ExtraClaseException;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
@@ -42,7 +41,6 @@ public final class UUIDValueIsPresentRule implements Rule {
 			var technicalMessage= MessagesEnum.TECHNICAL_ERROR_UUID_IS_DEFAULT.getContent().concat(dataName);
 
 			throw ExtraClaseException.create(userMessage, technicalMessage);
-	}
-		
+		}
 	}
 }

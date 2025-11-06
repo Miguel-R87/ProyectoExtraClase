@@ -38,17 +38,12 @@ public final class StringLengthValueIsValidRule implements Rule{
 		var maxLength = (Integer) data[3];
 		boolean mustApplyTrim = (boolean) data[4];
 
-
-		
 		if (!TextHelper.lengthIsValid(stringData, minLength, maxLength, mustApplyTrim)) {
 			var userMessage = MessagesEnum.USER_ERROR_WRONG_LENGTH.getContent().concat(dataName).concat(" ").concat(String.valueOf(minLength)).concat(" y ").concat(String.valueOf(maxLength));
 			var technicalMessage = MessagesEnum.TECHNICAL_ERROR_WRONG_LENGTH.getContent().concat(dataName).concat(" ").concat(String.valueOf(minLength)).concat(" y ").concat(String.valueOf(maxLength));;
 			throw ExtraClaseException.create(userMessage, technicalMessage);
 		}
-
-		
 	}	
-		
-	}
+}
 
 

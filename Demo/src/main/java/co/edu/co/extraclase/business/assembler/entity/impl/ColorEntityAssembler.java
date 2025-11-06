@@ -1,7 +1,7 @@
 package co.edu.co.extraclase.business.assembler.entity.impl;
 
+import java.util.ArrayList;
 import java.util.List;
-
 import co.edu.co.extraclase.business.assembler.entity.EntityAssembler;
 import co.edu.co.extraclase.business.domain.ColorDomain;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
@@ -9,9 +9,11 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.entity.ColorEntity;
 
 public final class ColorEntityAssembler implements EntityAssembler<ColorEntity, ColorDomain> {
+	
 	private static final EntityAssembler<ColorEntity, ColorDomain> instance = new ColorEntityAssembler();
 	
 	private ColorEntityAssembler() {
+	
 	}
 	
 	public static EntityAssembler<ColorEntity, ColorDomain> getColorEntityAssembler() {
@@ -32,7 +34,11 @@ public final class ColorEntityAssembler implements EntityAssembler<ColorEntity, 
 
 	@Override
 	public List<ColorDomain> toDomain(List<ColorEntity> entityList) {
-		// TODO Auto-generated method stub
-		return null;
+		var colorDomainList = new ArrayList<ColorDomain>();
+		
+		for (var colorEntity : entityList) {
+			colorDomainList.add(toDomain(colorEntity));
+		}
+		return colorDomainList;
 	}
 }

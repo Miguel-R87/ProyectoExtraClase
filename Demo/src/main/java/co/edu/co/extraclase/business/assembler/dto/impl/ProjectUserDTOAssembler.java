@@ -5,15 +5,14 @@ import co.edu.co.extraclase.business.domain.ProjectUserDomain;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.dto.ProjectUserDto;
-
 import static co.edu.co.extraclase.business.assembler.dto.impl.ProjectDTOAssembler.getProjectDTOAssembler;
 import static co.edu.co.extraclase.business.assembler.dto.impl.UserDTOAssembler.getUserDTOAssembler;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public final class ProjectUserDTOAssembler implements DTOAssembler<ProjectUserDto, ProjectUserDomain> {
-    private static final DTOAssembler<ProjectUserDto, ProjectUserDomain> instance = new ProjectUserDTOAssembler();
+    
+	private static final DTOAssembler<ProjectUserDto, ProjectUserDomain> instance = new ProjectUserDTOAssembler();
 
     private ProjectUserDTOAssembler() {
 
@@ -41,17 +40,14 @@ public final class ProjectUserDTOAssembler implements DTOAssembler<ProjectUserDt
                 dtoTmp.getEntryDate(), dtoTmp.getExpiryDate());
     }
 
-
     @Override
     public List<ProjectUserDto> toDTO(List<ProjectUserDomain> domainList) {
-        if(ObjectHelper.isNull(domainList)) {
-            return new ArrayList<>();
+        var ProjectUserDtoList = new ArrayList<ProjectUserDto>();
+        
+        for(ProjectUserDomain domain : domainList) {
+        	ProjectUserDtoList.add(toDTO(domain));
         }
-        var projectUserDtoList = new ArrayList<ProjectUserDto>();
-        for(var projectUserDomain : domainList) {
-            projectUserDtoList.add(toDTO(projectUserDomain));
-        }
-        return projectUserDtoList;
+        return ProjectUserDtoList;
     }
 }
 

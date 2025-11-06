@@ -2,14 +2,9 @@ package co.edu.co.extraclase.business.assembler.entity.impl;
 
 import static co.edu.co.extraclase.business.assembler.entity.impl.ListEntityAssembler.getListEntityAssembler;
 import static co.edu.co.extraclase.business.assembler.entity.impl.StatusEntityAssembler.getStatusEntityAssembler;
-
+import java.util.ArrayList;
 import java.util.List;
-
 import static co.edu.co.extraclase.business.assembler.entity.impl.PriorityEntityAssembler.getPriorityEntityAssembler;
-
-
-
-
 import co.edu.co.extraclase.business.assembler.entity.EntityAssembler;
 import co.edu.co.extraclase.business.domain.TaskDomain;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
@@ -17,6 +12,7 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.entity.TaskEntity;
 
 public final class TaskEntityAssembler implements EntityAssembler<TaskEntity, TaskDomain> {
+	
 	private static final EntityAssembler<TaskEntity, TaskDomain> instance = new TaskEntityAssembler();
 	
 	private TaskEntityAssembler() {
@@ -49,7 +45,11 @@ public final class TaskEntityAssembler implements EntityAssembler<TaskEntity, Ta
 
 	@Override
 	public List<TaskDomain> toDomain(List<TaskEntity> entityList) {
-		// TODO Auto-generated method stub
-		return null;
+		var taskDomainList = new ArrayList<TaskDomain>();
+		
+		for (var taskEntity : entityList) {
+			taskDomainList.add(toDomain(taskEntity));
+		}
+		return taskDomainList;
 	}
 }

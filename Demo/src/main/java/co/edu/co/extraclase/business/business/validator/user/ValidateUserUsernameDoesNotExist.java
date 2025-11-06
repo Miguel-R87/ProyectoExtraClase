@@ -4,6 +4,7 @@ import co.edu.co.extraclase.business.business.rule.user.UserUsernameDoesNotExist
 import co.edu.co.extraclase.business.business.validator.Validator;
 
 public final class ValidateUserUsernameDoesNotExist implements Validator {
+	
 	public static final Validator instance = new ValidateUserUsernameDoesNotExist();
 
 	private ValidateUserUsernameDoesNotExist() {
@@ -17,7 +18,5 @@ public final class ValidateUserUsernameDoesNotExist implements Validator {
 	@Override
 	public void validate(Object... data) {
 		UserUsernameDoesNotExistRule.executeRule(data);
-		
 	}
-
 }

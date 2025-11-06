@@ -2,7 +2,6 @@ package co.edu.co.extraclase.business.business;
 
 import java.util.List;
 import java.util.UUID;
-
 import co.edu.co.extraclase.business.domain.UserDomain;
 
 public interface UserBusiness {

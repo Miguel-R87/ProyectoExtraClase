@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class NotificationTypeDTOAssembler implements DTOAssembler<NotificationTypeDto, NotificationTypeDomain>{
-    private static final DTOAssembler<NotificationTypeDto, NotificationTypeDomain> instance =  new NotificationTypeDTOAssembler();
+    
+	private static final DTOAssembler<NotificationTypeDto, NotificationTypeDomain> instance =  new NotificationTypeDTOAssembler();
 
     private NotificationTypeDTOAssembler() {
 
@@ -33,14 +34,11 @@ public final class NotificationTypeDTOAssembler implements DTOAssembler<Notifica
 
     @Override
     public List<NotificationTypeDto> toDTO(List<NotificationTypeDomain> domainList) {
-        if(ObjectHelper.isNull(domainList)){
-            return new ArrayList<>();
-        }
         var notificationTypeDtoList = new ArrayList<NotificationTypeDto>();
-        for (var notificationTypeDomain : domainList) {
-            notificationTypeDtoList.add(toDTO(notificationTypeDomain));
+        
+        for(NotificationTypeDomain domain : domainList) {
+        	notificationTypeDtoList.add(toDTO(domain));
         }
         return notificationTypeDtoList;
-
     }
 }

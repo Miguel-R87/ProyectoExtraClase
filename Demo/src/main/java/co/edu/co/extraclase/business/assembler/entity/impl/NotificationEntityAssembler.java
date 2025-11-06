@@ -1,11 +1,9 @@
 package co.edu.co.extraclase.business.assembler.entity.impl;
 
 import static co.edu.co.extraclase.business.assembler.entity.impl.TaskUserEntityAssembler.getTaskUserEntityAssembler;
-
+import java.util.ArrayList;
 import java.util.List;
-
 import static co.edu.co.extraclase.business.assembler.entity.impl.NotificationTypeEntityAssembler.getNotificationTypeEntityAssembler;
-
 import co.edu.co.extraclase.business.assembler.entity.EntityAssembler;
 import co.edu.co.extraclase.business.domain.NotificationDomain;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
@@ -13,6 +11,7 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.entity.NotificationEntity;
 
 public class NotificationEntityAssembler implements EntityAssembler<NotificationEntity, NotificationDomain> {
+	
 	private static final EntityAssembler<NotificationEntity, NotificationDomain> instance = new NotificationEntityAssembler();
 	
 	private NotificationEntityAssembler() {
@@ -43,7 +42,11 @@ public class NotificationEntityAssembler implements EntityAssembler<Notification
 
 	@Override
 	public List<NotificationDomain> toDomain(List<NotificationEntity> entityList) {
-		// TODO Auto-generated method stub
-		return null;
+		var notificationDomainList = new ArrayList<NotificationDomain>();
+		
+		for (var notificationEntity : entityList) {
+			notificationDomainList.add(toDomain(notificationEntity));
+		}
+		return notificationDomainList;
 	}
 }

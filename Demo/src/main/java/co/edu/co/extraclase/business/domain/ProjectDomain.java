@@ -4,7 +4,6 @@ import co.edu.co.extraclase.crosscuting.helper.DateTimeHelper;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
-
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -45,11 +44,8 @@ public class ProjectDomain extends Domain {
     
     static ProjectDomain getDefaultValue(final ProjectDomain project) {
         return ObjectHelper.getDefault(project, getDefaultValue());
-    
     }
     
-
-
     public String getName() {
         return name;
     }
@@ -80,6 +76,6 @@ public class ProjectDomain extends Domain {
 
     public void setProjectStatus(ProjectStatusDomain projectstatus) {
         this.projectstatus = ObjectHelper.getDefault(projectstatus, ProjectStatusDomain.getDefaultValue());
-}
+    }
 
 }

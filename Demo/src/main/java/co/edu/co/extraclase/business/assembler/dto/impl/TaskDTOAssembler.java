@@ -8,13 +8,14 @@ import co.edu.co.extraclase.dto.TaskDto;
 import static co.edu.co.extraclase.business.assembler.dto.impl.ListDTOAssembler.getListDTOAssembler;
 import static co.edu.co.extraclase.business.assembler.dto.impl.StatusDTOAssembler.getStatusDTOAssembler;
 import static co.edu.co.extraclase.business.assembler.dto.impl.PriorityDTOAssembler.getPriorityDTOAssembler;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public final class TaskDTOAssembler implements DTOAssembler<TaskDto, TaskDomain> {
-    private static final DTOAssembler<TaskDto, TaskDomain> instance = new TaskDTOAssembler();
-    private TaskDTOAssembler() {
+    
+	private static final DTOAssembler<TaskDto, TaskDomain> instance = new TaskDTOAssembler();
+    
+	private TaskDTOAssembler() {
 
     }
 
@@ -44,15 +45,11 @@ public final class TaskDTOAssembler implements DTOAssembler<TaskDto, TaskDomain>
 
     @Override
     public List<TaskDto> toDTO(List<TaskDomain> domainList) {
-        if(ObjectHelper.isNull(domainList)) {
-            return new ArrayList<>();
-        }
-
         var taskDtoList = new ArrayList<TaskDto>();
+        
         for(TaskDomain domain : domainList) {
-            taskDtoList.add(getTaskDTOAssembler().toDTO(domain));
+            taskDtoList.add(toDTO(domain));
         }
         return taskDtoList;
-
     }
 }

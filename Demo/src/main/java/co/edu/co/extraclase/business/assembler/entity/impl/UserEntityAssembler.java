@@ -2,7 +2,6 @@ package co.edu.co.extraclase.business.assembler.entity.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import co.edu.co.extraclase.business.assembler.entity.EntityAssembler;
 import co.edu.co.extraclase.business.domain.UserDomain;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
@@ -12,6 +11,7 @@ import co.edu.co.extraclase.entity.UserEntity;
 public final class UserEntityAssembler implements EntityAssembler<UserEntity, UserDomain>{
 	
 	private static final EntityAssembler<UserEntity, UserDomain> instance = new UserEntityAssembler();
+	
 	private UserEntityAssembler() {
 		
 	}
@@ -30,7 +30,7 @@ public final class UserEntityAssembler implements EntityAssembler<UserEntity, Us
 
 	@Override
 	public UserDomain toDomain(UserEntity entity) {
-		var entityTmp =  ObjectHelper.getDefault(entity, new UserEntity());
+		var entityTmp = ObjectHelper.getDefault(entity, new UserEntity());
 		return new UserDomain(entityTmp.getId(), entityTmp.getFirstName(), entityTmp.getLastName(), entityTmp.getUsername(),
 		entityTmp.getEmail(), entityTmp.isEmailConfirmation(), entityTmp.getRegistrationDate(), entityTmp.getPasswordHash(), 
 		entityTmp.isAccountStatus(), entityTmp.isSuperUser(), entityTmp.isSuperUserConfirmation());
@@ -44,6 +44,5 @@ public final class UserEntityAssembler implements EntityAssembler<UserEntity, Us
 			userDomainList.add(toDomain(userEntity));
 		}
 		return userDomainList;
-	
 	}
 }

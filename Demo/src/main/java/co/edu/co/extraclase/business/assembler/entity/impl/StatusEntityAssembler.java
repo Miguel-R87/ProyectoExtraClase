@@ -1,9 +1,8 @@
 package co.edu.co.extraclase.business.assembler.entity.impl;
 
 import static co.edu.co.extraclase.business.assembler.entity.impl.ColorEntityAssembler.getColorEntityAssembler;
-
+import java.util.ArrayList;
 import java.util.List;
-
 import co.edu.co.extraclase.business.assembler.entity.EntityAssembler;
 import co.edu.co.extraclase.business.domain.StatusDomain;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
@@ -11,6 +10,7 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.entity.StatusEntity;
 
 public final class StatusEntityAssembler implements EntityAssembler<StatusEntity, StatusDomain> {
+	
 	private static final EntityAssembler<StatusEntity, StatusDomain> instance = new StatusEntityAssembler();
 	
 	private StatusEntityAssembler() {
@@ -37,7 +37,11 @@ public final class StatusEntityAssembler implements EntityAssembler<StatusEntity
 
 	@Override
 	public List<StatusDomain> toDomain(List<StatusEntity> entityList) {
-		// TODO Auto-generated method stub
-		return null;
+		var statusDomainList = new ArrayList<StatusDomain>();
+		
+		for (var statusEntity : entityList) {
+			statusDomainList.add(toDomain(statusEntity));
+		}
+		return statusDomainList;
 	}
 }

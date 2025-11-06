@@ -8,6 +8,7 @@ import co.edu.co.extraclase.data.dao.factory.DAOFactory;
 import co.edu.co.extraclase.entity.UserEntity;
 
 public final class UserUsernameDoesNotExistRule implements Rule {
+	
 	public static final Rule instance = new UserUsernameDoesNotExistRule();
 	
 	private UserUsernameDoesNotExistRule() {
@@ -44,8 +45,6 @@ public final class UserUsernameDoesNotExistRule implements Rule {
 	    	var userMessage = MessagesEnum.USER_ERROR_USER_DOES_EXISTS_BY_USERNAME.getContent();
 			var technicalMessage = MessagesEnum.TECHNICAL_ERROR_USER_DOES_EXISTS_BY_USERNAME.getContent();
 			throw ExtraClaseException.create(userMessage, technicalMessage); 
-	    }
-		
+		}
 	}
-
 }

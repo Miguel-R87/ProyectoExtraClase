@@ -1,19 +1,17 @@
 package co.edu.co.extraclase.business.assembler.entity.impl;
 
 import static co.edu.co.extraclase.business.assembler.entity.impl.UnitOfMeasureEntityAssembler.getUnitOfMeasureEntityAssembler;
-
+import java.util.ArrayList;
 import java.util.List;
-
 import static co.edu.co.extraclase.business.assembler.entity.impl.ColorEntityAssembler.getColorEntityAssembler;
-
 import co.edu.co.extraclase.business.assembler.entity.EntityAssembler;
 import co.edu.co.extraclase.business.domain.PriorityDomain;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
-
 import co.edu.co.extraclase.entity.PriorityEntity;
 
 public final class PriorityEntityAssembler implements EntityAssembler<PriorityEntity, PriorityDomain> {
+	
 	private static final EntityAssembler<PriorityEntity, PriorityDomain> instance = new PriorityEntityAssembler();
 	
 	private PriorityEntityAssembler() {
@@ -44,7 +42,11 @@ public final class PriorityEntityAssembler implements EntityAssembler<PriorityEn
 
 	@Override
 	public List<PriorityDomain> toDomain(List<PriorityEntity> entityList) {
-		// TODO Auto-generated method stub
-		return null;
+		var priorityDomainList = new ArrayList<PriorityDomain>();
+		
+		for (var priorityEntity : entityList) {
+			priorityDomainList.add(toDomain(priorityEntity));
+		}
+		return priorityDomainList;
 	}
 }

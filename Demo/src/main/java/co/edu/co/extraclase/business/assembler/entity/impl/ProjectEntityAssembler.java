@@ -1,9 +1,8 @@
 package co.edu.co.extraclase.business.assembler.entity.impl;
 
 import static co.edu.co.extraclase.business.assembler.entity.impl.ProjectStatusEntityAssembler.getProjectStatusEntityAssembler;
-
+import java.util.ArrayList;
 import java.util.List;
-
 import co.edu.co.extraclase.business.assembler.entity.EntityAssembler;
 import co.edu.co.extraclase.business.domain.ProjectDomain;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
@@ -11,6 +10,7 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.entity.ProjectEntity;
 
 public final class ProjectEntityAssembler implements EntityAssembler<ProjectEntity, ProjectDomain> {
+	
 	private static final EntityAssembler<ProjectEntity, ProjectDomain> instance = new ProjectEntityAssembler();
 	
 	private ProjectEntityAssembler() {
@@ -39,7 +39,11 @@ public final class ProjectEntityAssembler implements EntityAssembler<ProjectEnti
 
 	@Override
 	public List<ProjectDomain> toDomain(List<ProjectEntity> entityList) {
-		// TODO Auto-generated method stub
-		return null;
+		var projectDomainList = new ArrayList<ProjectDomain>();
+		
+		for (var projectEntity : entityList) {
+			projectDomainList.add(toDomain(projectEntity));
+		}
+		return projectDomainList;
 	}
 }

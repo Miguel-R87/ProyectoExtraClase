@@ -10,6 +10,7 @@ import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.messagescatalog.MessagesEnum;
 
 public final class ValidateDataUserConsistencyForRegisterNewUserInformation implements Validator {
+	
 	public static final Validator instance = new ValidateDataUserConsistencyForRegisterNewUserInformation();
 	
 	private ValidateDataUserConsistencyForRegisterNewUserInformation() {
@@ -64,9 +65,5 @@ public final class ValidateDataUserConsistencyForRegisterNewUserInformation impl
 		StringFormatValueIsValidRule.executRule(data.getUsername(), "nombre de usuario","^[A-Za-z].*",  true);
 		StringFormatValueIsValidRule.executRule(data.getEmail(), "email","^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$",  true);
 		StringFormatValueIsValidRule.executRule(data.getPasswordHash(), "contraseña","^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*?&.#_\\-]).{8,}$", false);
-	}
-	
-	
-	
-	
+	}	
 }

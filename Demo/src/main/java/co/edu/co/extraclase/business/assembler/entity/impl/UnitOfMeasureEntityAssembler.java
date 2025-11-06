@@ -1,7 +1,7 @@
 package co.edu.co.extraclase.business.assembler.entity.impl;
 
+import java.util.ArrayList;
 import java.util.List;
-
 import co.edu.co.extraclase.business.assembler.entity.EntityAssembler;
 import co.edu.co.extraclase.business.domain.UnitOfMeasureDomain;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
@@ -13,7 +13,8 @@ public final class UnitOfMeasureEntityAssembler implements EntityAssembler<UnitO
 	private static final EntityAssembler<UnitOfMeasureEntity, UnitOfMeasureDomain> instance = new UnitOfMeasureEntityAssembler();
 	
 	private UnitOfMeasureEntityAssembler() {
-		}
+		
+	}
 	
 	public static EntityAssembler<UnitOfMeasureEntity, UnitOfMeasureDomain> getUnitOfMeasureEntityAssembler() {
 		return instance;
@@ -33,6 +34,12 @@ public final class UnitOfMeasureEntityAssembler implements EntityAssembler<UnitO
 	
 	@Override
 	public List<UnitOfMeasureDomain> toDomain(List<UnitOfMeasureEntity> entityList) {
-		return null; 
+		var unitOfMeasureDomainList = new ArrayList<UnitOfMeasureDomain>();
+		
+		for (var unitOfMeasureEntity : entityList) {
+			unitOfMeasureDomainList.add(toDomain(unitOfMeasureEntity));
+		}
+		return unitOfMeasureDomainList;
+	
 	}
 }

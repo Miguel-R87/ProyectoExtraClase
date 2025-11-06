@@ -6,13 +6,14 @@ import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.dto.StatusDto;
 import static co.edu.co.extraclase.business.assembler.dto.impl.ColorDTOAssembler.getColorDtoAssembler;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public final class StatusDTOAssembler implements DTOAssembler <StatusDto, StatusDomain> {
-    private static final DTOAssembler <StatusDto,  StatusDomain> instance = new StatusDTOAssembler();
-    private StatusDTOAssembler() {
+    
+	private static final DTOAssembler <StatusDto,  StatusDomain> instance = new StatusDTOAssembler();
+    
+	private StatusDTOAssembler() {
 
     }
 
@@ -36,15 +37,11 @@ public final class StatusDTOAssembler implements DTOAssembler <StatusDto, Status
 
     @Override
     public List<StatusDto> toDTO(List<StatusDomain> domainList) {
-        if(ObjectHelper.isNull(domainList)) {
-            return new ArrayList<>();
-        }
-
         var statusDtoList = new ArrayList<StatusDto>();
-        for(var statusDomain : domainList) {
-            statusDtoList.add(toDTO(statusDomain));
+        
+        for(StatusDomain domain : domainList) {
+        	statusDtoList.add(toDTO(domain));
         }
-
         return statusDtoList;
     }
 }

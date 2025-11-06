@@ -1,7 +1,6 @@
 package co.edu.co.extraclase.business.business.rule.user;
 
 import java.util.UUID;
-
 import co.edu.co.extraclase.business.business.rule.Rule;
 import co.edu.co.extraclase.crosscuting.exception.ExtraClaseException;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
@@ -10,6 +9,7 @@ import co.edu.co.extraclase.crosscuting.messagescatalog.MessagesEnum;
 import co.edu.co.extraclase.data.dao.factory.DAOFactory;
 
 public final class UserExistsByIdRule implements Rule {
+	
 	public static final Rule instance = new UserExistsByIdRule();
 	
 	private UserExistsByIdRule() {
@@ -43,6 +43,6 @@ public final class UserExistsByIdRule implements Rule {
 			var userMessage = MessagesEnum.USER_ERROR_USER_DOES_NOT_EXITS.getContent();
 			var technicalMessage = MessagesEnum.TECHNICAL_ERROR_USER_DOES_NOT_EXITS.getContent() + id;
 			throw ExtraClaseException.create(userMessage, technicalMessage);
-			}
 		}
 	}
+}

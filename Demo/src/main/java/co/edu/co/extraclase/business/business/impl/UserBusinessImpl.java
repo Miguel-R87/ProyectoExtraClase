@@ -2,7 +2,6 @@ package co.edu.co.extraclase.business.business.impl;
 
 import java.util.List;
 import java.util.UUID;
-
 import co.edu.co.extraclase.business.assembler.entity.impl.UserEntityAssembler;
 import co.edu.co.extraclase.business.business.UserBusiness;
 import co.edu.co.extraclase.business.business.validator.user.ValidateDataUserConsistencyForRegisterNewUserInformation;

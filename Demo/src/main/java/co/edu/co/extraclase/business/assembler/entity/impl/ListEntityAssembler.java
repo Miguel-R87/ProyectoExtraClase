@@ -1,20 +1,20 @@
 package co.edu.co.extraclase.business.assembler.entity.impl;
 
 import static co.edu.co.extraclase.business.assembler.entity.impl.ProjectEntityAssembler.getProjectEntityAssembler;
-
+import java.util.ArrayList;
 import java.util.List;
-
 import co.edu.co.extraclase.business.assembler.entity.EntityAssembler;
 import co.edu.co.extraclase.business.domain.ListDomain;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.entity.ListEntity;
 
-
 public final class ListEntityAssembler implements EntityAssembler<ListEntity, ListDomain> {
+	
 	private static final EntityAssembler<ListEntity, ListDomain> instance = new ListEntityAssembler();
 	
 	private ListEntityAssembler() {
+	
 	}
 	
 	public static EntityAssembler<ListEntity, ListDomain> getListEntityAssembler() {
@@ -37,7 +37,11 @@ public final class ListEntityAssembler implements EntityAssembler<ListEntity, Li
 
 	@Override
 	public List<ListDomain> toDomain(List<ListEntity> entityList) {
-		// TODO Auto-generated method stub
-		return null;
+		var listDomainList = new ArrayList<ListDomain>();
+		
+		for (var listEntity : entityList) {
+			listDomainList.add(toDomain(listEntity));
+		}
+		return listDomainList;
 	}
 }

@@ -7,20 +7,21 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.dto.TaskUserDto;
 import static co.edu.co.extraclase.business.assembler.dto.impl.ProjectUserDTOAssembler.getProjectUserDTOAssembler;
 import static co.edu.co.extraclase.business.assembler.dto.impl.TaskDTOAssembler.getTaskDTOAssembler;
-
-
 import java.util.ArrayList;
 import java.util.List;
 
 public final class TaskUserDTOAssembler implements DTOAssembler<TaskUserDto, TaskUserDomain> {
-    private static final DTOAssembler<TaskUserDto, TaskUserDomain> instance = new TaskUserDTOAssembler();
-    private TaskUserDTOAssembler() {
+    
+	private static final DTOAssembler<TaskUserDto, TaskUserDomain> instance = new TaskUserDTOAssembler();
+    
+	private TaskUserDTOAssembler() {
 
     }
 
     public static DTOAssembler<TaskUserDto, TaskUserDomain> getTaskUserDTOAssembler() {
         return instance;
     }
+    
     @Override
     public TaskUserDto toDTO(TaskUserDomain domain) {
         var domainTmp = ObjectHelper.getDefault(domain, new TaskUserDomain(UUIDHelper.getUUIDHelper().getDefault()));
@@ -41,11 +42,8 @@ public final class TaskUserDTOAssembler implements DTOAssembler<TaskUserDto, Tas
 
     @Override
     public List<TaskUserDto> toDTO(List<TaskUserDomain> domainList) {
-        if(ObjectHelper.isNull(domainList)) {
-            return new ArrayList<>();
-        }
-
         var taskUserDtoList = new ArrayList<TaskUserDto>();
+        
         for(TaskUserDomain domain : domainList) {
             taskUserDtoList.add(toDTO(domain));
         }

@@ -5,14 +5,15 @@ import co.edu.co.extraclase.business.domain.UnitOfMeasureDomain;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.dto.UnitOfMeasureDto;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public final class UnitOfMeasureDTOAssembler implements DTOAssembler<UnitOfMeasureDto, UnitOfMeasureDomain>{
-    private static final DTOAssembler<UnitOfMeasureDto, UnitOfMeasureDomain> instance = new UnitOfMeasureDTOAssembler();
+    
+	private static final DTOAssembler<UnitOfMeasureDto, UnitOfMeasureDomain> instance = new UnitOfMeasureDTOAssembler();
 
     private UnitOfMeasureDTOAssembler(){
+    
     }
 
     public static DTOAssembler<UnitOfMeasureDto, UnitOfMeasureDomain> getUnitOfMeasureDtoAssembler() {
@@ -33,15 +34,12 @@ public final class UnitOfMeasureDTOAssembler implements DTOAssembler<UnitOfMeasu
 
     @Override
     public List<UnitOfMeasureDto> toDTO(List<UnitOfMeasureDomain> domainList) {
-        if(ObjectHelper.isNull(domainList)){
-            return new ArrayList<>();
+        var UnitOfMeasureDtoList = new ArrayList<UnitOfMeasureDto>();
+        
+        for(UnitOfMeasureDomain domain : domainList) {
+        	UnitOfMeasureDtoList.add(toDTO(domain));
         }
-        var unitOfMeasureDtoList = new ArrayList<UnitOfMeasureDto>();
-        for(var unitOfMeasureDomain : domainList){
-            unitOfMeasureDtoList.add(toDTO(unitOfMeasureDomain));
-        }
-
-        return unitOfMeasureDtoList;
+        return UnitOfMeasureDtoList;
     }
 }
 

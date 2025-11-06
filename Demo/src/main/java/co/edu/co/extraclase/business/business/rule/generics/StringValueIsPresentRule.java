@@ -30,7 +30,8 @@ public final class StringValueIsPresentRule implements Rule{
 			var userMessage = MessagesEnum.USER_ERROR_TRYING_TO_MAKE_AN_OPERATION.getContent();
 			var technicalMessage = MessagesEnum.TECHNICAL_ERROR_WRONG_STRING_LENGTH_IS_PRESENT.getContent();
 			throw ExtraClaseException.create(userMessage, technicalMessage);
-	}
+		}
+		
 		var stringdata = (String) data[0];
 		var dataName = (String) data[1];
 		boolean mustApplyTrim = (Boolean) data[2];
@@ -42,8 +43,7 @@ public final class StringValueIsPresentRule implements Rule{
 			var technicalMessage = MessagesEnum.TECHNICAL_ERROR_INCOMPLETE_PARAMETERS.getContent().concat(dataName);
 			throw ExtraClaseException.create(userMessage, technicalMessage);
 		}
-	}
-		
+	}		
 }
 
 

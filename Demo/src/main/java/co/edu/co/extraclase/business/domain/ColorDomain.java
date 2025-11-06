@@ -1,8 +1,6 @@
 package co.edu.co.extraclase.business.domain;
 
-
 import java.util.UUID;
-
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 

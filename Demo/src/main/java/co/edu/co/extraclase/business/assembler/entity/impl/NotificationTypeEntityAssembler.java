@@ -1,7 +1,7 @@
 package co.edu.co.extraclase.business.assembler.entity.impl;
 
+import java.util.ArrayList;
 import java.util.List;
-
 import co.edu.co.extraclase.business.assembler.entity.EntityAssembler;
 import co.edu.co.extraclase.business.domain.NotificationTypeDomain;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
@@ -9,6 +9,7 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.entity.NotificationTypeEntity;
 
 public final class NotificationTypeEntityAssembler implements EntityAssembler<NotificationTypeEntity, NotificationTypeDomain> {
+	
 	private static final EntityAssembler<NotificationTypeEntity, NotificationTypeDomain> instance = new NotificationTypeEntityAssembler();
 	
 	private NotificationTypeEntityAssembler() {
@@ -33,7 +34,11 @@ public final class NotificationTypeEntityAssembler implements EntityAssembler<No
 
 	@Override
 	public List<NotificationTypeDomain> toDomain(List<NotificationTypeEntity> entityList) {
-		// TODO Auto-generated method stub
-		return null;
+		var notificationTypeDomainList = new ArrayList<NotificationTypeDomain>();
+		
+		for (var notificationTypeEntity : entityList) {
+			notificationTypeDomainList.add(toDomain(notificationTypeEntity));
+		}
+		return notificationTypeDomainList;
 	}
 }

@@ -10,9 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class ProjectStatusDTOAssembler implements DTOAssembler<ProjectStatusDto, ProjectStatusDomain> {
-    private static final DTOAssembler<ProjectStatusDto, ProjectStatusDomain> instance = new ProjectStatusDTOAssembler();
+    
+	private static final DTOAssembler<ProjectStatusDto, ProjectStatusDomain> instance = new ProjectStatusDTOAssembler();
 
-    private ProjectStatusDTOAssembler() {}
+    private ProjectStatusDTOAssembler() {
+    	
+    }
 
     public static DTOAssembler <ProjectStatusDto, ProjectStatusDomain> getProjectStatusDTOAssembler(){
         return instance;
@@ -32,13 +35,11 @@ public final class ProjectStatusDTOAssembler implements DTOAssembler<ProjectStat
 
     @Override
     public List<ProjectStatusDto> toDTO(List<ProjectStatusDomain> domainList) {
-        if(ObjectHelper.isNull(domainList)){
-            return new ArrayList<>();
+        var ProjectStatusDtoList = new ArrayList<ProjectStatusDto>();
+        
+        for(ProjectStatusDomain domain : domainList) {
+        	ProjectStatusDtoList.add(toDTO(domain));
         }
-        var projectStatusDtoList = new ArrayList<ProjectStatusDto>();
-        for(var projectStatusDomain : domainList){
-            projectStatusDtoList.add(toDTO(projectStatusDomain));
-        }
-        return projectStatusDtoList;
+        return ProjectStatusDtoList;
     }
 }

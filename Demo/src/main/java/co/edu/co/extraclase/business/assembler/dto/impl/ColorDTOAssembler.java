@@ -2,7 +2,6 @@ package co.edu.co.extraclase.business.assembler.dto.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import co.edu.co.extraclase.business.assembler.dto.DTOAssembler;
 import co.edu.co.extraclase.business.domain.ColorDomain;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
@@ -10,9 +9,11 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.dto.ColorDto;
 
 public final class ColorDTOAssembler implements DTOAssembler<ColorDto, ColorDomain> {
-    private static final DTOAssembler<ColorDto, ColorDomain> instance = new ColorDTOAssembler();
+    
+	private static final DTOAssembler<ColorDto, ColorDomain> instance = new ColorDTOAssembler();
 
     private ColorDTOAssembler() {
+    
     }
 
     public static DTOAssembler<ColorDto, ColorDomain> getColorDtoAssembler() {
@@ -33,15 +34,11 @@ public final class ColorDTOAssembler implements DTOAssembler<ColorDto, ColorDoma
 
     @Override
     public List<ColorDto> toDTO(final List<ColorDomain> domainList) {
-        if(ObjectHelper.isNull(domainList)) {
-            return new ArrayList<>();
+        var colorDtoList = new ArrayList<ColorDto>();
+            
+        for(ColorDomain domain : domainList) {
+        	colorDtoList.add(toDTO(domain));
         }
-        var colorDtoList  =new ArrayList<ColorDto>();
-
-        for(var colorDomain : domainList) {
-            colorDtoList.add(toDTO(colorDomain));
-        }
-
         return colorDtoList;
     }
 
