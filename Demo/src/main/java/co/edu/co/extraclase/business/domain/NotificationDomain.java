@@ -8,7 +8,8 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 public final class NotificationDomain extends Domain {
-    private TaskUserDomain taskUser;
+    
+	private TaskUserDomain taskUser;
     private String message;
     private LocalDateTime triggerDate;
     private NotificationTypeDomain notificationType;

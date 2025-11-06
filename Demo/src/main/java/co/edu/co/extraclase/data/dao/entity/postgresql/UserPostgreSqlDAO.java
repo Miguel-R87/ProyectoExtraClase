@@ -91,7 +91,6 @@ public final class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
 
 		sql.append("WHERE \"usuarioId\" = ?; " );
 			
-		
 		try (var preparedStatement = this.getConnection().prepareStatement(sql.toString())) {
             preparedStatement.setObject(1, entity.getId());
             preparedStatement.setString(2, entity.getFirstName());
@@ -262,11 +261,10 @@ private List<UserEntity> executeSentenceFindByFilter(final PreparedStatement pre
 	        throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 	    }
 		return users;
-		
 	}
 
-@Override
-public UserEntity findById(final UUID id) {
-	return findByFilter(new UserEntity(id)).stream().findFirst().orElse(new UserEntity());
-}
+	@Override
+	public UserEntity findById(final UUID id) {
+		return findByFilter(new UserEntity(id)).stream().findFirst().orElse(new UserEntity());
+	}
 }

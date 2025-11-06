@@ -62,7 +62,7 @@ public final class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUs
         	String userMessage = MessagesEnum.USER_ERROR_TASK_USER_REGISTRATION_FAILED.getContent();
         	String technicalMessage = MessagesEnum.TECHNICAL_ERROR_TASK_USER__REGISTRATION_FAILED.getContent() + exception.getMessage();
         	throw ExtraClaseException.create(exception, userMessage, technicalMessage);
-      }
+        }
     }
 
 	@Override
@@ -89,7 +89,6 @@ public final class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUs
 			String userMessage = MessagesEnum.USER_ERROR_SEARCH_TASK_USER_FAILED.getContent();
 			String technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_TASK_USER_FAILED.getContent() + exception.getMessage();
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
-
 		}
 	}
 	
@@ -181,7 +180,6 @@ public final class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUs
 		sql.append("INNER JOIN \"EstadoProyecto\" ep ON \"ep.estadoProyectoId\" = \"p.estadoProyectoId\" ");
 		sql.append("INNER JOIN \"Usuario\" u ON \"up.usuarioId\" = \"u.usuarioId\" ");
 
-        
         createWhereClauseFindByFilter(sql, parameterList, filterEntity);
         
         return sql.toString();
@@ -319,8 +317,8 @@ public final class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUs
                 taskUser.setComment(resultSet.getString("comentario"));
             	
 				listTaskUser.add(taskUser);
-
 			}
+			
 		} catch (final SQLException exception) {
 			String userMessage = MessagesEnum.USER_ERROR_SEARCH_TASK_USER_FAILED_SQL_EXCEPTION.getContent();
 			String technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_TASK_USER_FAILED_SQL_EXCEPTION.getContent() + exception.getMessage();
@@ -331,7 +329,6 @@ public final class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUs
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 		}
 		return listTaskUser;
-		
 	}
 
 	@Override
@@ -349,7 +346,6 @@ public final class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUs
 		
 		sql.append("WHERE \"usuarioTareaId\" = ?; " );
 			
-		
 		 try (var preparedStatement = this.getConnection().prepareStatement(sql.toString())) {
 	        	preparedStatement.setObject(1, entity.getId());
 	        	preparedStatement.setObject(2, entity.getProjectUser());
@@ -375,6 +371,5 @@ public final class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUs
 	@Override
 	public TaskUserEntity findById(final UUID id) {
 		return findByFilter(new TaskUserEntity(id)).stream().findFirst().orElse(new TaskUserEntity());
-
 	}
 }

@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
 import co.edu.co.extraclase.crosscuting.exception.ExtraClaseException;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
@@ -125,7 +124,6 @@ public final class ProjectPostgreSqlDAO extends SqlConnection implements Project
 		return listProject;
 	}
 
-
 	@Override
 	public void create(final ProjectEntity entity) {
 		final var sql = new StringBuilder();
@@ -175,6 +173,5 @@ public final class ProjectPostgreSqlDAO extends SqlConnection implements Project
 	@Override
 	public ProjectEntity findById(final UUID id) {
 		return findByFilter(new ProjectEntity(id)).stream().findFirst().orElse(new ProjectEntity());
-
 	}
 }

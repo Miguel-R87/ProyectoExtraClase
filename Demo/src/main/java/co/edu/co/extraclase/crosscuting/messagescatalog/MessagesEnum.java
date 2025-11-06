@@ -355,6 +355,11 @@ public enum MessagesEnum {
 		USER_ERROR_SEARCH_PROJECT_STATUS_FAILED("Se ha presentado un problema inesperado tratando de consultar la información de un estado de proyecto por favor intente de nuevo","Si el problema persiste por favor contacte al administrador del sistema"), 
 		TECHNICAL_ERROR_SEARCH_PROJECT_STATUS_FAILED("Se ha presentado un problema técnico inesperado al tratar de consultar la información de un estado de proyecto","No fue una SQLException, sino un error no controlado en el proceso de consulta del estado de proyecto."),
 
+		USER_FIRST_NAME("Primer nombre", ""),
+		USER_LAST_NAME("Apellido", ""),
+		USER_USERNAME("Nombre de usuario", ""),
+		USER_EMAIL("Email", ""), 
+		USER_PASSWORDHASH("Contraseña", "")
 	;
 	
 private String title;

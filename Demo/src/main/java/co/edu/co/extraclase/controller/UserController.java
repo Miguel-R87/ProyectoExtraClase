@@ -16,6 +16,7 @@ import co.edu.co.extraclase.crosscuting.messagescatalog.MessagesEnum;
 @RestController
 @RequestMapping("/api/v1/users")
 public class UserController {
+	
 	@PostMapping
 	public  ResponseEntity<Response<UserDto>> registerNewUserInformation (@RequestBody UserDto user) {		
 		Response<UserDto> responseObjectData = Response.createSuccededResponse();
@@ -38,10 +39,6 @@ public class UserController {
 		responseStatusCode = HttpStatus.INTERNAL_SERVER_ERROR;
 		exception.printStackTrace();
 	}
-	
 	return new ResponseEntity<>(responseObjectData, responseStatusCode);
-	
 	}
-	
-	
 }

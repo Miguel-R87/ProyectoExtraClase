@@ -42,36 +42,35 @@ public final class UserBusinessImpl implements UserBusiness {
 			id = UUIDHelper.getUUIDHelper().generateNewUUID();
 			userEntity = daoFactory.getUserDAO().findById(id);
 		}
-		
 		return id;
 	}
 
 	@Override
-	public UserDomain loginUser(String Email, String passwordHash) {
+	public UserDomain loginUser(final String Email, final String passwordHash) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void updateUserInformation(UUID id, UserDomain userDomain) {
+	public void updateUserInformation(final UUID id, final UserDomain userDomain) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void sendUserEmailConfirmationCode(UUID id) {
+	public void sendUserEmailConfirmationCode(final UUID id) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void sendSuperUserConfirmationCode(UUID id) {
+	public void sendSuperUserConfirmationCode(final UUID id) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public boolean confirmCode(UUID id, String code, String confirmationType) {
+	public boolean confirmCode(final UUID id, final String code, final String confirmationType) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -85,5 +84,4 @@ public final class UserBusinessImpl implements UserBusiness {
 		
 		return UserEntityAssembler.getUserEntityAssembler().toDomain(userEntities); 
 	}
-
 }

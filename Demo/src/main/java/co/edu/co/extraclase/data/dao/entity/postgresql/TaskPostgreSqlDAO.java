@@ -54,7 +54,7 @@ public final class TaskPostgreSqlDAO extends SqlConnection implements TaskDAO{
         	String userMessage = MessagesEnum.USER_ERROR_TASK_REGISTRATION_FAILED.getContent();
         	String technicalMessage = MessagesEnum.TECHNICAL_ERROR_TASK__REGISTRATION_FAILED.getContent() + exception.getMessage();
         	throw ExtraClaseException.create(exception, userMessage, technicalMessage);
-      }
+        }
     }
 
 	@Override
@@ -167,7 +167,6 @@ public final class TaskPostgreSqlDAO extends SqlConnection implements TaskDAO{
 		!UUIDHelper.getUUIDHelper().isDefaultUUID(filterEntityValidated.getPriority().getId()), "\"p.prioridad\" = ? ",
 		filterEntityValidated.getPriority().getId());
 		
-		
 		if (!conditions.isEmpty()) {
 			sql.append(" WHERE ");
 			sql.append(String.join(" AND ", conditions));
@@ -212,8 +211,8 @@ public final class TaskPostgreSqlDAO extends SqlConnection implements TaskDAO{
                 task.setPriority(priority);
                 
                 listTask.add(task);
-
 			}
+			
 		}catch (final SQLException exception) {
 			String userMessage = MessagesEnum.USER_ERROR_SEARCH_TASK_FAILED_SQL_EXCEPTION.getContent();
 			String technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_TASK_FAILED_SQL_EXCEPTION.getContent() + exception.getMessage();
@@ -224,13 +223,11 @@ public final class TaskPostgreSqlDAO extends SqlConnection implements TaskDAO{
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 		}
 		return listTask;
-		
 	}
-
 
 	@Override
 	public void update(final TaskEntity entity) {
-SqlConnectionHelper.ensureTransactionIsStarted(getConnection());
+		SqlConnectionHelper.ensureTransactionIsStarted(getConnection());
 		
 		final var sql = new StringBuilder();
 		sql.append("UPDATE \"Tarea\" " );
@@ -245,7 +242,6 @@ SqlConnectionHelper.ensureTransactionIsStarted(getConnection());
 		
 		sql.append("WHERE \"tareaId\" = ?; " );
 			
-		
 		 try (var preparedStatement = this.getConnection().prepareStatement(sql.toString())) {
 	        	preparedStatement.setObject(1, entity.getId());
 	        	preparedStatement.setString(2, entity.getTitle());
@@ -272,7 +268,5 @@ SqlConnectionHelper.ensureTransactionIsStarted(getConnection());
 	@Override
 	public TaskEntity findById(final UUID id) {
 		return findByFilter(new TaskEntity(id)).stream().findFirst().orElse(new TaskEntity());
-
-	}
-		
-	}
+	}	
+}

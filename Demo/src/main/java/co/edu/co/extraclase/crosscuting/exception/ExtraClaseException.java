@@ -10,7 +10,6 @@ public final class ExtraClaseException extends RuntimeException{
 	private String userMessage;
 	private String technicalMessage;
 
-
 	private ExtraClaseException(final Throwable rootException,final String userMessage,final String technicalMessage) {
 	 setRootException(rootException);
 	 setUserMessage(userMessage);

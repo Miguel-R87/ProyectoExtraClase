@@ -110,6 +110,5 @@ public final class ProjectStatusPostgreSqlDAO extends SqlConnection implements P
 	@Override
 	public ProjectStatusEntity findById(final UUID id) {
 		return findByFilter(new ProjectStatusEntity(id)).stream().findFirst().orElse(new ProjectStatusEntity());
-
 	}
 }

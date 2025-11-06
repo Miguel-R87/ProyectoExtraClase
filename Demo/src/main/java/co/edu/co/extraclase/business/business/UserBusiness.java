@@ -6,11 +6,11 @@ import co.edu.co.extraclase.business.domain.UserDomain;
 
 public interface UserBusiness {
 	
-		void registerNewUserInformation(UserDomain userDomain);
+		void registerNewUserInformation(final UserDomain userDomain);
 	      
 		UserDomain loginUser(final String Email, final String passwordHash);
 
-		void updateUserInformation(UUID id,UserDomain userDomain);
+		void updateUserInformation(final UUID id, final UserDomain userDomain);
 
 		void sendUserEmailConfirmationCode(final UUID id);
 
@@ -18,6 +18,6 @@ public interface UserBusiness {
 
 		boolean confirmCode(final UUID id, final String code, final String confirmationType);
 
-	    List<UserDomain> findUsersByFilter(UserDomain userFilters);
+	    List<UserDomain> findUsersByFilter(final UserDomain userFilters);
 	
 }

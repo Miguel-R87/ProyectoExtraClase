@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
 import co.edu.co.extraclase.crosscuting.exception.ExtraClaseException;
 import co.edu.co.extraclase.crosscuting.helper.*;
 import co.edu.co.extraclase.crosscuting.messagescatalog.MessagesEnum;
@@ -109,7 +108,6 @@ public final class NotificationPostgreSqlDAO extends SqlConnection implements No
 		}
 	}
 
-
 	 private void addCondition(final List<String> conditions, final List<Object> parametersList, final boolean condition,
 							  final String clause, final Object value) {
 		 if (condition) {
@@ -122,27 +120,18 @@ public final class NotificationPostgreSqlDAO extends SqlConnection implements No
 		var listNotification = new ArrayList<NotificationEntity>();
 		try (var resultSet = preparedStatement.executeQuery()){
 			while (resultSet.next()){
+				
 				var notificationType = new NotificationTypeEntity();
 				notificationType.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("idTN")));
 				notificationType.setName(resultSet.getString("nombreTN"));
 
 				var taskUser = new TaskUserEntity();
 				taskUser.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("idUT")));
-				try {
-					var ts = resultSet.getTimestamp("fechaAsignacionUT");
-					if (ts != null) {
-						taskUser.setAssignmentDate(ts.toLocalDateTime());
-					}
-				} catch (final Exception ignore) {
-				}
-
+				
 				var notification = new NotificationEntity();
 				notification.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("idN")));
 				notification.setMessage(resultSet.getString("mensajeN"));
-				var ts2 = resultSet.getTimestamp("fechaDisparoN");
-				if (ts2 != null) {
-					notification.setTriggerDate(ts2.toLocalDateTime());
-				}
+				
 				notification.setTaskUser(taskUser);
 				notification.setNotificationType(notificationType);
 
@@ -163,11 +152,5 @@ public final class NotificationPostgreSqlDAO extends SqlConnection implements No
 	@Override
 	public NotificationEntity findById(final UUID id) {
 		return findByFilter(new NotificationEntity(id)).stream().findFirst().orElse(new NotificationEntity());
-
 	}
-
-
-
-
-
 }

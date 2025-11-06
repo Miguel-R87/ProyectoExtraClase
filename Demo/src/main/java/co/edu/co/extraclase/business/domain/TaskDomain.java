@@ -8,13 +8,14 @@ import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;	
 
 public final class TaskDomain extends Domain{
-	private String title;
-	private String description;
-	private LocalDateTime creationDate;
-	private LocalDateTime expiryDate;
-	private ListDomain list;
-	private StatusDomain status;
-	private PriorityDomain priority;
+	
+		private String title;
+		private String description;
+		private LocalDateTime creationDate;
+		private LocalDateTime expiryDate;
+		private ListDomain list;
+		private StatusDomain status;
+		private PriorityDomain priority;
 	
 	public TaskDomain() {
 		super(UUIDHelper.getUUIDHelper().getDefault());

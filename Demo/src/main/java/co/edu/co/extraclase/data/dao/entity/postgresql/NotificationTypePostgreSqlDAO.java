@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
 import co.edu.co.extraclase.crosscuting.exception.ExtraClaseException;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
@@ -105,6 +104,5 @@ public final class NotificationTypePostgreSqlDAO extends SqlConnection implement
 	@Override
 	public NotificationTypeEntity findById(final UUID id) {
 		return findByFilter(new NotificationTypeEntity(id)).stream().findFirst().orElse(new NotificationTypeEntity());
-
 	}
-	}
+}

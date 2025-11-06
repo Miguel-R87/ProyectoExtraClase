@@ -1,6 +1,7 @@
 package co.edu.co.extraclase.crosscuting.helper;
 
 public final class TextHelper {
+	
 	private static final String EMPTY = "";
 
 	private TextHelper() {

@@ -1,11 +1,11 @@
 package co.edu.co.extraclase.data.dao.entity.postgresql;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
 import co.edu.co.extraclase.crosscuting.exception.ExtraClaseException;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
@@ -42,7 +42,6 @@ public final class ColorPostgreSqlDAO extends SqlConnection implements ColorDAO 
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 		}
 	}
-
 
 	private String createSentenceFindByFilter(final ColorEntity filterEntity, final List<Object> parametersList) {
 		final var sql = new StringBuilder();
@@ -99,14 +98,11 @@ public final class ColorPostgreSqlDAO extends SqlConnection implements ColorDAO 
 	        var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_COLOR_FAILED.getContent();
 	        throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 	    }
-
 		return listColor;
 	}
 
 	@Override
 	public ColorEntity findById(final UUID id) {
 		return findByFilter(new ColorEntity(id)).stream().findFirst().orElse(new ColorEntity());
-
 	}
-
 }

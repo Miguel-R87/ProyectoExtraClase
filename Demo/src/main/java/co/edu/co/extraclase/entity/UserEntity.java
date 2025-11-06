@@ -7,21 +7,21 @@ import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
  public final class UserEntity {
-    private UUID id;
-    private String firstName;
-    private String lastName;
-    private String username;
-    private String email;
-    private LocalDateTime registrationDate;
-    private String passwordHash;
-    private boolean accountStatus;
-    private boolean isSuperUser;
-    private boolean superUserConfirmed;
-    private boolean emailConfirmed;
-    private boolean accountStatusIsDefaultValue;
-    private boolean isSuperUserIsDefaultValue;
-    private boolean superUserConfirmedIsDefaultValue;
-    private boolean emailConfirmedIsDefaultValue;
+	 	private UUID id;
+	 	private String firstName;
+	 	private String lastName;
+	 	private String username;
+	 	private String email;
+	 	private LocalDateTime registrationDate;
+	 	private String passwordHash;
+	 	private boolean accountStatus;
+	 	private boolean isSuperUser;
+	 	private boolean superUserConfirmed;
+	 	private boolean emailConfirmed;
+	 	private boolean accountStatusIsDefaultValue;
+	 	private boolean isSuperUserIsDefaultValue;
+	 	private boolean superUserConfirmedIsDefaultValue;
+	 	private boolean emailConfirmedIsDefaultValue;
 	
     public UserEntity() {
     	setId(UUIDHelper.getUUIDHelper().getDefault());

@@ -9,12 +9,13 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 public final class TaskUserDomain extends Domain{
-    private ProjectUserDomain projectUser;
-    private TaskDomain task;
-    private LocalDateTime assignmentDate;
-    private LocalDateTime completionDate;
-    private boolean isCreator;
-    private String comment;
+    
+		private ProjectUserDomain projectUser;
+		private TaskDomain task;
+		private LocalDateTime assignmentDate;
+		private LocalDateTime completionDate;
+		private boolean isCreator;
+		private String comment;
 
     public TaskUserDomain() {
         super(UUIDHelper.getUUIDHelper().getDefault());

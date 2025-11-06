@@ -45,7 +45,6 @@ public final class UnitOfMeasurePostgreSqlDAO extends SqlConnection implements U
 				String userMessage = MessagesEnum.USER_ERROR_SEARCH_UNIT_OF_MEASURE_FAILED.getContent();
 				String technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_UNIT_OF_MEASURE_FAILED.getContent() + exception.getMessage();
 				throw ExtraClaseException.create(exception, userMessage, technicalMessage);
-
 			}
 	}
 	
@@ -62,7 +61,6 @@ public final class UnitOfMeasurePostgreSqlDAO extends SqlConnection implements U
 		createWhereClauseFindByFilter(sql, parameterList, filterEntity);
         
         return sql.toString();
-		
 	}
 	
 	private void createWhereClauseFindByFilter(final StringBuilder sql, final List<Object> parameterList, final UnitOfMeasureEntity filterEntity) {

@@ -5,7 +5,8 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 public final class ProjectUserDomain extends Domain{
-    private UserDomain user;
+    
+	private UserDomain user;
     private ProjectDomain project;
     private boolean isAdmin;
     private LocalDateTime entryDate;
