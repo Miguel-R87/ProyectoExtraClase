@@ -46,13 +46,12 @@ public class PostgreSqlDAOFactory extends DAOFactory {
 		 try {
 			 	Class.forName("org.postgresql.Driver");
 			 	
-			 	String url = "jdbc:postgresql://localhost:5432/extraclase_db";
+			 	String url = "jdbc:postgresql://localhost:5432/extraclase";
 			 	String user = "postgres"; // tu usuario de Postgres
-			 	String password = "Andresmalua23";
+			 	String password = "miguelo74";
 
 		        this.connection = DriverManager.getConnection(url, user, password);
-		        System.out.println("Conexión abierta");
-		        
+		      
 		} catch(final SQLException exception) {
 			var userMessage = MessagesEnum.USER_ERROR_SQL_CONNECTION_SQL_EXCEPTION_VALIDATING_TRANSACTION_IS_CLOSED.getContent();
 			var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SQL_CONNECTION_SQL_EXCEPTION_VALIDATING_TRANSACTION_IS_CLOSED.getContent();
@@ -135,3 +134,4 @@ public class PostgreSqlDAOFactory extends DAOFactory {
 	
 
 }
+
