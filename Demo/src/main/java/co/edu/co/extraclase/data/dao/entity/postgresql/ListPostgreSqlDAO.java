@@ -9,7 +9,7 @@ import java.util.UUID;
 
 import co.edu.co.extraclase.crosscuting.exception.ExtraClaseException;
 import co.edu.co.extraclase.crosscuting.helper.*;
-
+import co.edu.co.extraclase.crosscuting.messagescatalog.MessagesEnum;
 import co.edu.co.extraclase.data.dao.entity.ListDAO;
 import co.edu.co.extraclase.data.dao.entity.SqlConnection;
 import co.edu.co.extraclase.entity.ListEntity;
@@ -37,12 +37,12 @@ public final class ListPostgreSqlDAO extends SqlConnection implements ListDAO{
             preparedStatement.executeUpdate();
 
         } catch (final SQLException exception){
-            var userMessage = "";
-            var technicalMessage = "";
+            var userMessage = MessagesEnum.USER_ERROR_LIST_REGISTRATION_FAILED_SQL_EXCEPTION.getContent();
+            var technicalMessage = MessagesEnum.TECHNICAL_ERROR_LIST_REGISTRATION_SQL_EXCEPTION.getContent() +exception.getMessage();
             throw ExtraClaseException.create(exception, userMessage, technicalMessage);
         } catch (final Exception exception){
-            var userMessage = "";
-            var technicalMessage = "";
+            var userMessage = MessagesEnum.USER_ERROR_LIST_REGISTRATION_FAILED.getContent();
+            var technicalMessage = MessagesEnum.TECHNICAL_ERROR_LIST__REGISTRATION_FAILED.getContent()+ exception.getMessage();
             throw ExtraClaseException.create(exception, userMessage, technicalMessage);
         }
     }
@@ -57,7 +57,7 @@ public final class ListPostgreSqlDAO extends SqlConnection implements ListDAO{
             }
             return executeSentenceFindByFilter(preparedStatement);
         } catch (final SQLException exception) {
-            var userMessage = "";
+            var userMessage = MessagesEnum.USER_ERROR_SEARCH_USER_FAILED_SQL_EXCEPTION.getContent();
             var technicalMessage = "";
             throw ExtraClaseException.create(exception, userMessage, technicalMessage);
         } catch (final Exception exception) {
@@ -122,13 +122,13 @@ public final class ListPostgreSqlDAO extends SqlConnection implements ListDAO{
                 list.setProject(project);
                 listList.add(list);
             }
-        } catch(final SQLException exception) {
-            var userMessage = "";
-            var technicalMessage = "";
+        } catch (final SQLException exception){
+            var userMessage = MessagesEnum.USER_ERROR_LIST_REGISTRATION_FAILED_SQL_EXCEPTION.getContent();
+            var technicalMessage = MessagesEnum.TECHNICAL_ERROR_LIST_REGISTRATION_SQL_EXCEPTION.getContent() +exception.getMessage();
             throw ExtraClaseException.create(exception, userMessage, technicalMessage);
-        } catch (final ExtraClaseException exception) {
-            var userMessage = "a";
-            var technicalMessage = "";
+        } catch (final Exception exception){
+            var userMessage = MessagesEnum.USER_ERROR_LIST_REGISTRATION_FAILED.getContent();
+            var technicalMessage = MessagesEnum.TECHNICAL_ERROR_LIST__REGISTRATION_FAILED.getContent()+ exception.getMessage();
             throw ExtraClaseException.create(exception, userMessage, technicalMessage);
         }
         return listList;
@@ -150,12 +150,12 @@ public final class ListPostgreSqlDAO extends SqlConnection implements ListDAO{
             preparedStatement.setObject(3, entity.getId());
             preparedStatement.executeUpdate();
         } catch (final SQLException exception) {
-            var userMessage = "";
-            var technicalMessage = "";
+            var userMessage = MessagesEnum.USER_ERROR_LIST_UPDATE_FAILED_SQL_EXCEPTION.getContent();
+            var technicalMessage = MessagesEnum.TECHNICAL_ERROR_LIST_UPDATE_SQL_EXCEPTION.getContent() + exception.getMessage();
             throw ExtraClaseException.create(exception, userMessage, technicalMessage);
         } catch (final Exception exception) {
-            var userMessage = "a";
-            var technicalMessage = "";
+            var userMessage = MessagesEnum.USER_ERROR_LIST_UPDATE_FAILED.getContent();
+            var technicalMessage = MessagesEnum.TECHNICAL_ERROR_LIST__UPDATE_FAILED.getContent() + exception.getMessage();
             throw ExtraClaseException.create(exception, userMessage, technicalMessage);
         }
 
@@ -167,5 +167,3 @@ public final class ListPostgreSqlDAO extends SqlConnection implements ListDAO{
 		return findByFilter(new ListEntity(id)).stream().findFirst().orElse(new ListEntity());
 
 	}}
-
-

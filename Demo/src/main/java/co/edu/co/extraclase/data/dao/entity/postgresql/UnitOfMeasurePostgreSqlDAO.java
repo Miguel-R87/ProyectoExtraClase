@@ -13,6 +13,7 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.data.dao.entity.SqlConnection;
 import co.edu.co.extraclase.data.dao.entity.UnitOfMeasureDAO;
 import co.edu.co.extraclase.entity.UnitOfMeasureEntity;
+import co.edu.co.extraclase.crosscuting.messagescatalog.MessagesEnum;
 
 public final class UnitOfMeasurePostgreSqlDAO extends SqlConnection implements UnitOfMeasureDAO {
 
@@ -36,13 +37,13 @@ public final class UnitOfMeasurePostgreSqlDAO extends SqlConnection implements U
 			}catch (final ExtraClaseException exception) {
 				throw exception;
 			}catch (final SQLException exception) {
-				var userMessage = "";
-				var technicalMessage = "" + exception.getMessage();
+				String userMessage = MessagesEnum.USER_ERROR_SEARCH_UNIT_OF_MEASURE_FAILED_SQL_EXCEPTION.getContent();
+				String technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_UNIT_OF_MEASURE_FAILED_SQL_EXCEPTION.getContent() + exception.getMessage();
 				throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 
 			}catch (Exception exception) {
-				var userMessage = "";
-				var technicalMessage = "";
+				String userMessage = MessagesEnum.USER_ERROR_SEARCH_UNIT_OF_MEASURE_FAILED.getContent();
+				String technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_UNIT_OF_MEASURE_FAILED.getContent() + exception.getMessage();
 				throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 
 			}
@@ -109,12 +110,12 @@ public final class UnitOfMeasurePostgreSqlDAO extends SqlConnection implements U
 
 			}
 		}catch (SQLException exception) {
-			var userMessage = "";
-			var technicalMessage = "" + exception.getMessage();
+			String userMessage = MessagesEnum.USER_ERROR_SEARCH_UNIT_OF_MEASURE_FAILED_SQL_EXCEPTION.getContent();
+			String technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_UNIT_OF_MEASURE_FAILED_SQL_EXCEPTION.getContent() + exception.getMessage();
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 		}catch (Exception exception) {
-			var userMessage = "";
-			var technicalMessage = "";
+			String userMessage = MessagesEnum.USER_ERROR_SEARCH_UNIT_OF_MEASURE_FAILED.getContent();
+			String technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_UNIT_OF_MEASURE_FAILED.getContent() + exception.getMessage();
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 		}
 		return listUnitOfMeasure;

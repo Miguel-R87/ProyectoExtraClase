@@ -27,6 +27,7 @@ import co.edu.co.extraclase.entity.TaskEntity;
 import co.edu.co.extraclase.entity.TaskUserEntity;
 import co.edu.co.extraclase.entity.UnitOfMeasureEntity;
 import co.edu.co.extraclase.entity.UserEntity;
+import co.edu.co.extraclase.crosscuting.messagescatalog.MessagesEnum;
 
 public final class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUserDAO{
 
@@ -54,12 +55,12 @@ public final class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUs
 			preparedStatement.executeUpdate();
 
         }	catch (final SQLException exception) {
-        	var userMessage = "Se ha presentado un problema tratando de registrar la información del nuevo usuarioTarea. Intente de nuevo.";
-        	var technicalMessage = "SQLException al insertar UsuarioTarea: " + exception.getMessage();
+        	String userMessage = MessagesEnum.USER_ERROR_TASK_USER_REGISTRATION_FAILED_SQL_EXCEPTION.getContent();
+        	String technicalMessage = MessagesEnum.TECHNICAL_ERROR_TASK_USER_REGISTRATION_SQL_EXCEPTION.getContent() + exception.getMessage();
         	throw ExtraClaseException.create(exception, userMessage, technicalMessage);
         } catch (final Exception exception) {
-        	var userMessage = "Se ha presentado un problema inesperado tratando de registrar la información del nuevo usuarioTarea.";
-        	var technicalMessage = "Excepción inesperada al insertar UsuarioTarea: " + exception.getMessage();
+        	String userMessage = MessagesEnum.USER_ERROR_TASK_USER_REGISTRATION_FAILED.getContent();
+        	String technicalMessage = MessagesEnum.TECHNICAL_ERROR_TASK_USER__REGISTRATION_FAILED.getContent() + exception.getMessage();
         	throw ExtraClaseException.create(exception, userMessage, technicalMessage);
       }
     }
@@ -80,13 +81,13 @@ public final class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUs
 		}catch (final ExtraClaseException exception) {
 			throw exception;
 		}catch (final SQLException exception) {
-			var userMessage = "";
-			var technicalMessage = "" + exception.getMessage();
+			String userMessage = MessagesEnum.USER_ERROR_SEARCH_TASK_USER_FAILED_SQL_EXCEPTION.getContent();
+			String technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_TASK_USER_FAILED_SQL_EXCEPTION.getContent() + exception.getMessage();
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 
 		}catch (Exception exception) {
-			var userMessage = "";
-			var technicalMessage = "";
+			String userMessage = MessagesEnum.USER_ERROR_SEARCH_TASK_USER_FAILED.getContent();
+			String technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_TASK_USER_FAILED.getContent() + exception.getMessage();
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 
 		}
@@ -237,7 +238,6 @@ public final class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUs
 		var listTaskUser = new ArrayList<TaskUserEntity>();
 		
 		try (var resultSet = preparedStatement.executeQuery()) {
-			
 			while (resultSet.next()) {
 				var user = new UserEntity();
 				user.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("usuarioId")));
@@ -321,20 +321,18 @@ public final class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUs
 				listTaskUser.add(taskUser);
 
 			}
-		}catch (final SQLException exception) {
-			var userMessage = "";
-			var technicalMessage = "";
+		} catch (final SQLException exception) {
+			String userMessage = MessagesEnum.USER_ERROR_SEARCH_TASK_USER_FAILED_SQL_EXCEPTION.getContent();
+			String technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_TASK_USER_FAILED_SQL_EXCEPTION.getContent() + exception.getMessage();
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
-		}catch (final Exception exception) {
-			var userMessage = "";
-			var technicalMessage = "b";
+		} catch (final Exception exception) {
+			String userMessage = MessagesEnum.USER_ERROR_SEARCH_TASK_USER_FAILED.getContent();
+			String technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_TASK_USER_FAILED.getContent() + exception.getMessage();
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
-
 		}
 		return listTaskUser;
 		
 	}
-
 
 	@Override
 	public void update(final TaskUserEntity entity) {
@@ -364,12 +362,12 @@ public final class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUs
 				preparedStatement.executeUpdate();
 
 	        }	catch (final SQLException exception) {
-	        	var userMessage = "Se ha presentado un problema tratando de actualizar la información del nuevo usuarioTarea. Intente de nuevo.";
-	        	var technicalMessage = "SQLException al actualizar UsuarioTarea: " + exception.getMessage();
+	        	String userMessage = MessagesEnum.USER_ERROR_TASK_USER_UPDATE_FAILED_SQL_EXCEPTION.getContent();
+	        	String technicalMessage = MessagesEnum.TECHNICAL_ERROR_TASK_USER_UPDATE_SQL_EXCEPTION.getContent() + exception.getMessage();
 	        	throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 	        } catch (final Exception exception) {
-	        	var userMessage = "Se ha presentado un problema inesperado tratando de actualizar la información del nuevo usuarioTarea.";
-	        	var technicalMessage = "Excepción inesperada al actualizar UsuarioTarea: " + exception.getMessage();
+	        	String userMessage = MessagesEnum.USER_ERROR_TASK_USER_UPDATE_FAILED.getContent();
+	        	String technicalMessage = MessagesEnum.TECHNICAL_ERROR_TASK_USER__UPDATE_FAILED.getContent() + exception.getMessage();
 	        	throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 	      }
 	}

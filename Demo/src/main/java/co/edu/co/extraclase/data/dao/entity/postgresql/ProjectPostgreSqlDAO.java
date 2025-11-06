@@ -15,6 +15,7 @@ import co.edu.co.extraclase.data.dao.entity.ProjectDAO;
 import co.edu.co.extraclase.data.dao.entity.SqlConnection;
 import co.edu.co.extraclase.entity.ProjectEntity;
 import co.edu.co.extraclase.entity.ProjectStatusEntity;
+import co.edu.co.extraclase.crosscuting.messagescatalog.MessagesEnum;
 
 public final class ProjectPostgreSqlDAO extends SqlConnection implements ProjectDAO {
 
@@ -35,12 +36,12 @@ public final class ProjectPostgreSqlDAO extends SqlConnection implements Project
 		} catch (final ExtraClaseException exception) {
 			throw exception;
 		} catch (final SQLException exception) {
-			var userMessage = "";
-			var technicalMessage = "b";
+			String userMessage = MessagesEnum.USER_ERROR_SEARCH_PROJECT_FAILED_SQL_EXCEPTION.getContent();
+			String technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_PROJECT_FAILED_SQL_EXCEPTION.getContent() + exception.getMessage();
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 		} catch (final Exception exception) {
-			var userMessage = "";
-			var technicalMessage = "";
+			String userMessage = MessagesEnum.USER_ERROR_SEARCH_PROJECT_FAILED.getContent();
+			String technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_PROJECT_FAILED.getContent() + exception.getMessage();
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 		}
 	}
@@ -113,12 +114,12 @@ public final class ProjectPostgreSqlDAO extends SqlConnection implements Project
 				listProject.add(project);
 			}
 		} catch (final SQLException exception) {
-			var userMessage = "";
-			var technicalMessage = "b";
+			String userMessage = MessagesEnum.USER_ERROR_SEARCH_PROJECT_FAILED_SQL_EXCEPTION.getContent();
+			String technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_PROJECT_FAILED_SQL_EXCEPTION.getContent() + exception.getMessage();
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 		} catch (final Exception exception) {
-			var userMessage = "";
-			var technicalMessage = "";
+			String userMessage = MessagesEnum.USER_ERROR_SEARCH_PROJECT_FAILED.getContent();
+			String technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_PROJECT_FAILED.getContent() + exception.getMessage();
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 		}
 		return listProject;
@@ -137,12 +138,12 @@ public final class ProjectPostgreSqlDAO extends SqlConnection implements Project
 			preparedStatement.setObject(4, entity.getProjectStatus().getId());
 			preparedStatement.executeUpdate();
 		} catch (final SQLException exception) {
-			var userMessage = " ";
-			var technicalMessage = " ";
+			String userMessage = MessagesEnum.USER_ERROR_PROJECT_REGISTRATION_FAILED_SQL_EXCEPTION.getContent();
+			String technicalMessage = MessagesEnum.TECHNICAL_ERROR_PROJECT_REGISTRATION_SQL_EXCEPTION.getContent() + exception.getMessage();
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 		} catch (final Exception exception) {
-			var userMessage = " ";
-			var technicalMessage = "b";
+			String userMessage = MessagesEnum.USER_ERROR_PROJECT_REGISTRATION_FAILED.getContent();
+			String technicalMessage = MessagesEnum.TECHNICAL_ERROR_PROJECT__REGISTRATION_FAILED.getContent() + exception.getMessage();
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 		}
 	}
@@ -161,12 +162,12 @@ public final class ProjectPostgreSqlDAO extends SqlConnection implements Project
 			preparedStatement.setObject(4, entity.getId());
 			preparedStatement.executeUpdate();
 		} catch (final SQLException exception) {
-			var userMessage = "";
-			var technicalMessage = "b";
+			String userMessage = MessagesEnum.USER_ERROR_PROJECT_UPDATE_FAILED_SQL_EXCEPTION.getContent();
+			String technicalMessage = MessagesEnum.TECHNICAL_ERROR_PROJECT_UPDATE_SQL_EXCEPTION.getContent() + exception.getMessage();
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 		} catch (final Exception exception) {
-			var userMessage = "a";
-			var technicalMessage = "";
+			String userMessage = MessagesEnum.USER_ERROR_PROJECT_UPDATE_FAILED.getContent();
+			String technicalMessage = MessagesEnum.TECHNICAL_ERROR_PROJECT__UPDATE_FAILED.getContent() + exception.getMessage();
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 		}
 	}

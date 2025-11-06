@@ -13,6 +13,7 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.data.dao.entity.ProjectStatusDAO;
 import co.edu.co.extraclase.data.dao.entity.SqlConnection;
 import co.edu.co.extraclase.entity.ProjectStatusEntity;
+import co.edu.co.extraclase.crosscuting.messagescatalog.MessagesEnum;
 
 public final class ProjectStatusPostgreSqlDAO extends SqlConnection implements ProjectStatusDAO {
 
@@ -32,12 +33,12 @@ public final class ProjectStatusPostgreSqlDAO extends SqlConnection implements P
 		} catch (final ExtraClaseException exception){
 			throw exception;
 		} catch(final SQLException exception){
-			var userMessage = "";
-			var technicalMessage = "";
+			String userMessage = MessagesEnum.USER_ERROR_SEARCH_PROJECT_STATUS_FAILED_SQL_EXCEPTION.getContent();
+			String technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_PROJECT_STATUS_FAILED_SQL_EXCEPTION.getContent() + exception.getMessage();
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 		} catch (final Exception exception) {
-			var userMessage = "a";
-			var technicalMessage = "";
+			String userMessage = MessagesEnum.USER_ERROR_SEARCH_PROJECT_STATUS_FAILED.getContent();
+			String technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_PROJECT_STATUS_FAILED.getContent() + exception.getMessage();
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 		}
 	}
@@ -95,12 +96,12 @@ public final class ProjectStatusPostgreSqlDAO extends SqlConnection implements P
 				listProjectStatus.add(projectStatus);
 			}
 		} catch (final SQLException exception) {
-			var userMessage = "";
-			var technicalMessage = "b";
+			String userMessage = MessagesEnum.USER_ERROR_SEARCH_PROJECT_STATUS_FAILED_SQL_EXCEPTION.getContent();
+			String technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_PROJECT_STATUS_FAILED_SQL_EXCEPTION.getContent() + exception.getMessage();
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 		} catch (final Exception exception) {
-			var userMessage = "";
-			var technicalMessage = "a";
+			String userMessage = MessagesEnum.USER_ERROR_SEARCH_PROJECT_STATUS_FAILED.getContent();
+			String technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_PROJECT_STATUS_FAILED.getContent() + exception.getMessage();
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 		}
 		return listProjectStatus;
@@ -112,4 +113,3 @@ public final class ProjectStatusPostgreSqlDAO extends SqlConnection implements P
 
 	}
 }
-

@@ -14,6 +14,7 @@ import co.edu.co.extraclase.data.dao.entity.SqlConnection;
 import co.edu.co.extraclase.data.dao.entity.StatusDAO;
 import co.edu.co.extraclase.entity.ColorEntity;
 import co.edu.co.extraclase.entity.StatusEntity;
+import co.edu.co.extraclase.crosscuting.messagescatalog.MessagesEnum;
 
 public final class StatusPostgreSqlDAO extends SqlConnection implements StatusDAO{
 
@@ -34,12 +35,12 @@ public final class StatusPostgreSqlDAO extends SqlConnection implements StatusDA
 		} catch (final ExtraClaseException exception){
 			throw exception;
 		} catch (final SQLException exception){
-			var userMessage = "";
-			var technicalMessage = "";
+			String userMessage = MessagesEnum.USER_ERROR_SEARCH_STATUS_FAILED_SQL_EXCEPTION.getContent();
+			String technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_STATUS_FAILED_SQL_EXCEPTION.getContent() + exception.getMessage();
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 		} catch (final Exception exception){
-			var userMessage = "";
-			var technicalMessage = "b";
+			String userMessage = MessagesEnum.USER_ERROR_SEARCH_STATUS_FAILED.getContent();
+			String technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_STATUS_FAILED.getContent() + exception.getMessage();
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 		}
 	}
@@ -113,12 +114,12 @@ public final class StatusPostgreSqlDAO extends SqlConnection implements StatusDA
 				listStatus.add(status);
 			}
 		} catch (final SQLException exception){
-			var userMessage = "";
-			var technicalMessage = "";
+			String userMessage = MessagesEnum.USER_ERROR_SEARCH_STATUS_FAILED_SQL_EXCEPTION.getContent();
+			String technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_STATUS_FAILED_SQL_EXCEPTION.getContent() + exception.getMessage();
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 		} catch (final Exception exception){
-			var userMessage = "";
-			var technicalMessage = "b";
+			String userMessage = MessagesEnum.USER_ERROR_SEARCH_STATUS_FAILED.getContent();
+			String technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_STATUS_FAILED.getContent() + exception.getMessage();
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 		}
 		return listStatus;

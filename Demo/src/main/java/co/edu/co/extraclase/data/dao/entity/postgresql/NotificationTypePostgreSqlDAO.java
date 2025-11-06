@@ -14,6 +14,7 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.data.dao.entity.NotificationTypeDAO;
 import co.edu.co.extraclase.data.dao.entity.SqlConnection;
 import co.edu.co.extraclase.entity.NotificationTypeEntity;
+import co.edu.co.extraclase.crosscuting.messagescatalog.MessagesEnum;
 
 public final class NotificationTypePostgreSqlDAO extends SqlConnection implements NotificationTypeDAO {
 
@@ -33,12 +34,12 @@ public final class NotificationTypePostgreSqlDAO extends SqlConnection implement
 		} catch (final ExtraClaseException exception){
 			throw exception;
 		} catch (final SQLException exception) {
-			var userMessage = "";
-			var technicalMessage = "";
+			String userMessage = MessagesEnum.USER_ERROR_NOTIFICATION_TYPE_SEARCH_FAILED_SQL_EXCEPTION.getContent();
+			String technicalMessage = MessagesEnum.TECHNICAL_ERROR_NOTIFICATION_TYPE_SEARCH_FAILED_SQL_EXCEPTION.getContent() + exception.getMessage();
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 		} catch (final Exception exception) {
-			var userMessage = "";
-			var technicalMessage = "b";
+			String userMessage = MessagesEnum.USER_ERROR_NOTIFICATION_TYPE_SEARCH_FAILED.getContent();
+			String technicalMessage = MessagesEnum.TECHNICAL_ERROR_NOTIFICATION_TYPE_SEARCH_FAILED.getContent() + exception.getMessage();
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 		}
 	}
@@ -90,12 +91,12 @@ public final class NotificationTypePostgreSqlDAO extends SqlConnection implement
 				notificationType.setDescription(resultSet.getString("descripcionTN"));
 				listNotificationType.add(notificationType);}
 			} catch (final SQLException exception){
-				var userMessage = "";
-				var technicalMessage = "b";
+				String userMessage = MessagesEnum.USER_ERROR_NOTIFICATION_TYPE_SEARCH_FAILED_SQL_EXCEPTION.getContent();
+				String technicalMessage = MessagesEnum.TECHNICAL_ERROR_NOTIFICATION_TYPE_SEARCH_FAILED_SQL_EXCEPTION.getContent() + exception.getMessage();
 				throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 			} catch (final Exception exception){
-				var userMessage = "";
-				var technicalMessage = "";
+				String userMessage = MessagesEnum.USER_ERROR_NOTIFICATION_TYPE_SEARCH_FAILED.getContent();
+				String technicalMessage = MessagesEnum.TECHNICAL_ERROR_NOTIFICATION_TYPE_SEARCH_FAILED.getContent() + exception.getMessage();
 				throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 			}
 			return listNotificationType;

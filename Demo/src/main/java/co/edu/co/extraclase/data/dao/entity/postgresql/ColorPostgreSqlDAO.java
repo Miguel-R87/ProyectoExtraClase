@@ -10,6 +10,7 @@ import co.edu.co.extraclase.crosscuting.exception.ExtraClaseException;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
+import co.edu.co.extraclase.crosscuting.messagescatalog.MessagesEnum;
 import co.edu.co.extraclase.data.dao.entity.ColorDAO;
 import co.edu.co.extraclase.data.dao.entity.SqlConnection;
 import co.edu.co.extraclase.entity.ColorEntity;
@@ -31,13 +32,13 @@ public final class ColorPostgreSqlDAO extends SqlConnection implements ColorDAO 
 			return executeSentenceFindByFilter(preparedStatement);
 		} catch(final ExtraClaseException exception){
 			throw exception;
-		} catch(final SQLException exception){
-			var userMessage = "a";
-			var technicalMessage = "";
+		} catch (final SQLException exception) {
+			var userMessage = MessagesEnum.USER_ERROR_SEARCH_COLOR_FAILED_SQL_EXCEPTION.getContent();
+			var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_COLOR_FAILED_SQL_EXCEPTION.getContent() +exception.getMessage();
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
-		} catch(final Exception exception){
-			var userMessage = "";
-			var technicalMessage = "";
+		}catch(final Exception exception) {
+			var userMessage = MessagesEnum.USER_ERROR_SEARCH_COLOR_FAILED.getContent();
+			var technicalMessage =MessagesEnum.TECHNICAL_ERROR_SEARCH_COLOR_FAILED.getContent()  + exception.getMessage();
 			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
 		}
 	}
@@ -89,15 +90,15 @@ public final class ColorPostgreSqlDAO extends SqlConnection implements ColorDAO 
 				color.setHexCode(resultSet.getString("hexC"));
 				listColor.add(color);
 			}
-		} catch(final SQLException exception) {
-			var userMessage = "a";
-			var technicalMessage = "";
-			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
-		} catch(final Exception exception) {
-			var userMessage = "";
-			var technicalMessage = "";
-			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
-		}
+		} catch (final SQLException exception) {
+	        var userMessage = MessagesEnum.USER_ERROR_SEARCH_COLOR_FAILED_SQL_EXCEPTION.getContent();
+	        var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_COLOR_FAILED_SQL_EXCEPTION + exception.getMessage();
+	        throw ExtraClaseException.create(exception, userMessage, technicalMessage);
+	    } catch (final Exception exception) {
+	        var userMessage = MessagesEnum.USER_ERROR_SEARCH_COLOR_FAILED.getContent();
+	        var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_COLOR_FAILED.getContent();
+	        throw ExtraClaseException.create(exception, userMessage, technicalMessage);
+	    }
 
 		return listColor;
 	}

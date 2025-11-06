@@ -43,8 +43,9 @@ public final class UserFacadeImpl implements UserFacade {
 
 	@Override
 	public UserDomain loginUser(String Email, String passwordHash) {
-		// TODO Auto-generated method stub
-		return null;
+throw ExtraClaseException.create(
+				MessagesEnum.USER_ERROR_METHOD_NOT_IMPLEMENTED.getContent(),
+				MessagesEnum.TECHNICAL_ERROR_METHOD_NOT_IMPLEMENTED.getContent());
 	}
 
 	@Override
@@ -80,20 +81,23 @@ public final class UserFacadeImpl implements UserFacade {
 
 	@Override
 	public void sendUserEmailConfirmationCode(UUID id) {
-		// TODO Auto-generated method stub
-		
+		throw ExtraClaseException.create(
+				MessagesEnum.USER_ERROR_METHOD_NOT_IMPLEMENTED.getContent(),
+				MessagesEnum.TECHNICAL_ERROR_METHOD_NOT_IMPLEMENTED.getContent());		
 	}
 
 	@Override
 	public void sendSuperUserConfirmationCode(UUID id) {
-		// TODO Auto-generated method stub
-		
+		throw ExtraClaseException.create(
+				MessagesEnum.USER_ERROR_METHOD_NOT_IMPLEMENTED.getContent(),
+				MessagesEnum.TECHNICAL_ERROR_METHOD_NOT_IMPLEMENTED.getContent());		
 	}
 
 	@Override
 	public boolean confirmCode(UUID id, String code, String confirmationType) {
-		// TODO Auto-generated method stub
-		return false;
+		throw ExtraClaseException.create(
+				MessagesEnum.USER_ERROR_METHOD_NOT_IMPLEMENTED.getContent(),
+				MessagesEnum.TECHNICAL_ERROR_METHOD_NOT_IMPLEMENTED.getContent());
 	}
 
 	@Override

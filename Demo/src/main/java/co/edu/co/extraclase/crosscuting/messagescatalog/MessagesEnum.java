@@ -185,15 +185,177 @@ public enum MessagesEnum {
 		
 		USER_ERROR_USER_DOES_NOT_EXITS("El usuario no existe", "El usuario ingresada no existe"),
 		
+		USER_ERROR_METHOD_NOT_IMPLEMENTED("Método no implementado", "El método solicitado no ha sido implementado aún."),
+		
+		TECHNICAL_ERROR_METHOD_NOT_IMPLEMENTED("Método no implementado", "El método solicitado no ha sido implementado aún en la clase correspondiente."),
+		
 		TECHNICAL_ERROR_USER_DOES_NOT_EXITS("El usuario no existe", "El usuario con el siguiente id no existe: "),
 		
 		TECHNICAL_ERROR_VALUE_USER_IS_NOT_PRESENT("Error tratando de llevar a cabo la operación", "No se recibieron los parametros requeridos para ejecutar el validator ValidateDataUserConsistencyForRegisterNewInformation"),
 		
 		TECHNICAL_ERROR_WRONG_USER_LENGTH_VALUE_IS_NOT_PRESENT("No fueron ingresados todos los parametros", "Se requería 1 parametro y llegó una cantidad menor a esta requerida para ejecutar el validator ValidateDataUserConsistencyForRegisterNewInformation"),
+		USER_REGISTRATION_SUCCESSFUL("Registro de usuario exitoso", "El usuario ha sido registrado exitosamente en el sistema."), 
 
+		USER_ERROR_SEARCH_COLOR_FAILED_SQL_EXCEPTION("Se ha presentado un problema tratando de consultar la información de un color"," por favor intente de nuevo si el  problema persiste por favor contacte al administrador del sistema"),
+	    
+	    TECHNICAL_ERROR_SEARCH_COLOR_FAILED_SQL_EXCEPTION("Error SQL durante la operación de consulta de la información de un color", "Se ha presentado un problema de tipo SQLException durante la ejecución de la operación de consulta de la información de un color."),
 		
-		;
+	    USER_ERROR_SEARCH_COLOR_FAILED("Se ha presentado un problema inesperado tratando de consultar la información de un color por favor intente de nuevo"," Si el problema persiste por favor contacte al administrador del sistema"),
+	    
+	    TECHNICAL_ERROR_SEARCH_COLOR_FAILED( "Se ha presentado un problema inesperado al tratar de ejecutar el proceso de consulta del color ","Se ha presentado un problema inesperado durante la ejecución de la operación de consulta de la información de un color. No fue una SQLException, sino un error no controlado en el proceso de registro."),
 
+		USER_ERROR_LIST_REGISTRATION_FAILED_SQL_EXCEPTION("Se ha presentado un problema tratando de registrar la información de una lista", "Por favor intente de nuevo y si el problema persiste contacte al administrador del sistema"),
+
+		TECHNICAL_ERROR_LIST_REGISTRATION_SQL_EXCEPTION("Error SQL durante el registro de la información de una lista", "Se ha presentado una excepción de tipo SQLException durante la operación de registro de la lista."),
+
+		USER_ERROR_LIST_REGISTRATION_FAILED("Se ha presentado un problema inesperado tratando de registrar la información de una lista por favor intente de nuevo", "Si el problema persiste por favor contacte al administrador del sistema"),
+
+		TECHNICAL_ERROR_LIST__REGISTRATION_FAILED("Se ha presentado un problema técnico inesperado al intentar registrar la información de una lista", "No fue una SQLException, sino un error no controlado en el proceso de registro de la lista."),
+
+		USER_ERROR_LIST_UPDATE_FAILED_SQL_EXCEPTION("Se ha presentado un problema tratando de actualizar la información de una lista", "Por favor intente de nuevo y si el problema persiste contacte al administrador del sistema"),
+
+		TECHNICAL_ERROR_LIST_UPDATE_SQL_EXCEPTION("Error SQL durante la actualización de la información de una lista", "Se ha presentado una excepción de tipo SQLException durante la operación de actualización de la lista."),
+
+		USER_ERROR_LIST_UPDATE_FAILED("Se ha presentado un problema inesperado tratando de actualizar la información de una lista por favor intente de nuevo", "Si el problema persiste por favor contacte al administrador del sistema"),
+
+		TECHNICAL_ERROR_LIST__UPDATE_FAILED("Se ha presentado un problema técnico inesperado al intentar actualizar la información de una lista", "No fue una SQLException, sino un error no controlado en el proceso de actualización de la lista."),
+
+		USER_ERROR_NOTIFICATION_REGISTRATION_FAILED_SQL_EXCEPTION("Se ha presentado un problema tratando de registrar la información de una notificación", "Por favor intente de nuevo y si el problema persiste contacte al administrador del sistema"),
+
+		TECHNICAL_ERROR_NOTIFICATION_REGISTRATION_SQL_EXCEPTION("Error SQL durante el registro de la información de una notificación", "Se ha presentado una excepción de tipo SQLException durante la operación de registro de la notificación."),
+
+		USER_ERROR_NOTIFICATION_REGISTRATION_FAILED("Se ha presentado un problema inesperado tratando de registrar la información de una notificación por favor intente de nuevo", "Si el problema persiste por favor contacte al administrador del sistema"),
+
+		TECHNICAL_ERROR_NOTIFICATION__REGISTRATION_FAILED("Se ha presentado un problema técnico inesperado al intentar registrar la información de una notificación", "No fue una SQLException, sino un error no controlado en el proceso de registro de la notificación."),
+
+		USER_ERROR_SEARCH_NOTIFICATION_FAILED_SQL_EXCEPTION("Se ha presentado un problema tratando de consultar la información de una notificación"," por favor intente de nuevo si el problema persiste por favor contacte al administrador del sistema"),
+
+		TECHNICAL_ERROR_SEARCH_NOTIFICATION_FAILED_SQL_EXCEPTION("Error SQL durante la operación de consulta de la información de una notificación", "Se ha presentado una excepción de tipo SQLException durante la operación de consulta de la notificación."),
+
+		USER_ERROR_SEARCH_NOTIFICATION_FAILED("Se ha presentado un problema inesperado tratando de consultar la información de una notificación por favor intente de nuevo"," Si el problema persiste por favor contacte al administrador del sistema"),
+
+		TECHNICAL_ERROR_SEARCH_NOTIFICATION_FAILED("Se ha presentado un problema técnico inesperado al tratar de consultar la información de una notificación","No fue una SQLException, sino un error no controlado en el proceso de consulta de la notificación."),
+
+		USER_ERROR_NOTIFICATION_TYPE_SEARCH_FAILED_SQL_EXCEPTION("Se ha presentado un problema tratando de consultar la información de un tipo de notificación","Por favor intente de nuevo si el problema persiste contacte al administrador del sistema"),
+
+		TECHNICAL_ERROR_NOTIFICATION_TYPE_SEARCH_FAILED_SQL_EXCEPTION("Error SQL durante la operación de consulta de la información de un tipo de notificación", "Se ha presentado una excepción de tipo SQLException durante la operación de consulta del tipo de notificación."),
+
+		USER_ERROR_NOTIFICATION_TYPE_SEARCH_FAILED("Se ha presentado un problema inesperado tratando de consultar la información de un tipo de notificación por favor intente de nuevo","Si el problema persiste por favor contacte al administrador del sistema"),
+
+		TECHNICAL_ERROR_NOTIFICATION_TYPE_SEARCH_FAILED("Se ha presentado un problema técnico inesperado al tratar de consultar la información de un tipo de notificación","No fue una SQLException, sino un error no controlado en el proceso de consulta del tipo de notificación."),
+
+		USER_ERROR_PRIORITY_REGISTRATION_FAILED_SQL_EXCEPTION("Se ha presentado un problema tratando de registrar la información de una prioridad", "Por favor intente de nuevo y si el problema persiste contacte al administrador del sistema"),
+		TECHNICAL_ERROR_PRIORITY_REGISTRATION_SQL_EXCEPTION("Error SQL durante el registro de la información de una prioridad", "Se ha presentado una excepción de tipo SQLException durante la operación de registro de la prioridad."),
+		USER_ERROR_PRIORITY_REGISTRATION_FAILED("Se ha presentado un problema inesperado tratando de registrar la información de una prioridad por favor intente de nuevo", "Si el problema persiste por favor contacte al administrador del sistema"),
+		TECHNICAL_ERROR_PRIORITY__REGISTRATION_FAILED("Se ha presentado un problema técnico inesperado al intentar registrar la información de una prioridad", "No fue una SQLException, sino un error no controlado en el proceso de registro de la prioridad."),
+
+		USER_ERROR_SEARCH_PRIORITY_FAILED_SQL_EXCEPTION("Se ha presentado un problema tratando de consultar la información de una prioridad","Por favor intente de nuevo si el problema persiste contacte al administrador del sistema"),
+		TECHNICAL_ERROR_SEARCH_PRIORITY_FAILED_SQL_EXCEPTION("Error SQL durante la operación de consulta de la información de una prioridad", "Se ha presentado una excepción de tipo SQLException durante la operación de consulta de la prioridad."),
+		USER_ERROR_SEARCH_PRIORITY_FAILED("Se ha presentado un problema inesperado tratando de consultar la información de una prioridad por favor intente de nuevo","Si el problema persiste por favor contacte al administrador del sistema"),
+		TECHNICAL_ERROR_SEARCH_PRIORITY_FAILED("Se ha presentado un problema técnico inesperado al tratar de consultar la información de una prioridad","No fue una SQLException, sino un error no controlado en el proceso de consulta de la prioridad."),
+
+		USER_ERROR_PRIORITY_UPDATE_FAILED_SQL_EXCEPTION("Se ha presentado un problema tratando de actualizar la información de una prioridad", "Por favor intente de nuevo y si el problema persiste contacte al administrador del sistema"),
+		TECHNICAL_ERROR_PRIORITY_UPDATE_SQL_EXCEPTION("Error SQL durante la actualización de la información de una prioridad", "Se ha presentado una excepción de tipo SQLException durante la operación de actualización de la prioridad."),
+		USER_ERROR_PRIORITY_UPDATE_FAILED("Se ha presentado un problema inesperado tratando de actualizar la información de una prioridad por favor intente de nuevo", "Si el problema persiste por favor contacte al administrador del sistema"),
+		TECHNICAL_ERROR_PRIORITY__UPDATE_FAILED("Se ha presentado un problema técnico inesperado al intentar actualizar la información de una prioridad", "No fue una SQLException, sino un error no controlado en el proceso de actualización de la prioridad."),
+
+		// Messages for Project DAO operations
+		USER_ERROR_PROJECT_REGISTRATION_FAILED_SQL_EXCEPTION("Se ha presentado un problema tratando de registrar la información de un proyecto", "Por favor intente de nuevo y si el problema persiste contacte al administrador del sistema"),
+		TECHNICAL_ERROR_PROJECT_REGISTRATION_SQL_EXCEPTION("Error SQL durante el registro de la información de un proyecto", "Se ha presentado una excepción de tipo SQLException durante la operación de registro del proyecto."),
+		USER_ERROR_PROJECT_REGISTRATION_FAILED("Se ha presentado un problema inesperado tratando de registrar la información de un proyecto por favor intente de nuevo", "Si el problema persiste por favor contacte al administrador del sistema"),
+		TECHNICAL_ERROR_PROJECT__REGISTRATION_FAILED("Se ha presentado un problema técnico inesperado al intentar registrar la información de un proyecto", "No fue una SQLException, sino un error no controlado en el proceso de registro del proyecto."),
+
+		USER_ERROR_SEARCH_PROJECT_FAILED_SQL_EXCEPTION("Se ha presentado un problema tratando de consultar la información de un proyecto","Por favor intente de nuevo si el problema persiste contacte al administrador del sistema"),
+		TECHNICAL_ERROR_SEARCH_PROJECT_FAILED_SQL_EXCEPTION("Error SQL durante la operación de consulta de la información de un proyecto", "Se ha presentado una excepción de tipo SQLException durante la operación de consulta del proyecto."),
+		USER_ERROR_SEARCH_PROJECT_FAILED("Se ha presentado un problema inesperado tratando de consultar la información de un proyecto por favor intente de nuevo","Si el problema persiste por favor contacte al administrador del sistema"),
+		TECHNICAL_ERROR_SEARCH_PROJECT_FAILED("Se ha presentado un problema técnico inesperado al tratar de consultar la información de un proyecto","No fue una SQLException, sino un error no controlado en el proceso de consulta del proyecto."),
+
+		USER_ERROR_PROJECT_UPDATE_FAILED_SQL_EXCEPTION("Se ha presentado un problema tratando de actualizar la información de un proyecto", "Por favor intente de nuevo y si el problema persiste contacte al administrador del sistema"),
+		TECHNICAL_ERROR_PROJECT_UPDATE_SQL_EXCEPTION("Error SQL durante la actualización de la información de un proyecto", "Se ha presentado una excepción de tipo SQLException durante la operación de actualización del proyecto."),
+		USER_ERROR_PROJECT_UPDATE_FAILED("Se ha presentado un problema inesperado tratando de actualizar la información de un proyecto por favor intente de nuevo", "Si el problema persiste por favor contacte al administrador del sistema"),
+		TECHNICAL_ERROR_PROJECT__UPDATE_FAILED("Se ha presentado un problema técnico inesperado al intentar actualizar la información de un proyecto", "No fue una SQLException, sino un error no controlado en el proceso de actualización del proyecto."),
+
+		USER_ERROR_PROJECT_USER_REGISTRATION_FAILED_SQL_EXCEPTION("Se ha presentado un problema tratando de registrar la información de un usuarioProyecto", "Por favor intente de nuevo y si el problema persiste contacte al administrador del sistema"),
+		TECHNICAL_ERROR_PROJECT_USER_REGISTRATION_SQL_EXCEPTION("Error SQL durante el registro de la información de un usuarioProyecto", "Se ha presentado una excepción de tipo SQLException durante la operación de registro del usuarioProyecto."),
+		USER_ERROR_PROJECT_USER_REGISTRATION_FAILED("Se ha presentado un problema inesperado tratando de registrar la información de un usuarioProyecto por favor intente de nuevo", "Si el problema persiste por favor contacte al administrador del sistema"),
+		TECHNICAL_ERROR_PROJECT_USER__REGISTRATION_FAILED("Se ha presentado un problema técnico inesperado al intentar registrar la información de un usuarioProyecto", "No fue una SQLException, sino un error no controlado en el proceso de registro del usuarioProyecto."),
+
+		USER_ERROR_SEARCH_PROJECT_USER_FAILED_SQL_EXCEPTION("Se ha presentado un problema tratando de consultar la información de un usuarioProyecto","Por favor intente de nuevo si el problema persiste contacte al administrador del sistema"),
+		TECHNICAL_ERROR_SEARCH_PROJECT_USER_FAILED_SQL_EXCEPTION("Error SQL durante la operación de consulta de la información de un usuarioProyecto", "Se ha presentado una excepción de tipo SQLException durante la operación de consulta del usuarioProyecto."),
+		USER_ERROR_SEARCH_PROJECT_USER_FAILED("Se ha presentado un problema inesperado tratando de consultar la información de un usuarioProyecto por favor intente de nuevo","Si el problema persiste por favor contacte al administrador del sistema"),
+		TECHNICAL_ERROR_SEARCH_PROJECT_USER_FAILED("Se ha presentado un problema técnico inesperado al tratar de consultar la información de un usuarioProyecto","No fue una SQLException, sino un error no controlado en el proceso de consulta del usuarioProyecto."),
+
+		USER_ERROR_PROJECT_USER_UPDATE_FAILED_SQL_EXCEPTION("Se ha presentado un problema tratando de actualizar la información de un usuarioProyecto", "Por favor intente de nuevo y si el problema persiste contacte al administrador del sistema"),
+		TECHNICAL_ERROR_PROJECT_USER_UPDATE_SQL_EXCEPTION("Error SQL durante la actualización de la información de un usuarioProyecto", "Se ha presentado una excepción de tipo SQLException durante la operación de actualización del usuarioProyecto."),
+		USER_ERROR_PROJECT_USER_UPDATE_FAILED("Se ha presentado un problema inesperado tratando de actualizar la información de un usuarioProyecto por favor intente de nuevo", "Si el problema persiste por favor contacte al administrador del sistema"),
+		TECHNICAL_ERROR_PROJECT_USER__UPDATE_FAILED("Se ha presentado un problema técnico inesperado al intentar actualizar la información de un usuarioProyecto", "No fue una SQLException, sino un error no controlado en el proceso de actualización del usuarioProyecto."),
+
+		USER_ERROR_STATUS_REGISTRATION_FAILED_SQL_EXCEPTION("Se ha presentado un problema tratando de registrar la información de un estado", "Por favor intente de nuevo y si el problema persiste contacte al administrador del sistema"),
+		TECHNICAL_ERROR_STATUS_REGISTRATION_SQL_EXCEPTION("Error SQL durante el registro de la información de un estado", "Se ha presentado una excepción de tipo SQLException durante la operación de registro del estado."),
+		USER_ERROR_STATUS_REGISTRATION_FAILED("Se ha presentado un problema inesperado tratando de registrar la información de un estado por favor intente de nuevo", "Si el problema persiste por favor contacte al administrador del sistema"),
+		TECHNICAL_ERROR_STATUS__REGISTRATION_FAILED("Se ha presentado un problema técnico inesperado al intentar registrar la información de un estado", "No fue una SQLException, sino un error no controlado en el proceso de registro del estado."),
+
+		USER_ERROR_SEARCH_STATUS_FAILED_SQL_EXCEPTION("Se ha presentado un problema tratando de consultar la información de un estado","Por favor intente de nuevo si el problema persiste contacte al administrador del sistema"),
+		TECHNICAL_ERROR_SEARCH_STATUS_FAILED_SQL_EXCEPTION("Error SQL durante la operación de consulta de la información de un estado", "Se ha presentado una excepción de tipo SQLException durante la operación de consulta del estado."),
+		USER_ERROR_SEARCH_STATUS_FAILED("Se ha presentado un problema inesperado tratando de consultar la información de un estado por favor intente de nuevo","Si el problema persiste por favor contacte al administrador del sistema"),
+		TECHNICAL_ERROR_SEARCH_STATUS_FAILED("Se ha presentado un problema técnico inesperado al tratar de consultar la información de un estado","No fue una SQLException, sino un error no controlado en el proceso de consulta del estado."),
+
+		USER_ERROR_STATUS_UPDATE_FAILED_SQL_EXCEPTION("Se ha presentado un problema tratando de actualizar la información de un estado", "Por favor intente de nuevo y si el problema persiste contacte al administrador del sistema"),
+		TECHNICAL_ERROR_STATUS_UPDATE_SQL_EXCEPTION("Error SQL durante la actualización de la información de un estado", "Se ha presentado una excepción de tipo SQLException durante la operación de actualización del estado."),
+		USER_ERROR_STATUS_UPDATE_FAILED("Se ha presentado un problema inesperado tratando de actualizar la información de un estado por favor intente de nuevo", "Si el problema persiste por favor contacte al administrador del sistema"),
+		TECHNICAL_ERROR_STATUS__UPDATE_FAILED("Se ha presentado un problema técnico inesperado al intentar actualizar la información de un estado", "No fue una SQLException, sino un error no controlado en el proceso de actualización del estado."),
+
+		// Messages for Task (Tarea) DAO operations
+		USER_ERROR_TASK_REGISTRATION_FAILED_SQL_EXCEPTION("Se ha presentado un problema tratando de registrar la información de una tarea", "Por favor intente de nuevo y si el problema persiste contacte al administrador del sistema"),
+		TECHNICAL_ERROR_TASK_REGISTRATION_SQL_EXCEPTION("Error SQL durante el registro de la información de una tarea", "Se ha presentado una excepción de tipo SQLException durante la operación de registro de la tarea."),
+		USER_ERROR_TASK_REGISTRATION_FAILED("Se ha presentado un problema inesperado tratando de registrar la información de una tarea por favor intente de nuevo", "Si el problema persiste por favor contacte al administrador del sistema"),
+		TECHNICAL_ERROR_TASK__REGISTRATION_FAILED("Se ha presentado un problema técnico inesperado al intentar registrar la información de una tarea", "No fue una SQLException, sino un error no controlado en el proceso de registro de la tarea."),
+
+		USER_ERROR_SEARCH_TASK_FAILED_SQL_EXCEPTION("Se ha presentado un problema tratando de consultar la información de una tarea","Por favor intente de nuevo si el problema persiste contacte al administrador del sistema"),
+		TECHNICAL_ERROR_SEARCH_TASK_FAILED_SQL_EXCEPTION("Error SQL durante la operación de consulta de la información de una tarea", "Se ha presentado una excepción de tipo SQLException durante la operación de consulta de la tarea."),
+		USER_ERROR_SEARCH_TASK_FAILED("Se ha presentado un problema inesperado tratando de consultar la información de una tarea por favor intente de nuevo","Si el problema persiste por favor contacte al administrador del sistema"),
+		TECHNICAL_ERROR_SEARCH_TASK_FAILED("Se ha presentado un problema técnico inesperado al tratar de consultar la información de una tarea","No fue una SQLException, sino un error no controlado en el proceso de consulta de la tarea."),
+
+		USER_ERROR_TASK_UPDATE_FAILED_SQL_EXCEPTION("Se ha presentado un problema tratando de actualizar la información de una tarea", "Por favor intente de nuevo y si el problema persiste contacte al administrador del sistema"),
+		TECHNICAL_ERROR_TASK_UPDATE_SQL_EXCEPTION("Error SQL durante la actualización de la información de una tarea", "Se ha presentado una excepción de tipo SQLException durante la operación de actualización de la tarea."),
+		USER_ERROR_TASK_UPDATE_FAILED("Se ha presentado un problema inesperado tratando de actualizar la información de una tarea por favor intente de nuevo", "Si el problema persiste por favor contacte al administrador del sistema"),
+		TECHNICAL_ERROR_TASK__UPDATE_FAILED("Se ha presentado un problema técnico inesperado al intentar actualizar la información de una tarea", "No fue una SQLException, sino un error no controlado en el proceso de actualización de la tarea."),
+
+		USER_ERROR_TASK_USER_REGISTRATION_FAILED_SQL_EXCEPTION("Se ha presentado un problema tratando de registrar la información de un usuarioTarea", "Por favor intente de nuevo y si el problema persiste contacte al administrador del sistema"),
+		TECHNICAL_ERROR_TASK_USER_REGISTRATION_SQL_EXCEPTION("Error SQL durante el registro de la información de un usuarioTarea", "Se ha presentado una excepción de tipo SQLException durante la operación de registro del usuarioTarea."),
+		USER_ERROR_TASK_USER_REGISTRATION_FAILED("Se ha presentado un problema inesperado tratando de registrar la información de un usuarioTarea por favor intente de nuevo", "Si el problema persiste por favor contacte al administrador del sistema"),
+		TECHNICAL_ERROR_TASK_USER__REGISTRATION_FAILED("Se ha presentado un problema técnico inesperado al intentar registrar la información de un usuarioTarea", "No fue una SQLException, sino un error no controlado en el proceso de registro del usuarioTarea."),
+
+		USER_ERROR_SEARCH_TASK_USER_FAILED_SQL_EXCEPTION("Se ha presentado un problema tratando de consultar la información de un usuarioTarea","Por favor intente de nuevo si el problema persiste contacte al administrador del sistema"),
+		TECHNICAL_ERROR_SEARCH_TASK_USER_FAILED_SQL_EXCEPTION("Error SQL durante la operación de consulta de la información de un usuarioTarea", "Se ha presentado una excepción de tipo SQLException durante la operación de consulta del usuarioTarea."),
+		USER_ERROR_SEARCH_TASK_USER_FAILED("Se ha presentado un problema inesperado tratando de consultar la información de un usuarioTarea por favor intente de nuevo","Si el problema persiste por favor contacte al administrador del sistema"),
+		TECHNICAL_ERROR_SEARCH_TASK_USER_FAILED("Se ha presentado un problema técnico inesperado al tratar de consultar la información de un usuarioTarea","No fue una SQLException, sino un error no controlado en el proceso de consulta del usuarioTarea."),
+
+		USER_ERROR_TASK_USER_UPDATE_FAILED_SQL_EXCEPTION("Se ha presentado un problema tratando de actualizar la información de un usuarioTarea", "Por favor intente de nuevo y si el problema persiste contacte al administrador del sistema"),
+		TECHNICAL_ERROR_TASK_USER_UPDATE_SQL_EXCEPTION("Error SQL durante la actualización de la información de un usuarioTarea", "Se ha presentado una excepción de tipo SQLException durante la operación de actualización del usuarioTarea."),
+		USER_ERROR_TASK_USER_UPDATE_FAILED("Se ha presentado un problema inesperado tratando de actualizar la información de un usuarioTarea por favor intente de nuevo", "Si el problema persiste por favor contacte al administrador del sistema"),
+		TECHNICAL_ERROR_TASK_USER__UPDATE_FAILED("Se ha presentado un problema técnico inesperado al intentar actualizar la información de un usuarioTarea", "No fue una SQLException, sino un error no controlado en el proceso de actualización del usuarioTarea."),
+
+		USER_ERROR_UNIT_OF_MEASURE_REGISTRATION_FAILED_SQL_EXCEPTION("Se ha presentado un problema tratando de registrar la información de una unidad de medida", "Por favor intente de nuevo y si el problema persiste contacte al administrador del sistema"),
+		TECHNICAL_ERROR_UNIT_OF_MEASURE_REGISTRATION_SQL_EXCEPTION("Error SQL durante el registro de la información de una unidad de medida", "Se ha presentado una excepción de tipo SQLException durante la operación de registro de la unidad de medida."),
+		USER_ERROR_UNIT_OF_MEASURE_REGISTRATION_FAILED("Se ha presentado un problema inesperado tratando de registrar la información de una unidad de medida por favor intente de nuevo", "Si el problema persiste por favor contacte al administrador del sistema"),
+		TECHNICAL_ERROR_UNIT_OF_MEASURE__REGISTRATION_FAILED("Se ha presentado un problema técnico inesperado al intentar registrar la información de una unidad de medida", "No fue una SQLException, sino un error no controlado en el proceso de registro de la unidad de medida."),
+
+		USER_ERROR_SEARCH_UNIT_OF_MEASURE_FAILED_SQL_EXCEPTION("Se ha presentado un problema tratando de consultar la información de una unidad de medida","Por favor intente de nuevo si el problema persiste contacte al administrador del sistema"),
+		TECHNICAL_ERROR_SEARCH_UNIT_OF_MEASURE_FAILED_SQL_EXCEPTION("Error SQL durante la operación de consulta de la información de una unidad de medida", "Se ha presentado una excepción de tipo SQLException durante la operación de consulta de la unidad de medida."),
+		USER_ERROR_SEARCH_UNIT_OF_MEASURE_FAILED("Se ha presentado un problema inesperado tratando de consultar la información de una unidad de medida por favor intente de nuevo","Si el problema persiste por favor contacte al administrador del sistema"),
+		TECHNICAL_ERROR_SEARCH_UNIT_OF_MEASURE_FAILED("Se ha presentado un problema técnico inesperado al tratar de consultar la información de una unidad de medida","No fue una SQLException, sino un error no controlado en el proceso de consulta de la unidad de medida."),
+
+		USER_ERROR_UNIT_OF_MEASURE_UPDATE_FAILED_SQL_EXCEPTION("Se ha presentado un problema tratando de actualizar la información de una unidad de medida", "Por favor intente de nuevo y si el problema persiste contacte al administrador del sistema"),
+		TECHNICAL_ERROR_UNIT_OF_MEASURE_UPDATE_SQL_EXCEPTION("Error SQL durante la actualización de la información de una unidad de medida", "Se ha presentado una excepción de tipo SQLException durante la operación de actualización de la unidad de medida."),
+		USER_ERROR_UNIT_OF_MEASURE_UPDATE_FAILED("Se ha presentado un problema inesperado tratando de actualizar la información de una unidad de medida por favor intente de nuevo", "Si el problema persiste por favor contacte al administrador del sistema"),
+		TECHNICAL_ERROR_UNIT_OF_MEASURE__UPDATE_FAILED("Se ha presentado un problema técnico inesperado al intentar actualizar la información de una unidad de medida", "No fue una SQLException, sino un error no controlado en el proceso de actualización de la unidad de medida."),
+		USER_ERROR_SEARCH_PROJECT_STATUS_FAILED_SQL_EXCEPTION("Se ha presentado un problema tratando de consultar la información de un estado de proyecto","Por favor intente de nuevo si el problema persiste contacte al administrador del sistema"), 
+		TECHNICAL_ERROR_SEARCH_PROJECT_STATUS_FAILED_SQL_EXCEPTION("Error SQL durante la operación de consulta de la información de un estado de proyecto", "Se ha presentado una excepción de tipo SQLException durante la operación de consulta del estado de proyecto."),
+		USER_ERROR_SEARCH_PROJECT_STATUS_FAILED("Se ha presentado un problema inesperado tratando de consultar la información de un estado de proyecto por favor intente de nuevo","Si el problema persiste por favor contacte al administrador del sistema"), 
+		TECHNICAL_ERROR_SEARCH_PROJECT_STATUS_FAILED("Se ha presentado un problema técnico inesperado al tratar de consultar la información de un estado de proyecto","No fue una SQLException, sino un error no controlado en el proceso de consulta del estado de proyecto."),
+
+	;
 	
 private String title;
 private String content;

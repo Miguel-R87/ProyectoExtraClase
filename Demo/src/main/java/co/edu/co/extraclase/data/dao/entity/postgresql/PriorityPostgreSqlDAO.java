@@ -16,6 +16,7 @@ import co.edu.co.extraclase.data.dao.entity.SqlConnection;
 import co.edu.co.extraclase.entity.ColorEntity;
 import co.edu.co.extraclase.entity.PriorityEntity;
 import co.edu.co.extraclase.entity.UnitOfMeasureEntity;
+import co.edu.co.extraclase.crosscuting.messagescatalog.MessagesEnum;
 
 public final class PriorityPostgreSqlDAO extends SqlConnection implements PriorityDAO {
 
@@ -36,12 +37,12 @@ public final class PriorityPostgreSqlDAO extends SqlConnection implements Priori
 		}catch (final ExtraClaseException exception){
 			throw exception;
 		} catch (final SQLException exception){
-			var userMessage = "";
-			var technicalMessage = "";
+			String userMessage = MessagesEnum.USER_ERROR_SEARCH_PRIORITY_FAILED_SQL_EXCEPTION.getContent();
+			String technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_PRIORITY_FAILED_SQL_EXCEPTION.getContent() + exception.getMessage();
 			throw  ExtraClaseException.create(exception, userMessage, technicalMessage);
 		} catch (final Exception exception){
-			var userMessage = "";
-			var technicalMessage = "b";
+			String userMessage = MessagesEnum.USER_ERROR_SEARCH_PRIORITY_FAILED.getContent();
+			String technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_PRIORITY_FAILED.getContent() + exception.getMessage();
 			throw  ExtraClaseException.create(exception, userMessage, technicalMessage);
 		}
 	}
@@ -133,16 +134,16 @@ public final class PriorityPostgreSqlDAO extends SqlConnection implements Priori
 			}
 		}
 			catch (final SQLException exception){
-				var userMessage = "";
-				var technicalMessage = "b";
+				String userMessage = MessagesEnum.USER_ERROR_SEARCH_PRIORITY_FAILED_SQL_EXCEPTION.getContent();
+				String technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_PRIORITY_FAILED_SQL_EXCEPTION.getContent() + exception.getMessage();
 				throw  ExtraClaseException.create(exception, userMessage, technicalMessage);
 			} catch (final Exception exception){
-				var userMessage = "";
-				var technicalMessage = "";
+				String userMessage = MessagesEnum.USER_ERROR_SEARCH_PRIORITY_FAILED.getContent();
+				String technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_PRIORITY_FAILED.getContent() + exception.getMessage();
 				throw  ExtraClaseException.create(exception, userMessage, technicalMessage);
 			}
-			return listPriorities;
-		}
+		return listPriorities;
+	}
 
 
 	@Override

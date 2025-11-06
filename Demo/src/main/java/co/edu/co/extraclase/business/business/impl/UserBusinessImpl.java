@@ -80,7 +80,7 @@ public final class UserBusinessImpl implements UserBusiness {
 	public List<UserDomain> findUsersByFilter(final UserDomain userFilters) {
 
 		var userFiltersEntity = UserEntityAssembler.getUserEntityAssembler().toEntity(userFilters);
-		
+
 		var userEntities = daoFactory.getUserDAO().findByFilter(userFiltersEntity);
 		
 		return UserEntityAssembler.getUserEntityAssembler().toDomain(userEntities); 

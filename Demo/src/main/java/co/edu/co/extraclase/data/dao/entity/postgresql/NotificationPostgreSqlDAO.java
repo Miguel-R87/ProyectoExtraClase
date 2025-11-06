@@ -9,6 +9,7 @@ import java.util.UUID;
 
 import co.edu.co.extraclase.crosscuting.exception.ExtraClaseException;
 import co.edu.co.extraclase.crosscuting.helper.*;
+import co.edu.co.extraclase.crosscuting.messagescatalog.MessagesEnum;
 import co.edu.co.extraclase.data.dao.entity.NotificationDAO;
 import co.edu.co.extraclase.data.dao.entity.SqlConnection;
 import co.edu.co.extraclase.entity.NotificationEntity;
@@ -34,15 +35,16 @@ public final class NotificationPostgreSqlDAO extends SqlConnection implements No
 			preparedStatement.setString(3, entity.getMessage());
 			preparedStatement.setObject(4, entity.getTriggerDate());
 			preparedStatement.setObject(5, entity.getNotificationType().getId());
+			preparedStatement.executeUpdate();
         } catch (final SQLException exception){
-			var userMessage = "";
-			var technicalMessage = "";
-			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
-		} catch (final Exception exception){
-			var userMessage = "";
-			var technicalMessage = "b";
-			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
-		}
+            String userMessage = MessagesEnum.USER_ERROR_NOTIFICATION_REGISTRATION_FAILED_SQL_EXCEPTION.getContent();
+            String technicalMessage = MessagesEnum.TECHNICAL_ERROR_NOTIFICATION_REGISTRATION_SQL_EXCEPTION.getContent() + exception.getMessage();
+            throw ExtraClaseException.create(exception, userMessage, technicalMessage);
+        } catch (final Exception exception){
+            String userMessage = MessagesEnum.USER_ERROR_NOTIFICATION_REGISTRATION_FAILED.getContent();
+            String technicalMessage = MessagesEnum.TECHNICAL_ERROR_NOTIFICATION__REGISTRATION_FAILED.getContent() + exception.getMessage();
+            throw ExtraClaseException.create(exception, userMessage, technicalMessage);
+        }
     }
 
 	@Override
@@ -55,14 +57,14 @@ public final class NotificationPostgreSqlDAO extends SqlConnection implements No
 			}
 			return executeSentenceFindByFilter(preparedStatement);
 		} catch (final SQLException exception) {
-			var userMessage = "";
-			var technicalMessage = "";
-			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
-		} catch (final Exception exception) {
-			var userMessage = "";
-			var technicalMessage = "b";
-			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
-		}
+            String userMessage = MessagesEnum.USER_ERROR_SEARCH_NOTIFICATION_FAILED_SQL_EXCEPTION.getContent();
+            String technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_NOTIFICATION_FAILED_SQL_EXCEPTION.getContent() + exception.getMessage();
+            throw ExtraClaseException.create(exception, userMessage, technicalMessage);
+        } catch (final Exception exception) {
+            String userMessage = MessagesEnum.USER_ERROR_SEARCH_NOTIFICATION_FAILED.getContent();
+            String technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_NOTIFICATION_FAILED.getContent() + exception.getMessage();
+            throw ExtraClaseException.create(exception, userMessage, technicalMessage);
+        }
 	}
 
 	private String createSentenceFindByFilter(final NotificationEntity filterEntity, final List<Object> parametersList) {
@@ -119,33 +121,44 @@ public final class NotificationPostgreSqlDAO extends SqlConnection implements No
 	private List<NotificationEntity> executeSentenceFindByFilter(final PreparedStatement preparedStatement){
 		var listNotification = new ArrayList<NotificationEntity>();
 		try (var resultSet = preparedStatement.executeQuery()){
-			var notificationType = new NotificationTypeEntity();
-			notificationType.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("idTN")));
-			notificationType.setName(resultSet.getString("nombreTN"));
+			while (resultSet.next()){
+				var notificationType = new NotificationTypeEntity();
+				notificationType.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("idTN")));
+				notificationType.setName(resultSet.getString("nombreTN"));
 
-			var taskUser = new TaskUserEntity();
-			taskUser.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("idUT")));
-			taskUser.setAssignmentDate(resultSet.getTimestamp("fechaAsignacionUT").toLocalDateTime());
+				var taskUser = new TaskUserEntity();
+				taskUser.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("idUT")));
+				try {
+					var ts = resultSet.getTimestamp("fechaAsignacionUT");
+					if (ts != null) {
+						taskUser.setAssignmentDate(ts.toLocalDateTime());
+					}
+				} catch (final Exception ignore) {
+				}
 
-			var notification = new NotificationEntity();
-			notification.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("idN")));
-			notification.setMessage(resultSet.getString("mensajeN"));
-			notification.setTriggerDate(resultSet.getTimestamp("fechaDisparoN").toLocalDateTime());
-			notification.setTaskUser(taskUser);
-			notification.setNotificationType(notificationType);
+				var notification = new NotificationEntity();
+				notification.setId(UUIDHelper.getUUIDHelper().getFromString(resultSet.getString("idN")));
+				notification.setMessage(resultSet.getString("mensajeN"));
+				var ts2 = resultSet.getTimestamp("fechaDisparoN");
+				if (ts2 != null) {
+					notification.setTriggerDate(ts2.toLocalDateTime());
+				}
+				notification.setTaskUser(taskUser);
+				notification.setNotificationType(notificationType);
 
-			listNotification.add(notification);
+				listNotification.add(notification);
+			}
 		} catch (final SQLException exception) {
-			var userMessage = "";
-			var technicalMessage = "";
-			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
-		} catch (final Exception exception) {
-			var userMessage = "";
-			var technicalMessage = "b";
-			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
-		}
-		return listNotification;
-	}
+            var userMessage = MessagesEnum.USER_ERROR_SEARCH_NOTIFICATION_FAILED_SQL_EXCEPTION.getContent();
+            var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_NOTIFICATION_FAILED_SQL_EXCEPTION.getContent() + exception.getMessage();
+            throw ExtraClaseException.create(exception, userMessage, technicalMessage);
+        } catch (final Exception exception) {
+            var userMessage = MessagesEnum.USER_ERROR_SEARCH_NOTIFICATION_FAILED.getContent();
+            var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_NOTIFICATION_FAILED.getContent() + exception.getMessage();
+            throw ExtraClaseException.create(exception, userMessage, technicalMessage);
+        }
+        return listNotification;
+    }
 
 	@Override
 	public NotificationEntity findById(final UUID id) {
