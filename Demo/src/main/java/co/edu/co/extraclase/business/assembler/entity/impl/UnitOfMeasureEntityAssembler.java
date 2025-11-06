@@ -21,19 +21,19 @@ public final class UnitOfMeasureEntityAssembler implements EntityAssembler<UnitO
 	}
 
 	@Override
-	public UnitOfMeasureEntity toEntity(UnitOfMeasureDomain domain) {
+	public UnitOfMeasureEntity toEntity(final UnitOfMeasureDomain domain) {
 		var domainTmp = ObjectHelper.getDefault(domain, new UnitOfMeasureDomain(UUIDHelper.getUUIDHelper().getDefault()));
 		return new UnitOfMeasureEntity(domainTmp.getId(), domainTmp.getName(), domainTmp.getDescription());
 	}
 
 	@Override
-	public UnitOfMeasureDomain toDomain(UnitOfMeasureEntity entity) {
+	public UnitOfMeasureDomain toDomain(final UnitOfMeasureEntity entity) {
 		var entityTmp = ObjectHelper.getDefault(entity, new UnitOfMeasureEntity());
 		return new UnitOfMeasureDomain(entityTmp.getId(), entityTmp.getName(), entityTmp.getDescription());
 	}
 	
 	@Override
-	public List<UnitOfMeasureDomain> toDomain(List<UnitOfMeasureEntity> entityList) {
+	public List<UnitOfMeasureDomain> toDomain(final List<UnitOfMeasureEntity> entityList) {
 		var unitOfMeasureDomainList = new ArrayList<UnitOfMeasureDomain>();
 		
 		for (var unitOfMeasureEntity : entityList) {

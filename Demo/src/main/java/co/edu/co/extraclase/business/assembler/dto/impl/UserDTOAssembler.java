@@ -21,7 +21,7 @@ public final class UserDTOAssembler implements DTOAssembler<UserDto,UserDomain> 
     }
 
     @Override
-    public UserDto toDTO(UserDomain domain) {
+    public UserDto toDTO(final UserDomain domain) {
         var domainTmp = ObjectHelper.getDefault(domain, new UserDomain(UUIDHelper.getUUIDHelper().getDefault()));
         return new UserDto(domainTmp.getId(), domainTmp.getFirstName(), domainTmp.getLastName(), domainTmp.getUsername(),
                 domainTmp.getEmail(), domainTmp.isEmailConfirmation(), domainTmp.getPasswordHash(),
@@ -30,7 +30,7 @@ public final class UserDTOAssembler implements DTOAssembler<UserDto,UserDomain> 
     }
 
     @Override
-    public UserDomain toDomain(UserDto dto) {
+    public UserDomain toDomain(final UserDto dto) {
         var dtoTmp = ObjectHelper.getDefault(dto, new UserDto(UUIDHelper.getUUIDHelper().getDefault()));
         return new UserDomain(dtoTmp.getId(), dtoTmp.getFirstName(), dtoTmp.getLastName(), dtoTmp.getUsername(),
                 dtoTmp.getEmail(), dtoTmp.isEmailConfirmation(), dtoTmp.getRegistrationDate(), dtoTmp.getPasswordHash(), dtoTmp.isAccountStatus(),
@@ -38,7 +38,7 @@ public final class UserDTOAssembler implements DTOAssembler<UserDto,UserDomain> 
     }
 
     @Override
-    public List<UserDto> toDTO(List<UserDomain> domainList) {
+    public List<UserDto> toDTO(final List<UserDomain> domainList) {
         var userDtoList = new ArrayList<UserDto>();
         
         for(UserDomain domain : domainList) {

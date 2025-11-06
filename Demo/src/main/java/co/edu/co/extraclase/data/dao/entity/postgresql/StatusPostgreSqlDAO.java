@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
 import co.edu.co.extraclase.crosscuting.exception.ExtraClaseException;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
@@ -16,7 +15,7 @@ import co.edu.co.extraclase.data.dao.entity.StatusDAO;
 import co.edu.co.extraclase.entity.ColorEntity;
 import co.edu.co.extraclase.entity.StatusEntity;
 
-public class StatusPostgreSqlDAO extends SqlConnection implements StatusDAO{
+public final class StatusPostgreSqlDAO extends SqlConnection implements StatusDAO{
 
 	public StatusPostgreSqlDAO(Connection connection) {
 		super(connection);

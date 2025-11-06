@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
 import co.edu.co.extraclase.crosscuting.exception.ExtraClaseException;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
@@ -15,14 +14,14 @@ import co.edu.co.extraclase.data.dao.entity.ProjectStatusDAO;
 import co.edu.co.extraclase.data.dao.entity.SqlConnection;
 import co.edu.co.extraclase.entity.ProjectStatusEntity;
 
-public class ProjectStatusPostgreSqlDAO extends SqlConnection implements ProjectStatusDAO {
+public final class ProjectStatusPostgreSqlDAO extends SqlConnection implements ProjectStatusDAO {
 
 	public ProjectStatusPostgreSqlDAO(Connection connection) {
 		super(connection);
 	}
 
 	@Override
-	public List<ProjectStatusEntity> findByFilter(ProjectStatusEntity filterEntity) {
+	public List<ProjectStatusEntity> findByFilter(final ProjectStatusEntity filterEntity) {
 		var parameterList = new ArrayList<Object>();
 		var sql = createSentenceFindByFilter(filterEntity, parameterList);
 		try (var preparedStaement = this.getConnection().prepareStatement(sql)){
@@ -108,7 +107,7 @@ public class ProjectStatusPostgreSqlDAO extends SqlConnection implements Project
 	}
 
 	@Override
-	public ProjectStatusEntity findById(UUID id) {
+	public ProjectStatusEntity findById(final UUID id) {
 		return findByFilter(new ProjectStatusEntity(id)).stream().findFirst().orElse(new ProjectStatusEntity());
 
 	}

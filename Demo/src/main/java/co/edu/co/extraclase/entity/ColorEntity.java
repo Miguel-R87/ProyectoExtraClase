@@ -23,7 +23,7 @@ public final class ColorEntity  {
 		setHexCode(TextHelper.getDefault());
 	}
 	
-	public  ColorEntity(UUID id, String name, String hexCode) {
+	public  ColorEntity(final UUID id, final String name, final String hexCode) {
 		setId(id);
 		setName(name);
 		setHexCode(hexCode);
@@ -41,7 +41,7 @@ public final class ColorEntity  {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(final UUID id) {
 		this.id = UUIDHelper.getUUIDHelper().getDefault(id);
 	}
 
@@ -49,7 +49,7 @@ public final class ColorEntity  {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = TextHelper.getDefaultWithTrim(name);
 	}
 
@@ -57,7 +57,7 @@ public final class ColorEntity  {
 		return hexCode;
 	}
 
-	public void setHexCode(String hexCode) {
+	public void setHexCode(final String hexCode) {
 		this.hexCode = TextHelper.getDefaultWithTrim(hexCode);
 	}
 }

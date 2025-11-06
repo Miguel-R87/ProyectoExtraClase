@@ -17,7 +17,7 @@ import co.edu.co.extraclase.entity.ColorEntity;
 import co.edu.co.extraclase.entity.PriorityEntity;
 import co.edu.co.extraclase.entity.UnitOfMeasureEntity;
 
-public class PriorityPostgreSqlDAO extends SqlConnection implements PriorityDAO {
+public final class PriorityPostgreSqlDAO extends SqlConnection implements PriorityDAO {
 
 	public PriorityPostgreSqlDAO(Connection connection) {
 		super(connection);
@@ -25,7 +25,7 @@ public class PriorityPostgreSqlDAO extends SqlConnection implements PriorityDAO 
 
 
 	@Override
-	public List<PriorityEntity> findByFilter(PriorityEntity filterEntity) {
+	public List<PriorityEntity> findByFilter(final PriorityEntity filterEntity) {
 		var parametersList = new ArrayList<Object>();
 		var sql = createSentenceFindByFilter(filterEntity, parametersList);
 		try(var preparedStatement = this.getConnection().prepareStatement(sql)){
@@ -146,7 +146,7 @@ public class PriorityPostgreSqlDAO extends SqlConnection implements PriorityDAO 
 
 
 	@Override
-	public PriorityEntity findById(UUID id) {
+	public PriorityEntity findById(final UUID id) {
 		return findByFilter(new PriorityEntity(id)).stream().findFirst().orElse(new PriorityEntity());
 
 	}

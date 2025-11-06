@@ -21,19 +21,19 @@ public final class ProjectStatusEntityAssembler implements EntityAssembler<Proje
 	}
 
 	@Override
-	public ProjectStatusEntity toEntity(ProjectStatusDomain domain) {
+	public ProjectStatusEntity toEntity(final ProjectStatusDomain domain) {
 		var domainTmp = ObjectHelper.getDefault(domain, new ProjectStatusDomain(UUIDHelper.getUUIDHelper().getDefault()));
 		return new ProjectStatusEntity(domainTmp.getId(), domainTmp.getName(), domainTmp.getDescription());
 	}
 
 	@Override
-	public ProjectStatusDomain toDomain(ProjectStatusEntity entity) {
+	public ProjectStatusDomain toDomain(final ProjectStatusEntity entity) {
 		var entityTmp = ObjectHelper.getDefault(entity, new ProjectStatusEntity());
 		return new ProjectStatusDomain(entityTmp.getId(), entityTmp.getName(), entityTmp.getDescription());
 	}
 
 	@Override
-	public List<ProjectStatusDomain> toDomain(List<ProjectStatusEntity> entityList) {
+	public List<ProjectStatusDomain> toDomain(final List<ProjectStatusEntity> entityList) {
 		var projectStatusDomainList = new ArrayList<ProjectStatusDomain>();
 		
 		for (var projectStatusEntity : entityList) {

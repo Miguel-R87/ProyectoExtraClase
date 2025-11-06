@@ -23,7 +23,7 @@ public final class ProjectStatusEntity  {
 		setDescription(TextHelper.getDefault());
 	}
 	
-	public  ProjectStatusEntity(UUID id, String name, String description) {
+	public  ProjectStatusEntity(final UUID id, final String name, final String description) {
 		setId(id);
 		setName(name);
 		setDescription(description);
@@ -41,7 +41,7 @@ public final class ProjectStatusEntity  {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(final UUID id) {
 		this.id = UUIDHelper.getUUIDHelper().getDefault(id);
 	}
 
@@ -49,7 +49,7 @@ public final class ProjectStatusEntity  {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = TextHelper.getDefaultWithTrim(name);
 	}
 
@@ -57,7 +57,7 @@ public final class ProjectStatusEntity  {
 		return description;
 	}
 
-	public void setDescription(String description) {
+	public void setDescription(final String description) {
 		this.description = TextHelper.getDefaultWithTrim(description);
 	}
 }

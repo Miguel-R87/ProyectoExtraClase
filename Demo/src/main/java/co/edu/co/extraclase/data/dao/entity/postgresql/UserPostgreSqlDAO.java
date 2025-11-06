@@ -16,7 +16,7 @@ import co.edu.co.extraclase.data.dao.entity.SqlConnection;
 import co.edu.co.extraclase.data.dao.entity.UserDAO;
 import co.edu.co.extraclase.entity.UserEntity;
 
-public class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
+public final class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
 
 	public UserPostgreSqlDAO(Connection connection) {
 		super(connection);
@@ -119,7 +119,7 @@ public class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
 	}
 
 	@Override
-	public List<UserEntity> findByFilter(UserEntity filterEntity) {
+	public List<UserEntity> findByFilter(final UserEntity filterEntity) {
 		var parametersList = new ArrayList<Object>();
 		var sql = createSentenceFindByFilter(filterEntity, parametersList);
 		
@@ -273,7 +273,7 @@ private List<UserEntity> executeSentenceFindByFilter(final PreparedStatement pre
 	}
 
 @Override
-public UserEntity findById(UUID id) {
+public UserEntity findById(final UUID id) {
 	return findByFilter(new UserEntity(id)).stream().findFirst().orElse(new UserEntity());
 }
 }

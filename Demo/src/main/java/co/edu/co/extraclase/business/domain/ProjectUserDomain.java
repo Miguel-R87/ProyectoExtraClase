@@ -4,7 +4,7 @@ import co.edu.co.extraclase.crosscuting.helper.*;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public class ProjectUserDomain extends Domain{
+public final class ProjectUserDomain extends Domain{
     private UserDomain user;
     private ProjectDomain project;
     private boolean isAdmin;
@@ -51,7 +51,7 @@ public class ProjectUserDomain extends Domain{
         return user;
     }
 
-    public void setUser(UserDomain user) {
+    public void setUser(final UserDomain user) {
         this.user = ObjectHelper.getDefault(user,UserDomain.getDefaultValue());
     }
 
@@ -59,7 +59,7 @@ public class ProjectUserDomain extends Domain{
         return project;
     }
 
-    public void setProject(ProjectDomain project) {
+    public void setProject(final ProjectDomain project) {
         this.project = ObjectHelper.getDefault(project,ProjectDomain.getDefaultValue());
     }
 
@@ -67,7 +67,7 @@ public class ProjectUserDomain extends Domain{
         return isAdmin;
     }
 
-    public void setAdmin(boolean admin) {
+    public void setAdmin(final boolean admin) {
         isAdmin = BooleanHelper.getDefault(admin);
     }
 
@@ -75,7 +75,7 @@ public class ProjectUserDomain extends Domain{
         return entryDate;
     }
 
-    public void setEntryDate(LocalDateTime entryDate) {
+    public void setEntryDate(final LocalDateTime entryDate) {
         this.entryDate = DateTimeHelper.getDefault(entryDate);
     }
 
@@ -83,7 +83,7 @@ public class ProjectUserDomain extends Domain{
         return expiryDate;
     }
 
-    public void setExpiryDate(LocalDateTime expiryDate) {
+    public void setExpiryDate(final LocalDateTime expiryDate) {
         this.expiryDate = DateTimeHelper.getDefault(expiryDate);
     }
 }

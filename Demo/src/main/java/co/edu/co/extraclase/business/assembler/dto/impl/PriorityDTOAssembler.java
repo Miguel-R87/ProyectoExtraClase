@@ -5,12 +5,10 @@ import co.edu.co.extraclase.business.domain.PriorityDomain;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.dto.PriorityDto;
-
 import static co.edu.co.extraclase.business.assembler.dto.impl.ColorDTOAssembler.getColorDtoAssembler;
 import static co.edu.co.extraclase.business.assembler.dto.impl.UnitOfMeasureDTOAssembler.getUnitOfMeasureDtoAssembler;
 import java.util.ArrayList;
 import java.util.List;
-
 
 public final class PriorityDTOAssembler implements DTOAssembler<PriorityDto, PriorityDomain> {
     
@@ -25,7 +23,7 @@ public final class PriorityDTOAssembler implements DTOAssembler<PriorityDto, Pri
     }
 
     @Override
-    public PriorityDto toDTO(PriorityDomain domain) {
+    public PriorityDto toDTO(final PriorityDomain domain) {
         var domainTmp = ObjectHelper.getDefault(domain, new PriorityDomain(UUIDHelper.getUUIDHelper().getDefault()));
         var colorTmp = getColorDtoAssembler().toDTO(domainTmp.getColor());
         var unitOfMeasureTmp = getUnitOfMeasureDtoAssembler().toDTO(domainTmp.getUnitOfMeasure());
@@ -33,7 +31,7 @@ public final class PriorityDTOAssembler implements DTOAssembler<PriorityDto, Pri
     }
 
     @Override
-    public PriorityDomain toDomain(PriorityDto dto) {
+    public PriorityDomain toDomain(final PriorityDto dto) {
         var dtoTmp = ObjectHelper.getDefault(dto, new PriorityDto(UUIDHelper.getUUIDHelper().getDefault()));
         var colorDomainTmp = getColorDtoAssembler().toDomain(dtoTmp.getColor());
         var unitOfMeasureDomainTmp = getUnitOfMeasureDtoAssembler().toDomain(dtoTmp.getUnitOfMeasure());
@@ -42,7 +40,7 @@ public final class PriorityDTOAssembler implements DTOAssembler<PriorityDto, Pri
     }
 
     @Override
-    public List<PriorityDto> toDTO(List<PriorityDomain> domainList) {
+    public List<PriorityDto> toDTO(final List<PriorityDomain> domainList) {
         var priorityDtoList = new ArrayList<PriorityDto>();
         
         for(PriorityDomain domain : domainList) {

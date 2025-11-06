@@ -8,7 +8,7 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public class TaskUserDomain extends Domain{
+public final class TaskUserDomain extends Domain{
     private ProjectUserDomain projectUser;
     private TaskDomain task;
     private LocalDateTime assignmentDate;
@@ -61,7 +61,7 @@ public class TaskUserDomain extends Domain{
         return projectUser;
     }
 
-    public void setProjectUser(ProjectUserDomain projectUser) {
+    public void setProjectUser(final ProjectUserDomain projectUser) {
         this.projectUser = ObjectHelper.getDefault(projectUser, ProjectUserDomain.getDefaultValue());
     }
 
@@ -69,7 +69,7 @@ public class TaskUserDomain extends Domain{
         return task;
     }
 
-    public void setTask(TaskDomain task) {
+    public void setTask(final TaskDomain task) {
         this.task = ObjectHelper.getDefault(task, TaskDomain.getDefaultValue());
     }
 
@@ -77,7 +77,7 @@ public class TaskUserDomain extends Domain{
         return assignmentDate;
     }
 
-    public void setAssignmentDate(LocalDateTime assignmentDate) {
+    public void setAssignmentDate(final LocalDateTime assignmentDate) {
         this.assignmentDate = DateTimeHelper.getDefault(assignmentDate);
     }
 
@@ -85,7 +85,7 @@ public class TaskUserDomain extends Domain{
         return completionDate;
     }
 
-    public void setCompletionDate(LocalDateTime completionDate) {
+    public void setCompletionDate(final LocalDateTime completionDate) {
         this.completionDate = DateTimeHelper.getDefault(completionDate);
     }
 
@@ -93,7 +93,7 @@ public class TaskUserDomain extends Domain{
         return isCreator;
     }
 
-    public void setCreator(boolean creator) {
+    public void setCreator(final boolean creator) {
         isCreator = BooleanHelper.getDefault(creator);
     }
 
@@ -101,7 +101,7 @@ public class TaskUserDomain extends Domain{
         return comment;
     }
 
-    public void setComment(String comment) {
+    public void setComment(final String comment) {
         this.comment = TextHelper.getDefaultWithTrim(comment);
     }
 }

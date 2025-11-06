@@ -14,7 +14,7 @@ import co.edu.co.extraclase.dto.UserDto;
 public final class UserFacadeImpl implements UserFacade {
 	
 	@Override
-	public void registerNewUserInformation(UserDto userDto) {
+	public void registerNewUserInformation(final UserDto userDto) {
 		var daoFactory = DAOFactory.getFactory();
 		
 		var business=new UserBusinessImpl(daoFactory);
@@ -48,7 +48,7 @@ public final class UserFacadeImpl implements UserFacade {
 	}
 
 	@Override
-	public void updateUserInformation(UUID id, UserDto userDto) {
+	public void updateUserInformation(final UUID id, final UserDto userDto) {
 		
 		var daoFactory = DAOFactory.getFactory();
 		var business = new UserBusinessImpl(daoFactory);
@@ -97,7 +97,7 @@ public final class UserFacadeImpl implements UserFacade {
 	}
 
 	@Override
-	public List<UserDto> findUsersByFilter(UserDto userFilters) {
+	public List<UserDto> findUsersByFilter(final UserDto userFilters) {
 		
 		var daoFactory = DAOFactory.getFactory();
 		var business = new UserBusinessImpl(daoFactory);

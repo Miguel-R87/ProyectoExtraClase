@@ -16,14 +16,14 @@ import co.edu.co.extraclase.data.dao.entity.SqlConnection;
 import co.edu.co.extraclase.entity.ProjectEntity;
 import co.edu.co.extraclase.entity.ProjectStatusEntity;
 
-public class ProjectPostgreSqlDAO extends SqlConnection implements ProjectDAO {
+public final class ProjectPostgreSqlDAO extends SqlConnection implements ProjectDAO {
 
 	public ProjectPostgreSqlDAO(Connection connection) {
 		super(connection);
 	}
 
 	@Override
-	public List<ProjectEntity> findByFilter(ProjectEntity filterEntity) {
+	public List<ProjectEntity> findByFilter(final ProjectEntity filterEntity) {
 		var parameterList = new ArrayList<Object>();
 		var sql = createSentenceFindByFilter(filterEntity, parameterList);
 
@@ -126,7 +126,7 @@ public class ProjectPostgreSqlDAO extends SqlConnection implements ProjectDAO {
 
 
 	@Override
-	public void create(ProjectEntity entity) {
+	public void create(final ProjectEntity entity) {
 		final var sql = new StringBuilder();
 		sql.append("INSERT INTO \"Proyecto\" (\"id\", \"nombre\", \"descripcion\", \"fechaCreacion\", \"estadoProyecto\") ");
 		sql.append("VALUES (?, ?, ?, CURRENT_TIMESTAMP, ?) ");
@@ -148,7 +148,7 @@ public class ProjectPostgreSqlDAO extends SqlConnection implements ProjectDAO {
 	}
 
 	@Override
-	public void update(ProjectEntity entity) {
+	public void update(final ProjectEntity entity) {
 		final var sql = new StringBuilder();
 		sql.append("UPDATE \"Proyecto\" ");
 		sql.append("SET \"nombre\" = ?, \"descripcion\" = ?, \"estadoProyecto\" = ? ");
@@ -172,7 +172,7 @@ public class ProjectPostgreSqlDAO extends SqlConnection implements ProjectDAO {
 	}
 
 	@Override
-	public ProjectEntity findById(UUID id) {
+	public ProjectEntity findById(final UUID id) {
 		return findByFilter(new ProjectEntity(id)).stream().findFirst().orElse(new ProjectEntity());
 
 	}

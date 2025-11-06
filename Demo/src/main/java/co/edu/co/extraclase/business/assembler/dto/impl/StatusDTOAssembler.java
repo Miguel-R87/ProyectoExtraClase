@@ -22,21 +22,21 @@ public final class StatusDTOAssembler implements DTOAssembler <StatusDto, Status
     }
 
     @Override
-    public StatusDto toDTO(StatusDomain domain) {
+    public StatusDto toDTO(final StatusDomain domain) {
         var domainTmp = ObjectHelper.getDefault(domain, new StatusDomain(UUIDHelper.getUUIDHelper().getDefault()));
         var colorTmp = getColorDtoAssembler().toDTO(domainTmp.getColor());
         return new StatusDto(domainTmp.getId(), domainTmp.getName(), domainTmp.getDescription(), colorTmp);
     }
 
     @Override
-    public StatusDomain toDomain(StatusDto dto) {
+    public StatusDomain toDomain(final StatusDto dto) {
         var dtoTmp = ObjectHelper.getDefault(dto, new StatusDto(UUIDHelper.getUUIDHelper().getDefault()));
         var colorDomainTmp = getColorDtoAssembler().toDomain(dtoTmp.getColor());
         return new StatusDomain(dtoTmp.getId(), dtoTmp.getName(), dtoTmp.getDescription(), colorDomainTmp);
     }
 
     @Override
-    public List<StatusDto> toDTO(List<StatusDomain> domainList) {
+    public List<StatusDto> toDTO(final List<StatusDomain> domainList) {
         var statusDtoList = new ArrayList<StatusDto>();
         
         for(StatusDomain domain : domainList) {

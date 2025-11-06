@@ -10,7 +10,7 @@ import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.entity.NotificationEntity;
 
-public class NotificationEntityAssembler implements EntityAssembler<NotificationEntity, NotificationDomain> {
+public final class NotificationEntityAssembler implements EntityAssembler<NotificationEntity, NotificationDomain> {
 	
 	private static final EntityAssembler<NotificationEntity, NotificationDomain> instance = new NotificationEntityAssembler();
 	
@@ -23,7 +23,7 @@ public class NotificationEntityAssembler implements EntityAssembler<Notification
 	}
 
 	@Override
-	public NotificationEntity toEntity(NotificationDomain domain) {
+	public NotificationEntity toEntity(final NotificationDomain domain) {
 		var domainTmp = ObjectHelper.getDefault(domain, new NotificationDomain(UUIDHelper.getUUIDHelper().getDefault()));
 		var taskUserTmp = getTaskUserEntityAssembler().toEntity(domainTmp.getTaskUser());
 		var notificationTypeTmp = getNotificationTypeEntityAssembler().toEntity(domainTmp.getNotificationType());
@@ -32,7 +32,7 @@ public class NotificationEntityAssembler implements EntityAssembler<Notification
 	}
 
 	@Override
-	public NotificationDomain toDomain(NotificationEntity entity) {
+	public NotificationDomain toDomain(final NotificationEntity entity) {
 		var entityTmp = ObjectHelper.getDefault(entity, new NotificationEntity());
 		var taskUserDomainTmp = getTaskUserEntityAssembler().toDomain(entityTmp.getTaskUser());
 		var notificationTypeDomainTmp = getNotificationTypeEntityAssembler().toDomain(entityTmp.getNotificationType());
@@ -41,7 +41,7 @@ public class NotificationEntityAssembler implements EntityAssembler<Notification
 	}
 
 	@Override
-	public List<NotificationDomain> toDomain(List<NotificationEntity> entityList) {
+	public List<NotificationDomain> toDomain(final List<NotificationEntity> entityList) {
 		var notificationDomainList = new ArrayList<NotificationDomain>();
 		
 		for (var notificationEntity : entityList) {

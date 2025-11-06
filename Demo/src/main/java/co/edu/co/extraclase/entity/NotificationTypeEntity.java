@@ -23,7 +23,7 @@ public final class NotificationTypeEntity {
 		setDescription(TextHelper.getDefault());
 	}
 	
-	public  NotificationTypeEntity(UUID id, String name, String description) {
+	public  NotificationTypeEntity(final UUID id, final String name, final String description) {
 		setId(id);
 		setName(name);
 		setDescription(description);
@@ -49,7 +49,7 @@ public final class NotificationTypeEntity {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = TextHelper.getDefaultWithTrim(name);
 	}
 
@@ -57,7 +57,7 @@ public final class NotificationTypeEntity {
 		return description;
 	}
 
-	public void setDescription(String description) {
+	public void setDescription(final String description) {
 		this.description = TextHelper.getDefaultWithTrim(description);
 	}
 }

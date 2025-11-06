@@ -21,7 +21,7 @@ public final class UserEntityAssembler implements EntityAssembler<UserEntity, Us
 	}
 
 	@Override
-	public UserEntity toEntity(UserDomain domain) {
+	public UserEntity toEntity(final UserDomain domain) {
 		var domainTmp = ObjectHelper.getDefault(domain, new UserDomain(UUIDHelper.getUUIDHelper().getDefault()));
 		return new UserEntity(domainTmp.getId(), domainTmp.getFirstName(), domainTmp.getLastName(), domainTmp.getUsername(),
 		domainTmp.getEmail(), domainTmp.isEmailConfirmation(), domainTmp.getRegistrationDate(), domainTmp.getPasswordHash(),
@@ -29,7 +29,7 @@ public final class UserEntityAssembler implements EntityAssembler<UserEntity, Us
 	}
 
 	@Override
-	public UserDomain toDomain(UserEntity entity) {
+	public UserDomain toDomain(final UserEntity entity) {
 		var entityTmp = ObjectHelper.getDefault(entity, new UserEntity());
 		return new UserDomain(entityTmp.getId(), entityTmp.getFirstName(), entityTmp.getLastName(), entityTmp.getUsername(),
 		entityTmp.getEmail(), entityTmp.isEmailConfirmation(), entityTmp.getRegistrationDate(), entityTmp.getPasswordHash(), 
@@ -37,7 +37,7 @@ public final class UserEntityAssembler implements EntityAssembler<UserEntity, Us
 	}
 
 	@Override
-	public List<UserDomain> toDomain(List<UserEntity> entityList) {
+	public List<UserDomain> toDomain(final List<UserEntity> entityList) {
 		var userDomainList = new ArrayList<UserDomain>();
 		
 		for (var userEntity : entityList) {

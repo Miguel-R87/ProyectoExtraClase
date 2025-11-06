@@ -55,7 +55,7 @@ public final class ProjectUserEntity  {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(final UUID id) {
 		this.id = UUIDHelper.getUUIDHelper().getDefault(id);
 	}
 
@@ -63,7 +63,7 @@ public final class ProjectUserEntity  {
 		return user;
 	}
 
-	public void setUser(UserEntity user) {
+	public void setUser(final UserEntity user) {
 		this.user = UserEntity.getDefault(user);
 	}
 
@@ -71,7 +71,7 @@ public final class ProjectUserEntity  {
 		return project;
 	}
 
-	public void setProject(ProjectEntity project) {
+	public void setProject(final ProjectEntity project) {
 		this.project = ProjectEntity.getDefault(project);
 	}
 
@@ -79,7 +79,7 @@ public final class ProjectUserEntity  {
 		return isAdmin;
 	}
 
-	public void setAdmin(boolean isAdmin) {
+	public void setAdmin(final boolean isAdmin) {
 		this.isAdmin = BooleanHelper.getDefault(isAdmin);
 	}
 
@@ -87,7 +87,7 @@ public final class ProjectUserEntity  {
 		return entryDate;
 	}
 
-	public void setEntryDate(LocalDateTime entryDate) {
+	public void setEntryDate(final LocalDateTime entryDate) {
 		this.entryDate = DateTimeHelper.getDefault(entryDate);
 	}
 
@@ -95,7 +95,7 @@ public final class ProjectUserEntity  {
 		return expiryDate;
 	}
 
-	public void setExpiryDate(LocalDateTime expiryDate) {
+	public void setExpiryDate(final LocalDateTime expiryDate) {
 		this.expiryDate = DateTimeHelper.getDefault(expiryDate);
 	}
 }

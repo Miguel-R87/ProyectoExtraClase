@@ -33,8 +33,8 @@ public final class PriorityEntity {
 		setColor(ColorEntity.getDefault());
 	}
 	
-	public  PriorityEntity(UUID id, String name, String description, Integer responseTime,
-						   UnitOfMeasureEntity unitOfMeasure, ColorEntity color) {
+	public  PriorityEntity(final UUID id, final String name, final String description, final Integer responseTime,
+						   final UnitOfMeasureEntity unitOfMeasure, final ColorEntity color) {
 		setId(id);
 		setName(name);
 		setDescription(description);
@@ -55,7 +55,7 @@ public final class PriorityEntity {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(final UUID id) {
 		this.id = UUIDHelper.getUUIDHelper().getDefault(id);
 	}
 
@@ -63,7 +63,7 @@ public final class PriorityEntity {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = TextHelper.getDefaultWithTrim(name);
 	}
 
@@ -71,7 +71,7 @@ public final class PriorityEntity {
 		return description;
 	}
 
-	public void setDescription(String description) {
+	public void setDescription(final String description) {
 		this.description = TextHelper.getDefaultWithTrim(description);
 	}
 
@@ -79,7 +79,7 @@ public final class PriorityEntity {
 		return responseTime;
 	}
 
-	public void setResponseTime(Integer responseTime) {
+	public void setResponseTime(final Integer responseTime) {
 		this.responseTime = NumberHelper.getDefault(responseTime);
 	}
 
@@ -87,7 +87,7 @@ public final class PriorityEntity {
 		return unitOfMeasure;
 	}
 
-	public void setUnitOfMeasure(UnitOfMeasureEntity unitOfMeasure) {
+	public void setUnitOfMeasure(final UnitOfMeasureEntity unitOfMeasure) {
 		this.unitOfMeasure = UnitOfMeasureEntity.getDefault(unitOfMeasure);
 	}
 
@@ -95,7 +95,7 @@ public final class PriorityEntity {
 		return color;
 	}
 
-	public void setColor(ColorEntity color) {
+	public void setColor(final ColorEntity color) {
 		this.color = ColorEntity.getDefault(color);
 	}
 }

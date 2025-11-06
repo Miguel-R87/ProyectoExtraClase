@@ -23,7 +23,7 @@ public final class PriorityEntityAssembler implements EntityAssembler<PriorityEn
 	}
 
 	@Override
-	public PriorityEntity toEntity(PriorityDomain domain) {
+	public PriorityEntity toEntity(final PriorityDomain domain) {
 		var domainTmp = ObjectHelper.getDefault(domain, new PriorityDomain(UUIDHelper.getUUIDHelper().getDefault()));
 		var unitOfMeasureTmp = getUnitOfMeasureEntityAssembler().toEntity(domainTmp.getUnitOfMeasure());
 		var colorTmp = getColorEntityAssembler().toEntity(domainTmp.getColor());
@@ -32,7 +32,7 @@ public final class PriorityEntityAssembler implements EntityAssembler<PriorityEn
 	}
 
 	@Override
-	public PriorityDomain toDomain(PriorityEntity entity) {
+	public PriorityDomain toDomain(final PriorityEntity entity) {
 		var entityTmp = ObjectHelper.getDefault(entity, new PriorityEntity());
 		var unitOfMeasureDomainTmp = getUnitOfMeasureEntityAssembler().toDomain(entityTmp.getUnitOfMeasure());
 		var colorDomainTmp = getColorEntityAssembler().toDomain(entityTmp.getColor());
@@ -41,7 +41,7 @@ public final class PriorityEntityAssembler implements EntityAssembler<PriorityEn
 	}
 
 	@Override
-	public List<PriorityDomain> toDomain(List<PriorityEntity> entityList) {
+	public List<PriorityDomain> toDomain(final List<PriorityEntity> entityList) {
 		var priorityDomainList = new ArrayList<PriorityDomain>();
 		
 		for (var priorityEntity : entityList) {

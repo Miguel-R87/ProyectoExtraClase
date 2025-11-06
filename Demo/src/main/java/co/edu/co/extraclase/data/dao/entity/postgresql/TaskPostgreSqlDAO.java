@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
 import co.edu.co.extraclase.crosscuting.exception.ExtraClaseException;
 import co.edu.co.extraclase.crosscuting.helper.DateTimeHelper;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
@@ -20,14 +19,14 @@ import co.edu.co.extraclase.entity.PriorityEntity;
 import co.edu.co.extraclase.entity.StatusEntity;
 import co.edu.co.extraclase.entity.TaskEntity;
 
-public class TaskPostgreSqlDAO extends SqlConnection implements TaskDAO{
+public final class TaskPostgreSqlDAO extends SqlConnection implements TaskDAO{
 
 	public TaskPostgreSqlDAO(Connection connection) {
 		super(connection);
 	}
 
 	@Override
-	public void create(TaskEntity entity) {
+	public void create(final TaskEntity entity) {
 		SqlConnectionHelper.ensureTransactionIsStarted(getConnection());
 		
 		final var sql = new StringBuilder();
@@ -58,7 +57,7 @@ public class TaskPostgreSqlDAO extends SqlConnection implements TaskDAO{
     }
 
 	@Override
-	public List<TaskEntity> findByFilter(TaskEntity filterEntity) {
+	public List<TaskEntity> findByFilter(final TaskEntity filterEntity) {
 		var parameterList = new ArrayList<Object>();
 		var sql = createSentenceFindByFilter(filterEntity, parameterList);
 		
@@ -230,7 +229,7 @@ public class TaskPostgreSqlDAO extends SqlConnection implements TaskDAO{
 
 
 	@Override
-	public void update(TaskEntity entity) {
+	public void update(final TaskEntity entity) {
 SqlConnectionHelper.ensureTransactionIsStarted(getConnection());
 		
 		final var sql = new StringBuilder();
@@ -271,7 +270,7 @@ SqlConnectionHelper.ensureTransactionIsStarted(getConnection());
 	}
 
 	@Override
-	public TaskEntity findById(UUID id) {
+	public TaskEntity findById(final UUID id) {
 		return findByFilter(new TaskEntity(id)).stream().findFirst().orElse(new TaskEntity());
 
 	}

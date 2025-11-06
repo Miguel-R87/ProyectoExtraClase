@@ -7,7 +7,7 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public class NotificationDto {
+public final class NotificationDto {
     
 	private UUID id;
     private TaskUserDto taskUser;
@@ -52,7 +52,7 @@ public class NotificationDto {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(final UUID id) {
         this.id = UUIDHelper.getUUIDHelper().getDefault(id);
     }
 
@@ -60,7 +60,7 @@ public class NotificationDto {
         return taskUser;
     }
 
-    public void setTaskUser(TaskUserDto taskUser) {
+    public void setTaskUser(final TaskUserDto taskUser) {
         this.taskUser = TaskUserDto.getDefaultValue(taskUser);
     }
 
@@ -68,7 +68,7 @@ public class NotificationDto {
         return message;
     }
 
-    public void setMessage(String message) {
+    public void setMessage(final String message) {
         this.message = TextHelper.getDefaultWithTrim(message);
     }
 
@@ -76,7 +76,7 @@ public class NotificationDto {
         return notificationType;
     }
 
-    public void setNotificationType(NotificationTypeDto notificationType) {
+    public void setNotificationType(final NotificationTypeDto notificationType) {
         this.notificationType = NotificationTypeDto.getDefault(notificationType);
     }
 
@@ -84,7 +84,7 @@ public class NotificationDto {
         return triggerDate;
     }
 
-    public void setTriggerDate(LocalDateTime triggerDate) {
+    public void setTriggerDate(final LocalDateTime triggerDate) {
         this.triggerDate = DateTimeHelper.getDefault(triggerDate);
     }
 }

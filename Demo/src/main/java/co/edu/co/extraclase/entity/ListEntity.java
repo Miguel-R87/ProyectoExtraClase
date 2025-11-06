@@ -48,7 +48,7 @@ public final class ListEntity  {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(final UUID id) {
 		this.id = UUIDHelper.getUUIDHelper().getDefault(id);
 	}
 
@@ -56,7 +56,7 @@ public final class ListEntity  {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = TextHelper.getDefaultWithTrim(name);
 	}
 
@@ -64,7 +64,7 @@ public final class ListEntity  {
 		return project;
 	}
 
-	public void setProject(ProjectEntity project) {
+	public void setProject(final ProjectEntity project) {
 		this.project = ProjectEntity.getDefault(project);
 	}
 
@@ -72,7 +72,7 @@ public final class ListEntity  {
 		return creationDate;
 	}
 
-	public void setCreationDate(LocalDateTime creationDate) {
+	public void setCreationDate(final LocalDateTime creationDate) {
 		this.creationDate = DateTimeHelper.getDefault(creationDate);
 	}
 }

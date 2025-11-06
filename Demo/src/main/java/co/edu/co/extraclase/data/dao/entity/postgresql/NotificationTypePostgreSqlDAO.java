@@ -15,14 +15,14 @@ import co.edu.co.extraclase.data.dao.entity.NotificationTypeDAO;
 import co.edu.co.extraclase.data.dao.entity.SqlConnection;
 import co.edu.co.extraclase.entity.NotificationTypeEntity;
 
-public class NotificationTypePostgreSqlDAO extends SqlConnection implements NotificationTypeDAO {
+public final class NotificationTypePostgreSqlDAO extends SqlConnection implements NotificationTypeDAO {
 
 	public NotificationTypePostgreSqlDAO(Connection connection) {
 		super(connection);
 	}
 
 	@Override
-	public List<NotificationTypeEntity> findByFilter(NotificationTypeEntity filterEntity) {
+	public List<NotificationTypeEntity> findByFilter(final NotificationTypeEntity filterEntity) {
 		var parametersList = new ArrayList<Object>();
 		var sql = createSentenceFindByFilter(filterEntity, parametersList);
 		try (var preparedStatement = this.getConnection().prepareStatement(sql)) {
@@ -102,7 +102,7 @@ public class NotificationTypePostgreSqlDAO extends SqlConnection implements Noti
 		}
 
 	@Override
-	public NotificationTypeEntity findById(UUID id) {
+	public NotificationTypeEntity findById(final UUID id) {
 		return findByFilter(new NotificationTypeEntity(id)).stream().findFirst().orElse(new NotificationTypeEntity());
 
 	}

@@ -69,7 +69,7 @@ public final class TaskDto {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(final UUID id) {
         this.id = UUIDHelper.getUUIDHelper().getDefault(id);
     }
 
@@ -77,7 +77,7 @@ public final class TaskDto {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(final String title) {
         this.title = TextHelper.getDefaultWithTrim(title);
     }
 
@@ -85,7 +85,7 @@ public final class TaskDto {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = TextHelper.getDefaultWithTrim(description);
     }
 
@@ -93,7 +93,7 @@ public final class TaskDto {
         return creationDate;
     }
 
-    public void setCreationDate(LocalDateTime creationDate) {
+    public void setCreationDate(final LocalDateTime creationDate) {
         this.creationDate = DateTimeHelper.getDefault(creationDate);
     }
 
@@ -101,7 +101,7 @@ public final class TaskDto {
         return expiryDate;
     }
 
-    public void setExpiryDate(LocalDateTime expiryDate) {
+    public void setExpiryDate(final LocalDateTime expiryDate) {
         this.expiryDate = DateTimeHelper.getDefault(expiryDate);
     }
 
@@ -109,7 +109,7 @@ public final class TaskDto {
         return list;
     }
 
-    public void setList(ListDto list) {
+    public void setList(final ListDto list) {
         this.list = ObjectHelper.getDefault(list, ListDto.getDefaultValue());
     }
 
@@ -117,7 +117,7 @@ public final class TaskDto {
         return status;
     }
 
-    public void setStatus(StatusDto status) {
+    public void setStatus(final StatusDto status) {
         this.status = ObjectHelper.getDefault(status, StatusDto.getDefaultValue());
     }
 
@@ -125,7 +125,7 @@ public final class TaskDto {
         return priority;
     }
 
-    public void setPriority(PriorityDto priority) {
+    public void setPriority(final PriorityDto priority) {
         this.priority = ObjectHelper.getDefault(priority, PriorityDto.getDefaultValue());
     }
 }

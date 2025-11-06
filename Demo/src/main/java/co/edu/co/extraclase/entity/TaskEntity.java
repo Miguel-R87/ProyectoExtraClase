@@ -63,7 +63,7 @@ public final class TaskEntity  {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(final UUID id) {
 		this.id = UUIDHelper.getUUIDHelper().getDefault(id);
 	}
 
@@ -71,7 +71,7 @@ public final class TaskEntity  {
 		return title;
 	}
 
-	public void setTitle(String title) {
+	public void setTitle(final String title) {
 		this.title = TextHelper.getDefaultWithTrim(title);
 	}
 
@@ -79,7 +79,7 @@ public final class TaskEntity  {
 		return description;
 	}
 
-	public void setDescription(String description) {
+	public void setDescription(final String description) {
 		this.description = TextHelper.getDefaultWithTrim(description);
 	}
 
@@ -87,7 +87,7 @@ public final class TaskEntity  {
 		return creationDate;
 	}
 
-	public void setCreationDate(LocalDateTime creationDate) {
+	public void setCreationDate(final LocalDateTime creationDate) {
 		this.creationDate = DateTimeHelper.getDefault(creationDate);
 	}
 
@@ -95,7 +95,7 @@ public final class TaskEntity  {
 		return expiryDate;
 	}
 
-	public void setExpiryDate(LocalDateTime expiryDate) {
+	public void setExpiryDate(final LocalDateTime expiryDate) {
 		this.expiryDate = DateTimeHelper.getDefault(expiryDate);
 	}
 
@@ -103,7 +103,7 @@ public final class TaskEntity  {
 		return list;
 	}
 
-	public void setList(ListEntity list) {
+	public void setList(final ListEntity list) {
 		this.list = ListEntity.getDefault(list);
 	}
 
@@ -111,7 +111,7 @@ public final class TaskEntity  {
 		return status;
 	}
 
-	public void setStatus(StatusEntity status) {
+	public void setStatus(final StatusEntity status) {
 		this.status = StatusEntity.getDefault(status);
 	}
 
@@ -119,7 +119,7 @@ public final class TaskEntity  {
 		return priority;
 	}
 
-	public void setPriority(PriorityEntity priority) {
+	public void setPriority(final PriorityEntity priority) {
 		this.priority = PriorityEntity.getDefault(priority);
 	}
 }

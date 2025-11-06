@@ -15,14 +15,14 @@ import co.edu.co.extraclase.data.dao.entity.SqlConnection;
 import co.edu.co.extraclase.entity.ListEntity;
 import co.edu.co.extraclase.entity.ProjectEntity;
 
-public class ListPostgreSqlDAO extends SqlConnection implements ListDAO{
+public final class ListPostgreSqlDAO extends SqlConnection implements ListDAO{
 
     public ListPostgreSqlDAO(Connection connection) {
         super(connection);
     }
 
     @Override
-    public void create(ListEntity entity) {
+    public void create(final ListEntity entity) {
         SqlConnectionHelper.ensureTransactionIsStarted(getConnection());
         final var sql = new StringBuilder();
         sql.append("INSERT INTO \"Lista\" (\"listaId\", \"nombre\", \"fechaCreacion\", \"proyectoId\") ");
@@ -48,7 +48,7 @@ public class ListPostgreSqlDAO extends SqlConnection implements ListDAO{
     }
 
     @Override
-    public List<ListEntity> findByFilter(ListEntity filterEntity) {
+    public List<ListEntity> findByFilter(final ListEntity filterEntity) {
         var parametersList = new ArrayList<Object>();
         var sql = createSentenceFindByFilter(filterEntity, parametersList);
         try (var preparedStatement = this.getConnection().prepareStatement(sql)) {
@@ -67,7 +67,7 @@ public class ListPostgreSqlDAO extends SqlConnection implements ListDAO{
         }
     }
 
-    private String createSentenceFindByFilter(ListEntity filterEntity, List<Object> parametersList) {
+    private String createSentenceFindByFilter(final ListEntity filterEntity, List<Object> parametersList) {
         final var sql = new StringBuilder();
         sql.append("SELECT ");
         sql.append("  L.\"listaId\" AS \"idL\", ");
@@ -135,7 +135,7 @@ public class ListPostgreSqlDAO extends SqlConnection implements ListDAO{
     }
 
     @Override
-    public void update(ListEntity entity) {
+    public void update(final ListEntity entity) {
         SqlConnectionHelper.ensureTransactionIsStarted(getConnection());
         final var sql = new StringBuilder();
         sql.append("UPDATE \"Lista\" ");
@@ -163,7 +163,7 @@ public class ListPostgreSqlDAO extends SqlConnection implements ListDAO{
 }
 
 	@Override
-	public ListEntity findById(UUID id) {
+	public ListEntity findById(final UUID id) {
 		return findByFilter(new ListEntity(id)).stream().findFirst().orElse(new ListEntity());
 
 	}}

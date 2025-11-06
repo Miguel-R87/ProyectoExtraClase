@@ -19,7 +19,7 @@ public final class StringValueIsPresentRule implements Rule{
 	}
 
 	@Override
-	public void execute(Object... data) {
+	public void execute(final Object... data) {
 		if (ObjectHelper.isNull(data)) {
 			var userMessage = MessagesEnum.USER_ERROR_TRYING_TO_MAKE_AN_OPERATION.getContent();
 			var technicalMessage = MessagesEnum.TECHNICAL_ERROR_VALUE_IS_NOT_PRESENT.getContent();

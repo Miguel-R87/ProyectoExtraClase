@@ -12,16 +12,16 @@ import co.edu.co.extraclase.crosscuting.helper.DateTimeHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.data.dao.factory.DAOFactory;
 
-public class UserBusinessImpl implements UserBusiness {
+public final class UserBusinessImpl implements UserBusiness {
+	
 	private DAOFactory daoFactory;
 	
 	public UserBusinessImpl(final DAOFactory daoFactory) {
 		this.daoFactory=daoFactory;
 	}
 	
-	
 	@Override
-	public void registerNewUserInformation(UserDomain userDomain) {
+	public void registerNewUserInformation(final UserDomain userDomain) {
 		ValidateDataUserConsistencyForRegisterNewUserInformation.executeValidation(userDomain);
 		validateUserUsernameDoesNotExist(userDomain.getUsername());
 		validateUserEmailDoesNotExist(userDomain.getEmail());
@@ -79,7 +79,7 @@ public class UserBusinessImpl implements UserBusiness {
 	}
 
 	@Override
-	public List<UserDomain> findUsersByFilter(UserDomain userFilters) {
+	public List<UserDomain> findUsersByFilter(final UserDomain userFilters) {
 
 		var userFiltersEntity = UserEntityAssembler.getUserEntityAssembler().toEntity(userFilters);
 		

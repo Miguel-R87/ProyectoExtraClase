@@ -60,9 +60,9 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
         setSuperUserConfirmationDefaultValue(true);
     }
     
-    public UserEntity(UUID id, String firstName, String lastName, String username, String email,
-boolean emailConfirmation, LocalDateTime registrationDate, String passwordHash, boolean accountStatus,
-boolean isSuperUser, boolean superUserConfirmation) {
+    public UserEntity(final UUID id, final String firstName, final String lastName, final String username, final String email,
+final boolean emailConfirmation, final LocalDateTime registrationDate, final String passwordHash, final boolean accountStatus,
+final boolean isSuperUser, final boolean superUserConfirmation) {
 		setId(id);
 		setFirstName(firstName);
         setLastName(lastName);
@@ -88,7 +88,7 @@ boolean isSuperUser, boolean superUserConfirmation) {
 		return id;
 	}
 
-	public void setId(UUID userId) {
+	public void setId(final UUID userId) {
 		this.id = UUIDHelper.getUUIDHelper().getDefault(userId);
 	}
 
@@ -96,7 +96,7 @@ boolean isSuperUser, boolean superUserConfirmation) {
 		return firstName;
 	}
 
-	public void setFirstName(String firstName) {
+	public void setFirstName(final String firstName) {
 		this.firstName = TextHelper.getDefaultWithTrim(firstName);
 	}
 
@@ -104,7 +104,7 @@ boolean isSuperUser, boolean superUserConfirmation) {
 		return lastName;
 	}
 
-	public void setLastName(String lastName) {
+	public void setLastName(final String lastName) {
 		this.lastName = TextHelper.getDefaultWithTrim(lastName);
 	}
 
@@ -112,7 +112,7 @@ boolean isSuperUser, boolean superUserConfirmation) {
 		return username;
 	}
 
-	public void setUsername(String username) {
+	public void setUsername(final String username) {
 		this.username = TextHelper.getDefaultWithTrim(username);
 	}
 
@@ -124,7 +124,7 @@ boolean isSuperUser, boolean superUserConfirmation) {
 		return registrationDate;
 	}
 
-	public void setRegistrationDate(LocalDateTime registrationDate) {
+	public void setRegistrationDate(final LocalDateTime registrationDate) {
 		this.registrationDate = DateTimeHelper.getDefault(registrationDate);
 	}
 
@@ -132,7 +132,7 @@ boolean isSuperUser, boolean superUserConfirmation) {
 		return passwordHash;
 	}
 
-	public void setPasswordHash(String passwordHash) {
+	public void setPasswordHash(final String passwordHash) {
 		this.passwordHash = passwordHash;
 	}
 	
@@ -192,7 +192,7 @@ boolean isSuperUser, boolean superUserConfirmation) {
         this.accountStatusDefaultValue = accountStatusDefaultValue;
     }
     
-    public void setEmail(String email) {
+    public void setEmail(final String email) {
         this.email = TextHelper.getDefaultWithTrim(email);
     }
 

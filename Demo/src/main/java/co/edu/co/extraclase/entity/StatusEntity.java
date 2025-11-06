@@ -26,7 +26,7 @@ public final class StatusEntity  {
 		setColor(ColorEntity.getDefault());
 	}
 	
-	public  StatusEntity(UUID id, String name, String description, ColorEntity color) {
+	public  StatusEntity(final UUID id, final String name, final String description, final ColorEntity color) {
 		setId(id);
 		setName(name);
 		setDescription(description);
@@ -45,7 +45,7 @@ public final class StatusEntity  {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(final UUID id) {
 		this.id = UUIDHelper.getUUIDHelper().getDefault(id);
 	}
 
@@ -53,7 +53,7 @@ public final class StatusEntity  {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = TextHelper.getDefaultWithTrim(name);
 	}
 
@@ -61,7 +61,7 @@ public final class StatusEntity  {
 		return description;
 	}
 
-	public void setDescription(String description) {
+	public void setDescription(final String description) {
 		this.description = TextHelper.getDefaultWithTrim(description);
 	}
 
@@ -69,7 +69,7 @@ public final class StatusEntity  {
 		return color;
 	}
 
-	public void setColor(ColorEntity color) {
+	public void setColor(final ColorEntity color) {
 		this.color = ColorEntity.getDefault(color);
 	}
 }

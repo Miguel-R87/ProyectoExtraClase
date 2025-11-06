@@ -24,7 +24,7 @@ public final class TaskEntityAssembler implements EntityAssembler<TaskEntity, Ta
 	}
 
 	@Override
-	public TaskEntity toEntity(TaskDomain domain) {
+	public TaskEntity toEntity(final TaskDomain domain) {
 		var domainTmp = ObjectHelper.getDefault(domain, new TaskDomain(UUIDHelper.getUUIDHelper().getDefault()));
 		var listTmp = getListEntityAssembler().toEntity(domainTmp.getList());
 		var statusTmp = getStatusEntityAssembler().toEntity(domainTmp.getStatus());
@@ -34,7 +34,7 @@ public final class TaskEntityAssembler implements EntityAssembler<TaskEntity, Ta
 	}
 
 	@Override
-	public TaskDomain toDomain(TaskEntity entity) {
+	public TaskDomain toDomain(final TaskEntity entity) {
 		var entityTmp = ObjectHelper.getDefault(entity, new TaskEntity());
 		var listDomainTmp = getListEntityAssembler().toDomain(entityTmp.getList());
 		var statusDomainTmp = getStatusEntityAssembler().toDomain(entityTmp.getStatus());
@@ -44,7 +44,7 @@ public final class TaskEntityAssembler implements EntityAssembler<TaskEntity, Ta
 	}
 
 	@Override
-	public List<TaskDomain> toDomain(List<TaskEntity> entityList) {
+	public List<TaskDomain> toDomain(final List<TaskEntity> entityList) {
 		var taskDomainList = new ArrayList<TaskDomain>();
 		
 		for (var taskEntity : entityList) {

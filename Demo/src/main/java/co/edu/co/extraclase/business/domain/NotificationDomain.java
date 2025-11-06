@@ -7,7 +7,7 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public class NotificationDomain extends Domain {
+public final class NotificationDomain extends Domain {
     private TaskUserDomain taskUser;
     private String message;
     private LocalDateTime triggerDate;
@@ -43,7 +43,7 @@ public class NotificationDomain extends Domain {
         return taskUser;
     }
 
-    public void setTaskUser(TaskUserDomain taskUser) {
+    public void setTaskUser(final TaskUserDomain taskUser) {
         this.taskUser = ObjectHelper.getDefault(taskUser, TaskUserDomain.getDefaultValue());
     }
 
@@ -51,7 +51,7 @@ public class NotificationDomain extends Domain {
         return message;
     }
 
-    public void setMessage(String message) {
+    public void setMessage(final String message) {
         this.message = TextHelper.getDefaultWithTrim(message);
     }
 
@@ -59,7 +59,7 @@ public class NotificationDomain extends Domain {
         return triggerDate;
     }
 
-    public void setTriggerDate(LocalDateTime triggerDate) {
+    public void setTriggerDate(final LocalDateTime triggerDate) {
         this.triggerDate = DateTimeHelper.getDefault(triggerDate);
     }
 
@@ -67,7 +67,7 @@ public class NotificationDomain extends Domain {
         return notificationType;
     }
 
-    public void setNotificationType(NotificationTypeDomain notificationType) {
+    public void setNotificationType(final NotificationTypeDomain notificationType) {
         this.notificationType = ObjectHelper.getDefault(notificationType, NotificationTypeDomain.getDefaultValue());
     }
     

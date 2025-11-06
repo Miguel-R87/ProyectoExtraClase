@@ -22,7 +22,7 @@ public final class ProjectEntityAssembler implements EntityAssembler<ProjectEnti
 	}
 
 	@Override
-	public ProjectEntity toEntity(ProjectDomain domain) {
+	public ProjectEntity toEntity(final ProjectDomain domain) {
 		var domainTmp = ObjectHelper.getDefault(domain, new ProjectDomain(UUIDHelper.getUUIDHelper().getDefault()));
 		var projectStatusTmp = getProjectStatusEntityAssembler().toEntity(domainTmp.getProjectstatus());
 		return new ProjectEntity(domainTmp.getId(), domainTmp.getName(), domainTmp.getDescription(),
@@ -30,7 +30,7 @@ public final class ProjectEntityAssembler implements EntityAssembler<ProjectEnti
 	}
 
 	@Override
-	public ProjectDomain toDomain(ProjectEntity entity) {
+	public ProjectDomain toDomain(final ProjectEntity entity) {
 		var entityTmp = ObjectHelper.getDefault(entity, new ProjectEntity());
 		var projectStatusDomainTmp = getProjectStatusEntityAssembler().toDomain(entity.getProjectStatus());
 		return new ProjectDomain(entityTmp.getId(), entityTmp.getName(), entityTmp.getDescription(),
@@ -38,7 +38,7 @@ public final class ProjectEntityAssembler implements EntityAssembler<ProjectEnti
 	}
 
 	@Override
-	public List<ProjectDomain> toDomain(List<ProjectEntity> entityList) {
+	public List<ProjectDomain> toDomain(final List<ProjectEntity> entityList) {
 		var projectDomainList = new ArrayList<ProjectDomain>();
 		
 		for (var projectEntity : entityList) {

@@ -7,7 +7,7 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public class ProjectDomain extends Domain {
+public final class ProjectDomain extends Domain {
     private String name;
     private String description;
     private LocalDateTime creationDate;
@@ -50,7 +50,7 @@ public class ProjectDomain extends Domain {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = TextHelper.getDefaultWithTrim(name);
     }
 
@@ -58,7 +58,7 @@ public class ProjectDomain extends Domain {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = TextHelper.getDefaultWithTrim(description);
     }
 
@@ -66,7 +66,7 @@ public class ProjectDomain extends Domain {
         return creationDate;
     }
 
-    public void setCreationDate(LocalDateTime creationDate) {
+    public void setCreationDate(final LocalDateTime creationDate) {
         this.creationDate = DateTimeHelper.getDefault(creationDate);
     }
 
@@ -74,7 +74,7 @@ public class ProjectDomain extends Domain {
         return projectstatus;
     }
 
-    public void setProjectStatus(ProjectStatusDomain projectstatus) {
+    public void setProjectStatus(final ProjectStatusDomain projectstatus) {
         this.projectstatus = ObjectHelper.getDefault(projectstatus, ProjectStatusDomain.getDefaultValue());
     }
 

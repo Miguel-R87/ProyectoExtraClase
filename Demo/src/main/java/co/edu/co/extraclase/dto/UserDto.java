@@ -6,7 +6,7 @@ import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public class UserDto {
+public final class UserDto {
 	private UUID id;
 	private String firstName;
     private String lastName;
@@ -84,7 +84,7 @@ public class UserDto {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(final UUID id) {
         this.id = UUIDHelper.getUUIDHelper().getDefault(id);
     }
 
@@ -92,7 +92,7 @@ public class UserDto {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(final String firstName) {
         this.firstName = TextHelper.getDefaultWithTrim(firstName);
     }
 
@@ -100,7 +100,7 @@ public class UserDto {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(final String lastName) {
         this.lastName = TextHelper.getDefaultWithTrim(lastName);
     }
 
@@ -108,7 +108,7 @@ public class UserDto {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(final String username) {
         this.username = TextHelper.getDefaultWithTrim(username);
     }
 
@@ -120,7 +120,7 @@ public class UserDto {
         return registrationDate;
     }
 
-    public void setRegistrationDate(LocalDateTime registrationDate) {
+    public void setRegistrationDate(final LocalDateTime registrationDate) {
         this.registrationDate = DateTimeHelper.getDefault(registrationDate);
     }
 
@@ -128,7 +128,7 @@ public class UserDto {
         return passwordHash;
     }
 
-    public void setPasswordHash(String passwordHash) {
+    public void setPasswordHash(final String passwordHash) {
         this.passwordHash = passwordHash;
     }
 
@@ -188,7 +188,7 @@ public class UserDto {
         this.accountStatusDefaultValue = accountStatusDefaultValue;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(final String email) {
         this.email = TextHelper.getDefaultWithTrim(email);
     }
 

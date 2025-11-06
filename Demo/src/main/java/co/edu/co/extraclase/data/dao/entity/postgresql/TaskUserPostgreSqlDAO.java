@@ -7,7 +7,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
 import co.edu.co.extraclase.crosscuting.exception.ExtraClaseException;
 import co.edu.co.extraclase.crosscuting.helper.BooleanHelper;
 import co.edu.co.extraclase.crosscuting.helper.DateTimeHelper;
@@ -29,14 +28,14 @@ import co.edu.co.extraclase.entity.TaskUserEntity;
 import co.edu.co.extraclase.entity.UnitOfMeasureEntity;
 import co.edu.co.extraclase.entity.UserEntity;
 
-public class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUserDAO{
+public final class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUserDAO{
 
 	public TaskUserPostgreSqlDAO(Connection connection) {
 		super(connection);
 	}
 
 	@Override
-	public void create(TaskUserEntity entity) {
+	public void create(final TaskUserEntity entity) {
 		SqlConnectionHelper.ensureTransactionIsStarted(getConnection());
 		
 		final var sql = new StringBuilder();
@@ -66,7 +65,7 @@ public class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUserDAO{
     }
 
 	@Override
-	public List<TaskUserEntity> findByFilter(TaskUserEntity filterEntity) {
+	public List<TaskUserEntity> findByFilter(final TaskUserEntity filterEntity) {
 		var parameterList = new ArrayList<Object>();
 		var sql = createSentenceFindByFilter(filterEntity, parameterList);
 		
@@ -338,7 +337,7 @@ public class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUserDAO{
 
 
 	@Override
-	public void update(TaskUserEntity entity) {
+	public void update(final TaskUserEntity entity) {
 		SqlConnectionHelper.ensureTransactionIsStarted(getConnection());
 		
 		final var sql = new StringBuilder();
@@ -376,7 +375,7 @@ public class TaskUserPostgreSqlDAO extends SqlConnection implements TaskUserDAO{
 	}
 
 	@Override
-	public TaskUserEntity findById(UUID id) {
+	public TaskUserEntity findById(final UUID id) {
 		return findByFilter(new TaskUserEntity(id)).stream().findFirst().orElse(new TaskUserEntity());
 
 	}

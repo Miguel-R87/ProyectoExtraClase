@@ -23,7 +23,7 @@ public final class TaskUserEntityAssembler implements EntityAssembler<TaskUserEn
 	}
 	
 	@Override
-	public TaskUserEntity toEntity(TaskUserDomain domain) {
+	public TaskUserEntity toEntity(final TaskUserDomain domain) {
 		var domainTmp = ObjectHelper.getDefault(domain, new TaskUserDomain(UUIDHelper.getUUIDHelper().getDefault()));
 		var projectUserTmp = getProjectUserEntityAssembler().toEntity(domainTmp.getProjectUser());
 		var taskTmp = getTaskEntityAssembler().toEntity(domainTmp.getTask());
@@ -32,7 +32,7 @@ public final class TaskUserEntityAssembler implements EntityAssembler<TaskUserEn
 	}
 
 	@Override
-	public TaskUserDomain toDomain(TaskUserEntity entity) {
+	public TaskUserDomain toDomain(final TaskUserEntity entity) {
 		var entityTmp = ObjectHelper.getDefault(entity, new TaskUserEntity());
 		var projectUserDomainTmp = getProjectUserEntityAssembler().toDomain(entityTmp.getProjectUser());
 		var taskDomainTmp = getTaskEntityAssembler().toDomain(entityTmp.getTask());
@@ -42,7 +42,7 @@ public final class TaskUserEntityAssembler implements EntityAssembler<TaskUserEn
 	}
 
 	@Override
-	public List<TaskUserDomain> toDomain(List<TaskUserEntity> entityList) {
+	public List<TaskUserDomain> toDomain(final List<TaskUserEntity> entityList) {
 		var taskUserDomainList = new ArrayList<TaskUserDomain>();
 		
 		for (var taskUserEntity : entityList) {

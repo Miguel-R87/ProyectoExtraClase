@@ -7,7 +7,7 @@ import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;	
 
-public final  class TaskDomain extends Domain{
+public final class TaskDomain extends Domain{
 	private String title;
 	private String description;
 	private LocalDateTime creationDate;

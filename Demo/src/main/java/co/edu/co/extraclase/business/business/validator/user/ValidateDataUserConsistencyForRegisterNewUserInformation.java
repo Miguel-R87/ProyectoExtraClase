@@ -22,7 +22,7 @@ public final class ValidateDataUserConsistencyForRegisterNewUserInformation impl
 	}
 
 	@Override
-	public void validate(Object... data) {
+	public void validate(final Object... data) {
 		
 		if(ObjectHelper.isNull(data)) {
 			var userMessage = MessagesEnum.USER_ERROR_TRYING_TO_MAKE_AN_OPERATION.getContent();

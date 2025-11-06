@@ -15,7 +15,7 @@ import co.edu.co.extraclase.entity.NotificationEntity;
 import co.edu.co.extraclase.entity.NotificationTypeEntity;
 import co.edu.co.extraclase.entity.TaskUserEntity;
 
-public class NotificationPostgreSqlDAO extends SqlConnection implements NotificationDAO {
+public final class NotificationPostgreSqlDAO extends SqlConnection implements NotificationDAO {
 
 	public NotificationPostgreSqlDAO(Connection connection) {
 		super(connection);
@@ -46,7 +46,7 @@ public class NotificationPostgreSqlDAO extends SqlConnection implements Notifica
     }
 
 	@Override
-	public List<NotificationEntity> findByFilter(NotificationEntity filterEntity) {
+	public List<NotificationEntity> findByFilter(final NotificationEntity filterEntity) {
 		var parametersList = new ArrayList<Object>();
 		var sql = createSentenceFindByFilter(filterEntity, parametersList);
 		try (var preparedStatement = this.getConnection().prepareStatement(sql)) {
@@ -148,7 +148,7 @@ public class NotificationPostgreSqlDAO extends SqlConnection implements Notifica
 	}
 
 	@Override
-	public NotificationEntity findById(UUID id) {
+	public NotificationEntity findById(final UUID id) {
 		return findByFilter(new NotificationEntity(id)).stream().findFirst().orElse(new NotificationEntity());
 
 	}

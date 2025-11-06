@@ -23,7 +23,7 @@ public final class NotificationDTOAssembler implements DTOAssembler<Notification
     }
 
     @Override
-    public NotificationDto toDTO(NotificationDomain domain) {
+    public NotificationDto toDTO(final NotificationDomain domain) {
         var domainTmp = ObjectHelper.getDefault(domain, new NotificationDomain(UUIDHelper.getUUIDHelper().getDefault()));
         var taskUserTmp = getTaskUserDTOAssembler().toDTO(domainTmp.getTaskUser());
         var notificationTypeTmp = getNotificationTypeDtoAssembler().toDTO(domainTmp.getNotificationType());
@@ -31,7 +31,7 @@ public final class NotificationDTOAssembler implements DTOAssembler<Notification
 	}
 
     @Override
-    public NotificationDomain toDomain(NotificationDto dto) {
+    public NotificationDomain toDomain(final NotificationDto dto) {
         var dtoTmp = ObjectHelper.getDefault(dto, new NotificationDto(UUIDHelper.getUUIDHelper().getDefault()));
         var taskUserTmpDomain = getTaskUserDTOAssembler().toDomain(dtoTmp.getTaskUser());
         var notificationTypeTmp = getNotificationTypeDtoAssembler().toDomain(dtoTmp.getNotificationType());
@@ -39,7 +39,7 @@ public final class NotificationDTOAssembler implements DTOAssembler<Notification
     }
 
     @Override
-    public List<NotificationDto> toDTO(List<NotificationDomain> domainList) {
+    public List<NotificationDto> toDTO(final List<NotificationDomain> domainList) {
         var notificationDtoList = new ArrayList<NotificationDto>();
         
         for(NotificationDomain domain : domainList) {

@@ -11,12 +11,12 @@ public final class ValidateUserUsernameDoesNotExist implements Validator {
 		
 	}
 	
-	public static void executeValidation(Object...data) {
+	public static void executeValidation(final Object...data) {
 		instance.validate(data);
 	}
 	
 	@Override
-	public void validate(Object... data) {
+	public void validate(final Object... data) {
 		UserUsernameDoesNotExistRule.executeRule(data);
 	}
 }

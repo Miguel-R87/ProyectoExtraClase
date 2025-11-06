@@ -22,21 +22,21 @@ public final class StatusEntityAssembler implements EntityAssembler<StatusEntity
 	}
 
 	@Override
-	public StatusEntity toEntity(StatusDomain domain) {
+	public StatusEntity toEntity(final StatusDomain domain) {
 		var domainTmp = ObjectHelper.getDefault(domain, new StatusDomain(UUIDHelper.getUUIDHelper().getDefault()));
 		var colorTmp = getColorEntityAssembler().toEntity(domainTmp.getColor());
 		return new StatusEntity(domainTmp.getId(), domainTmp.getName(), domainTmp.getDescription(), colorTmp);
 	}
 
 	@Override
-	public StatusDomain toDomain(StatusEntity entity) {
+	public StatusDomain toDomain(final StatusEntity entity) {
 		var entityTmp = ObjectHelper.getDefault(entity, new StatusEntity());
 		var colorDomainTmp = getColorEntityAssembler().toDomain(entityTmp.getColor());
 		return new StatusDomain(entityTmp.getId(), entityTmp.getName(), entityTmp.getDescription(), colorDomainTmp);
 	}
 
 	@Override
-	public List<StatusDomain> toDomain(List<StatusEntity> entityList) {
+	public List<StatusDomain> toDomain(final List<StatusEntity> entityList) {
 		var statusDomainList = new ArrayList<StatusDomain>();
 		
 		for (var statusEntity : entityList) {

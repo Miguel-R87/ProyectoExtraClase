@@ -14,14 +14,14 @@ import co.edu.co.extraclase.data.dao.entity.ColorDAO;
 import co.edu.co.extraclase.data.dao.entity.SqlConnection;
 import co.edu.co.extraclase.entity.ColorEntity;
 
-public class ColorPostgreSqlDAO extends SqlConnection implements ColorDAO {
+public final class ColorPostgreSqlDAO extends SqlConnection implements ColorDAO {
 
 	public ColorPostgreSqlDAO(Connection connection) {
 		super(connection);
 	}
 
 	@Override
-	public List<ColorEntity> findByFilter(ColorEntity filterEntity) {
+	public List<ColorEntity> findByFilter(final ColorEntity filterEntity) {
 		var parametersList = new ArrayList<Object>();
 		var sql = createSentenceFindByFilter(filterEntity, parametersList);
 		try (var preparedStatement = this.getConnection().prepareStatement(sql)){
@@ -103,7 +103,7 @@ public class ColorPostgreSqlDAO extends SqlConnection implements ColorDAO {
 	}
 
 	@Override
-	public ColorEntity findById(UUID id) {
+	public ColorEntity findById(final UUID id) {
 		return findByFilter(new ColorEntity(id)).stream().findFirst().orElse(new ColorEntity());
 
 	}

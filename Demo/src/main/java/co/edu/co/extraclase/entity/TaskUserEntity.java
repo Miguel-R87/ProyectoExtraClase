@@ -62,7 +62,7 @@ public final class TaskUserEntity  {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(final UUID id) {
 		this.id = UUIDHelper.getUUIDHelper().getDefault(id);
 	}
 
@@ -70,7 +70,7 @@ public final class TaskUserEntity  {
 		return projectUser;
 	}
 
-	public void setProjectUser(ProjectUserEntity projectUser) {
+	public void setProjectUser(final ProjectUserEntity projectUser) {
 		this.projectUser = ProjectUserEntity.getDefault(projectUser);
 	}
 
@@ -78,7 +78,7 @@ public final class TaskUserEntity  {
 		return task;
 	}
 
-	public void setTask(TaskEntity task) {
+	public void setTask(final TaskEntity task) {
 		this.task = TaskEntity.getDefault(task);
 	}
 
@@ -86,7 +86,7 @@ public final class TaskUserEntity  {
 		return assignmentDate;
 	}
 
-	public void setAssignmentDate(LocalDateTime assignmentDate) {
+	public void setAssignmentDate(final LocalDateTime assignmentDate) {
 		this.assignmentDate = DateTimeHelper.getDefault(assignmentDate);
 	}
 
@@ -94,7 +94,7 @@ public final class TaskUserEntity  {
 		return completionDate;
 	}
 
-	public void setCompletionDate(LocalDateTime completionDate) {
+	public void setCompletionDate(final LocalDateTime completionDate) {
 		this.completionDate = DateTimeHelper.getDefault(completionDate);
 	}
 
@@ -102,7 +102,7 @@ public final class TaskUserEntity  {
 		return isCreator;
 	}
 
-	public void setCreator(boolean isCreator) {
+	public void setCreator(final boolean isCreator) {
 		this.isCreator = BooleanHelper.getDefault(isCreator);
 	}
 
@@ -110,7 +110,7 @@ public final class TaskUserEntity  {
 		return comment;
 	}
 
-	public void setComment(String comment) {
+	public void setComment(final String comment) {
 		this.comment = TextHelper.getDefaultWithTrim(comment);
 	}
 }

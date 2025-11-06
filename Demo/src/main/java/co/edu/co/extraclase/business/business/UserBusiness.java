@@ -6,7 +6,6 @@ import co.edu.co.extraclase.business.domain.UserDomain;
 
 public interface UserBusiness {
 	
-
 		void registerNewUserInformation(UserDomain userDomain);
 	      
 		UserDomain loginUser(final String Email, final String passwordHash);
@@ -21,5 +20,4 @@ public interface UserBusiness {
 
 	    List<UserDomain> findUsersByFilter(UserDomain userFilters);
 	
-
 }

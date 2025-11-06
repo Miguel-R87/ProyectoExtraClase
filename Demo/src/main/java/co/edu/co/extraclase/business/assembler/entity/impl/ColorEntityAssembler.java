@@ -21,19 +21,19 @@ public final class ColorEntityAssembler implements EntityAssembler<ColorEntity, 
 	}
 
 	@Override
-	public ColorEntity toEntity(ColorDomain domain) {
+	public ColorEntity toEntity(final ColorDomain domain) {
 		var domainTmp = ObjectHelper.getDefault(domain, new ColorDomain(UUIDHelper.getUUIDHelper().getDefault()));
 		return new ColorEntity(domainTmp.getId(), domainTmp.getName(), domainTmp.getHexCode());
 	}
 
 	@Override
-	public ColorDomain toDomain(ColorEntity entity) {
+	public ColorDomain toDomain(final ColorEntity entity) {
 		var entityTmp = ObjectHelper.getDefault(entity, new ColorEntity());
 		return new ColorDomain(entityTmp.getId(), entityTmp.getName(), entityTmp.getHexCode());
 	}
 
 	@Override
-	public List<ColorDomain> toDomain(List<ColorEntity> entityList) {
+	public List<ColorDomain> toDomain(final List<ColorEntity> entityList) {
 		var colorDomainList = new ArrayList<ColorDomain>();
 		
 		for (var colorEntity : entityList) {

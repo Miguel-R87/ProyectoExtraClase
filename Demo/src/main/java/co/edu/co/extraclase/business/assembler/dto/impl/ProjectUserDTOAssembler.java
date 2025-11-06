@@ -23,7 +23,7 @@ public final class ProjectUserDTOAssembler implements DTOAssembler<ProjectUserDt
     }
 
     @Override
-    public ProjectUserDto toDTO(ProjectUserDomain domain) {
+    public ProjectUserDto toDTO(final ProjectUserDomain domain) {
         var domainTmp = ObjectHelper.getDefault(domain, new ProjectUserDomain(UUIDHelper.getUUIDHelper().getDefault()));
         var projectTmp = getProjectDTOAssembler().toDTO(domainTmp.getProject());
         var userTmp = getUserDTOAssembler().toDTO(domainTmp.getUser());
@@ -32,7 +32,7 @@ public final class ProjectUserDTOAssembler implements DTOAssembler<ProjectUserDt
     }
 
     @Override
-    public ProjectUserDomain toDomain(ProjectUserDto dto) {
+    public ProjectUserDomain toDomain(final ProjectUserDto dto) {
         var dtoTmp = ObjectHelper.getDefault(dto, new ProjectUserDto(UUIDHelper.getUUIDHelper().getDefault()));
         var projectTmpDomain = getProjectDTOAssembler().toDomain(dtoTmp.getProject());
         var userTmpDomain = getUserDTOAssembler().toDomain(dtoTmp.getUser());
@@ -41,7 +41,7 @@ public final class ProjectUserDTOAssembler implements DTOAssembler<ProjectUserDt
     }
 
     @Override
-    public List<ProjectUserDto> toDTO(List<ProjectUserDomain> domainList) {
+    public List<ProjectUserDto> toDTO(final List<ProjectUserDomain> domainList) {
         var projectUserDtoList = new ArrayList<ProjectUserDto>();
         
         for(ProjectUserDomain domain : domainList) {

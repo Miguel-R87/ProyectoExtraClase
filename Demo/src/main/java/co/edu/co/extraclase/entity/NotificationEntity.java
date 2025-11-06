@@ -51,7 +51,7 @@ public final class NotificationEntity  {
 		return id;
 	}
 
-	public void setId(UUID id) {
+	public void setId(final UUID id) {
 		this.id = UUIDHelper.getUUIDHelper().getDefault(id);
 	}
 
@@ -59,7 +59,7 @@ public final class NotificationEntity  {
 		return taskUser;
 	}
 
-	public void setTaskUser(TaskUserEntity taskUser) {
+	public void setTaskUser(final TaskUserEntity taskUser) {
 		this.taskUser = TaskUserEntity.getDefault(taskUser);
 	}
 
@@ -67,7 +67,7 @@ public final class NotificationEntity  {
 		return message;
 	}
 
-	public void setMessage(String message) {
+	public void setMessage(final String message) {
 		this.message = TextHelper.getDefaultWithTrim(message);
 	}
 
@@ -75,7 +75,7 @@ public final class NotificationEntity  {
 		return triggerDate;
 	}
 
-	public void setTriggerDate(LocalDateTime triggerDate) {
+	public void setTriggerDate(final LocalDateTime triggerDate) {
 		this.triggerDate = DateTimeHelper.getDefault(triggerDate);
 	}
 
@@ -83,7 +83,7 @@ public final class NotificationEntity  {
 		return notificationType;
 	}
 
-	public void setNotificationType(NotificationTypeEntity notificationType) {
+	public void setNotificationType(final NotificationTypeEntity notificationType) {
 		this.notificationType = NotificationTypeEntity.getDefault(notificationType);
 	}
 }

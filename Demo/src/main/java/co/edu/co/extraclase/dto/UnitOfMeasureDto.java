@@ -4,7 +4,7 @@ import java.util.UUID;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
-public class UnitOfMeasureDto {
+public final class UnitOfMeasureDto {
 	private UUID id;
 	private String name;
 	private String description;
@@ -35,7 +35,7 @@ public class UnitOfMeasureDto {
 		return id;
 	}
 
-	void setName(String name) {
+	void setName(final String name) {
 		this.name = TextHelper.getDefaultWithTrim(name);
 	}
 	
@@ -43,7 +43,7 @@ public class UnitOfMeasureDto {
 		return name;
 	}
 
-	void setDescription(String description) {
+	void setDescription(final String description) {
 		this.description = TextHelper.getDefaultWithTrim(description);
 	}
 

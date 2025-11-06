@@ -24,7 +24,7 @@ public final class TaskDTOAssembler implements DTOAssembler<TaskDto, TaskDomain>
     }
 
     @Override
-    public TaskDto toDTO(TaskDomain domain) {
+    public TaskDto toDTO(final TaskDomain domain) {
         var domainTmp = ObjectHelper.getDefault(domain, new TaskDomain(UUIDHelper.getUUIDHelper().getDefault()));
         var listTmp = getListDTOAssembler().toDTO(domainTmp.getList());
         var statusTmp = getStatusDTOAssembler().toDTO(domainTmp.getStatus());
@@ -34,7 +34,7 @@ public final class TaskDTOAssembler implements DTOAssembler<TaskDto, TaskDomain>
     }
 
     @Override
-    public TaskDomain toDomain(TaskDto dto) {
+    public TaskDomain toDomain(final TaskDto dto) {
         var dtoTmp = ObjectHelper.getDefault(dto, new TaskDto(UUIDHelper.getUUIDHelper().getDefault()));
         var listTmpDomain = getListDTOAssembler().toDomain(dtoTmp.getList());
         var statusTmpDomain = getStatusDTOAssembler().toDomain(dtoTmp.getStatus());
@@ -44,7 +44,7 @@ public final class TaskDTOAssembler implements DTOAssembler<TaskDto, TaskDomain>
     }
 
     @Override
-    public List<TaskDto> toDTO(List<TaskDomain> domainList) {
+    public List<TaskDto> toDTO(final List<TaskDomain> domainList) {
         var taskDtoList = new ArrayList<TaskDto>();
         
         for(TaskDomain domain : domainList) {

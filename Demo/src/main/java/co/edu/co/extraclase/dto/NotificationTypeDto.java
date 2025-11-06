@@ -5,7 +5,7 @@ import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import java.util.UUID;
 
-public class NotificationTypeDto {
+public final class NotificationTypeDto {
    
 	private UUID id;
     private String name;
@@ -41,7 +41,7 @@ public class NotificationTypeDto {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(final UUID id) {
         this.id = UUIDHelper.getUUIDHelper().getDefault(id);
     }
 
@@ -49,7 +49,7 @@ public class NotificationTypeDto {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = TextHelper.getDefaultWithTrim(name);
     }
 
@@ -57,7 +57,7 @@ public class NotificationTypeDto {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = TextHelper.getDefaultWithTrim(description);
     }
 }

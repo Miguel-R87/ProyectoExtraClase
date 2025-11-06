@@ -45,7 +45,7 @@ public final class ListDomain extends Domain {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(final String name) {
 		this.name = TextHelper.getDefaultWithTrim(name);
 	}
 
@@ -53,7 +53,7 @@ public final class ListDomain extends Domain {
 		return project;
 	}
 
-	public void setProject(ProjectDomain project) {
+	public void setProject(final ProjectDomain project) {
 		this.project = ProjectDomain.getDefaultValue(project);
 	}
 
@@ -61,7 +61,7 @@ public final class ListDomain extends Domain {
 		return creationDate;
 	}
 
-	public void setCreationDate(LocalDateTime creationDate) {
+	public void setCreationDate(final LocalDateTime creationDate) {
 		this.creationDate = DateTimeHelper.getDefault(creationDate);
 	}
 }	

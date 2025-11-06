@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
 import co.edu.co.extraclase.crosscuting.exception.ExtraClaseException;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
@@ -15,14 +14,14 @@ import co.edu.co.extraclase.data.dao.entity.SqlConnection;
 import co.edu.co.extraclase.data.dao.entity.UnitOfMeasureDAO;
 import co.edu.co.extraclase.entity.UnitOfMeasureEntity;
 
-public class UnitOfMeasurePostgreSqlDAO extends SqlConnection implements UnitOfMeasureDAO {
+public final class UnitOfMeasurePostgreSqlDAO extends SqlConnection implements UnitOfMeasureDAO {
 
 	public UnitOfMeasurePostgreSqlDAO(Connection connection) {
 		super(connection);
 	}
 
 	@Override
-	public List<UnitOfMeasureEntity> findByFilter(UnitOfMeasureEntity filterEntity) {
+	public List<UnitOfMeasureEntity> findByFilter(final UnitOfMeasureEntity filterEntity) {
 		var parametersList = new ArrayList<Object>();
 		var sql = createSentenceFindByFilter(filterEntity, parametersList);
 		
@@ -122,7 +121,7 @@ public class UnitOfMeasurePostgreSqlDAO extends SqlConnection implements UnitOfM
 	}
 
 	@Override
-	public UnitOfMeasureEntity findById(UUID id) {
+	public UnitOfMeasureEntity findById(final UUID id) {
 		return findByFilter(new UnitOfMeasureEntity(id)).stream().findFirst().orElse(new UnitOfMeasureEntity());
 	}
 }

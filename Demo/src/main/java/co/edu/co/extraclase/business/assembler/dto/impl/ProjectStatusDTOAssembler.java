@@ -5,7 +5,6 @@ import co.edu.co.extraclase.business.domain.ProjectStatusDomain;
 import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 import co.edu.co.extraclase.dto.ProjectStatusDto;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,19 +21,19 @@ public final class ProjectStatusDTOAssembler implements DTOAssembler<ProjectStat
     }
 
     @Override
-    public ProjectStatusDto toDTO(ProjectStatusDomain domain) {
+    public ProjectStatusDto toDTO(final ProjectStatusDomain domain) {
         var domainTmp = ObjectHelper.getDefault(domain , new ProjectStatusDomain(UUIDHelper.getUUIDHelper().getDefault()));
         return new ProjectStatusDto(domainTmp.getId(), domainTmp.getName(), domainTmp.getDescription());
     }
 
     @Override
-    public ProjectStatusDomain toDomain(ProjectStatusDto dto) {
+    public ProjectStatusDomain toDomain(final ProjectStatusDto dto) {
         var dtoTmp = ObjectHelper.getDefault(dto, new ProjectStatusDto(UUIDHelper.getUUIDHelper().getDefault()));
         return new ProjectStatusDomain(dtoTmp.getId(), dtoTmp.getName(), dtoTmp.getDescription());
     }
 
     @Override
-    public List<ProjectStatusDto> toDTO(List<ProjectStatusDomain> domainList) {
+    public List<ProjectStatusDto> toDTO(final List<ProjectStatusDomain> domainList) {
         var projectStatusDtoList = new ArrayList<ProjectStatusDto>();
         
         for(ProjectStatusDomain domain : domainList) {

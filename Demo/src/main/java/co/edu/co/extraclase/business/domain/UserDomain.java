@@ -7,7 +7,7 @@ import co.edu.co.extraclase.crosscuting.helper.DateTimeHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
 
-public class UserDomain extends Domain {
+public final class UserDomain extends Domain {
 
 	private String firstName;
     private String lastName;
@@ -88,7 +88,7 @@ public class UserDomain extends Domain {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(final String firstName) {
         this.firstName = TextHelper.getDefaultWithTrim(firstName);
     }
 
@@ -96,7 +96,7 @@ public class UserDomain extends Domain {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(final String lastName) {
         this.lastName = TextHelper.getDefaultWithTrim(lastName);
     }
 
@@ -104,7 +104,7 @@ public class UserDomain extends Domain {
         return username;
     }
 
-    public void setUsername(String username) {
+    public void setUsername(final String username) {
         this.username = TextHelper.getDefaultWithTrim(username);
     }
 
@@ -116,7 +116,7 @@ public class UserDomain extends Domain {
         return registrationDate;
     }
 
-    public void setRegistrationDate(LocalDateTime registrationDate) {
+    public void setRegistrationDate(final LocalDateTime registrationDate) {
         this.registrationDate = DateTimeHelper.getDefault(registrationDate);
     }
 
@@ -124,7 +124,7 @@ public class UserDomain extends Domain {
         return passwordHash;
     }
 
-    public void setPasswordHash(String passwordHash) {
+    public void setPasswordHash(final String passwordHash) {
         this.passwordHash = passwordHash;
     }
 
@@ -184,7 +184,7 @@ public class UserDomain extends Domain {
 		this.accountStatusDefaultValue = accountStatusDefaultValue;
 	}
 
-	public void setEmail(String email) {
+	public void setEmail(final String email) {
 		this.email = TextHelper.getDefaultWithTrim(email);
 	}
 					

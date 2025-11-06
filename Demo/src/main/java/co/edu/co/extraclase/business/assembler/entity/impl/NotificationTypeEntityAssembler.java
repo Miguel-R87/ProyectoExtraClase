@@ -21,19 +21,19 @@ public final class NotificationTypeEntityAssembler implements EntityAssembler<No
 	}
 
 	@Override
-	public NotificationTypeEntity toEntity(NotificationTypeDomain domain) {
+	public NotificationTypeEntity toEntity(final NotificationTypeDomain domain) {
 		var domainTmp = ObjectHelper.getDefault(domain, new NotificationTypeDomain(UUIDHelper.getUUIDHelper().getDefault()));
 		return new NotificationTypeEntity(domainTmp.getId(), domainTmp.getName(), domainTmp.getDescription());
 	}
 
 	@Override
-	public NotificationTypeDomain toDomain(NotificationTypeEntity entity) {
+	public NotificationTypeDomain toDomain(final NotificationTypeEntity entity) {
 		var entityTmp = ObjectHelper.getDefault(entity, new NotificationTypeEntity());
 		return new NotificationTypeDomain(entityTmp.getId(), entityTmp.getName(), entityTmp.getDescription());
 	}
 
 	@Override
-	public List<NotificationTypeDomain> toDomain(List<NotificationTypeEntity> entityList) {
+	public List<NotificationTypeDomain> toDomain(final List<NotificationTypeEntity> entityList) {
 		var notificationTypeDomainList = new ArrayList<NotificationTypeDomain>();
 		
 		for (var notificationTypeEntity : entityList) {
