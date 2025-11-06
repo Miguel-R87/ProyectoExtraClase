@@ -27,18 +27,15 @@ public abstract class DAOFactory {
 
     public static DAOFactory getFactory() {
     	
-    	switch(factory) {
-		case POSTGRESQL:{
-			return new PostgreSqlDAOFactory();
-		}
-		default:
-			var userMessage = "";
-			var technicalMessage = "";
+    	if (FactoryEnum.POSTGRESQL.equals(factory)) {
+    		return new PostgreSqlDAOFactory();
+		}else {
+			var userMessage = MessagesEnum.USER_ERROR_SQL_CONNECTION_SQL_EXCEPTION_VALIDATING_TRANSACTION_IS_NOT_STARTED.getContent();
+			var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SQL_CONNECTION_SQL_EXCEPTION_VALIDATING_TRANSACTION_IS_NOT_STARTED.getContent();
 			throw ExtraClaseException.create(userMessage, technicalMessage);
 		}
-    	
 	}
-    
+    	
     public abstract ColorDAO getColorDAO();
     
     public abstract ListDAO getListDAO();

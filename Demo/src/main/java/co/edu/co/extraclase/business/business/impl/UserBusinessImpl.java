@@ -27,16 +27,23 @@ public final class UserBusinessImpl implements UserBusiness {
 		ValidateUserEmailDoesNotExist.executeValidation(userDomain.getEmail(), daoFactory);		
 		ValidateUserUsernameDoesNotExist.executeValidation(userDomain.getUsername(), daoFactory);
 
-		var id = UUIDHelper.getUUIDHelper().generateNewUUID();
-		while (!UUIDHelper.getUUIDHelper().isDefaultUUID(daoFactory.getUserDAO().findById(id).getId())) {
-			id = UUIDHelper.getUUIDHelper().generateNewUUID();
-		} 
-		
-		userDomain.setId(id);
-
 		var userEntity = UserEntityAssembler.getUserEntityAssembler().toEntity(userDomain);
+		userEntity.setId(generateId());
 		userEntity.setRegistrationDate(DateTimeHelper.now());
 		daoFactory.getUserDAO().create(userEntity);
+	}
+	
+	private UUID generateId() {
+		var id = UUIDHelper.getUUIDHelper().generateNewUUID();
+		var userEntity = daoFactory.getUserDAO().findById(id);
+		
+		while (!UUIDHelper.getUUIDHelper().isDefaultUUID(userEntity.getId())) {
+	
+			id = UUIDHelper.getUUIDHelper().generateNewUUID();
+			userEntity = daoFactory.getUserDAO().findById(id);
+		}
+		
+		return id;
 	}
 
 	@Override

@@ -12,6 +12,7 @@ import co.edu.co.extraclase.crosscuting.helper.ObjectHelper;
 import co.edu.co.extraclase.crosscuting.helper.SqlConnectionHelper;
 import co.edu.co.extraclase.crosscuting.helper.TextHelper;
 import co.edu.co.extraclase.crosscuting.helper.UUIDHelper;
+import co.edu.co.extraclase.crosscuting.messagescatalog.MessagesEnum;
 import co.edu.co.extraclase.data.dao.entity.SqlConnection;
 import co.edu.co.extraclase.data.dao.entity.UserDAO;
 import co.edu.co.extraclase.entity.UserEntity;
@@ -57,18 +58,18 @@ public final class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
 			
 			preparedStatement.executeUpdate();
 		
-        }
-        catch (final SQLException exception) {
-            var userMessage = "Se ha presentado un problema tratando de registrar la información del nuevo usuario. Intente de nuevo.";
-            var technicalMessage = "SQLException al insertar Usuario: " + exception.getMessage();
+    	} catch (final SQLException exception) {
+            var userMessage = MessagesEnum.USER_ERROR_REGISTRATION_FAILED_SQL_EXCEPTION.getContent();
+            var technicalMessage = MessagesEnum.TECHNICAL_ERROR_REGISTRATION_SQL_EXCEPTION.getContent() +exception.getMessage();
+            
             throw ExtraClaseException.create(exception, userMessage, technicalMessage);
         } catch (final Exception exception) {
-            var userMessage = "Se ha presentado un problema inesperado tratando de registrar la información del nuevo usuario.";
-            var technicalMessage = "Excepción inesperada al insertar Usuario: " + exception.getMessage();
+            var userMessage = MessagesEnum.USER_ERROR_REGISTRATION_FAILED.getContent();
+            var technicalMessage = MessagesEnum.TECHNICAL_ERROR_REGISTRATION_FAILED.getContent()+ exception.getMessage();
+            
             throw ExtraClaseException.create(exception, userMessage, technicalMessage);
         }
-
-	}
+    }
 
 	@Override
 	public void update(final UserEntity entity) {
@@ -106,16 +107,15 @@ public final class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
 			
 			preparedStatement.executeUpdate();
 		
-        }
-        catch (final SQLException exception) {
-            var userMessage = "Se ha presentado un problema tratando de actualizar la información del nuevo usuario. Intente de nuevo.";
-            var technicalMessage = "SQLException al actualizar Usuario: " + exception.getMessage();
-            throw ExtraClaseException.create(exception, userMessage, technicalMessage);
-        } catch (final Exception exception) {
-            var userMessage = "Se ha presentado un problema inesperado tratando de actualizar la información del nuevo usuario.";
-            var technicalMessage = "Excepción inesperada al actualizar Usuario: " + exception.getMessage();
-            throw ExtraClaseException.create(exception, userMessage, technicalMessage);
-        }
+		} catch (final SQLException exception) {
+			var userMessage = MessagesEnum.USER_ERROR_UPDATE_USER_FAILED_SQL_EXCEPTION.getTitle()+" "+ MessagesEnum.USER_ERROR_UPDATE_USER_FAILED_SQL_EXCEPTION.getContent();
+			var technicalMessage = MessagesEnum.TECHNICAL_ERROR_UPDATE_USER_FAILED_SQL_EXCEPTION.getTitle()+""+MessagesEnum.TECHNICAL_ERROR_UPDATE_USER_FAILED_SQL_EXCEPTION.getContent();
+			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
+		}catch(final Exception exception) {
+			var userMessage = MessagesEnum.USER_ERROR_UPDATE_USER_FAILED.getTitle()+""+MessagesEnum.USER_ERROR_UPDATE_USER_FAILED.getContent();
+			var technicalMessage = MessagesEnum.TECHNICAL_ERROR_UPDATE_USER_FAILED.getTitle()+""+MessagesEnum.TECHNICAL_ERROR_UPDATE_USER_FAILED.getContent();
+			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
+		}
 	}
 
 	@Override
@@ -133,17 +133,15 @@ public final class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
 				
 			}catch (final ExtraClaseException exception) {
 				throw exception;
-			}catch (final SQLException exception) {
-				var userMessage = "";
-				var technicalMessage = "" + exception.getMessage();
-				throw ExtraClaseException.create(exception, userMessage, technicalMessage);
-
-			}catch (Exception exception) {
-				var userMessage = "";
-				var technicalMessage = "";
-				throw ExtraClaseException.create(exception, userMessage, technicalMessage);
-
-			}
+		} catch (final SQLException exception) {
+			var userMessage = MessagesEnum.USER_ERROR_SEARCH_USER_FAILED_SQL_EXCEPTION.getContent();
+			var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_USER_FAILED_SQL_EXCEPTION.getContent() +exception.getMessage();
+			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
+		}catch(final Exception exception) {
+			var userMessage = MessagesEnum.USER_ERROR_SEARCH_USER_FAILED.getContent();
+			var technicalMessage =MessagesEnum.TECHNICAL_ERROR_SEARCH_USER_FAILED.getContent()  + exception.getMessage();
+			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
+		}
 	}
 	
 	private String createSentenceFindByFilter(final UserEntity filterEntity, final List<Object> parameterList) {
@@ -233,7 +231,7 @@ public final class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
 	
 private List<UserEntity> executeSentenceFindByFilter(final PreparedStatement preparedStatement) {
 		
-		var listState = new ArrayList<UserEntity>();
+		var users = new ArrayList<UserEntity>();
 		
 		try (var resultSet = preparedStatement.executeQuery()) {
 			
@@ -245,30 +243,25 @@ private List<UserEntity> executeSentenceFindByFilter(final PreparedStatement pre
             	user.setUsername(resultSet.getString("nombreUsuario"));
             	user.setEmail(resultSet.getString("email"));
             	user.setEmailConfirmation(resultSet.getBoolean("confirmacionEmail"));
-            	java.sql.Date sqlDate = resultSet.getDate("fechaRegistro");
-            	if (sqlDate != null) {
-            	    user.setRegistrationDate(sqlDate.toLocalDate().atStartOfDay());
-            	}
-
+            	user.setRegistrationDate(resultSet.getTimestamp("fechaRegistro").toLocalDateTime());
             	user.setPasswordHash(resultSet.getString("passwordHash"));
             	user.setAccountStatus(resultSet.getBoolean("estado"));
             	user.setSuperUser(resultSet.getBoolean("esSuperUsuario"));
             	user.setSuperUserConfirmation(resultSet.getBoolean("confirmacionSuperUsuario"));
             	
-				listState.add(user);
+				users.add(user);
 
 			}
-		}catch (final SQLException exception) {
-			var userMessage = "";
-			var technicalMessage = "" + exception.getMessage();
-			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
-		}catch (final Exception exception) {
-			var userMessage = "";
-			var technicalMessage = "" + exception.getMessage();
-			throw ExtraClaseException.create(exception, userMessage, technicalMessage);
-
-		}
-		return listState;
+		} catch (final SQLException exception) {
+	        var userMessage = MessagesEnum.USER_ERROR_SEARCH_USER_FAILED_SQL_EXCEPTION.getContent();
+	        var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_USER_FAILED_SQL_EXCEPTION + exception.getMessage();
+	        throw ExtraClaseException.create(exception, userMessage, technicalMessage);
+	    } catch (final Exception exception) {
+	        var userMessage = MessagesEnum.USER_ERROR_SEARCH_USER_FAILED.getContent();
+	        var technicalMessage = MessagesEnum.TECHNICAL_ERROR_SEARCH_USER_FAILED.getContent();
+	        throw ExtraClaseException.create(exception, userMessage, technicalMessage);
+	    }
+		return users;
 		
 	}
 

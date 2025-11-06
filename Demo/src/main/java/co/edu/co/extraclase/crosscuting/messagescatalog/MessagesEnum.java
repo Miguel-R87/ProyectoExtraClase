@@ -13,7 +13,33 @@ public enum MessagesEnum {
 
 	    USER_ERROR_SQL_CONNECTION_IS_OPEN("Conexión contra la fuente de información deseada abierta.","La conexión requerida para llevar a cabo la operación contra la fuente de información deseada está abierta. Por favor, intente de nuevo y si el problema persiste, contacte al administrador de la aplicación."),
 
+
 	    USER_ERROR_SQL_CONNECTION_IS_CLOSED("Conexión contra la fuente de información deseada cerrada.","La conexión requerida para llevar a cabo la operación contra la fuente de información deseada está cerrada. Por favor, intente de nuevo y si el problema persiste, contacte al administrador de la aplicación."),
+	  
+	    USER_ERROR_REGISTRATION_FAILED_SQL_EXCEPTION(" Se ha presentado un problema tratando de registrar la información de un nuevo usuario"," por favor intente de nuevo si el problema persiste contacte al administrador del sistema"),
+	   
+	    TECHNICAL_ERROR_REGISTRATION_SQL_EXCEPTION("Se ha presentado un error inesperado al registrar la información del nuevo usuario", 
+	        "Se presentó una excepción SQL al intentar registrar al nuevo usuario. Esto puede ser causado por problemas con la base de datos, como una violación de restricción de clave o problemas de conexión."),
+
+	    TECHNICAL_ERROR_REGISTRATION_FAILED("Se ha presentado un problema inesperado al tratar de ejecutar el registro de un nuevo usuario ","Se ha presentado un problema al intentar regisrar un nuevo usuario no es un SQL Exception"),
+
+	    USER_ERROR_REGISTRATION_FAILED(" Se ha presentado un problema inesperado tratando de registrar la información del nuevo usuario por favor intente de nuevo"," si el problema persiste por favor contacte al administrador del sistema."),
+	    
+	    USER_ERROR_SEARCH_USER_FAILED_SQL_EXCEPTION("Se ha presentado un problema tratando de consultar la información de un usuario"," por favor intente de nuevo si el  problema persiste por favor contacte al administrador del sistema"),
+	    
+	    TECHNICAL_ERROR_SEARCH_USER_FAILED_SQL_EXCEPTION("Error SQL durante la operación de consulta de la información de un usuario", "Se ha presentado un problema de tipo SQLException durante la ejecución de la operación de consulta de la información de un usuario."),
+	    
+	    USER_ERROR_SEARCH_USER_FAILED("Se ha presentado un problema inesperado tratando de consultar la información de un usuario por favor intente de nuevo"," Si el problema persiste por favor contacte al administrador del sistema"),
+	    
+	    TECHNICAL_ERROR_SEARCH_USER_FAILED( "Se ha presentado un problema inesperado al tratar de ejecutar el proceso de consulta del usuario ","Se ha presentado un problema inesperado durante la ejecución de la operación de consulta de la información de un usuario. No fue una SQLException, sino un error no controlado en el proceso de registro."),
+
+	    USER_ERROR_UPDATE_USER_FAILED_SQL_EXCEPTION("Se ha presentado un problema tratando de actualizar la información de un usuario por favor intente de nuevo"," Si el problema persiste por favor contacte al administrador del sistema"),
+	   
+	    TECHNICAL_ERROR_UPDATE_USER_FAILED_SQL_EXCEPTION("Se ha presentado un problema inesperado al tratar de ejecutar la actualización de un usuario ","verifique que si este conectado a la base de datos"),
+	   
+	    USER_ERROR_UPDATE_USER_FAILED("Se ha presentado un problema inesperado tratando de actualizar la información de un usuario por favor intente de nuevo"," Si el problema persiste por favor contacte al administrador del sistema"),
+	   
+	    TECHNICAL_ERROR_UPDATE_USER_FAILED( "Se ha presentado un problema inesperado al tratar de ejecutar el proceso de actualizacion de un  usuario ","verifique que si este conectado a la base de datos"),
 
 	    TECHNINAL_ERROR_SQL_CONNECTION_IS_OPEN("Conexión contra la fuente de información deseada abierta.","La conexión requerida para llevar a cabo la operación contra la base de datos está abierta."),
 
