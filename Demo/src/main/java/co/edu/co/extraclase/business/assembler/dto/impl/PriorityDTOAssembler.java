@@ -43,11 +43,11 @@ public final class PriorityDTOAssembler implements DTOAssembler<PriorityDto, Pri
 
     @Override
     public List<PriorityDto> toDTO(List<PriorityDomain> domainList) {
-        var PriorityDtoList = new ArrayList<PriorityDto>();
+        var priorityDtoList = new ArrayList<PriorityDto>();
         
         for(PriorityDomain domain : domainList) {
-        	PriorityDtoList.add(toDTO(domain));
+        	priorityDtoList.add(toDTO(domain));
         }
-        return PriorityDtoList;
+        return priorityDtoList;
     }
 }

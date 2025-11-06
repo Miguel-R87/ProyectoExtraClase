@@ -39,11 +39,11 @@ public final class UserDTOAssembler implements DTOAssembler<UserDto,UserDomain> 
 
     @Override
     public List<UserDto> toDTO(List<UserDomain> domainList) {
-        var UserDtoList = new ArrayList<UserDto>();
+        var userDtoList = new ArrayList<UserDto>();
         
         for(UserDomain domain : domainList) {
-        	UserDtoList.add(toDTO(domain));
+        	userDtoList.add(toDTO(domain));
         }
-        return UserDtoList;
+        return userDtoList;
     }
 }

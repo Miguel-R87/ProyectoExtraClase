@@ -35,11 +35,11 @@ public final class ProjectStatusDTOAssembler implements DTOAssembler<ProjectStat
 
     @Override
     public List<ProjectStatusDto> toDTO(List<ProjectStatusDomain> domainList) {
-        var ProjectStatusDtoList = new ArrayList<ProjectStatusDto>();
+        var projectStatusDtoList = new ArrayList<ProjectStatusDto>();
         
         for(ProjectStatusDomain domain : domainList) {
-        	ProjectStatusDtoList.add(toDTO(domain));
+        projectStatusDtoList.add(toDTO(domain));
         }
-        return ProjectStatusDtoList;
+        return projectStatusDtoList;
     }
 }

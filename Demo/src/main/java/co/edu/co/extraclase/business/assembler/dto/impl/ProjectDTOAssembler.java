@@ -39,11 +39,11 @@ public final class ProjectDTOAssembler implements DTOAssembler <ProjectDto, Proj
 
     @Override
     public List<ProjectDto> toDTO(List<ProjectDomain> domainList) {
-        var ProjectDtoList = new ArrayList<ProjectDto>();
+        var projectDtoList = new ArrayList<ProjectDto>();
         
         for(ProjectDomain domain : domainList) {
-        	ProjectDtoList.add(toDTO(domain));
+        	projectDtoList.add(toDTO(domain));
         }
-        return ProjectDtoList;
+        return projectDtoList;
     }
 }

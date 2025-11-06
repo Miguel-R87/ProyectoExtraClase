@@ -34,12 +34,12 @@ public final class UnitOfMeasureDTOAssembler implements DTOAssembler<UnitOfMeasu
 
     @Override
     public List<UnitOfMeasureDto> toDTO(List<UnitOfMeasureDomain> domainList) {
-        var UnitOfMeasureDtoList = new ArrayList<UnitOfMeasureDto>();
+        var unitOfMeasureDtoList = new ArrayList<UnitOfMeasureDto>();
         
         for(UnitOfMeasureDomain domain : domainList) {
-        	UnitOfMeasureDtoList.add(toDTO(domain));
+        	unitOfMeasureDtoList.add(toDTO(domain));
         }
-        return UnitOfMeasureDtoList;
+        return unitOfMeasureDtoList;
     }
 }
 
