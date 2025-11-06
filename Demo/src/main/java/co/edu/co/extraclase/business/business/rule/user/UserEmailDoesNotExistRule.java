@@ -21,6 +21,7 @@ public final class UserEmailDoesNotExistRule implements Rule {
 	
 	@Override
 	public void execute(final Object... data) {
+		
 		if (ObjectHelper.isNull(data)) {
 			var userMessage = MessagesEnum.USER_ERROR_TRYING_TO_MAKE_AN_OPERATION.getContent();
 			var technicalMessage = MessagesEnum.TECHNICAL_ERROR_VALUE_USER_DOES_NOT_EXISTS_BY_EMAIL.getContent();

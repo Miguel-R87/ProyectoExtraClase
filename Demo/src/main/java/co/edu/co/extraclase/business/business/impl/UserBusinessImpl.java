@@ -22,6 +22,7 @@ public final class UserBusinessImpl implements UserBusiness {
 	
 	@Override
 	public void registerNewUserInformation(final UserDomain userDomain) {
+		
 		ValidateDataUserConsistencyForRegisterNewUserInformation.executeValidation(userDomain);
 		validateUserUsernameDoesNotExist(userDomain.getUsername());
 		validateUserEmailDoesNotExist(userDomain.getEmail());

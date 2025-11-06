@@ -20,6 +20,7 @@ public final class StringLengthValueIsValidRule implements Rule{
 
 	@Override
 	public void execute(final Object... data) {
+		
 		if (ObjectHelper.isNull(data)) {
 			var userMessage = MessagesEnum.USER_ERROR_TRYING_TO_MAKE_AN_OPERATION.getContent();
 			var technicalMessage = MessagesEnum.TECHNICAL_ERROR_STRING_LENGTH_VALUE.getContent();
