@@ -184,7 +184,6 @@ final boolean isSuperUser, final boolean superUserConfirmed) {
     public void setAccountStatus(final boolean accountStatus) {
         this.accountStatus = accountStatus;
         setAccountStatusIsDefaultValue(false);
-        setEmailConfirmedIsDefaultValue(false);
     }
 
     public void setAccountStatusIsDefaultValue(final boolean accountStatusDefaultValue) {

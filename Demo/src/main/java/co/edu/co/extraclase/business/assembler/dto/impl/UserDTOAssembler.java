@@ -31,8 +31,8 @@ public final class UserDTOAssembler implements DTOAssembler<UserDto,UserDomain> 
 
     @Override
     public UserDomain toDomain(final UserDto dto) {
-        var dtoTmp = ObjectHelper.getDefault(dto, new UserDto(UUIDHelper.getUUIDHelper().getDefault()));
-        return new UserDomain(dtoTmp.getId(), dtoTmp.getFirstName(), dtoTmp.getLastName(), dtoTmp.getUsername(),
+    	var dtoTmp = ObjectHelper.getDefault(dto, new UserDto(UUIDHelper.getUUIDHelper().getDefault()));
+    	return new UserDomain(dtoTmp.getId(), dtoTmp.getFirstName(), dtoTmp.getLastName(), dtoTmp.getUsername(),
                 dtoTmp.getEmail(), dtoTmp.isEmailConfirmed(), dtoTmp.getRegistrationDate(), dtoTmp.getPasswordHash(), dtoTmp.isAccountStatus(),
                 dtoTmp.isSuperUser(), dtoTmp.isSuperUserConfirmed());
     }

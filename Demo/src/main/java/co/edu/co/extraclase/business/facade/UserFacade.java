@@ -7,19 +7,19 @@ import co.edu.co.extraclase.dto.UserDto;
 
 public interface UserFacade {
 
-	void registerNewUserInformation(final UserDto userDto);
+	void registerNewUserInformation(UserDto userDto);
       
-	UserDomain loginUser(final String Email, final String passwordHash);
+	UserDomain loginUser(String Email, String passwordHash);
 
-	void updateUserInformation(final UUID id, final UserDto userDto);
+	void updateUserInformation(UUID id, UserDto userDto);
 
-	void sendUserEmailConfirmationCode(final UUID id);
+	void sendUserEmailConfirmationCode(UUID id);
 
-	void sendSuperUserConfirmationCode(final UUID id);
+	void sendSuperUserConfirmationCode(UUID id);
 
-	boolean confirmCode(final UUID id, final String code, final String confirmationType);
+	boolean confirmCode(UUID id, String code, String confirmationType);
 
-    List<UserDto> findUsersByFilter(final UserDto userFilters);
+    List<UserDto> findUsersByFilter(UserDto userFilters);
 
 }
 

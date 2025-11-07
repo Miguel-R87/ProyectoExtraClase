@@ -12,12 +12,12 @@ public class TestUserRegistration {
 		try {
 			var user = new UserDto();
 			
-			user.setFirstName("Majo");
-			user.setLastName("Flores");
-			user.setUsername("MajoF27");
-			user.setEmail("majoflores12@gmail.com");
+			user.setFirstName("Kris");
+			user.setLastName("Rrrrrr");
+			user.setUsername("LaKbra2");
+			user.setEmail("majoflores1245@gmail.com");
 			user.setRegistrationDate(LocalDateTime.now());
-			user.setPasswordHash("MajoF27**");
+			user.setPasswordHash("Blesdd*1");
 			user.setAccountStatus(false);
 			user.setSuperUser(false);
 			user.setSuperUserConfirmed(false);

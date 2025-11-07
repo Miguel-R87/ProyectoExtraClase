@@ -77,7 +77,7 @@ public final class UserPostgreSqlDAO extends SqlConnection implements UserDAO{
 		
 		final var sql = new StringBuilder();
 		sql.append("UPDATE \"Usuario\" ");
-		sql.append("SET \"usarioId\" = ?, ");
+		sql.append("SET \"usuarioId\" = ?, ");
 		sql.append("    \"primerNombre\" = ?, ");
 		sql.append("    \"apellido\" = ?, ");
 		sql.append("    \"nombreUsuario\" = ?, ");
